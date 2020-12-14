@@ -28,7 +28,7 @@ exports.main = async (event, context) => {
 async function requestSubscribeMessage(event) {
   // 此处为模板 ID，开发者需要到小程序管理后台 - 订阅消息 - 公共模板库中添加模板，
   // 然后在我的模板中找到对应模板的 ID，填入此处
-  return '请到管理后台申请模板 ID 然后在此替换' // 如 'N_J6F05_bjhqd6zh2h1LHJ9TAv9IpkCiAJEpSw0PrmQ'
+  return 'wQpezcZCLoQmIYMlwGn2P7dK6MA6_PmH6eVwTTYp-7w' // 如 'N_J6F05_bjhqd6zh2h1LHJ9TAv9IpkCiAJEpSw0PrmQ'
 }
 
 async function sendSubscribeMessage(event) {
@@ -38,16 +38,26 @@ async function sendSubscribeMessage(event) {
 
   const sendResult = await cloud.openapi.subscribeMessage.send({
     touser: OPENID,
-    templateId,
+    // templateId,
+    template_id: templateId,
     miniprogram_state: 'developer',
     page: 'pages/openapi/openapi',
     // 此处字段应修改为所申请模板所要求的字段
     data: {
-      thing1: {
-        value: '咖啡',
+      character_string1: {
+        value: 'Y1243451',
       },
-      time3: {
-        value: '2020-01-01 00:00',
+      thing2: {
+        value: '饭来了财富中心店',
+      },
+      amount3: {
+        value: '100.00元',
+      },
+      character_string4: {
+        value: 'ASDE123',
+      },
+      thing5: {
+        value: '酸菜卤肉饭*2',
       },
     }
   })

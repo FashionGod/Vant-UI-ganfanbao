@@ -1,0 +1,43 @@
+<div>
+  <van-sticky>
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
+      background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:change="onChange"
+      bind:focus="onFocus"
+      >
+      <view wx:if="{{!showSearchPanelFlag}}" slot="action" bind:tap="onSearch">搜索</view>
+      <view wx:else slot="action" bind:tap="onCancel">取消</view>
+    </van-search>
+  </van-sticky>
+  <div class="search" wx:if="{{showSearchPanelFlag}}">
+    <van-empty image="search" description="描述文字" />
+  </div>
+  <div class="content" wx:else>
+    <swiper
+        autoplay="true" interval="3500" duration="500" circular="true">
+        <block wx:for="{{swiperImgList}}" wx:key="*this">
+          <swiper-item bindtap="previewImg" data-i="{{index}}" >
+            <image style="width:750rpx;" src="{{item}}" mode="scaleToFill"></image>
+          </swiper-item>
+        </block>
+  </swiper>
+  <van-notice-bar
+  left-icon="volume-o"
+  speed="25"
+  text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+/>
+<van-grid clickable column-num="2">
+  <van-grid-item
+    icon="home-o"
+    link-type="navigateTo"
+    url="/pages/dashboard/index"
+    text="Navigate 跳转"
+  />
+  <van-grid-item
+    icon="search"
+    link-type="reLaunch"
+    url="/pages/dashboard/index"
+    text="ReLaunch 跳转"
+  />
+</van-grid>
+  </div>
+</div>
