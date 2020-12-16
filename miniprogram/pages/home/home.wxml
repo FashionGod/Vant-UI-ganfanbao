@@ -1,3 +1,4 @@
+<script src="//at.alicdn.com/t/font_2269508_226gwnaqkqs.js"></script>
 <div>
   <van-sticky>
     <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
@@ -25,19 +26,28 @@
   speed="25"
   text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
 />
-<van-grid clickable column-num="2">
+<van-grid clickable column-num="3">
   <van-grid-item
-    icon="home-o"
+    icon="icon-meishi"
     link-type="navigateTo"
-    url="/pages/dashboard/index"
-    text="Navigate 跳转"
+    url="../myPages/delicious/delicious"
+    text="美食"
   />
   <van-grid-item
-    icon="search"
+    icon="icon-tushu"
+    link-type="navigateTo"
+    url="../myPages/delicious/delicious"
+    text="图书"
+  ></van-grid-item>
+  <van-grid-item
+    icon="icon-qitianlenaicha"
     link-type="reLaunch"
-    url="/pages/dashboard/index"
-    text="ReLaunch 跳转"
+    url="../myPages/delicious/delicious"
+    text="下午茶"
   />
 </van-grid>
+<svg class="icon" aria-hidden="true">
+    <use xlink:href="icon-tushu"></use>
+</svg>
   </div>
 </div>
