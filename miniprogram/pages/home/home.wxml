@@ -46,8 +46,6 @@
     text="下午茶"
   />
 </van-grid>
-<svg class="icon" aria-hidden="true">
-    <use xlink:href="icon-tushu"></use>
-</svg>
+<text class="iconfont icon-addimage"></text>
   </div>
 </div>
