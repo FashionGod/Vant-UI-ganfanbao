@@ -26,30 +26,30 @@
   text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
   />
   <van-grid clickable column-num="3">
-    <van-grid column-num="3" border="{{ false }}">
+    <van-grid column-num="3" border="{{ true }}">
       <van-grid-item use-slot>
         <image
           mode="widthFix"
-          style="width: 80rpx;"
+          style="width: 80rpx;margin-bottom: 5px;"
           src="../../assets/homeImages/delicious.png"
         />
-        <span>饱餐一顿</span>
+        <span class="global-font-style">饱餐一顿</span>
       </van-grid-item>
       <van-grid-item use-slot>
         <image
           mode="widthFix"
-          style="width: 80rpx;"
+          style="width: 80rpx;margin-bottom: 5px;"
           src="../../assets/homeImages/books.png"
         />
-        <span>淘书</span>
+        <span class="global-font-style">淘书</span>
       </van-grid-item>
       <van-grid-item use-slot>
         <image
           mode="widthFix"
-          style="width: 80rpx;"
+          style="width: 80rpx;margin-bottom: 5px;"
           src="../../assets/homeImages/milkTea.png"
         />
-        <span>甜甜的</span>
+        <span class="global-font-style">甜甜的</span>
       </van-grid-item>
     </van-grid>
   </van-grid>

@@ -1,0 +1,4 @@
+.global-font-style{
+	font-size: small;
+	color: rgba(22, 21, 21, 0.822);
+}
