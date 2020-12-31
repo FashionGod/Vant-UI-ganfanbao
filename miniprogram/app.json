@@ -31,20 +31,20 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "iconPath": "./images/home.png",
-        "selectedIconPath": "./images/home-fill.png",
+        "iconPath": "./assets/homeImages/home.png",
+        "selectedIconPath": "./assets/homeImages/home-fill.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/order/order",
-        "iconPath": "./images/activity.png",
-        "selectedIconPath": "./images/activity_fill.png",
+        "iconPath": "./assets/homeImages/activity.png",
+        "selectedIconPath": "./assets/homeImages/activity_fill.png",
         "text": "订单"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "./images/mine.png",
-        "selectedIconPath": "./images/mine_fill.png",
+        "iconPath": "./assets/homeImages/mine.png",
+        "selectedIconPath": "./assets/homeImages/mine_fill.png",
         "text": "我的"
       }
     ]

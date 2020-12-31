@@ -1,5 +1,4 @@
 <script src="//at.alicdn.com/t/font_2269508_226gwnaqkqs.js"></script>
-<div>
   <van-sticky>
     <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
       background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:change="onChange"
@@ -20,32 +19,38 @@
             <image style="width:750rpx;" src="{{item}}" mode="scaleToFill"></image>
           </swiper-item>
         </block>
-  </swiper>
+    </swiper>
   <van-notice-bar
   left-icon="volume-o"
   speed="25"
   text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-/>
-<van-grid clickable column-num="3">
-  <van-grid-item
-    icon="icon-meishi"
-    link-type="navigateTo"
-    url="../myPages/delicious/delicious"
-    text="美食"
   />
-  <van-grid-item
-    icon="icon-tushu"
-    link-type="navigateTo"
-    url="../myPages/delicious/delicious"
-    text="图书"
-  ></van-grid-item>
-  <van-grid-item
-    icon="icon-qitianlenaicha"
-    link-type="reLaunch"
-    url="../myPages/delicious/delicious"
-    text="下午茶"
-  />
-</van-grid>
-<text class="iconfont icon-addimage"></text>
-  </div>
+  <van-grid clickable column-num="3">
+    <van-grid column-num="3" border="{{ false }}">
+      <van-grid-item use-slot>
+        <image
+          mode="widthFix"
+          style="width: 80rpx;"
+          src="../../assets/homeImages/delicious.png"
+        />
+        <span>饱餐一顿</span>
+      </van-grid-item>
+      <van-grid-item use-slot>
+        <image
+          mode="widthFix"
+          style="width: 80rpx;"
+          src="../../assets/homeImages/books.png"
+        />
+        <span>淘书</span>
+      </van-grid-item>
+      <van-grid-item use-slot>
+        <image
+          mode="widthFix"
+          style="width: 80rpx;"
+          src="../../assets/homeImages/milkTea.png"
+        />
+        <span>甜甜的</span>
+      </van-grid-item>
+    </van-grid>
+  </van-grid>
 </div>
