@@ -1,4 +1,3 @@
-<script src="//at.alicdn.com/t/font_2269508_226gwnaqkqs.js"></script>
   <van-sticky>
     <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
       background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:change="onChange"
@@ -8,9 +7,11 @@
       <view wx:else slot="action" bind:tap="onCancel">取消</view>
     </van-search>
   </van-sticky>
+  <!-- 搜索框的条件渲染 -->
   <div class="search" wx:if="{{showSearchPanelFlag}}">
     <van-empty image="search" description="描述文字" />
   </div>
+  <!-- 搜索框外的条件渲染 -->
   <div class="content" wx:else>
     <swiper
         autoplay="true" interval="3500" duration="500" circular="true">
@@ -20,18 +21,20 @@
           </swiper-item>
         </block>
     </swiper>
+    <!-- 通告栏 -->
   <van-notice-bar
   left-icon="volume-o"
   speed="25"
-  text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+  text="干饭饱平台致力于满足干饭人的干饭需求"
   />
-  <van-grid clickable column-num="3">
-    <van-grid column-num="3" border="{{ true }}">
+  <!-- 功能区 -->
+  <van-grid clickable column-num="2">
+    <van-grid column-num="2" border="{{ true }}">
       <van-grid-item use-slot>
         <image
           mode="widthFix"
           style="width: 80rpx;margin-bottom: 5px;"
-          src="../../assets/homeImages/delicious.png"
+          src="../../assets/homeImages/美食.png"
         />
         <span class="global-font-style">饱餐一顿</span>
       </van-grid-item>
@@ -39,7 +42,15 @@
         <image
           mode="widthFix"
           style="width: 80rpx;margin-bottom: 5px;"
-          src="../../assets/homeImages/books.png"
+          src="../../assets/homeImages/奶茶.png"
+        />
+        <span class="global-font-style">甜甜的</span>
+      </van-grid-item>
+      <van-grid-item use-slot>
+        <image
+          mode="widthFix"
+          style="width: 80rpx;margin-bottom: 5px;"
+          src="../../assets/homeImages/图书.png"
         />
         <span class="global-font-style">淘书</span>
       </van-grid-item>
@@ -47,10 +58,18 @@
         <image
           mode="widthFix"
           style="width: 80rpx;margin-bottom: 5px;"
-          src="../../assets/homeImages/milkTea.png"
+          src="../../assets/homeImages/交友.png"
         />
-        <span class="global-font-style">甜甜的</span>
+        <span class="global-font-style">交个朋友</span>
       </van-grid-item>
     </van-grid>
   </van-grid>
+  <!-- 商家列表 -->
+  <van-dropdown-menu active-color="#faad14">
+    <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+    <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+  </van-dropdown-menu>
+  <scroll-view>
+    
+  </scroll-view>
 </div>

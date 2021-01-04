@@ -10,6 +10,24 @@ Page({
     showSearchPanelFlag: false,
     // 轮播图
     swiperImgList: ['https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1901359579,1861271908&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1840683049,2335736361&fm=26&gp=0.jpg' ,'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2905099515,729646340&fm=26&gp=0.jpg'],
+    //商家列表筛选头部
+    switchTitle1: '包邮',
+    switchTitle2: '团购',
+    itemTitle: '筛选',
+    option1: [
+      { text: '全部商品', value: 0 },
+      { text: '新款商品', value: 1 },
+      { text: '活动商品', value: 2 },
+    ],
+    option2: [
+      { text: '综合排序', value: 0 },
+      { text: '离我最近', value: 1 },
+      { text: '销量最高', value: 2 },
+      { text: '评分最高', value: 3 },
+    ],
+    value1: 0,
+    value2: 0,
+    //
   },
   // 搜索框
   onFocus() {
@@ -42,7 +60,18 @@ Page({
       urls: this.data.swiperImgList // 需要预览的图片http链接列表
     })
   },
+  // 商家列表筛选头部
+  onConfirm() {
+    this.selectComponent('#item').toggle();
+  },
 
+  onSwitch1Change({ detail }) {
+    this.setData({ switch1: detail });
+  },
+
+  onSwitch2Change({ detail }) {
+    this.setData({ switch2: detail });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

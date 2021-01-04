@@ -1,0 +1,17 @@
+<view class="card-container">
+  <view class="card-left">
+    <view class="merchant-image">
+      <image></image>
+    </view>
+  </view>
+  <view class="card-middle">
+    <view class="merchant-title">
+      <text></text>
+    </view>
+    <view>
+    </view>
+  </view>
+  <view class="card-right">
+
+  </view>
+</view>
