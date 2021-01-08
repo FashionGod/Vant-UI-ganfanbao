@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 下拉刷新
+    pullDownloading: false,
     // 搜索框
     value: '',
     showSearchPanelFlag: false,
@@ -110,18 +112,17 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  // 监控下拉刷新
-  onPullDownRefresh() {
+  // 监控自定义scroll-view下拉刷新
+  pullDownFresh() {
     console.log('下拉刷新');
     setTimeout(() => {
       // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
 
       // 数据请求成功后，关闭刷新
-      wx.stopPullDownRefresh({
-        success(res) {
-          console.log('刷新成功');
-        }
-      });
+      this.setData({
+        pullDownloading: false,
+      })
+      console.log('刷新成功');
     }, 1000)
   },
 

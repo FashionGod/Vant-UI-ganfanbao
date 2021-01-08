@@ -7,6 +7,8 @@
     "van-grid": "../../../miniprogram_npm/@vant/weapp/dist/grid/index",
   "van-grid-item": "../../../miniprogram_npm/@vant/weapp/dist/grid-item/index",
   "van-dropdown-menu": "../../../miniprogram_npm/@vant/weapp/dist/dropdown-menu/index",
-  "van-dropdown-item": "../../../miniprogram_npm/@vant/weapp/dist/dropdown-item/index"
-  }
+  "van-dropdown-item": "../../../miniprogram_npm/@vant/weapp/dist/dropdown-item/index",
+  "merchant-card": "../../components/shopCard/shopCard"
+  },
+  "disableScroll": true 
 }

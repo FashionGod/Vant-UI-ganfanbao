@@ -1,4 +1,4 @@
 {
   "component": true,
-  "usingComponents": {}
+    "van-rate": "../../../miniprogram_npm/@vant/weapp/dist/rate/index"
 }

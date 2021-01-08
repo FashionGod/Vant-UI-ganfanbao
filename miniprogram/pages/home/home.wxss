@@ -1,3 +1,14 @@
+page{
+	background-color: rgb(241, 237, 237);
+
+}
+.content {
+	height: auto;
+}
+.scroll {
+	height: 100vh;
+}
+
 .global-font-style{
 	font-size: small;
 	color: rgba(22, 21, 21, 0.822);

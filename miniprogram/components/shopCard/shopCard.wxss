@@ -1,1 +1,11 @@
 /* components/shopCard/shopCard.wxss */
+.card-container{
+  position: relative;
+  height: 320rpx;
+  margin: 15rpx 15rpx 15rpx 15rpx;
+  border-radius: 25rpx;
+  background-color: #fffffff1;
+}
+.card-left{
+  position: absolute;
+}

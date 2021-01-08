@@ -6,9 +6,17 @@
   </view>
   <view class="card-middle">
     <view class="merchant-title">
-      <text></text>
+      <text>试试</text>
     </view>
-    <view>
+    <view class="star">
+      <van-rate
+        value="{{ value }}"
+        size="{{ 25 }}"
+        color="#ee0a24"
+        void-color="#eee"
+        void-icon="star"
+        bind:change="_onChange"
+      />
     </view>
   </view>
   <view class="card-right">
