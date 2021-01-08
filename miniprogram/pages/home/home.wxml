@@ -1,5 +1,5 @@
 
-  <scroll-view scroll-y="true" class="scroll" refresher-enabled="{{true}}" refresher-background="#ffca02" enhanced="{{true}}" showScrollbar="{{false}}"  refresher-triggered = "{{pullDownloading}}"  bindrefresherrefresh="pullDownFresh" >
+  <scroll-view scroll-y="true" class="scroll" refresher-enabled="{{true}}" refresher-background="#ffca02" enhanced="{{true}}" showScrollbar="{{false}}"  refresher-triggered = "{{pullDownloading}}"  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
 <van-sticky>
   <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
     background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:change="onChange"
@@ -78,5 +78,8 @@
     <merchant-card></merchant-card>
     <merchant-card></merchant-card>
 </view>
-
+  <!--触底的loading  -->
+  <view class="bottom-loading">
+    <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+  </view>
 </scroll-view>

@@ -7,6 +7,8 @@ Page({
   data: {
     // 下拉刷新
     pullDownloading: false,
+    // 显示触底刷新
+    scrollTouchedBottomLoading: false,
     // 搜索框
     value: '',
     showSearchPanelFlag: false,
@@ -125,14 +127,20 @@ Page({
       console.log('刷新成功');
     }, 1000)
   },
-
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  scrollTouchedBottom() {
+    // 显示loading开始请求
+    this.setData({
+      scrollTouchedBottomLoading: true,
+    })
+    // 数据请求成功后，关闭刷新
+    setTimeout(() => {
+      this.setData({
+        scrollTouchedBottomLoading: false,
+      })
+    }, 1000);
+    console.log('淦，你碰到俺底部啦！');
   },
+
 
   /**
    * 用户点击右上角分享

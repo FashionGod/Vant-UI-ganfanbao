@@ -8,6 +8,10 @@ page{
 .scroll {
 	height: 100vh;
 }
+.bottom-loading {
+	width: 720rpx;
+	text-align: center;
+}
 
 .global-font-style{
 	font-size: small;
