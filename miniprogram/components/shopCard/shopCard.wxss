@@ -1,11 +1,37 @@
 /* components/shopCard/shopCard.wxss */
-.card-container{
-  position: relative;
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 320rpx;
   margin: 15rpx 15rpx 15rpx 15rpx;
   border-radius: 25rpx;
   background-color: #fffffff1;
 }
-.card-left{
-  position: absolute;
+
+.merchant-image {
+  display: inline-block;
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.card-left {
+  flex: 1;
+  background-color: #666666;
+}
+
+.card-middle {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  background-color: #b83a3a;
+}
+
+.star {
+  flex: 1;
+}
+
+.card-right {
+  flex: 1;
+  background-color: #468ee0;
 }
