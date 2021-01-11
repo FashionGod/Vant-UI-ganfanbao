@@ -7,7 +7,7 @@
 <block class="search" wx:if="{{showSearchPanelFlag}}">
   <van-empty image="search" description="描述文字" />
 </block>
-<scroll-view wx:else enhanced showScrollbar="{{false}}" scroll-y="{{dropDownForbidenScroll}}" class="scroll" refresher-enabled="{{dropDownForbidenScroll}}" refresher-background="#ffca02"
+<scroll-view wx:else enhanced showScrollbar="{{false}}" scroll-y="{{dropDownForbidenScroll}}" class="scroll" refresher-enabled="{{dropDownForbidenScroll}}" refresher-background="#ffca02"   
    enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
 
