@@ -2,36 +2,45 @@
 .card-container {
   display: flex;
   align-items: center;
+  padding: 25rpx;
   justify-content: space-between;
-  height: 320rpx;
+  height: 200rpx;
   margin: 15rpx 15rpx 15rpx 15rpx;
-  border-radius: 25rpx;
+  border-radius: 15rpx;
   background-color: #fffffff1;
 }
 
 .merchant-image {
   display: inline-block;
-  height: 150rpx;
-  width: 150rpx;
+  height: 200rpx;
+  width: 200rpx;
 }
 
 .card-left {
   flex: 1;
   background-color: #666666;
+  border-radius: 12rpx;
 }
 
 .card-middle {
   display: flex;
+  padding: 0;
+  margin-left: 10rpx;
   flex-direction: column;
   flex: 2;
-  background-color: #b83a3a;
+  font-weight: 300;
+  font-size: 0.9rem;
 }
-
+.merchant-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
 .star {
   flex: 1;
 }
 
 .card-right {
+  margin-left: 10rpx;
   flex: 1;
   background-color: #468ee0;
 }

@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 展开筛选禁用scroll
+    dropDownForbidenScroll: true,
     // 下拉刷新
     pullDownloading: false,
     // 显示触底刷新
@@ -68,12 +70,25 @@ Page({
   onConfirm() {
     this.selectComponent('#item').toggle();
   },
-
+  dropDownMenuOpen() {
+    this.setData({
+      dropDownForbidenScroll: false,
+    })
+    console.log('禁用scroll');
+  },
+  dropDownMenuClose() {
+    this.setData({
+      dropDownForbidenScroll: true,
+    })
+    console.log('启用scroll');
+  },
   onSwitch1Change({ detail }) {
+    console.log('1');
     this.setData({ switch1: detail });
   },
 
   onSwitch2Change({ detail }) {
+    console.log('2');
     this.setData({ switch2: detail });
   },
   /**

@@ -1,5 +1,5 @@
 
-  <scroll-view scroll-y="true" class="scroll" refresher-enabled="{{true}}" refresher-background="#ffca02" enhanced="{{true}}" showScrollbar="{{false}}"  refresher-triggered = "{{pullDownloading}}"  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+  <scroll-view scroll-y="{{dropDownForbidenScroll}}" class="scroll" refresher-enabled="{{true}}" refresher-background="#ffca02" enhanced="{{true}}" showScrollbar="{{false}}"  refresher-triggered = "{{pullDownloading}}"  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
 <van-sticky>
   <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
     background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:change="onChange"
@@ -69,9 +69,9 @@
     </van-grid>
   </van-grid>
   <!-- 商家列表 -->
-  <van-dropdown-menu active-color="#faad14">
-    <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
-    <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+  <van-dropdown-menu close-on-click-outside="false" active-color="#faad14" >
+    <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change" bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose"/>
+    <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change" bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose"/>
   </van-dropdown-menu>
     <merchant-card></merchant-card>
     <merchant-card></merchant-card>
