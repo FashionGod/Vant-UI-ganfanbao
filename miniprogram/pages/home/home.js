@@ -71,15 +71,15 @@ Page({
     this.selectComponent('#item').toggle();
   },
   dropDownMenuOpen() {
-    this.setData({
-      dropDownForbidenScroll: false,
-    })
+      this.setData({
+        dropDownForbidenScroll: false,
+      })
     console.log('禁用scroll');
   },
   dropDownMenuClose() {
-    this.setData({
-      dropDownForbidenScroll: true,
-    })
+      this.setData({
+        dropDownForbidenScroll: true,
+      })
     console.log('启用scroll');
   },
   onSwitch1Change({ detail }) {
@@ -91,7 +91,34 @@ Page({
     console.log('2');
     this.setData({ switch2: detail });
   },
-  /**
+  // 监控自定义scroll-view下拉刷新
+  pullDownFresh() {
+    console.log('下拉刷新');
+    setTimeout(() => {
+      // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
+
+      // 数据请求成功后，关闭刷新
+      this.setData({
+        pullDownloading: false,
+      })
+      console.log('刷新成功');
+    }, 1000)
+  },
+  scrollTouchedBottom() {
+    // 显示loading开始请求
+    this.setData({
+      scrollTouchedBottomLoading: true,
+    })
+    // 数据请求成功后，关闭刷新
+    setTimeout(() => {
+      this.setData({
+        scrollTouchedBottomLoading: false,
+      })
+    }, 1000);
+    console.log('淦，你碰到俺底部啦！');
+  },
+
+/**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -125,38 +152,6 @@ Page({
   onUnload: function () {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  // 监控自定义scroll-view下拉刷新
-  pullDownFresh() {
-    console.log('下拉刷新');
-    setTimeout(() => {
-      // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
-
-      // 数据请求成功后，关闭刷新
-      this.setData({
-        pullDownloading: false,
-      })
-      console.log('刷新成功');
-    }, 1000)
-  },
-  scrollTouchedBottom() {
-    // 显示loading开始请求
-    this.setData({
-      scrollTouchedBottomLoading: true,
-    })
-    // 数据请求成功后，关闭刷新
-    setTimeout(() => {
-      this.setData({
-        scrollTouchedBottomLoading: false,
-      })
-    }, 1000);
-    console.log('淦，你碰到俺底部啦！');
-  },
-
-
   /**
    * 用户点击右上角分享
    */

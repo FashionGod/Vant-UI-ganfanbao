@@ -9,7 +9,8 @@
   "van-dropdown-menu": "../../../miniprogram_npm/@vant/weapp/dist/dropdown-menu/index",
   "van-dropdown-item": "../../../miniprogram_npm/@vant/weapp/dist/dropdown-item/index",
   "merchant-card": "../../components/shopCard/shopCard",
-  "van-loading": "../../../miniprogram_npm/@vant/weapp/dist/loading/index"
+  "van-loading": "../../../miniprogram_npm/@vant/weapp/dist/loading/index",
+  "van-overlay": "../../../miniprogram_npm/@vant/weapp/dist/overlay/index"
   },
   "disableScroll": true 
 }

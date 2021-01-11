@@ -20,7 +20,7 @@
   "window": {
     "enablePullDownRefresh": false,
     "backgroundColorTop": "#ffca02",
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#ffca02",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffca02",
     "navigationBarTitleText": "干饭饱",
