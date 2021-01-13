@@ -17,3 +17,9 @@ page{
 	font-size: small;
 	color: rgba(22, 21, 21, 0.822);
 }
+::-webkit-scrollbar
+{
+width: 0;
+height: 0;
+color: transparent;
+}
