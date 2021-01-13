@@ -4,7 +4,6 @@
   align-items: center;
   padding: 25rpx;
   justify-content: space-between;
-  height: 200rpx;
   margin: 15rpx 15rpx 15rpx 15rpx;
   border-radius: 15rpx;
   background-color: #fffffff1;
@@ -12,35 +11,43 @@
 
 .merchant-image {
   display: inline-block;
+  overflow: hidden;
   height: 200rpx;
   width: 200rpx;
+  border-radius: 12rpx;
 }
 
 .card-left {
   flex: 1;
-  background-color: #666666;
-  border-radius: 12rpx;
 }
 
 .card-middle {
-  display: flex;
   padding: 0;
-  margin-left: 10rpx;
-  flex-direction: column;
+  margin-left: 15rpx;
   flex: 2;
   font-weight: 300;
-  font-size: 0.9rem;
+  color: #696767;
+  font-size: 0.8rem;
 }
 .merchant-title {
-  font-size: 1.1rem;
-  font-weight: 500;
+  color: black;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.transfer-price {
+  margin-top: 10rpx;
+}
+.full-reduce-preferential {
+  margin-top: 10rpx;
 }
 .star {
-  flex: 1;
+  margin-top: 10rpx;
 }
 
 .card-right {
   margin-left: 10rpx;
   flex: 1;
-  background-color: #468ee0;
+  font-weight: 300;
+  color: #696767;
+  font-size: 0.8rem;
 }

@@ -51,11 +51,11 @@
       <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
         bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
     </van-dropdown-menu>
-    <merchant-card></merchant-card>
-    <merchant-card></merchant-card>
-    <merchant-card></merchant-card>
-    <merchant-card></merchant-card>
-  </block>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+  </block> 
   <!--触底的loading  -->
   <view class="bottom-loading">
     <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>

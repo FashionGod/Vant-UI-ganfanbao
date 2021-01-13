@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 子组件需要的值
+    merchantImg: "../../assets/homeImages/餐饮头像1.png",
     // 展开筛选禁用scroll
     dropDownForbidenScroll: true,
     // 下拉刷新
