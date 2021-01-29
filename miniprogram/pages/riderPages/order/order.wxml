@@ -1,0 +1,48 @@
+<van-tabs color="#ffb300" title-active-color="#ffb300"  animated>
+  <van-tab title="新任务">
+    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
+   enable-back-to-top="{{true}}" refresher-triggered="{{true}}"
+  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <rider-mission-card class="mission-card">
+        
+      </rider-mission-card>
+      <!--触底的loading  -->
+      <view class="bottom-loading">
+        <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab title="待取货">
+    待取货
+  </van-tab>
+  <van-tab title="配送中">
+    配送中
+  </van-tab>
+</van-tabs>

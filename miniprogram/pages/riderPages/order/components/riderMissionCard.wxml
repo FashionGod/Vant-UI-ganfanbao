@@ -1,0 +1,18 @@
+<view class="card-container">
+  <view class="header">
+    <van-icon size="26rpx" name="clock-o" />
+    <span class="time-limit">47分钟内</span>送达
+    <view class="mission-price">6.8元</view>
+  </view>
+  <view class="content">
+    <view class="content-left">
+      <van-icon name="down" />
+    </view>
+    <view class="content-right">
+
+    </view>
+  </view>
+  <view class="footer">
+
+  </view>
+</view>

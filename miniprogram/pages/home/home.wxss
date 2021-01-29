@@ -1,14 +1,14 @@
 page{
 	background-color: rgb(241, 237, 237);
-
 }
 .content {
-	height: auto;
+	height: fit-content;
 }
 .scroll {
 	height: 100vh;
 }
 .bottom-loading {
+  height: 150rpx;
 	width: 720rpx;
 	text-align: center;
 }

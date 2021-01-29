@@ -5,15 +5,13 @@
 </van-search>
 <!-- 搜索框的条件渲染 -->
 <block class="search" wx:if="{{showSearchPanelFlag}}">
-  <van-empty image="search" description="描述文字" />
+  <van-empty image="search" description="无内容" />
 </block>
+<!-- 搜索框外的条件渲染 -->
 <scroll-view wx:else enhanced showScrollbar="{{false}}" scroll-y="{{dropDownForbidenScroll}}" class="scroll" refresher-enabled="{{dropDownForbidenScroll}}" refresher-background="#ffca02"   
    enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-
-
-  <!-- 搜索框外的条件渲染 -->
-  <block class="content">
+  <view class="content">
     <swiper autoplay="true" interval="3500" duration="500" circular="true">
       <block wx:for="{{swiperImgList}}" wx:key="*this">
         <swiper-item bindtap="previewImg" data-i="{{index}}">
@@ -26,19 +24,19 @@
     <!-- 功能区 -->
     <van-grid clickable column-num="2">
       <van-grid column-num="2" border="{{ true }}">
-        <van-grid-item use-slot>
+        <van-grid-item use-slot link-type="navigateTo" url="../riderPages/order/order">
           <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/美食.png" />
           <span class="global-font-style">饱餐一顿</span>
         </van-grid-item>
-        <van-grid-item use-slot>
+        <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
           <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/奶茶.png" />
           <span class="global-font-style">甜甜的</span>
         </van-grid-item>
-        <van-grid-item use-slot>
+        <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
           <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/图书.png" />
           <span class="global-font-style">淘书</span>
         </van-grid-item>
-        <van-grid-item use-slot>
+        <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
           <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/交友.png" />
           <span class="global-font-style">交个朋友</span>
         </van-grid-item>
@@ -55,7 +53,13 @@
     <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
     <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
     <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-  </block> 
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+  </view> 
   <!--触底的loading  -->
   <view class="bottom-loading">
     <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>

@@ -1,0 +1,33 @@
+.card-container {
+  padding: 25rpx;
+  background-color: #fff;
+  border-radius: 25rpx;
+}
+
+.header {
+  position: relative;
+  height: 65rpx;
+  line-height: 65rpx;
+}
+
+.time-limit {
+  margin-left: 15rpx;
+  color: coral;
+  font-weight: 600;
+}
+
+.mission-price {
+  float: right;
+  color: red;
+  font-size: 35rpx;
+  font-weight: 900;
+}
+
+.content {
+  height: 245rpx;
+}
+
+.footer {
+  height: 60rpx;
+  background-color: rgb(8, 184, 46);
+}

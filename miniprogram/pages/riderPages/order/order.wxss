@@ -1,0 +1,15 @@
+
+.scroll-view {
+  height: 100vh;
+}
+
+.bottom-loading {
+  height: 150rpx;
+	width: 720rpx;
+	text-align: center;
+}
+
+.mission-card {
+  display: block;
+  margin: 15rpx;
+}
