@@ -6,13 +6,18 @@
   </view>
   <view class="content">
     <view class="content-left">
-      <van-icon name="down" />
+      <van-icon size="30rpx" name="shop" />
+      <view class="distance">645m</view>
+      <van-icon size="60rpx" name="down" />
+      <van-icon size="30rpx" name="wap-home" />
+      <view class="distance">3.5km</view>
     </view>
     <view class="content-right">
-
+      <view class="shop-address">全量公寓381室</view>
+      <view class="home-address">杭州人工只能产业园903</view>
     </view>
   </view>
   <view class="footer">
-
+    <button class="grab-mission" size="large">抢单</button>
   </view>
 </view>

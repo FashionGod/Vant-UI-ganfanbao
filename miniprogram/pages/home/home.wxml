@@ -8,10 +8,7 @@
   <van-empty image="search" description="无内容" />
 </block>
 <!-- 搜索框外的条件渲染 -->
-<scroll-view wx:else enhanced showScrollbar="{{false}}" scroll-y="{{dropDownForbidenScroll}}" class="scroll" refresher-enabled="{{dropDownForbidenScroll}}" refresher-background="#ffca02"   
-   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
-  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-  <view class="content">
+  <scroll-view  wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced refresher-background="#ffca02" showScrollbar="{{false}}" fast-deceleration="{{true}}">
     <swiper autoplay="true" interval="3500" duration="500" circular="true">
       <block wx:for="{{swiperImgList}}" wx:key="*this">
         <swiper-item bindtap="previewImg" data-i="{{index}}">
@@ -22,7 +19,7 @@
     <!-- 通告栏 -->
     <van-notice-bar left-icon="volume-o" speed="25" text="干饭饱平台致力于满足干饭人的干饭需求" />
     <!-- 功能区 -->
-    <van-grid clickable column-num="2">
+    <view class="function-area">
       <van-grid column-num="2" border="{{ true }}">
         <van-grid-item use-slot link-type="navigateTo" url="../riderPages/order/order">
           <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/美食.png" />
@@ -41,27 +38,32 @@
           <span class="global-font-style">交个朋友</span>
         </van-grid-item>
       </van-grid>
-    </van-grid>
-    <!-- 商家列表 -->
-    <van-dropdown-menu close-on-click-outside="false" active-color="#faad14">
-      <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change"
-        bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
-      <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
-        bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
-    </van-dropdown-menu>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
-    <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+    </view>
+      <van-dropdown-menu active-color="#faad14">
+        <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change"
+          bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
+        <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
+          bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
+      </van-dropdown-menu>
+<scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{dropDownForbidenScroll}}" class="scroll" refresher-enabled="{{dropDownForbidenScroll}}"   
+   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+    <view class="merchant-list">
+      <!-- 商家列表 -->
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
+      <merchant-card merchantImg="{{merchantImg}}"></merchant-card>
   </view> 
   <!--触底的loading  -->
   <view class="bottom-loading">
     <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
   </view>
+</scroll-view>
 </scroll-view>

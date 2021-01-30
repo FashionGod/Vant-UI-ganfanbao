@@ -1,18 +1,20 @@
 page{
 	background-color: rgb(241, 237, 237);
 }
-.content {
-	height: fit-content;
+.page-scroll-view {
+	height: calc(100vh - 95rpx);
 }
 .scroll {
-	height: 100vh;
+	height: 900rpx;
 }
 .bottom-loading {
   height: 150rpx;
 	width: 720rpx;
 	text-align: center;
 }
-
+.merchant-menu {
+	position: relative;
+}
 .global-font-style{
 	font-size: small;
 	color: rgba(22, 21, 21, 0.822);

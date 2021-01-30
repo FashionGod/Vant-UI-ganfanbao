@@ -12,5 +12,5 @@
     "van-loading": "../../../miniprogram_npm/@vant/weapp/dist/loading/index",
     "van-overlay": "../../../miniprogram_npm/@vant/weapp/dist/overlay/index"
   },
-  "disableScroll": true 
+  "disableScroll": true
 }

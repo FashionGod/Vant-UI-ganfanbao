@@ -25,9 +25,53 @@
 
 .content {
   height: 245rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.content-left {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 245rpx;
+  justify-content: space-between;
+  margin-left: 25rpx;
+}
+
+.content-right {
+  flex: 6;
+}
+
+.shop-address {
+  margin-top: 15rpx;
+  margin-left: 15rpx;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.home-address {
+  margin-top: 120rpx;
+  margin-left: 15rpx;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.distance {
+  font-size: 0.8em;
+  text-align: center;
 }
 
 .footer {
   height: 60rpx;
-  background-color: rgb(8, 184, 46);
+}
+
+.grab-mission {
+  height: 60rpx;
+  width: 600rpx;
+  background-color: #ffca28;
+  color: #000;
+  line-height: 60rpx;
+  font-size: 1.1em;
+  font-weight: 800;
 }
