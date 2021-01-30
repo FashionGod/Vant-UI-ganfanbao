@@ -8,7 +8,7 @@
   <van-empty image="search" description="无内容" />
 </block>
 <!-- 搜索框外的条件渲染 -->
-  <scroll-view  wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced refresher-background="#ffca02" showScrollbar="{{false}}" fast-deceleration="{{true}}">
+  <scroll-view wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced refresher-background="#ffca02" showScrollbar="{{false}}" fast-deceleration="{{true}}">
     <swiper autoplay="true" interval="3500" duration="500" circular="true">
       <block wx:for="{{swiperImgList}}" wx:key="*this">
         <swiper-item bindtap="previewImg" data-i="{{index}}">
@@ -22,19 +22,19 @@
     <view class="function-area">
       <van-grid column-num="2" border="{{ true }}">
         <van-grid-item use-slot link-type="navigateTo" url="../riderPages/order/order">
-          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/美食.png" />
+          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/delicious.png" />
           <span class="global-font-style">饱餐一顿</span>
         </van-grid-item>
         <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
-          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/奶茶.png" />
+          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/milk_tea.png" />
           <span class="global-font-style">甜甜的</span>
         </van-grid-item>
         <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
-          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/图书.png" />
+          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/book.png" />
           <span class="global-font-style">淘书</span>
         </van-grid-item>
         <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
-          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/交友.png" />
+          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/friends.png" />
           <span class="global-font-style">交个朋友</span>
         </van-grid-item>
       </van-grid>
