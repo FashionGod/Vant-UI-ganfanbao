@@ -6,7 +6,8 @@ Page({
    */
   data: {
     // 子组件需要的值
-    merchantImg: "../../assets/homeImages/merchant_photo1.png",
+    merchantImg1: "../../assets/homeImages/merchant_photo1.png",
+    merchantImg2: "../../assets/homeImages/merchant_photo2.png",
     // 展开筛选禁用scroll
     dropDownForbidenScroll: true,
     // 下拉刷新
