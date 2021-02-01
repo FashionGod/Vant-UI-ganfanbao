@@ -1,0 +1,18 @@
+/* components/shopCardList.wxss */
+.scroll {
+	height: 100vh;
+}
+.bottom-loading {
+  height: 150rpx;
+	width: 720rpx;
+	text-align: center;
+}
+.merchant-menu {
+	position: relative;
+}
+::-webkit-scrollbar
+{
+width: 0;
+height: 0;
+color: transparent;
+}

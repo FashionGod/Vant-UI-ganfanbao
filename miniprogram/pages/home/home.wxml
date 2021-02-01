@@ -21,7 +21,7 @@
     <!-- 功能区 -->
     <view class="function-area">
       <van-grid column-num="2" border="{{ true }}">
-        <van-grid-item use-slot link-type="navigateTo" url="../riderPages/order/order">
+        <van-grid-item use-slot link-type="navigateTo" url="../userPages/delicious/delicious">
           <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/delicious.png" />
           <span class="global-font-style">饱餐一顿</span>
         </van-grid-item>
@@ -39,31 +39,7 @@
         </van-grid-item>
       </van-grid>
     </view>
-      <van-dropdown-menu active-color="#faad14">
-        <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change"
-          bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
-        <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
-          bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
-      </van-dropdown-menu>
-<scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{dropDownForbidenScroll}}" class="scroll" refresher-enabled="{{dropDownForbidenScroll}}"   
-   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
-  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-    <view class="merchant-list">
-      <!-- 商家列表 -->
-      <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-      <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-  </view> 
-  <!--触底的loading  -->
-  <view class="bottom-loading">
-    <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
-  </view>
-</scroll-view>
+    <shop-card-list bindhandleScrollState="handleScrollChange" scrollHeight="75">
+  
+</shop-card-list>
 </scroll-view>

@@ -69,6 +69,13 @@ Page({
       urls: this.data.swiperImgList // 需要预览的图片http链接列表
     })
   },
+  // 子组件传来的，用来控制scroll的滚动，防止UI出现bug
+  handleScrollChange(e) {
+    const {dropDownForbidenScroll} = e.detail;
+    this.setData({
+      dropDownForbidenScroll: dropDownForbidenScroll,
+    });
+  },
   // 商家列表筛选头部
   onConfirm() {
     this.selectComponent('#item').toggle();

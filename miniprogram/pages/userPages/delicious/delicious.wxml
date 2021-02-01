@@ -1,5 +1,3 @@
-<van-tabs animated>
-  <van-tab title="抢单啦">抢单啦</van-tab>
-  <van-tab title="派送中">派送中</van-tab>
-  <van-tab title="已完成">已完成</van-tab>
-</van-tabs>
+<shop-card-list class="shop-card-list"  scrollHeight="100">
+  
+</shop-card-list>
