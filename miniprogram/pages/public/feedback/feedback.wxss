@@ -1,0 +1,30 @@
+/* miniprogram/pages/public/feedback/feedback.wxss */
+page {
+  height: 100%;
+  width: 100%;
+}
+.container {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.description {
+  margin-top: 300rpx;
+  margin-bottom: 300rpx;
+  width: 600rpx;
+  font-size: 1.2rem;
+  color: rgb(131, 127, 123);
+}
+
+.feedback {
+  display: inline-block;
+  color: rgb(73, 71, 70);
+  width: 250rpx;
+  border: solid 1px;
+  font-size: 0.9rem;
+}

@@ -17,7 +17,11 @@
     "pages/order/order",
     "pages/my/my",
     "pages/riderPages/order/order",
-    "pages/public/undevelopment/undevelopment"
+    "pages/public/undevelopment/undevelopment",
+    "pages/public/feedback/feedback",
+    "pages/userPages/collection/collection",
+    "pages/userPages/userInfomation/userInfomation",
+    "pages/userPages/userEvaluation/userEvaluation"
   ],
   "window": {
     "enablePullDownRefresh": false,

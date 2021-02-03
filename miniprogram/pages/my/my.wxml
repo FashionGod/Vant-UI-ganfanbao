@@ -1,2 +1,35 @@
-<!--miniprogram/pages/my/my.wxml-->
-<text>miniprogram/pages/my/my.wxml</text>
+<view class="page-container">
+  <view class="profile-picture">
+    <block wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        <button class="disapear" animation="{{animation_class}}" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+          <image mode="aspectFit" class="userinfo-avatar" src="../../assets/homeImages/login3.png"></image>
+        </button>
+        <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">未登录</text>
+    </block>
+    <block wx:else >
+        <navigator url="../userPages/userInfomation/userInfomation" hover-class="none">
+          <image class="disapear" animation="{{animation_class}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+        </navigator>
+        <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="function-container">
+    <van-cell-group>
+      <van-cell title="个人信息" center link-type="navigateTo" url="../userPages/userInfomation/userInfomation" icon="manager-o" size="large"
+        is-link />
+      <van-cell title="收藏" center link-type="navigateTo" url="../userPages/collection/collection" icon="star-o" size="large"
+        is-link />
+      <van-cell title="我的评价" center link-type="navigateTo" url="../userPages/userEvaluation/userEvaluation" icon="chat-o" size="large"
+        is-link />
+      <van-cell title="收货地址" center bind:click="shippingAddress" icon="logistics" size="large"
+        is-link />
+          <van-cell title="反馈建议" center link-type="navigateTo" url="../public/feedback/feedback" icon="records" size="large"
+        is-link />
+      <van-cell title="联系我们" center bind:click="contactOfficial" icon="phone-o" size="large"
+        is-link />
+    </van-cell-group>
+  </view>
+  <view class="copyright">
+    @FashionGod
+  </view>
+</view>

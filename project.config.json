@@ -68,6 +68,18 @@
         {
           "name": "pages/riderPages/order",
           "pathName": "pages/riderPages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/public/feedback/feedback",
+          "pathName": "pages/public/feedback/feedback",
           "scene": null
         }
       ]

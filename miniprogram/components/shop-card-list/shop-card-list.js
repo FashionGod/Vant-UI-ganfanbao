@@ -20,10 +20,6 @@ Component({
     pullDownloading: false,
     // 显示触底刷新
     scrollTouchedBottomLoading: false,
-    //商家列表筛选头部
-    switchTitle1: '包邮',
-    switchTitle2: '团购',
-    itemTitle: '筛选',
     option1: [
       { text: '全部商品', value: 0 },
       { text: '新款商品', value: 1 },

@@ -8,7 +8,7 @@
   <van-empty image="search" description="无内容" />
 </block>
 <!-- 搜索框外的条件渲染 -->
-  <scroll-view wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced refresher-background="#ffca02" showScrollbar="{{false}}" fast-deceleration="{{true}}">
+  <scroll-view wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced="{{true}}" bounces="{{false}}" showScrollbar="{{false}}" fast-deceleration="{{true}}">
     <swiper autoplay="true" interval="3500" duration="500" circular="true">
       <block wx:for="{{swiperImgList}}" wx:key="*this">
         <swiper-item bindtap="previewImg" data-i="{{index}}">

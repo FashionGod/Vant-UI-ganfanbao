@@ -1,0 +1,6 @@
+<view class="container">
+  <view class="description">
+    请献上真挚的反馈，我们会给予采纳！
+  </view>
+    <button class="feedback" open-type="feedback">开始反馈</button>
+</view>

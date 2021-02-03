@@ -10,6 +10,7 @@
       <van-rate
         value="{{ value }}"
         size="{{ 15 }}"
+        readonly
         color="#fece00"
         void-color="#979494"
         bind:change="_onChange"
