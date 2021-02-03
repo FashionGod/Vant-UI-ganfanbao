@@ -1,0 +1,17 @@
+<view class='head'>
+  <image src="../../../assets/homeImages/ganfanbao.png" catchtap="mine" mode="aspectFill"></image>
+  <text>{{textValue}}</text>
+
+  <view class="function-container">
+    <van-cell-group>
+      <van-field value="{{ username }}" required clearable label="用户名" icon="question-o" placeholder="请输入用户名"
+        bind:click-icon="onClickIcon" />
+
+      <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码" required border="{{ false }}" />
+    </van-cell-group>
+  </view>
+  <button hover-class="button_hover" bindtap='JumpToRider'>登录</button>
+</view>
+<view class="copyright">
+  @FashionGod
+</view>

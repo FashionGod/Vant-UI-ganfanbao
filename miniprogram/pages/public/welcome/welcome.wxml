@@ -1,0 +1,10 @@
+<view class='head'>
+  <image src="../../../assets/homeImages/ganfanbao.png" catchtap="mine" mode="aspectFill"></image>
+  <text>{{textValue}}</text>
+  <button hover-class="button_hover" bindtap='JumpToUser'>我是干饭人</button>
+  <button hover-class="button_hover" bindtap='JumpToMerchant'>我是造饭人</button>
+  <button hover-class="button_hover" bindtap='JumpToRider'>我是送饭人</button>
+</view>
+  <view class="copyright">
+    @FashionGod
+  </view>

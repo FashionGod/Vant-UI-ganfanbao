@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/public/welcome/welcome",
     "pages/home/home",
     "pages/index/index",
     "pages/userConsole/userConsole",
@@ -21,7 +22,11 @@
     "pages/public/feedback/feedback",
     "pages/userPages/collection/collection",
     "pages/userPages/userInfomation/userInfomation",
-    "pages/userPages/userEvaluation/userEvaluation"
+    "pages/userPages/userEvaluation/userEvaluation",
+    "pages/merchantPages/sign-up/sign-up",
+    "pages/merchantPages/sign-in/sign-in",
+    "pages/riderPages/sign-in/sign-in",
+    "pages/riderPages/sign-up/sign-up"
   ],
   "window": {
     "enablePullDownRefresh": false,
