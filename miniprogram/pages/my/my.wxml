@@ -6,7 +6,7 @@
         </button>
         <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">未登录</text>
     </block>
-    <block wx:else >
+    <block wx:else > 
         <navigator url="../userPages/userInfomation/userInfomation" hover-class="none">
           <image class="disapear" animation="{{animation_class}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
         </navigator>
