@@ -15,17 +15,17 @@
   </view>
   <view class="function-container">
     <van-cell-group>
-      <van-cell title="个人信息" center link-type="navigateTo" url="../userPages/userInfomation/userInfomation" icon="manager-o" size="large"
+      <van-cell title="个人信息" center link-type="navigateTo" url="../userPages/userInfomation/userInfomation" icon="manager-o"
         is-link />
-      <van-cell title="收藏" center link-type="navigateTo" url="../userPages/collection/collection" icon="star-o" size="large"
+      <van-cell title="收藏" center link-type="navigateTo" url="../userPages/collection/collection" icon="star-o"
         is-link />
-      <van-cell title="我的评价" center link-type="navigateTo" url="../userPages/userEvaluation/userEvaluation" icon="chat-o" size="large"
+      <van-cell title="我的评价" center link-type="navigateTo" url="../userPages/userEvaluation/userEvaluation" icon="chat-o"
         is-link />
-      <van-cell title="收货地址" center bind:click="shippingAddress" icon="logistics" size="large"
+      <van-cell title="收货地址" center bind:click="shippingAddress" icon="logistics"
         is-link />
-          <van-cell title="反馈建议" center link-type="navigateTo" url="../public/feedback/feedback" icon="records" size="large"
+          <van-cell title="反馈建议" center link-type="navigateTo" url="../public/feedback/feedback" icon="records"
         is-link />
-      <van-cell title="联系我们" center bind:click="contactOfficial" icon="phone-o" size="large"
+      <van-cell title="联系我们" center bind:click="contactOfficial" icon="phone-o"
         is-link />
     </van-cell-group>
   </view>
