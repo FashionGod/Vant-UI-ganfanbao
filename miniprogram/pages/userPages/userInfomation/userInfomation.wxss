@@ -1,1 +1,11 @@
-/* miniprogram/pages/userPages/userInfomation/userInfomation.wxss */
+page {
+  background-color: #ffca02;
+}
+.function-container {
+  margin: 150rpx auto;
+  width: 710rpx;
+  height: 630rpx;
+  padding: 65rpx 0 15rpx 0;
+  border-radius: 8%;
+  background-color: #fff;
+}

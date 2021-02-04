@@ -1,5 +1,5 @@
 <view class='head'>
-  <image src="../../../assets/homeImages/ganfanbao.png" catchtap="mine" mode="aspectFill"></image>
+  <image src="../../../../assets/homeImages/ganfanbao.png" catchtap="mine" mode="aspectFill"></image>
   <text>{{textValue}}</text>
 
   <van-cell-group style="width: 600rpx;">
@@ -7,7 +7,7 @@
   </van-cell-group>
 
   <van-cell-group style="width: 600rpx;">
-    <van-field model:value="{{ password }}" password="{{password_state_type}}" label="密码" clearable placeholder="请输入密码" icon="{{password_state_icon}}" bind:click-icon="onClickIcon" />
+    <van-field model:value="{{ password }}" maxlength="11" password="{{password_state_type}}" label="密码" clearable placeholder="请输入密码" icon="{{password_state_icon}}" bind:click-icon="onClickIcon" />
   </van-cell-group>
   <view class="button-container">
     <button hover-class="button_hover" bindtap='login'>登录</button>

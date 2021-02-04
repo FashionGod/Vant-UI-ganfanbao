@@ -44,7 +44,7 @@
   },
   "appid": "wx4e54e67afd3d6377",
   "projectname": "VantUi",
-  "libVersion": "2.14.4",
+  "libVersion": "2.15.0",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {

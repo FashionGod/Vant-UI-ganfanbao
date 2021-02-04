@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-field": "../../../../miniprogram_npm/@vant/weapp/dist/field/index",
+    "cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index"
+  }
 }
