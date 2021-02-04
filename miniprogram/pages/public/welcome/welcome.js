@@ -15,13 +15,13 @@ Page({
   // 跳转至商家登录页
   JumpToMerchant(){
     wx.navigateTo({
-      url: '../../merchantPages/sign-in/sign-in',
+      url: '../../public/merchant-sign-in-or-up/sign-in/sign-in',
     })
   },
   // 跳转至骑手登录页
   JumpToRider(){
     wx.navigateTo({
-      url: '../../riderPages/sign-in/sign-in',
+      url: '../../public/rider-sign-in-or-up/sign-in/sign-in',
     })
   },
 })

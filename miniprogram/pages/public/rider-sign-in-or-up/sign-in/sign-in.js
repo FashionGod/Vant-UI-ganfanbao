@@ -1,16 +1,16 @@
-// miniprogram/pages/merchantPages/sign-in/sign-in.js
+// miniprogram/pages/riderPages/sign-in/sign-in.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    value: '',
     phoneNumber: null,
     password: null,
     password_state_icon:'closed-eye',
-    password_state_type: true
+    password_state_type:'password'
   },
+  // 密码的显隐
   onClickIcon() {
     this.setData({
       password_state_icon: this.data.password_state_icon=='closed-eye'? 'eye':'closed-eye',
@@ -18,13 +18,13 @@ Page({
     })
   },
   login() {
-    wx.navigateTo({
-      url: '../../merchantPages/order/order',
+    wx.reLaunch({
+      url: '../../../../riderPackage/pages/riderPages/order/order',
     })
   },
   register() {
     wx.navigateTo({
-      url: '../../merchantPages/sign-up/sign-up',
+      url: '../../../public/rider-sign-in-or-up/sign-up/sign-up',
     })
   },
 })

@@ -1,4 +1,4 @@
-// miniprogram/pages/merchantPages/order/order.js
+// miniprogram/riderPackage/pages/riderPages/order-detail/order-detail.js
 Page({
 
   /**

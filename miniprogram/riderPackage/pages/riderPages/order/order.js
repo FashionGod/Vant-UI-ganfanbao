@@ -36,4 +36,14 @@ Page({
     }, 1000);
     console.log('淦，你碰到俺底部啦！');
   },
+  // 跳转至详情页
+  navigateToOrderDetail() {
+    wx.navigateTo({
+      url: '../order-detail/order-detail',
+    })
+  },
+  onShow:function() {
+    wx.hideHomeButton();
+  }
+  
 })

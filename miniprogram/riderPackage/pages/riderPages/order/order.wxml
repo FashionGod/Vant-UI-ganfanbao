@@ -3,25 +3,25 @@
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
    enable-back-to-top="{{true}}" refresher-triggered="{{true}}"
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
       <!--触底的loading  -->
       <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
@@ -32,25 +32,25 @@
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
    enable-back-to-top="{{true}}" refresher-triggered="{{true}}"
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
       <!--触底的loading  -->
       <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
@@ -61,25 +61,25 @@
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
    enable-back-to-top="{{true}}" refresher-triggered="{{true}}"
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
-      <rider-mission-card class="mission-card">
+      <rider-mission-card class="mission-card" bindtap="navigateToOrderDetail">
       </rider-mission-card>
       <!--触底的loading  -->
       <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
