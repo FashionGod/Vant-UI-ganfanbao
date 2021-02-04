@@ -26,7 +26,8 @@
     "pages/merchantPages/sign-up/sign-up",
     "pages/merchantPages/sign-in/sign-in",
     "pages/riderPages/sign-in/sign-in",
-    "pages/riderPages/sign-up/sign-up"
+    "pages/riderPages/sign-up/sign-up",
+    "pages/merchantPages/order/order"
   ],
   "window": {
     "enablePullDownRefresh": false,

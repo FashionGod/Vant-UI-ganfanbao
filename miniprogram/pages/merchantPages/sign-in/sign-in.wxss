@@ -44,11 +44,16 @@ page{
   text-align: center;
 }
 
-.function-container {
+.van-cell{
   margin: 20rpx auto;
-  width: 550rpx;
-  height: 220rpx;
-  padding: 65rpx 0 15rpx 0;
-  border-radius: 5%;
-  background-color: #fff;
+  width: 600rpx;
+  border-radius: 20rpx;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100rpx;
+  width: 600rpx;
 }
