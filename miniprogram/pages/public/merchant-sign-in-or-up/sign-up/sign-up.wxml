@@ -14,13 +14,13 @@
     <view class="uploader-container">
       <view class="instance-and-image">
         <text user-select="true">身份证正面：</text>
-        <van-uploader file-list="{{ frontInstance }}" max-count="1" bind:after-read="afterRead" bind:delete="delete" />
-        <van-uploader file-list="{{ fileList }}" max-count="1" bind:after-read="afterRead" bind:delete="delete" />
+        <van-uploader file-list="{{ frontInstance }}" preview-size="188rpx" image-fit="scaleToFill" max-count="1" bind:after-read="afterRead"/>
+        <van-uploader file-list="{{ fileList }}" preview-size="188rpx" max-count="1" bind:after-read="afterRead" bind:delete="delete" />
       </view>
       <view class="instance-and-image">
         <text user-select="true">身份证反面：</text>
-        <van-uploader file-list="{{ reverseInstance }}" max-count="1" bind:after-read="afterRead" bind:delete="delete" />
-        <van-uploader file-list="{{ fileList }}" max-count="1" bind:after-read="afterRead" bind:delete="delete" />
+        <van-uploader file-list="{{ reverseInstance }}" preview-size="188rpx" image-fit="scaleToFill" max-count="1" bind:after-read="afterRead"/>
+        <van-uploader file-list="{{ fileList }}" preview-size="188rpx" max-count="1" bind:after-read="afterRead" bind:delete="delete" />
       </view>
     </view>
   </view>

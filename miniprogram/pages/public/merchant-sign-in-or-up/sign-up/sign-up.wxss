@@ -1,12 +1,14 @@
 page {
   background-color: #ffca02;
+  height: 100%;
 }
 .function-container {
   margin: 0 auto;
+  margin-bottom: 50rpx;
   width: 710rpx;
   height: 1000rpx;
   padding: 65rpx 0 15rpx 0;
-  border-radius: 8%;
+  border-radius: 6%;
   background-color: #fff;
 }
 
