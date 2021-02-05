@@ -15,8 +15,8 @@
   </view>
   <view class="function-container">
     <van-cell-group>
-      <van-cell title="个人信息" center link-type="navigateTo" url="../userPages/userInfomation/userInfomation" icon="manager-o"
-        is-link />
+      <!-- <van-cell title="个人信息" center link-type="navigateTo" url="../userPages/userInfomation/userInfomation" icon="manager-o" 骑手需要填写
+        is-link /> -->
       <van-cell title="收藏" center link-type="navigateTo" url="../userPages/collection/collection" icon="star-o"
         is-link />
       <van-cell title="我的评价" center link-type="navigateTo" url="../userPages/userEvaluation/userEvaluation" icon="chat-o"

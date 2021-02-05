@@ -5,62 +5,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    fileList: [],
+    frontInstance: [{
+      url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/front_side.png',
+      name: '商家法人身份证正面',
+      deletable: false,
+    },],
+    reverseInstance: [{
+      url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/reverse_side.png',
+      name: '商家法人身份证反面',
+      deletable: false,
+    },],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 上传图片
+uploadToCloud(e) {
+  wx.cloud.init();
+  console.log(e);
+  const { fileList } = this.data;
+  if (!fileList.length) {
+    wx.showToast({ title: '请选择图片', icon: 'none' });
+  } else {
+    const uploadTasks = fileList.map((file, index) => this.uploadFilePromise(`my-photo${index}.png`, file));
+    Promise.all(uploadTasks)
+      .then(data => {
+        wx.showToast({ title: '上传成功', icon: 'none' });
+        const newFileList = data.map(item => { url: item.fileID });
+        this.setData({ cloudPath: data, fileList: newFileList });
+      })
+      .catch(e => {
+        wx.showToast({ title: '上传失败', icon: 'none' });
+        console.log(e);
+      });
   }
+},
+
+uploadFilePromise(fileName, chooseResult) {
+  return wx.cloud.uploadFile({
+    cloudPath: fileName,
+    filePath: chooseResult.url
+  });
+}
 })

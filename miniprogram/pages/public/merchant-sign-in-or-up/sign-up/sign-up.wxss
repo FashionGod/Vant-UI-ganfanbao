@@ -1,1 +1,48 @@
-/* miniprogram/pages/merchantPages/sign-up/sign-up.wxss */
+page {
+  background-color: #ffca02;
+}
+.function-container {
+  margin: 0 auto;
+  width: 710rpx;
+  height: 1000rpx;
+  padding: 65rpx 0 15rpx 0;
+  border-radius: 8%;
+  background-color: #fff;
+}
+
+.page-container {
+  height: 100vh;
+}
+
+.page-title {
+  height: fit-content;
+}
+
+.title-image {
+  display: block;
+  margin: 60rpx auto;
+  width: 400rpx;
+}
+
+.uploader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  border: none;
+}
+
+.instance-and-image {
+  margin-top: 15rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 200rpx;
+  line-height: 200rpx;
+}
+
+.instance-and-image text {
+  margin-left: 30rpx;
+  font-size: 0.9rem;
+  font-weight: 300;
+}

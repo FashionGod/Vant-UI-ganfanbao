@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -36,8 +37,20 @@
           "scene": null
         },
         {
-          "name": "pages/userPages/userInfomation/userInfomation",
-          "pathName": "pages/userPages/userInfomation/userInfomation",
+          "name": "riderPackage/pages/riderPages/riderInfomation/riderInfomation",
+          "pathName": "riderPackage/pages/riderPages/riderInfomation/riderInfomation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/public/rider-sign-in-or-up/sign-up/sign-up",
+          "pathName": "pages/public/rider-sign-in-or-up/sign-up/sign-up",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
+          "pathName": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
           "scene": null
         }
       ]
