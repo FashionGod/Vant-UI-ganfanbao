@@ -2,7 +2,7 @@
   <view class="profile-picture">
     <block wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
         <button class="disapear" animation="{{animation_class}}" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-          <image mode="aspectFit" class="userinfo-avatar" src="../../assets/homeImages/login3.png"></image>
+          <image mode="aspectFit" class="userinfo-avatar" src="../../assets/homeImages/login.png"></image>
         </button>
         <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">未登录</text>
     </block>
