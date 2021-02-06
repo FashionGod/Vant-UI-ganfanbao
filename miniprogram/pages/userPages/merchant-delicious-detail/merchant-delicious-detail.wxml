@@ -1,0 +1,5 @@
+<van-sidebar active-key="{{ activeKey }}">
+  <van-sidebar-item title="标签名" dot />
+  <van-sidebar-item title="标签名" badge="5" />
+  <van-sidebar-item title="标签名" badge="99+" />
+</van-sidebar>

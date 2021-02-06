@@ -1,11 +1,14 @@
-.scroll {
-	height: 100vh;
+
+.scroll-view {
+  height: 100vh;
 }
+
 .bottom-loading {
   height: 150rpx;
 	width: 720rpx;
 	text-align: center;
 }
+
 ::-webkit-scrollbar
 {
 width: 0;

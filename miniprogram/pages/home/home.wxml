@@ -8,38 +8,63 @@
   <van-empty image="search" description="无内容" />
 </block>
 <!-- 搜索框外的条件渲染 -->
-  <scroll-view wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced="{{true}}" bounces="{{false}}" showScrollbar="{{false}}" fast-deceleration="{{true}}">
-    <swiper autoplay="true" interval="3500" duration="500" circular="true">
-      <block wx:for="{{swiperImgList}}" wx:key="*this">
-        <swiper-item bindtap="previewImg" data-i="{{index}}">
-          <image style="width:750rpx;" src="{{item}}" mode="scaleToFill"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-    <!-- 通告栏 -->
-    <van-notice-bar left-icon="volume-o" speed="25" text="干饭饱平台致力于满足干饭人的干饭需求" />
-    <!-- 功能区 -->
-    <view class="function-area">
-      <van-grid column-num="2" border="{{ true }}">
-        <van-grid-item use-slot link-type="navigateTo" url="../userPages/delicious/delicious">
-          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/delicious.png" />
-          <span class="global-font-style">饱餐一顿</span>
-        </van-grid-item>
-        <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
-          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/milk_tea.png" />
-          <span class="global-font-style">甜甜的</span>
-        </van-grid-item>
-        <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
-          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/book.png" />
-          <span class="global-font-style">淘书</span>
-        </van-grid-item>
-        <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
-          <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/friends.png" />
-          <span class="global-font-style">交个朋友</span>
-        </van-grid-item>
-      </van-grid>
-    </view>
-    <shop-card-list bindhandleScrollState="handleScrollChange" scrollHeight="75">
-  
-</shop-card-list>
+<scroll-view wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced="{{true}}"
+  bounces="{{false}}" showScrollbar="{{false}}" fast-deceleration="{{true}}">
+  <swiper autoplay="true" interval="3500" duration="500" circular="true">
+    <block wx:for="{{swiperImgList}}" wx:key="*this">
+      <swiper-item bindtap="previewImg" data-i="{{index}}">
+        <image style="width:750rpx;" src="{{item}}" mode="scaleToFill"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 通告栏 -->
+  <van-notice-bar left-icon="volume-o" speed="25" text="干饭饱平台致力于满足干饭人的干饭需求" />
+  <!-- 功能区 -->
+  <view class="function-area">
+    <van-grid column-num="2" border="{{ true }}">
+      <van-grid-item use-slot link-type="navigateTo" url="../userPages/delicious/delicious">
+        <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/delicious.png" />
+        <span class="global-font-style">饱餐一顿</span>
+      </van-grid-item>
+      <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
+        <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/milk_tea.png" />
+        <span class="global-font-style">甜甜的</span>
+      </van-grid-item>
+      <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
+        <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/book.png" />
+        <span class="global-font-style">淘书</span>
+      </van-grid-item>
+      <van-grid-item use-slot link-type="navigateTo" url="../public/undevelopment/undevelopment">
+        <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/friends.png" />
+        <span class="global-font-style">交个朋友</span>
+      </van-grid-item>
+    </van-grid>
+  </view>
+  <van-dropdown-menu active-color="#faad14">
+  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change"
+    bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
+  <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
+    bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
+</van-dropdown-menu>
+<scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll"
+  refresher-enabled="{{dropDownForbidenScroll}}" enable-back-to-top="{{true}}" style="height:75vh;" refresher-triggered="{{pullDownloading}}"
+  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+  <view class="merchant-list">
+    <!-- 商家列表 -->
+    <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
+  </view>
+  <!--触底的loading  -->
+  <view class="bottom-loading">
+    <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+  </view>
+</scroll-view>
 </scroll-view>

@@ -7,11 +7,12 @@
     "pages/public/undevelopment/undevelopment",
     "pages/public/feedback/feedback",
     "pages/userPages/collection/collection",
-    "pages/userPages/userEvaluation/userEvaluation",
+    "pages/userPages/user-evaluation/user-evaluation",
     "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
     "pages/public/merchant-sign-in-or-up/sign-in/sign-in",
     "pages/public/rider-sign-in-or-up/sign-in/sign-in",
-    "pages/public/rider-sign-in-or-up/sign-up/sign-up"
+    "pages/public/rider-sign-in-or-up/sign-up/sign-up",
+    "pages/userPages/merchant-delicious-detail/merchant-delicious-detail"
   ],
   "subpackages": [
     {
@@ -27,7 +28,7 @@
       "pages": [
         "pages/riderPages/order/order",
         "pages/riderPages/order-detail/order-detail",
-        "pages/riderPages/riderInfomation/riderInfomation"
+        "pages/riderPages/rider-infomation/rider-infomation"
       ]
     }
   ],
@@ -66,7 +67,6 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "van-button": "@vant/weapp/dist/button/index"
   },
   "component": true
 }

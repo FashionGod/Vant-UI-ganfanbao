@@ -1,4 +1,4 @@
-// components/shopCardList.js
+// components/shopCardList.js       准备改为scroll-list组件    以后有机会重构页面再使用
 Component({
   /**
    * 组件的属性列表
