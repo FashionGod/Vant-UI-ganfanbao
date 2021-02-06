@@ -51,6 +51,12 @@
         {
           "name": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
           "pathName": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/userPages/merchant-delicious-detail/merchant-delicious-detail",
+          "pathName": "pages/userPages/merchant-delicious-detail/merchant-delicious-detail",
           "scene": null
         }
       ]

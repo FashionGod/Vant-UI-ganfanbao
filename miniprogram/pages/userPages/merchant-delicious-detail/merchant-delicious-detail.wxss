@@ -1,1 +1,26 @@
 /* miniprogram/pages/userPages/merchant-delicious-detail/merchant-delicious-detail.wxss */
+.sidebar-scroll {
+  display: inline-block;
+  height: 90vh;
+  width: fit-content;
+}
+
+.content-scroll {
+  display: inline-block;
+  height: 90vh;
+  width: fit-content;
+}
+
+.van-sidebar-item--selected {
+  border-left: #f7ad00 13rpx solid !important;
+  border-radius: 8rpx !important;
+}
+.van-sidebar-item__text {
+  font-size: 0.7rem !important;
+}
+.submit-order {
+  height: 81rpx !important;
+  background-color: #f5c517 !important;
+  border: none !important;
+  font-size: 0.9rem !important;
+}

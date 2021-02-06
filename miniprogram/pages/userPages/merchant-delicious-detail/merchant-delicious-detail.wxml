@@ -1,5 +1,95 @@
-<van-sidebar active-key="{{ activeKey }}">
-  <van-sidebar-item title="标签名" dot />
-  <van-sidebar-item title="标签名" badge="5" />
-  <van-sidebar-item title="标签名" badge="99+" />
+<view class="scroll-view-container">
+  <scroll-view class="sidebar-scroll" scroll-with-animation="true" scroll-y="true"  scroll-into-view='{{indexMaodian}}'>
+  <van-sidebar active-key="{{ activeKey }}">
+  <van-sidebar-item bindtap="toDetail" data-id="a1" id="a" title="满减" badge="1"> 
+    <view>我是满减区</view>
+  </van-sidebar-item>
+  <van-sidebar-item bindtap="toDetail" data-id="b1" id="b" title="折扣专区" badge="5">
+    <view>我是折扣区</view>
+  </van-sidebar-item>
+  <van-sidebar-item bindtap="toDetail" data-id="c1" id="c" title="新品专区">
+    <view>我是新品区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="满减" badge="1"> 
+    <view>我是满减区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="折扣专区" badge="5">
+    <view>我是折扣区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="新品专区">
+    <view>我是新品区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="满减" badge="1"> 
+    <view>我是满减区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="折扣专区" badge="5">
+    <view>我是折扣区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="新品专区">
+    <view>我是新品区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="满减" badge="1"> 
+    <view>我是满减区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="折扣专区" badge="5">
+    <view>我是折扣区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="新品专区">
+    <view>我是新品区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="满减" badge="1"> 
+    <view>我是满减区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="折扣专区" badge="5">
+    <view>我是折扣区</view>
+  </van-sidebar-item>
+  <van-sidebar-item title="新品专区">
+    <view>我是新品区</view>
+  </van-sidebar-item>
 </van-sidebar>
+</scroll-view>
+<scroll-view  bindscroll="onPageScroll" class="content-scroll" scroll-y="true" scroll-with-animation="true" scroll-into-view='{{storeDetail}}'>
+  <view id="a1">asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>.........................</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view id="b1">asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view id="c1">....................</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+  <view>asdfasdfasdfasdfas</view>
+</scroll-view>
+</view>
+<van-submit-bar 
+button-class="submit-order"
+  price="{{ 3050 }}"
+  button-text="提交订单"
+  bind:submit="onSubmit"
+>
+<view>查看详情</view>
+</van-submit-bar>
