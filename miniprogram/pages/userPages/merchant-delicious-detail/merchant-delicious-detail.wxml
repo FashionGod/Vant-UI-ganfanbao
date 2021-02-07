@@ -1,95 +1,128 @@
-<view class="scroll-view-container">
-  <scroll-view class="sidebar-scroll" scroll-with-animation="true" scroll-y="true"  scroll-into-view='{{indexMaodian}}'>
-  <van-sidebar active-key="{{ activeKey }}">
-  <van-sidebar-item bindtap="toDetail" data-id="a1" id="a" title="满减" badge="1"> 
-    <view>我是满减区</view>
-  </van-sidebar-item>
-  <van-sidebar-item bindtap="toDetail" data-id="b1" id="b" title="折扣专区" badge="5">
-    <view>我是折扣区</view>
-  </van-sidebar-item>
-  <van-sidebar-item bindtap="toDetail" data-id="c1" id="c" title="新品专区">
-    <view>我是新品区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="满减" badge="1"> 
-    <view>我是满减区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="折扣专区" badge="5">
-    <view>我是折扣区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="新品专区">
-    <view>我是新品区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="满减" badge="1"> 
-    <view>我是满减区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="折扣专区" badge="5">
-    <view>我是折扣区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="新品专区">
-    <view>我是新品区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="满减" badge="1"> 
-    <view>我是满减区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="折扣专区" badge="5">
-    <view>我是折扣区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="新品专区">
-    <view>我是新品区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="满减" badge="1"> 
-    <view>我是满减区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="折扣专区" badge="5">
-    <view>我是折扣区</view>
-  </van-sidebar-item>
-  <van-sidebar-item title="新品专区">
-    <view>我是新品区</view>
-  </van-sidebar-item>
-</van-sidebar>
-</scroll-view>
-<scroll-view  bindscroll="onPageScroll" class="content-scroll" scroll-y="true" scroll-with-animation="true" scroll-into-view='{{storeDetail}}'>
-  <view id="a1">asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>.........................</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view id="b1">asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view id="c1">....................</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-  <view>asdfasdfasdfasdfas</view>
-</scroll-view>
+<view class="merchan-header">
+  <view class="card-left">
+      <image class="merchant-image" src="../../../assets/homeImages/merchant_photo1.png"></image>
+  </view>
+  <view class="card-middle">
+    <view class="merchant-title">
+      <text>天津包子铺</text>
+    </view>
+    <view class="star">
+      <van-rate
+        value="{{ 3 }}"
+        size="{{ 15 }}"
+        readonly
+        color="#fece00"
+        void-color="#979494"
+        bind:change="_onChange"
+      />
+      <text>月售641</text>
+    </view>  
+    <view class="transfer-price">
+      <text>起送价10￥ 免配送费</text>
+    </view>
+    <view class="full-reduce-preferential">
+      <text>满20免配送费</text>
+    </view>
+  </view>
+  <view class="card-right">
+    <view class="distance">
+      <text>30分钟 4km</text>
+    </view>
+    <view class="transfer-role">
+      <text>平台配送</text>
+    </view>
+  </view>
+  <view class="collection-star" bindtap="collectionMerchant">
+  <van-icon color="#696767" style="display:block;" size="25" name="{{collectionStar}}" />
+  <view style="display: block;color:#696767;">{{collectionStar == 'star-o' ? '收藏' : '已收藏'}}</view>
+  </view>
 </view>
-<van-submit-bar 
-button-class="submit-order"
-  price="{{ 3050 }}"
-  button-text="提交订单"
-  bind:submit="onSubmit"
->
-<view>查看详情</view>
+  <van-tabs sticky color="#ffb300" bind:click="switTab" title-active-color="#ffb300"  animated>
+  <van-tab title="点菜">
+<view class="scroll-view-container">
+  <scroll-view class="sidebar-scroll" scroll-with-animation="true" scroll-y="true" scroll-into-view='{{indexMaodian}}'>
+    <van-sidebar active-key="{{ activeKey }}">
+      <van-sidebar-item bindtap="toDetail" data-id="a1" id="a" title="满减" badge="1">
+        <view>我是满减区</view>
+      </van-sidebar-item>
+      <van-sidebar-item bindtap="toDetail" data-id="b1" id="b" title="折扣专区" badge="5">
+        <view>我是折扣区</view>
+      </van-sidebar-item>
+      <van-sidebar-item bindtap="toDetail" data-id="c1" id="c" title="新品专区">
+        <view>我是新品区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="满减" badge="1">
+        <view>我是满减区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="折扣专区" badge="5">
+        <view>我是折扣区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="新品专区">
+        <view>我是新品区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="满减" badge="1">
+        <view>我是满减区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="折扣专区" badge="5">
+        <view>我是折扣区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="新品专区">
+        <view>我是新品区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="满减" badge="1">
+        <view>我是满减区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="折扣专区" badge="5">
+        <view>我是折扣区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="新品专区">
+        <view>我是新品区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="满减" badge="1">
+        <view>我是满减区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="折扣专区" badge="5">
+        <view>我是折扣区</view>
+      </van-sidebar-item>
+      <van-sidebar-item title="新品专区">
+        <view>我是新品区</view>
+      </van-sidebar-item>
+    </van-sidebar>
+  </scroll-view>
+  <scroll-view bindscroll="onPageScroll" class="content-scroll" scroll-y="true" scroll-with-animation="true"
+    scroll-into-view='{{storeDetail}}'>
+    <view id="a1">
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+    </view>
+    <view id="b1">
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+    </view>
+    <view id="c1">
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+    </view>
+  </scroll-view>
+</view>
+<van-submit-bar style="display: {{showSubmit? 'block': 'none'}} !important;" button-class="submit-order" price="{{ 3050 }}" button-text="提交订单" bind:submit="onSubmit">
+  <view>查看详情</view>
 </van-submit-bar>
+  </van-tab>
+  <van-tab title="评价">
+  </van-tab>
+  <van-tab title="商家">
+  </van-tab>
+</van-tabs>

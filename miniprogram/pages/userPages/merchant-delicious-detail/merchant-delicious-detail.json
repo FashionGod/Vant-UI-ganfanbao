@@ -2,6 +2,11 @@
   "usingComponents": {
   "van-sidebar": "../../../miniprogram_npm/@vant/weapp/dist/sidebar/index",
   "van-sidebar-item": "../../../miniprogram_npm/@vant/weapp/dist/sidebar-item/index",
-  "van-submit-bar": "../../../miniprogram_npm/@vant/weapp/dist/submit-bar/index"
+  "van-tab": "../../../../miniprogram_npm/@vant/weapp/dist/tab/index",
+  "van-tabs": "../../../../miniprogram_npm/@vant/weapp/dist/tabs/index",
+  "van-submit-bar": "../../../miniprogram_npm/@vant/weapp/dist/submit-bar/index",
+  "van-rate": "../../../miniprogram_npm/@vant/weapp/dist/rate/index",
+  "van-icon": "../../../miniprogram_npm/@vant/weapp/dist/icon/index",
+  "van-card": "../../../miniprogram_npm/@vant/weapp/dist/card/index"
   }
 }

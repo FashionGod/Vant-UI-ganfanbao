@@ -1,4 +1,4 @@
-<van-tabs swipeable color="#ffb300" title-active-color="#ffb300"  animated>
+<van-tabs sticky swipeable color="#ffb300" title-active-color="#ffb300"  animated>
   <van-tab title="新任务">
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
    enable-back-to-top="{{true}}" refresher-triggered="{{true}}"

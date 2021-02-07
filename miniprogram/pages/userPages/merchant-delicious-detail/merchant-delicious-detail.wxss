@@ -1,14 +1,80 @@
 /* miniprogram/pages/userPages/merchant-delicious-detail/merchant-delicious-detail.wxss */
+.merchan-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+}
+.merchant-image {
+  display: inline-block;
+  overflow: hidden;
+  margin: 5rpx 0 0 10rpx;
+  height: 150rpx;
+  width: 150rpx;
+  border-radius: 12rpx;
+}
+
+.card-left {
+}
+
+.card-middle {
+  padding: 0;
+  margin-left: 12px;
+  width: 580rpx;
+  font-weight: 300;
+  color: #696767;
+  font-size: 0.7rem;
+}
+.merchant-title {
+  color: black;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.transfer-price {
+  margin-top: 5rpx;
+}
+.full-reduce-preferential {
+  margin-top: 5rpx;
+}
+.star {
+  margin-top: 5rpx;
+}
+
+.card-right {
+  display: inline-block;
+  margin-left: 35rpx;
+  width: 250rpx;
+  font-weight: 300;
+  color: #696767;
+  font-size:0.7rem;
+}
+
+.collection-star {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 5rpx;
+  text-align: center;
+  align-items: center;
+  height: 50rpx;
+  width: 250rpx;
+}
+
+.scroll-view-container {
+  display: flex;
+}
+
 .sidebar-scroll {
   display: inline-block;
-  height: 90vh;
+  flex: 1;
+  height: 74vh;
   width: fit-content;
 }
 
 .content-scroll {
+  flex: 4;
   display: inline-block;
-  height: 90vh;
-  width: fit-content;
+  height: 74vh;
 }
 
 .van-sidebar-item--selected {
@@ -16,11 +82,11 @@
   border-radius: 8rpx !important;
 }
 .van-sidebar-item__text {
-  font-size: 0.7rem !important;
+  font-size: 0.6rem !important;
 }
 .submit-order {
   height: 81rpx !important;
   background-color: #f5c517 !important;
   border: none !important;
-  font-size: 0.9rem !important;
+  font-size: 0.8rem !important;
 }

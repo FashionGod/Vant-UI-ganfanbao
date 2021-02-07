@@ -5,11 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showSubmit: true,
     activeKey: 0,
     // 标签锚点跳转值
     indexMaodian: 'a',
     // 标签详情内容锚点跳转
-    storeDetail: 'a1'
+    storeDetail: 'a1',
+    // 收藏状态
+    collectionStar: 'star-o',
+  },
+  // 点击收藏
+  collectionMerchant() {
+    this.setData({
+      collectionStar: this.data.collectionStar == 'star-o' ? 'star' : 'star-o' 
+    })
   },
 // 监听页面滑动距离
 onPageScroll(e) {
@@ -39,6 +48,19 @@ onPageScroll(e) {
  
  
  },
+ // 切换tab ‘点菜’ ‘评价’ ‘商家’
+ switTab(event) {
+   if (event.detail.name == 0) {
+     this.setData({
+       showSubmit: true,
+     })
+   }
+   else {
+    this.setData({
+      showSubmit: false,
+    }) 
+   }
+},
  // 跳转到对应的标签详情内容区
  toDetail(e) {
    console.log(e)
