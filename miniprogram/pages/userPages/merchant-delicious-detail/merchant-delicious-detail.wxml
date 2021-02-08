@@ -99,7 +99,39 @@
         </view>
       </van-card>
     </view>
-    <view id="b1">
+    <view>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+    </view>
+    <view>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+    </view>
+    <view>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+    </view>
+    <view>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+    </view>
+    <view>
       <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
         <view slot="footer">
           <van-button size="mini">按钮</van-button>
