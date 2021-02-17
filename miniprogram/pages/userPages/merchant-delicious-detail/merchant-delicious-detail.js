@@ -13,6 +13,21 @@ Page({
     storeDetail: 'a1',
     // 收藏状态
     collectionStar: 'star-o',
+    // 类目列表    （假数据）
+    categoryList: [
+      {
+        title: '满减专区',
+        badge: 1,
+      },
+      {
+        title: '折扣专区',
+        badge: 5,
+      },
+      {
+        title: '新品专区',
+        badge: null,
+      },
+    ]
   },
   // 点击收藏
   collectionMerchant() {
@@ -23,26 +38,26 @@ Page({
 // 监听页面滑动距离
 onPageScroll(e) {
   // 通过滑动的距离判断页面滑动那个区域让后让顶部的标签栏切换到对应位置
-  console.log('我在滑动')
+  console.log(e)
   var height = Number(e.detail.scrollTop)
   console.log(height)
-  if (height <= 100) {
+  if (height <= 800) {
    // 滑到1区域
    this.setData({
-    indexMaodian: 'a',
-    activeKey: '1',
+    indexMaodian: 'b1',
+    activeKey: '0',
    });
-  } else if (height > 100 && height<= 200) {
+  } else if (height > 800 && height<= 1512) {
    // 滑到2区域
    this.setData({
-    indexMaodian: 'b',
-    activeKey: '2',
+    indexMaodian: 'b2',
+    activeKey: '1',
    });
-  } else if (height > 200 && height <= 260) {
+  } else if (height > 1512 && height <= 1821) {
   // 滑到3区域
    this.setData({
-    indexMaodian: 'c',
-    activeKey: '3',
+    indexMaodian: 'b3',
+    activeKey: '2',
    });
   }
  
@@ -66,7 +81,7 @@ onPageScroll(e) {
    console.log(e)
   let id = e.target.dataset.id
   this.setData({
-   storeDetail: id
+   storeDetail: 'a'+id
   })
  },
  /**
@@ -75,9 +90,16 @@ onPageScroll(e) {
  onLoad: function (options) {
   var systemInfo = wx.getSystemInfoSync();
   var windowHeight = systemInfo.windowHeight;
+  // 加入锚点标记id
+  var tmpList = this.data.categoryList
+  tmpList.forEach((item, i) => {
+    item.dataId = i + 1;
+    item.maodian = 'b' + ( i + 1);
+  })
   // 拿到导航栏以下可视区域的高度
   this.setData({
-   height: windowHeight
+   height: windowHeight,
+   categoryList: tmpList
   });
  },
  

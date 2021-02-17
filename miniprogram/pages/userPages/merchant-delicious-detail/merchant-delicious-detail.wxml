@@ -42,56 +42,91 @@
 <view class="scroll-view-container">
   <scroll-view class="sidebar-scroll" scroll-with-animation="true" scroll-y="true" scroll-into-view='{{indexMaodian}}'>
     <van-sidebar active-key="{{ activeKey }}">
-      <van-sidebar-item bindtap="toDetail" data-id="a1" id="a" title="满减" badge="1">
-        <view>我是满减区</view>
-      </van-sidebar-item>
-      <van-sidebar-item bindtap="toDetail" data-id="b1" id="b" title="折扣专区" badge="5">
-        <view>我是折扣区</view>
-      </van-sidebar-item>
-      <van-sidebar-item bindtap="toDetail" data-id="c1" id="c" title="新品专区">
-        <view>我是新品区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="满减" badge="1">
-        <view>我是满减区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="折扣专区" badge="5">
-        <view>我是折扣区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="新品专区">
-        <view>我是新品区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="满减" badge="1">
-        <view>我是满减区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="折扣专区" badge="5">
-        <view>我是折扣区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="新品专区">
-        <view>我是新品区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="满减" badge="1">
-        <view>我是满减区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="折扣专区" badge="5">
-        <view>我是折扣区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="新品专区">
-        <view>我是新品区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="满减" badge="1">
-        <view>我是满减区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="折扣专区" badge="5">
-        <view>我是折扣区</view>
-      </van-sidebar-item>
-      <van-sidebar-item title="新品专区">
-        <view>我是新品区</view>
-      </van-sidebar-item>
+      <block wx:for="{{categoryList}}">
+        <van-sidebar-item bindtap="toDetail" data-id="{{item.dataId}}" id="{{item.maodian}}" title="{{item.title}}" badge="{{item.badge}}">
+        </van-sidebar-item>
+      </block>
+      <van-sidebar-item title="附加测试" badge="5"></van-sidebar-item>
+      <van-sidebar-item title="附加测试" badge="5"></van-sidebar-item>
+      <van-sidebar-item title="附加测试" badge="5"></van-sidebar-item>
+      <van-sidebar-item title="附加测试" badge="5"></van-sidebar-item>
+      <van-sidebar-item title="附加测试" badge="5"></van-sidebar-item>
+      <van-sidebar-item title="附加测试" badge="5"></van-sidebar-item>
     </van-sidebar>
   </scroll-view>
   <scroll-view bindscroll="onPageScroll" class="content-scroll" scroll-y="true" scroll-with-animation="true"
     scroll-into-view='{{storeDetail}}'>
     <view id="a1">
+    <view>满减专区</view>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="结束" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+    </view>
+    <view id="a2">
+    <view>折扣专区</view>
+      <van-card num="2" tag="标签" price="10.00" desc="b1start" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
+      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
       <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
         <view slot="footer">
           <van-button size="mini">按钮</van-button>
@@ -99,47 +134,38 @@
         </view>
       </van-card>
     </view>
-    <view>
+    <view id="a3">
+    <view>新品专区</view>
+      <van-card num="2" tag="标签" price="10.00" desc="c1start" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
+        <view slot="footer">
+          <van-button size="mini">按钮</van-button>
+          <van-button size="mini">按钮</van-button>
+        </view>
+      </van-card>
       <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
         <view slot="footer">
           <van-button size="mini">按钮</van-button>
           <van-button size="mini">按钮</van-button>
         </view>
       </van-card>
-    </view>
-    <view>
       <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
         <view slot="footer">
           <van-button size="mini">按钮</van-button>
           <van-button size="mini">按钮</van-button>
         </view>
       </van-card>
-    </view>
-    <view>
       <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
         <view slot="footer">
           <van-button size="mini">按钮</van-button>
           <van-button size="mini">按钮</van-button>
         </view>
       </van-card>
-    </view>
-    <view>
       <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
         <view slot="footer">
           <van-button size="mini">按钮</van-button>
           <van-button size="mini">按钮</van-button>
         </view>
       </van-card>
-    </view>
-    <view>
-      <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
-        <view slot="footer">
-          <van-button size="mini">按钮</van-button>
-          <van-button size="mini">按钮</van-button>
-        </view>
-      </van-card>
-    </view>
-    <view id="c1">
       <van-card num="2" tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
         <view slot="footer">
           <van-button size="mini">按钮</van-button>
