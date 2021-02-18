@@ -62,7 +62,16 @@
 
 .scroll-view-container {
   display: flex;
-  height: 63vh;
+}
+
+.sidebar-blank {
+  display: block;
+  height: 300rpx;
+}
+
+.merchant-detail-blank {
+  display: block;
+  height: 200rpx;
 }
 
 .sidebar-scroll {

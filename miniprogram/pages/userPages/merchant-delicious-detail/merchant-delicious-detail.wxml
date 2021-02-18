@@ -47,6 +47,7 @@
           <van-sidebar-item title="附加测试" badge="5"></van-sidebar-item>
           <van-sidebar-item title="附加测试" badge="5"></van-sidebar-item>
           <van-sidebar-item title="我是最后" badge="5"></van-sidebar-item>
+          <view class="sidebar-blank"></view>
         </van-sidebar>
       </scroll-view>
       <scroll-view bindscroll="onPageScroll" class="content-scroll" scroll-y="true" scroll-with-animation="true"
@@ -65,6 +66,7 @@
             </block>
           </view>
         </block>
+        <view class="merchant-detail-blank"></view>
       </scroll-view>
     </view>
     <van-submit-bar style="display: {{showSubmit? 'block': 'none'}} !important;" button-class="submit-order"
