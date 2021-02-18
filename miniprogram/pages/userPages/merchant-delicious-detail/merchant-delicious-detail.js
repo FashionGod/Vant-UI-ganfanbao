@@ -8,7 +8,7 @@ Page({
     showSubmit: true,
     activeKey: 0,
     // 标签锚点跳转值
-    indexMaodian: 'a',
+    indexMaodian: 'b1',
     // 标签详情内容锚点跳转
     storeDetail: 'a1',
     // 收藏状态
@@ -25,7 +25,144 @@ Page({
       },
       {
         title: '新品专区',
-        badge: null,
+        badge: 0,
+      },
+    ],
+    merchantList: [
+      {
+        title: '满减专区',
+        merchantDetailList: [
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '满减第一个商品',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+        ]
+      },
+      {
+        title: '折扣专区',
+        merchantDetailList: [
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '折扣第一个商品',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+        ]
+      },
+      {
+        title: '新品专区',
+        merchantDetailList: [
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '新品第一个商品',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+          {
+            num: 2,
+            tag: '标签',
+            price: 10.00,
+            desc: '描述信息',
+            title: '商品标题',
+            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+          },
+        ]
       },
     ]
   },
@@ -91,15 +228,20 @@ onPageScroll(e) {
   var systemInfo = wx.getSystemInfoSync();
   var windowHeight = systemInfo.windowHeight;
   // 加入锚点标记id
-  var tmpList = this.data.categoryList
-  tmpList.forEach((item, i) => {
+  var tmpCategoryList = this.data.categoryList
+  var tmpMerchantList = this.data.merchantList
+  tmpCategoryList.forEach((item, i) => {
     item.dataId = i + 1;
     item.maodian = 'b' + ( i + 1);
+  })
+  tmpMerchantList.forEach((item, i) => {
+    item.id = 'a' + ( i + 1);
   })
   // 拿到导航栏以下可视区域的高度
   this.setData({
    height: windowHeight,
-   categoryList: tmpList
+   categoryList: tmpCategoryList,
+   merchantList: tmpMerchantList,
   });
  },
  

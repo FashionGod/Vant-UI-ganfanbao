@@ -5,62 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    // 子组件需要的值
+    merchantImg1: "../../assets/homeImages/merchant_photo1.png",
+    merchantImg2: "../../assets/homeImages/merchant_photo2.png",
+    // 下拉刷新
+    pullDownloading: false,
+    // 显示触底刷新
+    scrollTouchedBottomLoading: false,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+    // 监控自定义scroll-view下拉刷新
+    pullDownFresh() {
+      console.log('下拉刷新');
+      setTimeout(() => {
+        // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
+  
+        // 数据请求成功后，关闭刷新
+        this.setData({
+          pullDownloading: false,
+        })
+        console.log('刷新成功');
+      }, 1000)
+    },
+    scrollTouchedBottom() {
+      // 显示loading开始请求
+      this.setData({
+        scrollTouchedBottomLoading: true,
+      })
+      // 数据请求成功后，关闭刷新
+      setTimeout(() => {
+        this.setData({
+          scrollTouchedBottomLoading: false,
+        })
+      }, 1000);
+      console.log('淦，你碰到俺底部啦！');
+    },
 })
