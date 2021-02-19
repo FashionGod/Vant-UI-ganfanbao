@@ -54,9 +54,9 @@
         scroll-into-view='{{storeDetail}}'>
         <block wx:for="{{merchantList}}" wx:for-item="i">
           <view id="{{i.id}}">
-            <view>{{i.title}}</view>
+            <van-divider custom-style="background-color: #fafafa; color:#696767; margin:0;height:40px;font-size: 30rpx;font-weight: 400;" contentPosition="center">{{i.title}}</van-divider>
             <block wx:for="{{i.merchantDetailList}}" wx:for-item="j">
-              <van-card num="{{j.num}}" tag="{{j.tag}}" price="{{j.price}}" desc="{{j.desc}}" title="{{j.title}}"
+              <van-card custom-class="merchant-card" num="{{j.num}}" tag="{{j.tag}}" price="{{j.price}}" desc="{{j.desc}}" title="{{j.title}}"
                 thumb="{{j.thumb}}">
                 <view slot="footer">
                   <van-button size="mini">按钮</van-button>

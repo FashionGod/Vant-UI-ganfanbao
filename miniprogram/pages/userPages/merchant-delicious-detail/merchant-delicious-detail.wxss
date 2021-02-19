@@ -69,6 +69,10 @@
   height: 300rpx;
 }
 
+.merchant-card {
+  height: 120px;
+}
+
 .merchant-detail-blank {
   display: block;
   height: 200rpx;
