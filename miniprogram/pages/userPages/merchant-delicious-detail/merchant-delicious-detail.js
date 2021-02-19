@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // ------------------------------------- 点菜 -----------------------------------------
     showSubmit: true,
     activeKey: 0,
     // 标签锚点跳转值
@@ -166,7 +167,11 @@ Page({
         ]
       },
     ],
-    arr: [0]
+    arr: [0],
+    // -------------------------------------- 评价 -----------------------------------------------
+    // -------------------------------------- 商家 -----------------------------------------------
+    // 商家介绍轮播图
+    swiperImgList: ['https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1901359579,1861271908&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1840683049,2335736361&fm=26&gp=0.jpg' ,'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2905099515,729646340&fm=26&gp=0.jpg'],
   },
   // 点击收藏
   collectionMerchant() {
@@ -174,6 +179,7 @@ Page({
       collectionStar: this.data.collectionStar == 'star-o' ? 'star' : 'star-o' 
     })
   },
+  // -------------------------------------------- 点菜 --------------------------------------------
 // 滑动右边判断是哪个sidebar
 judgeScrollWhere(height) {
   console.log('我动啦')
@@ -236,6 +242,23 @@ onPageScroll: tool.debounce(function(res) {
    merchantList: tmpMerchantList,
   });
  },
- 
+ // --------------------------------------------- 评价 -------------------------------------------------
 
+ // --------------------------------------------- 商家 -------------------------------------------------
+ previewImg(e) {
+  wx.previewImage({
+    current: this.data.swiperImgList[e.currentTarget.dataset.i], // 当前显示图片的http链接
+    urls: this.data.swiperImgList // 需要预览的图片http链接列表
+  })
+},
+  // 联系商家
+  contactOfficial() {
+    wx.makePhoneCall({
+      phoneNumber: '15541155173',
+      success:(res)=> {
+      },
+      fail:(res)=> {
+      },
+    })
+  },
 })
