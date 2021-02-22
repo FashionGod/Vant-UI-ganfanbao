@@ -1,6 +1,10 @@
 <view class="container">
+  <view class="explain">说明</view>
   <view class="description">
-    请献上真挚的反馈，我们会给予采纳！
+    <view>有关商家不良违法行为，不正当行为等一切想要反馈投诉的都可以在这里告诉我们。</view>
+    <view>有关软件的使用建议以及bug反馈也都可以提出。</view>
+    <view>您的批评和指正是我们砥砺前行的风向标。</view>
+    <view>请献上真挚的反馈，我们会给予采纳！</view>
   </view>
     <button class="feedback" open-type="feedback">开始反馈</button>
 </view>

@@ -12,12 +12,26 @@ page {
   height: 100%;
   width: 100%;
 }
-
+.explain {
+  margin-top: 100rpx;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.6rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(131, 127, 123);
+}
 .description {
-  margin-top: 300rpx;
-  margin-bottom: 300rpx;
-  width: 600rpx;
-  font-size: 1.2rem;
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+  padding: 35rpx;
+  width: 500rpx;
+  height: 500rpx;
+  background-color: #fff;
+  text-indent:1.8rem;
+  line-height: 26px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: 'Courier New', Courier, monospace;
   color: rgb(131, 127, 123);
 }
 

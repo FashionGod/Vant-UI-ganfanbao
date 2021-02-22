@@ -90,7 +90,7 @@
           <van-cell title="商家地址" label="描述信息" center link-type="navigateTo" url="" icon="location-o"
             is-link />
             <van-cell title="联系商家" label="15541155111" center bind:click="contactOfficial" icon="phone-o" is-link />
-          <van-cell title="查看食品安全档案" center link-type="navigateTo" url="../userPages/userEvaluation/userEvaluation"
+          <van-cell title="查看食品安全档案" center link-type="navigateTo" url="./merchant-detail/merchant-detail"
             icon="bulb-o" is-link />
           <van-cell title="投诉反馈" center link-type="navigateTo" url="../../public/feedback/feedback" icon="records"
             is-link />
