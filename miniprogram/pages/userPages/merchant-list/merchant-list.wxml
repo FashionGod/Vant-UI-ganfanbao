@@ -1,0 +1,28 @@
+<!--miniprogram/pages/userPages/merchant-list/merchant-list.wxml-->
+<van-dropdown-menu active-color="#faad14">
+  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change"
+    bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
+  <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
+    bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
+</van-dropdown-menu>
+<scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll"
+  refresher-enabled="{{dropDownForbidenScroll}}" enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+  <view class="merchant-list">
+    <!-- 商家列表 -->
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
+    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
+  </view>
+  <!--触底的loading  -->
+  <view class="bottom-loading">
+    <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+  </view>
+</scroll-view>

@@ -1,0 +1,19 @@
+/* miniprogram/pages/userPages/merchant-list/merchant-list.wxss */
+page{
+  background-color: rgb(241, 237, 237);
+  height: 100vh;
+}
+.scroll {
+	height: 95vh;
+}
+.bottom-loading {
+  height: 100rpx;
+	width: 720rpx;
+	text-align: center;
+}
+::-webkit-scrollbar
+{
+width: 0;
+height: 0;
+color: transparent;
+}

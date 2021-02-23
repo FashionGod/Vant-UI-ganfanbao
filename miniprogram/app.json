@@ -13,7 +13,8 @@
     "pages/public/rider-sign-in-or-up/sign-in/sign-in",
     "pages/public/rider-sign-in-or-up/sign-up/sign-up",
     "pages/userPages/merchant-delicious-detail/merchant-delicious-detail",
-    "pages/userPages/merchant-delicious-detail/merchant-detail/merchant-detail"
+    "pages/userPages/merchant-delicious-detail/merchant-detail/merchant-detail",
+    "pages/userPages/merchant-list/merchant-list"
   ],
   "subpackages": [
     {

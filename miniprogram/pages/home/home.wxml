@@ -22,7 +22,7 @@
   <!-- 功能区 -->
   <view class="function-area">
     <van-grid column-num="2" border="{{ true }}">
-      <van-grid-item use-slot link-type="navigateTo" url="../userPages/delicious/delicious">
+      <van-grid-item use-slot link-type="navigateTo" url="../userPages/merchant-list/merchant-list">
         <image mode="widthFix" style="width: 80rpx;margin-bottom: 5px;" src="../../assets/homeImages/delicious.png" />
         <span class="global-font-style">饱餐一顿</span>
       </van-grid-item>

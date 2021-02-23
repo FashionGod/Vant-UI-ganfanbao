@@ -23,6 +23,11 @@
           "pathName": "riderPackage/pages/riderPages/order/order",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/userPages/merchant-list/merchant-list",
+          "pathName": "pages/userPages/merchant-list/merchant-list",
+          "scene": null
         }
       ]
     }
