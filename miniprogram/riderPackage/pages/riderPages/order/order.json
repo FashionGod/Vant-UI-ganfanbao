@@ -3,6 +3,8 @@
     "van-tab": "../../../../miniprogram_npm/@vant/weapp/dist/tab/index",
     "van-tabs": "../../../../miniprogram_npm/@vant/weapp/dist/tabs/index",
     "rider-mission-card": "./components/riderMissionCard",
-    "van-loading": "../../../../miniprogram_npm/@vant/weapp/dist/loading/index"
+    "van-loading": "../../../../miniprogram_npm/@vant/weapp/dist/loading/index",
+    "van-tabbar": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar/index",
+    "van-tabbar-item": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar-item/index"
   }
 }

@@ -1,4 +1,5 @@
-<van-tabs sticky swipeable color="#ffb300" title-active-color="#ffb300"  animated>
+<block wx:if="{{showMePageFlag}}">
+  <van-tabs sticky swipeable color="#ffb300" title-active-color="#ffb300"  animated>
   <van-tab title="新任务">
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
    enable-back-to-top="{{true}}" refresher-triggered="{{true}}"
@@ -87,3 +88,16 @@
     </scroll-view>
   </van-tab>
 </van-tabs>
+</block>
+<block wx:if="{{showMePageFlag}}">
+
+</block>
+<van-tabbar
+  active="{{ active }}"
+  active-color="#ffca02"
+  inactive-color="#000"
+  bind:change="onChange"
+>
+  <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="manager-o">我的</van-tabbar-item>
+</van-tabbar>

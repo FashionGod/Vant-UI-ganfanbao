@@ -19,44 +19,9 @@
           "query": ""
         },
         {
-          "name": "pages/riderPages/order",
-          "pathName": "pages/riderPages/order/order",
+          "name": "riderPackage/pages/riderPages/order/order",
+          "pathName": "riderPackage/pages/riderPages/order/order",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/my/my",
-          "pathName": "pages/my/my",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/public/feedback/feedback",
-          "pathName": "pages/public/feedback/feedback",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "riderPackage/pages/riderPages/riderInfomation/riderInfomation",
-          "pathName": "riderPackage/pages/riderPages/riderInfomation/riderInfomation",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/public/rider-sign-in-or-up/sign-up/sign-up",
-          "pathName": "pages/public/rider-sign-in-or-up/sign-up/sign-up",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
-          "pathName": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/userPages/merchant-delicious-detail/merchant-delicious-detail",
-          "pathName": "pages/userPages/merchant-delicious-detail/merchant-delicious-detail",
           "scene": null
         }
       ]

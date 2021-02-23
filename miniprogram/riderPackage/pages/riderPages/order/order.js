@@ -5,8 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 条件渲染我的页面
+    showMePageFlag: false,
     // 显示触底刷新
     scrollTouchedBottomLoading: false,
+    // tabbars data
+    tabbarActive: 0,
   },
 
 
@@ -44,6 +48,20 @@ Page({
   },
   onShow:function() {
     wx.hideHomeButton();
-  }
-  
+  },
+  // tabbars function
+  onChange(event) {
+    if (event.detail == 1) {
+      this.setData({
+        tabbarActive: 1,
+        showMePageFlag: true
+      });
+    } else {
+      this.setData({
+        tabbarActive: 0,
+        showMePageFlag: false
+      });
+    }
+    
+  },
 })
