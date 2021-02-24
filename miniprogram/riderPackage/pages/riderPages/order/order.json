@@ -8,5 +8,6 @@
     "van-tabbar-item": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar-item/index",
     "van-cell": "../../../../miniprogram_npm/@vant/weapp/dist/cell/index",
     "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index"
-  }
+  },
+  "disableScroll": false
 }

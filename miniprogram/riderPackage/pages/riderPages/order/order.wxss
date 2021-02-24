@@ -61,8 +61,8 @@
 .copyright {
   font-size: 28rpx;
   color: #999;
-  position: fixed;
-  bottom: 15rpx;
+  position: relative;
+  bottom: 135rpx;
   left: 0;
   right: 0;
   padding: 30rpx;
