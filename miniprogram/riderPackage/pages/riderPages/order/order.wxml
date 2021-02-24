@@ -1,4 +1,4 @@
-<block wx:if="{{showMePageFlag}}">
+<block wx:if="{{!showMePageFlag}}">
   <van-tabs sticky swipeable color="#ffb300" title-active-color="#ffb300"  animated>
   <van-tab title="新任务">
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
@@ -90,10 +90,44 @@
 </van-tabs>
 </block>
 <block wx:if="{{showMePageFlag}}">
-
+    <view class="page-container">
+  <view class="profile-picture">
+    <block wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        <button class="disapear" animation="{{animation_class}}" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+          <image mode="aspectFit" class="userinfo-avatar" src="../../../../assets/homeImages/login.png"></image>
+        </button>
+        <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">未登录</text>
+    </block>
+    <block wx:else > 
+        <navigator url="../userPages/userInfomation/userInfomation" hover-class="none">
+          <image class="disapear" animation="{{animation_class}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+        </navigator>
+        <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="function-container">
+    <van-cell-group>
+      <!-- <van-cell title="个人信息" center link-type="navigateTo" url="../userPages/userInfomation/userInfomation" icon="manager-o" 骑手需要填写
+        is-link /> -->
+      <van-cell title="收藏" center link-type="navigateTo" url="../userPages/collection/collection" icon="star-o"
+        is-link />
+      <van-cell title="我的评价" center link-type="navigateTo" url="../userPages/userEvaluation/userEvaluation" icon="chat-o"
+        is-link />
+      <van-cell title="收货地址" center bind:click="shippingAddress" icon="logistics"
+        is-link />
+          <van-cell title="反馈建议" center link-type="navigateTo" url="../public/feedback/feedback" icon="records"
+        is-link />
+      <van-cell title="联系我们" center bind:click="contactOfficial" icon="phone-o"
+        is-link />
+    </van-cell-group>
+  </view>
+  <view class="copyright">
+    @FashionGod
+  </view>
+</view>
 </block>
 <van-tabbar
-  active="{{ active }}"
+  active="{{ tabbarActive }}"
   active-color="#ffca02"
   inactive-color="#000"
   bind:change="onChange"

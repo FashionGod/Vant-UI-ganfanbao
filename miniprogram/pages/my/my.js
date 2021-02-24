@@ -13,12 +13,6 @@ Page({
     animation_class: null
   },
 
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   onLoad() {
     if (app.globalData.userInfo) {
       this.setData({

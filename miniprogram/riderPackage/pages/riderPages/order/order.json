@@ -5,6 +5,8 @@
     "rider-mission-card": "./components/riderMissionCard",
     "van-loading": "../../../../miniprogram_npm/@vant/weapp/dist/loading/index",
     "van-tabbar": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar/index",
-    "van-tabbar-item": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar-item/index"
+    "van-tabbar-item": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar-item/index",
+    "van-cell": "../../../../miniprogram_npm/@vant/weapp/dist/cell/index",
+    "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index"
   }
 }
