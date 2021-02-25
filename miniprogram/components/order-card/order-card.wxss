@@ -60,11 +60,15 @@
   font-size: 0.8rem;
 }
 .order-status {
-  margin-bottom: 50rpx;
+  margin-bottom: 70rpx;
 }
 .price {
   color: red;
   font-weight: 600;
+}
+.count {
+  margin: 10rpx auto;
+  font-size: 21rpx;
 }
 .views {
   position: absolute;

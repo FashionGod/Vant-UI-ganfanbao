@@ -37,9 +37,8 @@
 .function-container {
   margin: 20rpx auto;
   width: 550rpx;
-  height: 630rpx;
-  padding: 65rpx 0 15rpx 0;
-  border-radius: 8%;
+  padding: 25rpx 0 25rpx 0;
+  border-radius: 35rpx;
   background-color: #fff;
   transform: translatey(-130rpx);
 }

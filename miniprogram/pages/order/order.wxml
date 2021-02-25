@@ -5,16 +5,10 @@
       bindscrolltolower="scrollTouchedBottom">
       <view class="merchant-list">
         <!-- 商家列表 -->
-        <order-card merchantImg="{{merchantImg1}}"></order-card>
-        <order-card merchantImg="{{merchantImg2}}"></order-card>
-        <order-card merchantImg="{{merchantImg1}}"></order-card>
-        <order-card merchantImg="{{merchantImg1}}"></order-card>
-        <order-card merchantImg="{{merchantImg2}}"></order-card>
-        <order-card merchantImg="{{merchantImg1}}"></order-card>
-        <order-card merchantImg="{{merchantImg1}}"></order-card>
-        <order-card merchantImg="{{merchantImg2}}"></order-card>
-        <order-card merchantImg="{{merchantImg1}}"></order-card>
-        <order-card merchantImg="{{merchantImg2}}"></order-card>
+        <view wx:for="{{['00','11','22','33','44','55','66','77','88','99']}}" wx:key="*this">
+          <order-card bindlongpress="delete" bindtap="navigateToOrderDetail" data-item="{{item}}" merchantImg="{{merchantImg1}}"></order-card>
+          <order-card bindlongpress="delete" bindtap="navigateToOrderDetail" data-item="{{item}}" merchantImg="{{merchantImg2}}"></order-card>
+        </view>
       </view>
       <!--触底的loading  -->
       <view class="bottom-loading">

@@ -51,16 +51,10 @@
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
   <view class="merchant-list">
     <!-- 商家列表 -->
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
+    <view wx:for="{{['00','11','22','33','44','55','66','77','88','99']}}" wx:key="*this">
+      <merchant-card bindtap="navigateToDetail" data-item="{{item}}" merchantImg="{{merchantImg1}}"></merchant-card>
     <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
+    </view>
   </view>
   <!--触底的loading  -->
   <view class="bottom-loading">

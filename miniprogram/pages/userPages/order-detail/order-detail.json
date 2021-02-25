@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-steps": "../../../miniprogram_npm/@vant/weapp/dist/steps/index",
+    "van-cell": "../../../miniprogram_npm/@vant/weapp/dist/cell/index",
+    "van-cell-group": "../../../miniprogram_npm/@vant/weapp/dist/cell-group/index",
+    "van-field": "../../../miniprogram_npm/@vant/weapp/dist/field/index",
+    "van-icon": "../../../miniprogram_npm/@vant/weapp/dist/icon/index",
+    "van-card": "../../../miniprogram_npm/@vant/weapp/dist/card/index"
+  },
+  "disableScroll": false
+}

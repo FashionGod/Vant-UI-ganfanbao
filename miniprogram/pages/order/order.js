@@ -71,4 +71,25 @@ Page({
       }, 1000);
       console.log('淦，你碰到俺底部啦！');
     },
+    // 删除单项订单
+    delete(e) {
+      console.log(e)
+      wx.showModal({
+        content: '你确定要删除该项订单吗？',
+        confirmColor: '#ff0000',
+        success (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    },
+    // 进入订单详情页面
+    navigateToOrderDetail(e) {
+      wx.navigateTo({
+        url: '../../pages/userPages/order-detail/order-detail',
+      })
+    }
 })

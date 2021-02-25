@@ -124,7 +124,8 @@ Page({
     }, 1000);
     console.log('淦，你碰到俺底部啦！');
   },
-  navigateToDetail() {
+  navigateToDetail(e) {
+    console.log(e)
     wx.navigateTo({
       url: '../userPages/merchant-delicious-detail/merchant-delicious-detail',
     })
