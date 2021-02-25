@@ -26,5 +26,11 @@ Component({
         value: event.detail,
       });
     },
+    navigateToViews(e){
+      wx.showToast({
+        title: '点击查看评价',
+        icon: 'none'
+      })
+    }
   }
 })
