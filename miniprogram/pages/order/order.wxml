@@ -1,20 +1,20 @@
 <van-tabs swipeable color="#ffb300" title-active-color="#ffb300" animated>
   <van-tab title="全部">
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"
-      enable-back-to-top="{{true}}" refresher-triggered="{{true}}" bindrefresherrefresh="pullDownFresh"
+      enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}" bindrefresherrefresh="pullDownFresh"
       bindscrolltolower="scrollTouchedBottom">
       <view class="merchant-list">
         <!-- 商家列表 -->
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg2}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg2}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg2}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg2}}"></order-card>
       </view>
       <!--触底的loading  -->
       <view class="bottom-loading">
@@ -28,16 +28,16 @@
       bindscrolltolower="scrollTouchedBottom">
       <view class="merchant-list">
         <!-- 商家列表 -->
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg2}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg2}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg2}}"></order-card>
+        <order-card merchantImg="{{merchantImg1}}"></order-card>
+        <order-card merchantImg="{{merchantImg2}}"></order-card>
       </view>
       <!--触底的loading  -->
       <view class="bottom-loading">

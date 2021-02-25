@@ -27,6 +27,13 @@
         {
           "name": "pages/userPages/merchant-list/merchant-list",
           "pathName": "pages/userPages/merchant-list/merchant-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/order",
+          "pathName": "pages/order/order",
+          "query": "",
           "scene": null
         }
       ]
