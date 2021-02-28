@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-cell": "../../../../miniprogram_npm/@vant/weapp/dist/cell/index",
+    "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index",
+    "van-field": "../../../../miniprogram_npm/@vant/weapp/dist/field/index",
+    "van-icon": "../../../../miniprogram_npm/@vant/weapp/dist/icon/index"
+  },
+  "disableScroll": false,
+  "backgroundColorTop": "#f6f6f6",
+  "backgroundColorBottom": "#f6f6f6"
 }

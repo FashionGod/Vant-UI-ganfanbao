@@ -7,5 +7,7 @@
     "van-icon": "../../../miniprogram_npm/@vant/weapp/dist/icon/index",
     "van-card": "../../../miniprogram_npm/@vant/weapp/dist/card/index"
   },
-  "disableScroll": false
+  "disableScroll": false,
+  "backgroundColorTop": "#f6f6f6",
+  "backgroundColorBottom": "#f6f6f6"
 }

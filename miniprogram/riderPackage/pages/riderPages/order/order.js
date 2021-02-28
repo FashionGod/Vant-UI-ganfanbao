@@ -1,4 +1,5 @@
 // miniprogram/pages/riderPages/order/order.js
+const app = getApp()
 Page({
 
   /**
@@ -9,6 +10,8 @@ Page({
     showMePageFlag: false,
     // 显示触底刷新
     scrollTouchedBottomLoading: false,
+    // 下拉刷新
+    pullDownloading: false,
     // tabbars data
     tabbarActive: 0,
     // 我的页面

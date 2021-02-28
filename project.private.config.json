@@ -19,8 +19,8 @@
           "scene": null
         },
         {
-          "name": "pages/my/my",
-          "pathName": "pages/my/my",
+          "name": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
+          "pathName": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
           "query": "",
           "scene": null
         },
@@ -31,8 +31,20 @@
           "scene": null
         },
         {
+          "name": "merchantPackage/pages/merchantPages/order/order",
+          "pathName": "merchantPackage/pages/merchantPages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "pages/userPages/order-detail/order-detail",
           "pathName": "pages/userPages/order-detail/order-detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/userPages/merchant-delicious-detail/merchant-detail/merchant-detail",
+          "pathName": "pages/userPages/merchant-delicious-detail/merchant-detail/merchant-detail",
           "query": "",
           "scene": null
         }

@@ -1,4 +1,23 @@
-<!--miniprogram/pages/userPages/merchant-delicious-detail/merchant-detail/merchant-detail.wxml-->
-<view>
-  商家信息详情页
+<view class="page-container">
+  <view class="function-container">
+    <van-cell-group border="{{false}}">
+      <view class="title">商家基本信息</view>
+      <van-field readonly input-align="right" label="单位名称" value="{{ '杭州市滨江区空宝小吃店' }}" border="{{ true }}" />
+      <van-field readonly input-align="right" label="法定代表人" value="{{ '李阳' }}" border="{{ true }}" />
+      <van-field readonly type="textarea" autosize input-align="right" label="经营地址"
+        value="{{ '李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳' }}" border="{{ true }}" />
+      <van-field readonly input-align="right" label="经营范围" value="{{ '热食类食品制售；' }}" border="{{ true }}" />
+      <van-field readonly input-align="right" label="有效期至" value="{{ '2021-12-04' }}" border="{{ true }}" />
+    </van-cell-group>
+  </view>
+  <view class="function-container">
+      <view class="title">商家资质证明</view>
+    <swiper class="swiper-images" autoplay="true" interval="3500" duration="500" indicator-dots="true" circular="true">
+      <block wx:for="{{swiperImgList}}" wx:key="*this">
+        <swiper-item bindtap="previewImg" data-i="{{index}}">
+          <image style="width: 750rpx;" src="{{item}}" mode="scaleToFill"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 </view>

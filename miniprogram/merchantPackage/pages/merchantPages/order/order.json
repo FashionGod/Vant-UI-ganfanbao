@@ -1,3 +1,13 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-tab": "../../../../miniprogram_npm/@vant/weapp/dist/tab/index",
+    "van-tabs": "../../../../miniprogram_npm/@vant/weapp/dist/tabs/index",
+    "van-loading": "../../../../miniprogram_npm/@vant/weapp/dist/loading/index",
+    "van-tabbar": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar/index",
+    "van-tabbar-item": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar-item/index",
+    "van-cell": "../../../../miniprogram_npm/@vant/weapp/dist/cell/index",
+    "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index"
+  },
+  "disableScroll": true,
+  "component": true
 }
