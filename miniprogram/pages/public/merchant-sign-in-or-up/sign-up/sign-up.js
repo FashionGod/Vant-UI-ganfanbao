@@ -16,6 +16,7 @@ Page({
     merchantDoor: [],
     merchantEnvironment: [],
     merchantSignUpImages: [],
+    sameName: '',
     IdFrontInstance: [{
       url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/front_side.png',
       name: '商家法人身份证正面',
@@ -215,13 +216,10 @@ Page({
         title: '上传图片中',
         mask: true,
         success: (res) => {
-          console.log(res)
         },
         fail: (res) => {
-          console.log(res)
         },
         complete: (res) => {
-          console.log(res)
         },
       })
     }, 100);
@@ -232,17 +230,14 @@ Page({
       params[obj] = formValue[obj].trim()
     }
       let tmpMerchantSignUpImages = []
-      console.log(this.data.IdFront)
       // 上传-身份证正面
       await wx.cloud.uploadFile({
         cloudPath: 'merchantInfo/IdFront/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.IdFront[0].url, // 文件路径
         success: res => {
-          console.log(res)
           tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
-          console.log(err)
           uploadSuccessFlag = false
         }
       })
@@ -251,11 +246,9 @@ Page({
         cloudPath: 'merchantInfo/IdReverse/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.IdReverse[0].url, // 文件路径
         success: res => {
-          console.log(res)
           tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
-          console.log(err)
           uploadSuccessFlag = false
         }
       })
@@ -264,11 +257,9 @@ Page({
         cloudPath: 'merchantInfo/businessLicense/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.businessLicense[0].url, // 文件路径
         success: res => {
-          console.log(res)
           tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
-          console.log(err)
           uploadSuccessFlag = false
         }
       })
@@ -278,11 +269,9 @@ Page({
         cloudPath: 'merchantInfo/foodLicense/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.foodLicense[0].url, // 文件路径
         success: res => {
-          console.log(res)
           tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
-          console.log(err)
           uploadSuccessFlag = false
         }
       })
@@ -291,11 +280,9 @@ Page({
         cloudPath: 'merchantInfo/merchantDoor/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.merchantDoor[0].url, // 文件路径
         success: res => {
-          console.log(res)
           tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
-          console.log(err)
           uploadSuccessFlag = false
         }
       })
@@ -304,11 +291,9 @@ Page({
         cloudPath: 'merchantInfo/merchantEnvironment/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.merchantEnvironment[0].url, // 文件路径
         success: res => {
-          console.log(res)
           tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
-          console.log(err)
           uploadSuccessFlag = false
         }
       })
@@ -341,6 +326,11 @@ Page({
               title: data.mess.message,
               icon: 'none'
             })
+            setTimeout(() => {
+              wx.navigateTo({
+                url: '../../unchecked/unchecked',
+              })
+            }, 500);
           }
           // 注册失败
           else {
@@ -360,4 +350,35 @@ Page({
       })
     }, 500);
   },
+  checkUserName(e) {
+    wx.cloud.callFunction({
+      name: 'checkSameUserName',
+      data:{
+        userName: e.detail.value
+      },
+      success: res =>{
+        const data = res.result
+        if (data.mess.code == 1) {
+          this.setData({
+            sameName: ''
+          })
+        }
+        else if (data.mess.code == 2) {
+          this.setData({
+            sameName: '该用户名已被注册'
+          })
+        }
+        else {
+          this.setData({
+            sameName: '用户名查重失败'
+          })
+        }
+      },
+      fail: res =>{
+        this.setData({
+          sameName: '用户名查重失败'
+        })
+      }
+    })
+  }
 })

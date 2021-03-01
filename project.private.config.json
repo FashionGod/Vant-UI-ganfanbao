@@ -13,14 +13,14 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/order/order",
-          "pathName": "pages/order/order",
+          "name": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
+          "pathName": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
-          "pathName": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
+          "name": "pages/public/unchecked/unchecked",
+          "pathName": "pages/public/unchecked/unchecked",
           "query": "",
           "scene": null
         },
@@ -31,8 +31,8 @@
           "scene": null
         },
         {
-          "name": "merchantPackage/pages/merchantPages/order/order",
-          "pathName": "merchantPackage/pages/merchantPages/order/order",
+          "name": "pages/public/feedback/feedback",
+          "pathName": "pages/public/feedback/feedback",
           "query": "",
           "scene": null
         },
@@ -43,8 +43,8 @@
           "scene": null
         },
         {
-          "name": "pages/userPages/merchant-delicious-detail/merchant-detail/merchant-detail",
-          "pathName": "pages/userPages/merchant-delicious-detail/merchant-detail/merchant-detail",
+          "name": "pages/order/order",
+          "pathName": "pages/order/order",
           "query": "",
           "scene": null
         }
