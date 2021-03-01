@@ -5,6 +5,7 @@ Page({
    */
   data: {
     name: '',
+    userName: '',
     phoneNumber: null,
     password: '',
     IDNumber: null,
@@ -14,6 +15,7 @@ Page({
     foodLicense: [],
     merchantDoor: [],
     merchantEnvironment: [],
+    merchantSignUpImages: [],
     IdFrontInstance: [{
       url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/front_side.png',
       name: '商家法人身份证正面',
@@ -154,7 +156,7 @@ Page({
     })
   },
   // 表单提交
-  formSubmit(e) {
+  async formSubmit(e) {
     // 参数校验
     const formValue = e.detail.value
     for (const obj in formValue) {
@@ -207,10 +209,6 @@ Page({
     }
 
 
-    const params = {};
-    for (const obj in formValue) {
-      params[obj] = formValue[obj].trim()
-    }
     // 将所有图片上传至云存储
     setTimeout(() => {
       wx.showLoading({
@@ -228,14 +226,20 @@ Page({
       })
     }, 100);
     let uploadSuccessFlag = true
-    try {
+    // 调用云函数参数处理
+    const params = {};
+    for (const obj in formValue) {
+      params[obj] = formValue[obj].trim()
+    }
+      let tmpMerchantSignUpImages = []
       console.log(this.data.IdFront)
       // 上传-身份证正面
-      wx.cloud.uploadFile({
+      await wx.cloud.uploadFile({
         cloudPath: 'merchantInfo/IdFront/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.IdFront[0].url, // 文件路径
         success: res => {
           console.log(res)
+          tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
           console.log(err)
@@ -243,11 +247,12 @@ Page({
         }
       })
       // 上传-身份证反面
-      wx.cloud.uploadFile({
+      await wx.cloud.uploadFile({
         cloudPath: 'merchantInfo/IdReverse/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.IdReverse[0].url, // 文件路径
         success: res => {
           console.log(res)
+          tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
           console.log(err)
@@ -255,11 +260,12 @@ Page({
         }
       })
       // 上传-营业执照
-      wx.cloud.uploadFile({
+      await wx.cloud.uploadFile({
         cloudPath: 'merchantInfo/businessLicense/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.businessLicense[0].url, // 文件路径
         success: res => {
           console.log(res)
+          tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
           console.log(err)
@@ -268,11 +274,12 @@ Page({
       })
       // 
       // 上传-食品许可：
-      wx.cloud.uploadFile({
+      await wx.cloud.uploadFile({
         cloudPath: 'merchantInfo/foodLicense/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.foodLicense[0].url, // 文件路径
         success: res => {
           console.log(res)
+          tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
           console.log(err)
@@ -280,11 +287,12 @@ Page({
         }
       })
       // 上传-商家门面：
-      wx.cloud.uploadFile({
+      await wx.cloud.uploadFile({
         cloudPath: 'merchantInfo/merchantDoor/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.merchantDoor[0].url, // 文件路径
         success: res => {
           console.log(res)
+          tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
           console.log(err)
@@ -292,28 +300,32 @@ Page({
         }
       })
       // 上传-店内环境：
-      wx.cloud.uploadFile({
+      await wx.cloud.uploadFile({
         cloudPath: 'merchantInfo/merchantEnvironment/' + params.IDNumber + "/" + new Date().getTime() + '.png',
         filePath: this.data.merchantEnvironment[0].url, // 文件路径
         success: res => {
           console.log(res)
+          tmpMerchantSignUpImages.push(res.fileID)
         },
         fail: err => {
           console.log(err)
           uploadSuccessFlag = false
         }
       })
-    } catch (error) {
-      uploadSuccessFlag = false
-    }
+      this.setData({
+        merchantSignUpImages: tmpMerchantSignUpImages
+      })
+    // 调用云函数参数处理  增加图片信息参数
+    params.merchantSignUpImages = this.data.merchantSignUpImages
     // 此处的setTimeout是防止hideloading不隐藏的bug
     setTimeout(() => {
       if (!uploadSuccessFlag) {
         wx.hideLoading({})
         wx.showToast({
-          title: '图片未完全上传成功',
+          title: '图片未完全上传成功,请重试',
           icon: 'none'
         })
+        return
       }
       wx.cloud.callFunction({
         name: 'merchantSignUp',
