@@ -51,9 +51,8 @@
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
   <view class="merchant-list">
     <!-- 商家列表 -->
-    <view wx:for="{{['00','11','22','33','44','55','66','77','88','99']}}" wx:key="*this">
-      <merchant-card bindtap="navigateToDetail" data-item="{{item}}" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
+    <view wx:for="{{merchantList}}" wx:key="_id">
+      <merchant-card bindtap="navigateToDetail" data-item="{{item}}" merchantImg="{{item.merchantSignUpInfo.merchantSignUpImages.merchantDoor}}"></merchant-card>
     </view>
   </view>
   <!--触底的loading  -->

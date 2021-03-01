@@ -33,7 +33,8 @@ Page({
     ],
     value1: 0,
     value2: 0,
-    //
+    // 商家列表
+    merchantList: []
   },
   // 搜索框
   onFocus() {
@@ -129,5 +130,31 @@ Page({
     wx.navigateTo({
       url: '../userPages/merchant-delicious-detail/merchant-delicious-detail',
     })
+  },
+  // 云函数 查询商家列表
+  getMerchantList() {
+    wx.cloud.callFunction({
+      name: 'getMerchantList',
+      success: res=>{
+        console.log(res)
+        if (res.result.mess.code == 1) {
+          this.setData({
+            merchantList: res.result.mess.data.data
+          })
+        }
+        else {
+          wx.showToast({
+            title: '商家列表获取失败',
+            icon: 'none'
+          })
+        }
+      },
+      fail: res=> {
+        console.log(res)
+      }
+    })
+  },
+  onLoad() {
+    this.getMerchantList()
   }
 })

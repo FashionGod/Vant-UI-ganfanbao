@@ -13,38 +13,14 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/home/home",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
           "pathName": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/public/unchecked/unchecked",
-          "pathName": "pages/public/unchecked/unchecked",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/userPages/merchant-list/merchant-list",
-          "pathName": "pages/userPages/merchant-list/merchant-list",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/public/feedback/feedback",
-          "pathName": "pages/public/feedback/feedback",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/userPages/order-detail/order-detail",
-          "pathName": "pages/userPages/order-detail/order-detail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/order/order",
-          "pathName": "pages/order/order",
           "query": "",
           "scene": null
         }
