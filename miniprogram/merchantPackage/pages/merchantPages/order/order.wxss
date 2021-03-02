@@ -1,6 +1,6 @@
 
 .scroll-view {
-  height: 100vh;
+  height: 90vh;
 }
 
 .bottom-loading {

@@ -1,0 +1,43 @@
+<view class="card-container">
+  <view class="card-top">
+    <view class="order-number">
+      #39
+    </view>
+    <view class="suggest-arrive-time">
+      建议18：30送达
+    </view>
+  </view>
+  <view class="card-center">
+    <view class="userInfo">
+      <view class="user-name">
+        张建成
+      </view>
+      <view class="user-phone">
+        手机号
+      </view>
+      <view class="user-address">
+        朝阳区望京东路4号恒电AC通道 | 1.5km
+      </view>
+      <view class="call-user-icon"></view>
+    </view>
+    <view class="merchant">
+      <view class="left-content">
+        <view class="food-status">
+          正在配餐 00:00:09
+        </view>
+        <view class="provide-message">
+          建议30分钟内出餐，请据实上报
+        </view>
+      </view>
+      <view class="right-content">
+        <view class="complete-button">出餐完成</view>
+      </view>
+    </view>
+    <view class="rider">
+      <view class=""></view>
+    </view>
+    <view class="order-detail">
+
+    </view>
+  </view>
+</view>

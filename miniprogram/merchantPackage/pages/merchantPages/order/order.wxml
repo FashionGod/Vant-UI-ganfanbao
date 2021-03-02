@@ -1,44 +1,17 @@
 <block wx:if="{{!showMePageFlag}}">
   <van-tabs sticky swipeable color="#ffb300" title-active-color="#ffb300"  animated>
-  <van-tab title="新任务">
+  <van-tab title="新订单">
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
    enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
-      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <merchant-order-card>abcd</merchant-order-card>
+      <merchant-order-card>abcd</merchant-order-card>
+      <merchant-order-card>abcd</merchant-order-card>
+      <merchant-order-card>abcd</merchant-order-card>
+      <merchant-order-card>abcd</merchant-order-card>
+      <merchant-order-card>abcd</merchant-order-card>
       <!--触底的loading  -->
-      <view class="bottom-loading"><van-loading wx:if="{{pullDownloading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
       </view>
     </scroll-view>
   </van-tab>
@@ -80,7 +53,7 @@
       <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
       <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
       <!--触底的loading  -->
-      <view class="bottom-loading"><van-loading wx:if="{{pullDownloading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
       </view>
     </scroll-view>
   </van-tab>
@@ -122,7 +95,133 @@
       <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
       <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
       <!--触底的loading  -->
-      <view class="bottom-loading"><van-loading wx:if="{{pullDownloading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab title="退款">
+    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
+   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <!--触底的loading  -->
+      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab title="已完成">
+    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
+   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <!--触底的loading  -->
+      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab title="已退款">
+    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
+   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <view style="height: 35rpx; margin-bottom:35rpx; background-color:#fff;">abcd</view>
+      <!--触底的loading  -->
+      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
       </view>
     </scroll-view>
   </van-tab>

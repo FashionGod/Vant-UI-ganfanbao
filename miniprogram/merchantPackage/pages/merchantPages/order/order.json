@@ -6,7 +6,8 @@
     "van-tabbar": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar/index",
     "van-tabbar-item": "../../../../miniprogram_npm/@vant/weapp/dist/tabbar-item/index",
     "van-cell": "../../../../miniprogram_npm/@vant/weapp/dist/cell/index",
-    "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index"
+    "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index",
+    "merchant-order-card": "../../../../components/merchant-order-card/merchant-order-card"
   },
   "disableScroll": true,
   "component": true
