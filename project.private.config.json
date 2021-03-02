@@ -13,14 +13,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/home/home",
-          "pathName": "pages/home/home",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
-          "pathName": "pages/public/merchant-sign-in-or-up/sign-up/sign-up",
+          "name": "pages/public/merchant-sign-in-or-up/sign-in/sign-in",
+          "pathName": "pages/public/merchant-sign-in-or-up/sign-in/sign-in",
           "query": "",
           "scene": null
         }

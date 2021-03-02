@@ -10,6 +10,7 @@ page{
 }
 .head image{
   margin-top: 200rpx;
+  margin-bottom: 80rpx;
   border-radius: 50%;
   width: 175rpx;
   height: 175rpx;
@@ -46,7 +47,7 @@ page{
 
 .van-cell{
   margin: 20rpx auto;
-  width: 600rpx;
+  width: 600rpx !important;
   border-radius: 20rpx;
 }
 
