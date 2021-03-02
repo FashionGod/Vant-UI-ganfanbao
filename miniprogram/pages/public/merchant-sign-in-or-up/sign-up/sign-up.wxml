@@ -5,12 +5,12 @@
     <form catchsubmit="formSubmit" catchreset="formReset">
   <view class="function-container">
     <van-cell-group>
-      <van-field required name="userName" clearable placeholder="作为登录唯一Id" value="{{name}}" maxlength="8" label="用户名" left-icon="contact" bind:blur="checkUserName" error-message="{{sameName}}" />
-      <van-field required name="password" clearable placeholder="请设置登录密码" maxlength="16" value="{{password}}" label="登录密码" left-icon="closed-eye" />
-      <van-field required name="name" clearable placeholder="请输入真实姓名" value="{{name}}" maxlength="8" label="姓名" left-icon="contact" />
-      <van-field required name="phoneNumber" clearable placeholder="请输入手机号" type="number" maxlength="11" value="{{phoneNumber}}" label="手机号"
+      <van-field required name="userName" clearable placeholder="作为登录唯一Id" maxlength="8" label="用户名" left-icon="contact" bind:blur="checkUserName" error-message="{{sameName}}" />
+      <van-field required name="password" clearable placeholder="请设置登录密码" maxlength="16" label="登录密码" left-icon="closed-eye" />
+      <van-field required name="name" clearable placeholder="请输入真实姓名" maxlength="8" label="姓名" left-icon="contact" />
+      <van-field required name="phoneNumber" clearable placeholder="请输入手机号" type="number" maxlength="11" label="手机号"
       left-icon="phone-o" />
-      <van-field required name="IDNumber" type="idcard" clearable placeholder="请输入身份证号" maxlength="18" value="{{IDNumber}}" label="身份证号" left-icon="idcard" />
+      <van-field required name="IDNumber" type="idcard" clearable placeholder="请输入身份证号" maxlength="18" label="身份证号" left-icon="idcard" />
       <van-field required clearable readonly label="身份认证" left-icon="photo-o" border="{{ false }}" />
     </van-cell-group>
     <view class="uploader-container">
@@ -23,6 +23,11 @@
         <text user-select="true">身份证反面：</text>
         <van-uploader file-list="{{ IdReverseInstance }}" preview-size="188rpx" image-fit="scaleToFill" max-count="1"/>
         <van-uploader file-list="{{ IdReverse }}" preview-size="188rpx" max-count="1" deletable="{{ true }}" bind:after-read="chooseIdReverse" bind:delete="deleteIdReverse" />
+      </view>
+      <view class="instance-and-image">
+        <text user-select="true">手持身份证正面：</text>
+        <van-uploader file-list="{{ IdAndPersonInstance }}" preview-size="188rpx" image-fit="scaleToFill" max-count="1"/>
+        <van-uploader file-list="{{ IdAndPerson }}" preview-size="188rpx" max-count="1" deletable="{{ true }}" bind:after-read="chooseIdAndPerson" bind:delete="deleteIdAndPerson" />
       </view>
     </view>
     <van-cell-group>

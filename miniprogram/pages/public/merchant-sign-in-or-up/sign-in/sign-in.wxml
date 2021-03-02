@@ -2,10 +2,10 @@
   <image src="../../../../assets/homeImages/ganfanbao.png" catchtap="mine" mode="aspectFill"></image>
   <form catchsubmit="formSubmit">
   <van-cell-group>
-    <van-field name="userName" error="{{userNameEmptyFlag}}" bind:blur="checkUserNameEmpty" value="{{ userName }}" bind:focus="focusUserName" label="用户名" placeholder="请输入用户名"/>
+    <van-field name="userName" error="{{userNameEmptyFlag}}" bind:blur="checkUserNameEmpty" bind:focus="focusUserName" label="用户名" placeholder="请输入用户名"/>
   </van-cell-group>
   <van-cell-group>
-    <van-field name="password" error="{{passwordEmptyFlag}}" bind:blur="checkPasswordEmpty" value="{{ password }}" password="{{password_state_type}}" label="密码" bind:focus="focusPassword" placeholder="请输入密码" icon="{{password_state_icon}}" bind:click-icon="onClickIcon" />
+    <van-field name="password" error="{{passwordEmptyFlag}}" bind:blur="checkPasswordEmpty" password="{{password_state_type}}" label="密码" bind:focus="focusPassword" placeholder="请输入密码" icon="{{password_state_icon}}" bind:click-icon="onClickIcon" />
   </van-cell-group>
   <view class="button-container">
     <button hover-class="button_hover" formType="submit" bindtap='login'>登录</button>

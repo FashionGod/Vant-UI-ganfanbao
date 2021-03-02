@@ -13,19 +13,37 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const mess = {}
   let search = null
-  try {
-      search = await db.collection('merchantSignUpInfoCollection').doc(event.userName).get()
-      if (search.data != null) {
-        mess.code = 2
-        mess.message = '用户名已存在'
-      }
-      else {
-        mess.code = 1
-        mess.message = '用户名可用'
-      }
-  } catch (error) {
-    mess.code = 0
-    mess.message = '用户名查重失败'
+  if (event.role == 1) {
+    try {
+        search = await db.collection('merchantSignUpInfoCollection').doc(event.userName).get()
+        if (search.data != null) {
+          mess.code = 2
+          mess.message = '用户名已存在'
+        }
+        else {
+          mess.code = 1
+          mess.message = '用户名可用'
+        }
+    } catch (error) {
+      mess.code = 0
+      mess.message = '用户名查重失败'
+    }
+  }
+  else if (event.role == 2) {
+    try {
+        search = await db.collection('riderSignUpInfoCollection').doc(event.userName).get()
+        if (search.data != null) {
+          mess.code = 2
+          mess.message = '用户名已存在'
+        }
+        else {
+          mess.code = 1
+          mess.message = '用户名可用'
+        }
+    } catch (error) {
+      mess.code = 0
+      mess.message = '用户名查重失败'
+    }
   }
   return {
     mess,

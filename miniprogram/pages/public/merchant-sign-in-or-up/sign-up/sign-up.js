@@ -4,11 +4,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: '',
-    userName: '',
-    phoneNumber: null,
-    password: '',
-    IDNumber: null,
     IdFront: [],
     IdReverse: [],
     businessLicense: [],
@@ -27,6 +22,11 @@ Page({
       name: '商家法人身份证反面',
       deletable: false,
     }, ],
+    IdAndPersonInstance: [{
+      url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/reverse_side_rider.png',
+      name: '骑手手持身份证',
+      deletable: false,
+    },],
     businessLicenseInstance: [{
       url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/merchant_business_license.png',
       name: '商家营业执照',
@@ -82,6 +82,24 @@ Page({
   deleteIdReverse() {
     this.setData({
       IdReverse: []
+    })
+  },
+  // 上传and删除手持身份证
+  chooseIdAndPerson(event) {
+    const {
+      file
+    } = event.detail;
+    this.setData({
+      IdAndPerson: [{
+        url: file.url,
+        name: '商家法人手持身份证',
+        deletable: true,
+      }]
+    })
+  },
+  deleteIdAndPerson() {
+    this.setData({
+      IdAndPerson: []
     })
   },
   // 上传and删除营业执照
@@ -183,6 +201,12 @@ Page({
           showCancel: false,
         })
         return;
+      } else if (this.data.IdAndPerson.length === 0) {
+        wx.showModal({
+          content: '手持身份证照片未上传，请先上传再提交',
+          showCancel: false,
+        })
+        return;
       } else if (this.data.businessLicense.length === 0) {
         wx.showModal({
           content: '营业执照未上传，请先上传再提交',
@@ -215,12 +239,6 @@ Page({
         wx.showLoading({
           title: '上传图片中',
           mask: true,
-          success: (res) => {
-          },
-          fail: (res) => {
-          },
-          complete: (res) => {
-          },
         })
       }, 100);
       let uploadSuccessFlag = true
@@ -231,86 +249,97 @@ Page({
       }
         let tmpMerchantSignUpImages = {}
         // 上传-身份证正面
-        await wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/IdFront/' + params.userName + "/" + new Date().getTime() + '.png',
-          filePath: this.data.IdFront[0].url, // 文件路径
-          success: res => {
-            tmpMerchantSignUpImages.IdFront = res.fileID
-          },
-          fail: err => {
-            uploadSuccessFlag = false
-          }
-        })
+        wx.cloud.uploadFile({
+        cloudPath: 'merchantInfo/IdFront/' + params.userName + "/" + new Date().getTime() + '.png',
+        filePath: this.data.IdFront[0].url,
+        success: res => {
+          tmpMerchantSignUpImages.IdFront = res.fileID;
+        },
+        fail: err => {
+          uploadSuccessFlag = false;
+        }
+      })
         // 上传-身份证反面
-        await wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/IdReverse/' + params.userName + "/" + new Date().getTime() + '.png',
-          filePath: this.data.IdReverse[0].url, // 文件路径
-          success: res => {
-            tmpMerchantSignUpImages.IdReverse = res.fileID
-          },
-          fail: err => {
-            uploadSuccessFlag = false
-          }
-        })
+        wx.cloud.uploadFile({
+        cloudPath: 'merchantInfo/IdReverse/' + params.userName + "/" + new Date().getTime() + '.png',
+        filePath: this.data.IdReverse[0].url,
+        success: res => {
+          tmpMerchantSignUpImages.IdReverse = res.fileID;
+        },
+        fail: err => {
+          uploadSuccessFlag = false;
+        }
+      })
+        // 上传-手持身份证
+        wx.cloud.uploadFile({
+        cloudPath: 'riderInfo/IdAndPerson/' + params.userName + "/" + new Date().getTime() + '.png',
+        filePath: this.data.IdAndPerson[0].url,
+        success: res => {
+          tmpMerchantSignUpImages.IdAndPerson = res.fileID;
+        },
+        fail: err => {
+          uploadSuccessFlag = false;
+        }
+      })
         // 上传-营业执照
-        await wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/businessLicense/' + params.userName + "/" + new Date().getTime() + '.png',
-          filePath: this.data.businessLicense[0].url, // 文件路径
-          success: res => {
-            tmpMerchantSignUpImages.businessLicense = res.fileID
-          },
-          fail: err => {
-            uploadSuccessFlag = false
-          }
-        })
+        wx.cloud.uploadFile({
+        cloudPath: 'merchantInfo/businessLicense/' + params.userName + "/" + new Date().getTime() + '.png',
+        filePath: this.data.businessLicense[0].url,
+        success: res => {
+          tmpMerchantSignUpImages.businessLicense = res.fileID;
+        },
+        fail: err => {
+          uploadSuccessFlag = false;
+        }
+      })
         // 
         // 上传-食品许可：
-        await wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/foodLicense/' + params.userName + "/" + new Date().getTime() + '.png',
-          filePath: this.data.foodLicense[0].url, // 文件路径
-          success: res => {
-            tmpMerchantSignUpImages.foodLicense = res.fileID
-          },
-          fail: err => {
-            uploadSuccessFlag = false
-          }
-        })
+        wx.cloud.uploadFile({
+        cloudPath: 'merchantInfo/foodLicense/' + params.userName + "/" + new Date().getTime() + '.png',
+        filePath: this.data.foodLicense[0].url,
+        success: res => {
+          tmpMerchantSignUpImages.foodLicense = res.fileID;
+        },
+        fail: err => {
+          uploadSuccessFlag = false;
+        }
+      })
         // 上传-商家门面：
-        await wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/merchantDoor/' + params.userName + "/" + new Date().getTime() + '.png',
-          filePath: this.data.merchantDoor[0].url, // 文件路径
-          success: res => {
-            tmpMerchantSignUpImages.merchantDoor = res.fileID
-          },
-          fail: err => {
-            uploadSuccessFlag = false
-          }
-        })
+        wx.cloud.uploadFile({
+        cloudPath: 'merchantInfo/merchantDoor/' + params.userName + "/" + new Date().getTime() + '.png',
+        filePath: this.data.merchantDoor[0].url,
+        success: res => {
+          tmpMerchantSignUpImages.merchantDoor = res.fileID;
+        },
+        fail: err => {
+          uploadSuccessFlag = false;
+        }
+      })
         // 上传-店内环境：
-        await wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/merchantEnvironment/' + params.userName + "/" + new Date().getTime() + '.png',
-          filePath: this.data.merchantEnvironment[0].url, // 文件路径
-          success: res => {
-            tmpMerchantSignUpImages.merchantEnvironment = res.fileID
-          },
-          fail: err => {
-            uploadSuccessFlag = false
-          }
-        })
+        wx.cloud.uploadFile({
+        cloudPath: 'merchantInfo/merchantEnvironment/' + params.userName + "/" + new Date().getTime() + '.png',
+        filePath: this.data.merchantEnvironment[0].url,
+        success: res => {
+          tmpMerchantSignUpImages.merchantEnvironment = res.fileID;
+        },
+        fail: err => {
+          uploadSuccessFlag = false;
+        }
+      })
         this.setData({
           merchantSignUpImages: tmpMerchantSignUpImages
         })
       // 调用云函数参数处理  增加图片信息参数
       params.merchantSignUpImages = this.data.merchantSignUpImages
       // 此处的setTimeout是防止hideloading不隐藏的bug
-      await setTimeout(() => {
+      setTimeout(() => {
         if (!uploadSuccessFlag) {
-          wx.hideLoading({})
+          wx.hideLoading({});
           wx.showToast({
             title: '图片未完全上传成功,请重试',
             icon: 'none'
-          })
-          return
+          });
+          return;
         }
         wx.cloud.callFunction({
           name: 'merchantSignUp',
@@ -318,36 +347,37 @@ Page({
             merchantSignUpInfo: params
           },
           success: res => {
-            const data = res.result
+            const data = res.result;
             // 注册成功
             if (data.mess.code == 1) {
-              wx.hideLoading({})
+              wx.hideLoading({});
               wx.showToast({
                 title: data.mess.message,
                 icon: 'none'
-              })
+              });
               setTimeout(() => {
                 wx.redirectTo({
                   url: '../../unchecked/unchecked',
-                })
+                });
               }, 500);
             }
+
             // 注册失败
             else {
-              wx.hideLoading({})
+              wx.hideLoading({});
               wx.showToast({
                 title: data.mess.message,
                 icon: 'none'
-              })
+              });
             }
           },
-          fail: err => {
+          fail: _err => {
             wx.showToast({
               title: '小程序端未成功调用云函数',
               icon: 'none'
-            })
+            });
           }
-        })
+        });
       }, 500);
     }
     else {
@@ -364,6 +394,7 @@ Page({
     wx.cloud.callFunction({
       name: 'checkSameUserName',
       data:{
+        role: 1,
         userName: e.detail.value
       },
       success: res =>{

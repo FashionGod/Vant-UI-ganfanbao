@@ -5,9 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value: '',
-    userName: '',
-    password: '',
     password_state_icon:'closed-eye',
     password_state_type: true,
     userNameEmptyFlag: false,
