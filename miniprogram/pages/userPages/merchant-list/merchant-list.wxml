@@ -10,16 +10,15 @@
   bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
   <view class="merchant-list">
     <!-- 商家列表 -->
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg1}}"></merchant-card>
-    <merchant-card bindtap="navigateToDetail" merchantImg="{{merchantImg2}}"></merchant-card>
+    <block wx:if="{{merchantList.length > 0}}">
+      <view wx:for="{{merchantList}}" wx:key="_id">
+        <merchant-card bindtap="navigateToDetail" data-item="{{item}}"
+          merchantImg="{{item.merchantSignUpInfo.merchantSignUpImages.merchantDoor}}"></merchant-card>
+      </view>
+    </block>
+    <block wx:else>
+      <van-empty class="custom-image" description="暂无商家" />
+    </block>
   </view>
   <!--触底的loading  -->
   <view class="bottom-loading">

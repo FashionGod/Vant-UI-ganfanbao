@@ -28,6 +28,8 @@ Page({
     ],
     value1: 0,
     value2: 0,
+    // 商家列表
+    merchantList: []
   },
 
   // 商家列表筛选头部
@@ -81,4 +83,30 @@ Page({
     }, 1000);
     console.log('淦，你碰到俺底部啦！');
   },
+  // 云函数 查询商家列表
+  getMerchantList() {
+    wx.cloud.callFunction({
+      name: 'getMerchantList',
+      success: res=>{
+        console.log(res)
+        if (res.result.mess.code == 1) {
+          this.setData({
+            merchantList: res.result.mess.data.data
+          })
+        }
+        else {
+          wx.showToast({
+            title: '商家列表获取失败',
+            icon: 'none'
+          })
+        }
+      },
+      fail: res=> {
+        console.log(res)
+      }
+    })
+  },
+  onLoad() {
+    this.getMerchantList()
+  }
 })

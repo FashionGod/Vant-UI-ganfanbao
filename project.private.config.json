@@ -13,8 +13,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/public/merchant-sign-in-or-up/sign-in/sign-in",
-          "pathName": "pages/public/merchant-sign-in-or-up/sign-in/sign-in",
+          "name": "merchantPackage/pages/merchantPages/order/order",
+          "pathName": "merchantPackage/pages/merchantPages/order/order",
           "query": "",
           "scene": null
         }
