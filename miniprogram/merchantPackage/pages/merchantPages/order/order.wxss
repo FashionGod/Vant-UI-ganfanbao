@@ -1,5 +1,6 @@
 
 .scroll-view {
+  background-color: #e1e2eeea;
   height: 90vh;
 }
 

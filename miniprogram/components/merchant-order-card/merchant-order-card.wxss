@@ -1,17 +1,29 @@
+
 .card-container {
-  margin: 15rpx auto;
+  position: relative;
+  margin: 25rpx auto;
+  padding-bottom: 35rpx;
   width: 700rpx;
-  background-color: rgb(78, 76, 76);
+  height: fit-content;
+  border-radius: 35rpx;
+  background-color: #fff;
 }
 
-.card-top {}
+.card-top {
+  display: flex;
+  flex-direction: row;
+}
 
 .order-number {
   position: relative;
   display: inline-block;
-  height: 40rpx;
-  width: 70rpx;
-  background-color: black;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 38rpx;
+  font-family: sans-serif;
+  width: 100rpx;
+  background-color: #36394d;
   color: white;
 }
 
@@ -23,7 +35,105 @@
   font-size: 0;
   overflow: hidden;
   border: solid transparent;
-  border-width: 20rpx;
-  border-left: red solid;
+  border-width: 30rpx;
+  border-left: #36394d solid;
   content: ' ';
+}
+
+.suggest-arrive-time {
+  float: left;
+  margin-left: 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #36394d;
+  font-size: 35rpx;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card-center {
+  display: flex;
+  flex-direction: column;
+}
+
+.center-list-item {
+  padding: 0 35rpx;
+}
+
+.prepared-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.right-content {
+  display: flex;
+  align-items: center;
+}
+
+.complete-button {
+  display: inline-block;
+  padding: 0;
+  height: 60rpx;
+  width: 150rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 27rpx;
+  font-weight: 600;
+  border: #fbbf60 solid 1px;
+  color: #fbbf60;
+  border-radius: 8rpx;
+}
+
+.center-list-item :first-child{
+  margin-top: 15rpx;
+}
+.center-list-item :last-child{
+  margin-bottom: 15rpx;
+}
+
+.dark-text {
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #36394d;
+  font-size: 35rpx;
+  font-weight: 600;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.yellow-text {
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #fbbf60;
+  font-size: 30rpx;
+  font-weight: 600;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.grey-text {
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #a4a5ae;
+  font-size: 30rpx;
+  font-family: sans-serif;
+}
+
+.call-user-icon {
+  position: absolute;
+  top: 25rpx;
+  right: 35rpx;
+}
+.call-user-icon :first-child {
+  margin-right: 25rpx;
+}
+
+.divider {
+  margin: 2px 15px !important;
+}
+
+.collapse-class {
+  color: #36394d;
+  font-size: 35rpx;
+  font-weight: 600;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

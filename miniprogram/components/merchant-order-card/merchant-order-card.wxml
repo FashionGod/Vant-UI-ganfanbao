@@ -8,36 +8,51 @@
     </view>
   </view>
   <view class="card-center">
-    <view class="userInfo">
-      <view class="user-name">
+    <view class="center-list-item">
+      <view class="dark-text">
         张建成
       </view>
-      <view class="user-phone">
+      <view class="yellow-text">
         手机号
       </view>
-      <view class="user-address">
+      <view class="grey-text">
         朝阳区望京东路4号恒电AC通道 | 1.5km
       </view>
-      <view class="call-user-icon"></view>
     </view>
-    <view class="merchant">
+    <van-divider custom-class="divider" />
+    <view class="center-list-item prepared-flex">
       <view class="left-content">
-        <view class="food-status">
+        <view class="dark-text">
           正在配餐 00:00:09
         </view>
-        <view class="provide-message">
+        <view class="grey-text">
           建议30分钟内出餐，请据实上报
         </view>
       </view>
       <view class="right-content">
-        <view class="complete-button">出餐完成</view>
+        <button class="complete-button">出餐完成</button>
       </view>
     </view>
-    <view class="rider">
-      <view class=""></view>
+    <van-divider custom-class="divider" />
+    <view class="center-list-item">
+      <view class="dark-text">
+        王书林
+      </view>
+      <view class="grey-text">骑手已接单</view>
+      <view class="rider-icon"></view>
     </view>
+    <van-divider custom-class="divider" />
     <view class="order-detail">
-
+      <van-collapse custom-class="collapse-class" border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
+        <van-collapse-item border="{{false}}" title="商品" name="1">
+          <view slot="value" style="font-weight: 500;">共计￥15</view>
+          淤泥波波奶茶
+        </van-collapse-item>
+      </van-collapse>
     </view>
+  </view>
+  <view class="call-user-icon">
+    <van-icon size="22px" name="phone" />
+    <van-icon size="22px" name="location" />
   </view>
 </view>
