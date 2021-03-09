@@ -7,18 +7,19 @@ Page({
   data: {
     password_state_icon:'closed-eye',
     password_state_type: true,
-    userNameEmptyFlag: false,
+    phoneNumberEmptyFlag: false,
     passwordEmptyFlag: false
   },
+  // 密码的显隐
   onClickIcon() {
     this.setData({
       password_state_icon: this.data.password_state_icon=='closed-eye'? 'eye':'closed-eye',
       password_state_type: this.data.password_state_type ? false:true,
     })
   },
-  focusUserName() {
+  focusphoneNumber() {
     this.setData({
-      userNameEmptyFlag: false
+      phoneNumberEmptyFlag: false
     })
   },
   focusPassword() {
@@ -26,16 +27,16 @@ Page({
       passwordEmptyFlag: false
     })
   },
-  // 用户名判空
-  checkUserNameEmpty(e) {
+  // 手机号判空
+  checkphoneNumberEmpty(e) {
     if (e.detail.value.trim() == '') {
       this.setData({
-        userNameEmptyFlag: true
+        phoneNumberEmptyFlag: true
       })
     }
     else {
       this.setData({
-        userNameEmptyFlag: false
+        phoneNumberEmptyFlag: false
       })
     }
   },
@@ -60,7 +61,7 @@ Page({
       if (formValue[item].trim() == '') {
         wx.showModal({
           title: '',
-          content: '用户名或密码不能为空',
+          content: '手机号或密码不能为空',
           showCancel: false,
         })
         return
@@ -74,7 +75,7 @@ Page({
       name: 'login',
       data: {
         role: 1,
-        userName: formValue.userName,
+        phoneNumber: formValue.phoneNumber,
         password: formValue.password,
       },
       success: res => {
@@ -95,7 +96,7 @@ Page({
         else if (mess.code == 3) {
           wx.showModal({
             title: '',
-            content: '用户名不存在',
+            content: '手机号不存在',
             showCancel: false,
           })
         }

@@ -11,7 +11,7 @@ Page({
     merchantDoor: [],
     merchantEnvironment: [],
     merchantSignUpImages: [],
-    sameName: '',
+    samePhoneNumber: '',
     IdFrontInstance: [{
       url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/front_side.png',
       name: '商家法人身份证正面',
@@ -188,7 +188,7 @@ Page({
         return
       }
     }
-    if (this.data.sameName == '') {
+    if (this.data.samePhoneNumber == '') {
       if (this.data.IdFront.length === 0) {
         wx.showModal({
           content: '法人身份证正面未上传，请先上传再提交',
@@ -419,32 +419,32 @@ Page({
     }
 
   },
-  checkUserName(e) {
+  checkPhoneNumber(e) {
     wx.cloud.callFunction({
-      name: 'checkSameUserName',
+      name: 'checkSamePhoneNumber',
       data: {
         role: 1,
-        userName: e.detail.value
+        phoneNumber: e.detail.value
       },
       success: res => {
         const data = res.result
         if (data.mess.code == 1) {
           this.setData({
-            sameName: ''
+            samePhoneNumber: ''
           })
         } else if (data.mess.code == 2) {
           this.setData({
-            sameName: '该用户名已被注册'
+            samePhoneNumber: '该手机号已被注册'
           })
         } else {
           this.setData({
-            sameName: '用户名查重失败'
+            samePhoneNumber: '手机号查重失败'
           })
         }
       },
       fail: res => {
         this.setData({
-          sameName: '用户名查重失败'
+          samePhoneNumber: '手机号查重失败'
         })
       }
     })

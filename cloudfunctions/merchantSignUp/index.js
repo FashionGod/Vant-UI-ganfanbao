@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
         await db.collection('merchantSignUpInfoCollection').add({
         // data 字段表示需新增的 JSON 数据
         data: {
-          _id: event.merchantSignUpInfo.userName, // 用户名为唯一Id
+          _id: event.merchantSignUpInfo.phoneNumber, // 手机号为唯一Id
           merchantSignUpInfo: {
             name: event.merchantSignUpInfo.name,
             userName: event.merchantSignUpInfo.userName,

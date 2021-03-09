@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
         await db.collection('riderSignUpInfoCollection').add({
         // data 字段表示需新增的 JSON 数据
         data: {
-          _id: event.riderSignUpInfo.userName, // 用户名为唯一Id
+          _id: event.riderSignUpInfo.phoneNumber, // 手机号为唯一Id
           riderSignUpInfo: {
             name: event.riderSignUpInfo.name,
             userName: event.riderSignUpInfo.userName,
