@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-swipe-cell": "../../../../miniprogram_npm/@vant/weapp/dist/swipe-cell/index",
+    "van-collapse": "../../../../miniprogram_npm/@vant/weapp/dist/collapse/index",
+    "van-collapse-item": "../../../../miniprogram_npm/@vant/weapp/dist/collapse-item/index"
+  }
+}

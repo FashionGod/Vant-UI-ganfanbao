@@ -23,7 +23,10 @@
       "root": "merchantPackage",
       "name": "merchantPackage",
       "pages": [
-        "pages/merchantPages/order/order"
+        "pages/merchantPages/order/order",
+        "pages/merchantPages/food-menu-manage/food-menu-manage",
+        "pages/merchantPages/merchant-info-manage/merchant-info-manage",
+        "pages/merchantPages/evaluation-reply/evaluation-reply"
       ]
     },
     {
