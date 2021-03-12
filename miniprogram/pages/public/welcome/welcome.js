@@ -24,4 +24,14 @@ Page({
       url: '../../public/rider-sign-in-or-up/sign-in/sign-in',
     })
   },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '干饭饱',
+      path: 'pages/public/welcome/welcome'
+    }
+  }
 })
