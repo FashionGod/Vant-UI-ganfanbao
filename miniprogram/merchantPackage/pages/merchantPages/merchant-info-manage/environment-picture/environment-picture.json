@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-uploader": "../../../../../miniprogram_npm/@vant/weapp/dist/uploader/index",
+    "van-field": "../../../../../miniprogram_npm/@vant/weapp/dist/field/index"
+  },
+  "navigationBarTitleText": "环境图片管理"
+}

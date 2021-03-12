@@ -1,0 +1,9 @@
+.notice-input-style {
+  height: 550rpx !important;
+}
+
+.update-notice {
+  margin-top: 35rpx;
+  background-color: #ffca02;
+  color: #ffffff;
+}

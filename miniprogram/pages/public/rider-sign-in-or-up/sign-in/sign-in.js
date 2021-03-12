@@ -83,7 +83,7 @@ Page({
         let {mess} = res.result
         if (mess.code == 1) {
           wx.reLaunch({
-            url: '../../../../merchantPackage/pages/merchantPages/order/order',
+            url: '../../../../riderPackage/pages/riderPages/order/order',
           })
         }
         else if (mess.code == 2) {

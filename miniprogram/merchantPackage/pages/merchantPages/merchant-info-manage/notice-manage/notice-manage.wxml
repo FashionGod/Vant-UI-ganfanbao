@@ -1,0 +1,12 @@
+<van-cell-group>
+  <van-field
+    input-class="notice-input-style"
+    value="{{ message }}"
+    label="公告"
+    type="textarea"
+    placeholder="请输入公告（350字以内）"
+    maxlength="350"
+    border="{{ false }}"
+  />
+</van-cell-group>
+<button class="update-notice">更新公告</button>

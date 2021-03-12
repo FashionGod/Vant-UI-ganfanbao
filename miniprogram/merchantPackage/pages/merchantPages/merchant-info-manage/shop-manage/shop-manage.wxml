@@ -1,0 +1,13 @@
+<van-cell-group>
+  <van-cell title="店铺营业状态" center="true" size="large">
+    <view slot="right-icon">
+      <van-switch checked="{{ checked }}" active-color="#ffca02" inactive-color="#ffffff" checked="{{ checked }}"
+        bind:change="onChange" />
+    </view>
+  </van-cell>
+  <van-cell title="营业时间" is-link bind:click="showPopup" />
+</van-cell-group>
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%" bind:close="onClose" >
+  <van-datetime-picker title="选择时间" cancel-button-text="" type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" max-hour="{{ maxHour }}"
+    bind:input="onInput" />
+</van-popup>

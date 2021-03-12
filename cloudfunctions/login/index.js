@@ -15,23 +15,37 @@ exports.main = async (event, context) => {
   try {
     if (event.role == 1) {
       mess.data = await db.collection('merchantSignUpInfoCollection').doc(event.phoneNumber).get()
+      if (mess.data.data != null) {
+        if (mess.data.data.merchantSignUpInfo.password == event.password) {
+          mess.code = 1
+          mess.message = '密码正确'
+        }
+        else {
+          mess.code = 2
+          mess.message = '密码错误'
+        }
+      }
+      else {
+        mess.code = 3
+        mess.message = '手机号不存在'
+      }
     }
     else if (event.role == 2) {
       mess.data = await db.collection('riderSignUpInfoCollection').doc(event.phoneNumber).get()
-    }
-    if (mess.data.data != null) {
-      if (mess.data.data.merchantSignUpInfo.password == event.password) {
-        mess.code = 1
-        mess.message = '密码正确'
+      if (mess.data.data != null) {
+        if (mess.data.data.riderSignUpInfo.password == event.password) {
+          mess.code = 1
+          mess.message = '密码正确'
+        }
+        else {
+          mess.code = 2
+          mess.message = '密码错误'
+        }
       }
       else {
-        mess.code = 2
-        mess.message = '密码错误'
+        mess.code = 3
+        mess.message = '手机号不存在'
       }
-    }
-    else {
-      mess.code = 3
-      mess.message = '手机号不存在'
     }
   } catch (error) {
     mess.code = 0

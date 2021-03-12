@@ -26,7 +26,10 @@
         "pages/merchantPages/order/order",
         "pages/merchantPages/food-menu-manage/food-menu-manage",
         "pages/merchantPages/merchant-info-manage/merchant-info-manage",
-        "pages/merchantPages/evaluation-reply/evaluation-reply"
+        "pages/merchantPages/evaluation-reply/evaluation-reply",
+        "pages/merchantPages/merchant-info-manage/shop-manage/shop-manage",
+        "pages/merchantPages/merchant-info-manage/notice-manage/notice-manage",
+        "pages/merchantPages/merchant-info-manage/environment-picture/environment-picture"
       ]
     },
     {

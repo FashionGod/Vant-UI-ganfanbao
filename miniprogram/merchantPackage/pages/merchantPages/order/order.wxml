@@ -94,16 +94,16 @@
     </block>
   </view>
   <view class="function-container">
-    <van-cell-group>
-      <van-cell title="商户信息" center link-type="navigateTo" url="../userPages/userInfomation/userInfomation" icon="shop-o"
+    <van-cell-group border="{{false}}">
+      <van-cell title="商户中心" center link-type="navigateTo" url="../merchant-info-manage/merchant-info-manage" icon="shop-o"
         is-link />
-      <van-cell title="菜品管理" center link-type="navigateTo" url="../userPages/collection/collection" icon="orders-o"
+      <van-cell title="商品管理" center link-type="navigateTo" url="../food-menu-manage/food-menu-manage" icon="orders-o"
         is-link />
-      <van-cell title="评论回复" center link-type="navigateTo" url="../userPages/userEvaluation/userEvaluation" icon="chat-o"
+      <van-cell title="评论回复" center link-type="navigateTo" url="../evaluation-reply/evaluation-reply" icon="chat-o"
         is-link />
-          <van-cell title="反馈建议" center link-type="navigateTo" url="../public/feedback/feedback" icon="records"
+          <van-cell title="反馈建议" center link-type="navigateTo" url="../../../../pages/public/feedback/feedback" icon="records"
         is-link />
-      <van-cell title="联系我们" center bind:click="contactOfficial" icon="phone-o"
+      <van-cell border="{{false}}" title="联系我们" center bind:click="contactOfficial" icon="phone-o"
         is-link />
     </van-cell-group>
   </view>

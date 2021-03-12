@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-switch": "../../../../../miniprogram_npm/@vant/weapp/dist/switch/index",
+    "van-cell": "../../../../../miniprogram_npm/@vant/weapp/dist/cell/index",
+    "van-cell-group": "../../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index",
+    "van-datetime-picker": "../../../../../miniprogram_npm/@vant/weapp/dist/datetime-picker/index",
+    "van-popup": "../../../../../miniprogram_npm/@vant/weapp/dist/popup/index"
+  },
+  "navigationBarTitleText": "店铺管理"
+}

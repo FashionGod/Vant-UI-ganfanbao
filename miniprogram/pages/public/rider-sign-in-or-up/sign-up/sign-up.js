@@ -7,6 +7,7 @@ Page({
   data: {
     IdFront: [],
     IdReverse: [],
+    IdAndPerson: [],
     samePhoneNumber: '',
     IdFrontInstance: [{
       url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/front_side_rider.png',

@@ -53,6 +53,8 @@
   </view>
   <view class="call-user-icon">
     <van-icon size="22px" name="phone" />
-    <van-icon size="22px" name="location" />
+  </view>
+  <view class="call-rider-icon">
+    <van-icon size="22px" name="phone" />
   </view>
 </view>

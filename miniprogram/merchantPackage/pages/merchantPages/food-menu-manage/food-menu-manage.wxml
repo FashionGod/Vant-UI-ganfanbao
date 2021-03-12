@@ -1,2 +1,38 @@
-<!--miniprogram/merchantPackage/pages/merchantPages/food-menu-manage/food-menu-manage.wxml-->
-<text>miniprogram/merchantPackage/pages/merchantPages/food-menu-manage/food-menu-manage.wxml</text>
+<van-collapse wx:if="{{collapseList.length > 0}}" accordion value="{{ activeName }}" bind:change="onChange">
+  <van-collapse-item wx:for="{{collapseList}}" wx:key="name" border="{{false}}" title="{{item.title}}"
+    name="{{item.name}}">
+    <block wx:if="{{item.foodList.length > 0}}">
+      <van-swipe-cell wx:for="{{item.foodList}}" wx:key="title" border="{{false}}" right-width="{{ 65 }}">
+        <van-cell-group>
+          <van-card price="2.00" desc="描述信息" title="商品标题" thumb="https://img01.yzcdn.cn/vant/ipad.jpeg" />
+        </van-cell-group>
+        <van-button slot="right" block="true" square type="danger" custom-class="delete-button">删除</van-button>
+      </van-swipe-cell>
+    </block>
+    <block wx:else>
+      <van-empty image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="当前分类没有商品" />
+    </block>
+    <van-button bindtap="showAddDialog" custom-class="add-button" plain size="small" color="#ffca02">添加商品</van-button>
+  </van-collapse-item>
+</van-collapse>
+<block wx:else>
+  <van-empty image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="您还未添加分类" />
+</block>
+<view class="button-area">
+  <van-button bindtap="addCategory" round size="small" color="#ffca02" class="category-button">添加分类</van-button>
+  <van-button bindtap="editCategory" round size="small" color="#ffca02" class="category-button">编辑当前分类</van-button>
+  <van-button bindtap="deleteCategory" round size="small" color="#ffca02" class="category-button">删除当前分类</van-button>
+</view>
+  <button class="update-category">保存</button>
+
+  <van-dialog
+  use-slot
+  title="标题"
+  show="{{ dialogShow }}"
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="onClose"
+  bind:confirm="onConfirm"
+>
+  <image src="https://img.yzcdn.cn/1.jpg" />
+</van-dialog>

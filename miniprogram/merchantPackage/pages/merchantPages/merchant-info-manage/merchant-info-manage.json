@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-grid": "../../../../miniprogram_npm/@vant/weapp/dist/grid/index",
+    "van-grid-item": "../../../../miniprogram_npm/@vant/weapp/dist/grid-item/index"
+  },
+  "navigationBarTitleText": "商户中心"
 }

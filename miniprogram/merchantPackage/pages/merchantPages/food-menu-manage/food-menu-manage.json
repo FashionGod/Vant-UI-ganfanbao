@@ -2,6 +2,15 @@
   "usingComponents": {
     "van-swipe-cell": "../../../../miniprogram_npm/@vant/weapp/dist/swipe-cell/index",
     "van-collapse": "../../../../miniprogram_npm/@vant/weapp/dist/collapse/index",
-    "van-collapse-item": "../../../../miniprogram_npm/@vant/weapp/dist/collapse-item/index"
-  }
+    "van-collapse-item": "../../../../miniprogram_npm/@vant/weapp/dist/collapse-item/index",
+    "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index",
+    "van-cell": "../../../../miniprogram_npm/@vant/weapp/dist/cell/index",
+    "van-button": "../../../../miniprogram_npm/@vant/weapp/dist/button/index",
+    "van-card": "../../../../miniprogram_npm/@vant/weapp/dist/card/index",
+    "van-empty": "../../../../miniprogram_npm/@vant/weapp/dist/empty/index",
+    "van-sticky": "../../../../miniprogram_npm/@vant/weapp/dist/sticky/index",
+    "van-dialog": "../../../../miniprogram_npm/@vant/weapp/dist/dialog/index"
+  },
+  "navigationBarTitleText": "商品管理",
+  "disableScroll": false
 }

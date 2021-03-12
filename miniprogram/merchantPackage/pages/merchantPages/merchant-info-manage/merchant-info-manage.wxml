@@ -1,2 +1,26 @@
-<!--miniprogram/merchantPackage/pages/merchantPages/merchant-info-manage/merchant-info-manage.wxml-->
-<text>miniprogram/merchantPackage/pages/merchantPages/merchant-info-manage/merchant-info-manage.wxml</text>
+<van-grid clickable column-num="2">
+  <van-grid-item
+    icon="shop-o"
+    link-type="navigateTo"
+    url="./shop-manage/shop-manage"
+    text="店铺管理"
+  />
+  <van-grid-item
+    icon="bag-o"
+    link-type="navigateTo"
+    url="../food-menu-manage/food-menu-manage"
+    text="商品管理"
+  />
+  <van-grid-item
+    icon="bullhorn-o"
+    link-type="navigateTo"
+    url="./notice-manage/notice-manage"
+    text="公告管理"
+  />
+  <van-grid-item
+    icon="photo-o"
+    link-type="navigateTo"
+    url="./environment-picture/environment-picture"
+    text="环境图片管理"
+  />
+</van-grid>

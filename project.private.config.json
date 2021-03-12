@@ -17,6 +17,12 @@
           "pathName": "merchantPackage/pages/merchantPages/order/order",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "merchantPackage/pages/merchantPages/food-menu-manage/food-menu-manage",
+          "pathName": "merchantPackage/pages/merchantPages/food-menu-manage/food-menu-manage",
+          "query": "",
+          "scene": null
         }
       ]
     }

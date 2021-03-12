@@ -1,0 +1,18 @@
+
+.instance-and-image {
+  margin-top: 15rpx;
+  height: fit-content;
+}
+
+.uploader-container {
+  position: relative;
+  height: auto;
+  background-color: #fff;
+  border: none;
+}
+
+.update-picture {
+  margin-top: 35rpx;
+  background-color: #ffca02;
+  color: #ffffff;
+}

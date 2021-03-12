@@ -2,6 +2,7 @@
 .card-container {
   position: relative;
   margin: 25rpx auto;
+  padding-top: 35rpx;
   padding-bottom: 35rpx;
   width: 700rpx;
   height: fit-content;
@@ -18,6 +19,7 @@
   position: relative;
   display: inline-block;
   height: 60rpx;
+  left: -8rpx;
   line-height: 60rpx;
   text-align: center;
   font-size: 38rpx;
@@ -35,8 +37,8 @@
   font-size: 0;
   overflow: hidden;
   border: solid transparent;
-  border-width: 30rpx;
-  border-left: #36394d solid;
+  border-width: 30rpx 20rpx 30rpx 20rpx;
+  border-color: transparent transparent transparent #36394d;
   content: ' ';
 }
 
@@ -120,11 +122,14 @@
 
 .call-user-icon {
   position: absolute;
-  top: 25rpx;
-  right: 35rpx;
+  top: 125rpx;
+  right: 45rpx;
 }
-.call-user-icon :first-child {
-  margin-right: 25rpx;
+
+.call-rider-icon {
+  position: absolute;
+  top: 500rpx;
+  right: 45rpx;
 }
 
 .divider {

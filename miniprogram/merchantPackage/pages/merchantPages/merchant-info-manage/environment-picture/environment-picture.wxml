@@ -1,0 +1,8 @@
+<view class="uploader-container">
+  <van-field required clearable readonly label="添加环境照片" left-icon="photo-o" border="{{ false }}" />
+  <view class="instance-and-image">
+    <van-uploader file-list="{{ IdAndPerson }}" preview-size="188rpx" max-count="5" deletable="{{ true }}"
+      bind:after-read="chooseIdAndPerson" bind:delete="deleteIdAndPerson" />
+  </view>
+</view>
+<button class="update-picture">更新上传</button>
