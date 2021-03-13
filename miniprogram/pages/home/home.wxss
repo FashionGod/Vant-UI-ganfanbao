@@ -4,12 +4,16 @@ page{
 .page-scroll-view {
 	height: calc(100vh - 95rpx);
 }
-.scroll {
-	height: 900rpx;
+.scroll-list {
+	height: 400px;
+	padding: 0;
+	margin: 0;
+	white-space:nowrap;
 }
 .bottom-loading {
-  height: 150rpx;
-	width: 720rpx;
+	margin-bottom: 0;
+  height: 100rpx;
+	width: 100%;
 	text-align: center;
 }
 .merchant-menu {

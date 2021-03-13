@@ -1,6 +1,13 @@
 // miniprogram/merchantPackage/pages/merchantPages/food-menu-manage/food-menu-manage.js
+const app = getApp()
+let isCategoryEdit = false
 Page({
   data: {
+    foodTitle: '',
+    foodPrice: '',
+    foodDesc: '',
+    foodImage: [],
+    inputCategory: '',
     activeName: '',
     collapseList: [{
         name: 0,
@@ -95,7 +102,8 @@ Page({
         ]
       },
     ],
-    dialogShow: false,
+    addOrEditFoodDialog: false,
+    addOrEditCategoryShow: false,
   },
   onLoad: function (options) {
     wx.showModal({
@@ -131,27 +139,32 @@ Page({
     }
   },
   // 分类增删改
-  addCategory() {
-    wx.showModal({
-      title: '分类名',
-      content: '',
-      placeholderText: '请输入分类名',
-      confirmText: '添加',
-      editable: true,
-      success: res=> {
-        console.log(res)
-        let tmpCategory = {
-          name: this.data.collapseList.length,
-          title: res.content,
-          foodList: [],
-        }
-        let tmpList = [...this.data.collapseList]
-        tmpList.push(tmpCategory)
+  showAddCategoryDialog() {
+    this.isCategoryEdit = false
+    this.setData({
+      addOrEditCategoryShow: true
+    })
+  },
+  showEditCategoryDialog() {
+    this.isCategoryEdit = true
+    if (this.data.collapseList.length == 0) {
+      wx.showToast({
+        title: '请先添加一个分类',
+        icon: 'none'
+      })
+    } else {
+      if (this.data.activeName == '' || this.data.activeName == null) {
+        wx.showToast({
+          title: '请先展开一个分类',
+          icon: 'none'
+        })
+      } else {
         this.setData({
-          collapseList: tmpList
+          addOrEditCategoryShow: true,
+          inputCategory: this.data.collapseList[this.data.activeName].title
         })
       }
-    })
+    }
   },
   deleteCategory() {
     if (this.data.collapseList.length == 0) {
@@ -159,9 +172,7 @@ Page({
         title: '请先添加一个分类',
         icon: 'none'
       })
-    }
-    else {
-      console.log(this.data.activeName)
+    } else {
       if (this.data.activeName === '' || this.data.activeName === null) {
         wx.showToast({
           title: '请先展开一个分类',
@@ -178,63 +189,233 @@ Page({
           success(res) {
             if (res.confirm) {
               let tmpList = [...that.data.collapseList]
-              console.log(delIndex)
               tmpList.splice(delIndex, 1)
-              console.log(tmpList)
               that.setData({
                 collapseList: tmpList,
                 activeName: ''
               })
             } else if (res.cancel) {
-              console.log('用户点击取消')
             }
           }
         })
       }
     }
   },
-  editCategory() {
-    if (this.data.collapseList.length == 0) {
+  onCategoryConfirm() {
+    // 新增OR编辑
+    let tmpinputCategory = this.data.inputCategory
+    let tmpList = [...this.data.collapseList]
+    let exsistIndex = tmpList.findIndex(item => item.title === tmpinputCategory)
+    if(tmpinputCategory === '' || tmpinputCategory === null) {
       wx.showToast({
-        title: '请先添加一个分类',
-        icon: 'none'
+        title: '分类名不能为空',
+        icon: 'error'
       })
     }
     else {
-      if (this.data.activeName == '' || this.data.activeName == null) {
-        wx.showToast({
-          title: '请先展开一个分类',
-          icon: 'none'
-        })
-      }
-      else {
-        wx.showModal({
-          title: '分类名',
-          content: '',
-          placeholderText: '请输入分类名',
-          confirmText: '保存',
-          editable: true,
-          success: res=> {
-            console.log(res)
-            let tmpList = [...this.data.collapseList]
-            tmpList[this.data.activeName].title = res.content
-            this.setData({
-              collapseList: tmpList
-            })
+      if (!this.isCategoryEdit) {
+        if (exsistIndex !== -1) {
+          wx.showToast({
+            title: '该分类已存在',
+            icon: 'error'
+          })
+        }
+         else {
+          let tmpCategory = {
+            name: this.data.collapseList.length,
+            title: this.data.inputCategory,
+            foodList: [],
           }
+          tmpList.push(tmpCategory)
+          this.setData({
+            collapseList: tmpList,
+            addOrEditCategoryShow: false,
+            inputCategory: '' // 设置完置空
+          })
+        }
+      } else {
+        tmpList[this.data.activeName].title = this.data.inputCategory
+        this.setData({
+          collapseList: tmpList,
+          addOrEditCategoryShow: false,
+          inputCategory: '' // 设置完置空
         })
       }
     }
   },
+  onCategoryCancel(e) {
+    this.setData({
+      addFoodShow: false,
+      addOrEditCategoryShow: false,
+      inputCategory: ''
+    })
+  },
   // 商品增删改
-  showAddDialog() {
-
+  showAddFoodDialog() {
+    this.setData({
+      addOrEditFoodDialog: true
+    })
   },
-  onConfirm(e) {
-    console.log(e)
+  showEditFoodDialog(e) {
+    let foodItem = e.currentTarget.dataset.fooditem
+    this.setData({
+      foodTitle: foodItem.title,
+      foodPrice: foodItem.price,
+      foodDesc: foodItem.desc,
+      foodImage: [{
+        url: foodItem.thumb,
+        name: '商品图片',
+        deletable: true
+      }],
+      addOrEditFoodDialog: true,
+    })
   },
-  onClose(e) {
-    console.log(e)
-    this.setData({ show: false })
+  onFoodConfirm() {
+    // 新增
+    if (this.data.foodTitle.trim() === '') {
+      wx.showToast({
+        title: '商品名不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    else if (this.data.foodDesc.trim() === '') {
+      wx.showToast({
+        title: '商品描述不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    else if (this.data.foodPrice.trim() === '') {
+      wx.showToast({
+        title: '商品价格不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    else if (this.data.foodImage.length == 0) {
+      wx.showToast({
+        title: '商品图片不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    else {
+      let foodObj = {
+        title: this.data.foodTitle,
+        desc: this.data.foodDesc,
+        price: this.data.foodPrice,
+        thumb: this.data.foodImage[0].url
+      }
+      let tmpList = this.data.collapseList
+      let i = this.data.collapseList.findIndex(item => item.name === this.data.activeName)
+      let existIndex = tmpList[i].foodList.findIndex(item => item.title === foodObj.title)
+      if (existIndex !== -1) {
+        wx.showToast({
+          title: '该商品已存在，请勿重复添加',
+          icon: 'none'
+        })
+        this.setData({
+          addOrEditFoodDialog: false
+        })
+      }
+      else {
+        tmpList[i].foodList.push(foodObj)
+        this.setData({
+          collapseList: tmpList,
+          foodDesc: '',
+          foodPrice: '',
+          foodImage: [],
+          foodTitle: '',
+          addOrEditFoodDialog: false
+        })
+      }
+    }
+  },
+  onFoodCancel() {
+    this.setData({
+      addOrEditFoodDialog: false,
+      foodTitle: '',
+      foodPrice: '',
+      foodDesc: '',
+      foodImage: [],
+    })
+  },
+  deleteFood(e) {
+    if (e.detail === 'right') {
+      let { title } = e.currentTarget.dataset
+      wx.showModal({
+        title: '提示',
+        content: `你确定要删除'${title}'吗`,
+        confirmText: '删除',
+        confirmColor: '#ff0000',
+        success: res => {
+          if (res.confirm) {
+            let tmpCollapseList = this.data.collapseList
+            let foodListIndex = this.data.collapseList.findIndex(item => item.name === this.data.activeName)
+            let tmpFoodList = this.data.collapseList[foodListIndex].foodList
+            let foodIndex = tmpFoodList.findIndex(item => item.title === title)
+            tmpFoodList.splice(foodIndex, 1)
+            tmpCollapseList[foodListIndex].foodList = tmpFoodList
+            this.setData({
+              collapseList: tmpCollapseList
+            })
+          }
+        }
+      })
+    }
+  },
+  // 选择and删除商品图片
+  chooseFoodImage(event) {
+    console.log(event)
+    const {
+      file
+    } = event.detail;
+    this.setData({
+      foodImage: [{
+        url: file.url,
+        name: '商品图片',
+        deletable: true,
+      }]
+    })
+  },
+  deleteFoodImage() {
+    this.setData({
+      foodImage: []
+    })
+  },
+  foodImageOversize() {
+    wx.showToast({
+      title: '图片大小不能超过300kb',
+      icon: 'none',
+      duration: 2000
+    })
+  },
+  // 保存并上架商品
+  uploadOnSale() {
+    let {collapseList} = this.data 
+    collapseList.map(obj => {
+      obj.foodList.map(obj => {
+        // wx.cloud.uploadFile({
+        //   cloudPath: 'merchantInfo/IdFront/' + params.userName + "/" + new Date().getTime() + '.png',
+        //   filePath: this.data.IdFront[0].url,
+        //   success: res => {
+        //     tmpMerchantSignUpImages.IdFront = res.fileID;
+        //     resolve()
+        //   },
+        //   fail: err => {
+        //     uploadSuccessFlag = false;
+        //     rejcet()
+        //   }
+        // })
+      })
+    })
+    wx.cloud.callFunction({
+      name: 'merchantMenuUpload',
+      data: {
+        menuList: this.data.collapseList,
+        id: app.globalData.userInfo.id
+      }
+    })
   }
 })

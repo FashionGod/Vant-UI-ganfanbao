@@ -39,3 +39,21 @@
   background-color: #ffca02;
   color: #ffffff;
 }
+
+.uploader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  border: none;
+}
+
+.instance-and-image {
+  margin-top: 15rpx;
+  margin-left: 225rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 200rpx;
+  line-height: 200rpx;
+}

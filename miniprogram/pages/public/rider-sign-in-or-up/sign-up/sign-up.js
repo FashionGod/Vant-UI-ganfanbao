@@ -25,6 +25,13 @@ Page({
       deletable: false,
     }, ],
   },
+  imageOversize() {
+    wx.showToast({
+      title: '图片大小不能超过500kb',
+      icon: 'none',
+      duration: 2000
+    })
+  },
   // 上传and删除身份证正面
   chooseIdFront(event) {
     const {
@@ -132,7 +139,7 @@ Page({
       let p1 = new Promise((resolve,rejcet)=>{
         // 上传-身份证正面
         wx.cloud.uploadFile({
-          cloudPath: 'riderInfo/IdFront/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'riderInfo/' + params.phoneNumber + '/IdFront/' + new Date().getTime() + '.png',
           filePath: this.data.IdFront[0].url,
           success: res => {
             tmpRiderSignUpImages.IdFront = res.fileID;
@@ -147,7 +154,7 @@ Page({
       let p2 = new Promise((resolve,rejcet)=>{
         // 上传-身份证反面
         wx.cloud.uploadFile({
-          cloudPath: 'riderInfo/IdReverse/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'riderInfo/' + params.phoneNumber + '/IdReverse/' + new Date().getTime() + '.png',
           filePath: this.data.IdReverse[0].url,
           success: res => {
             tmpRiderSignUpImages.IdReverse = res.fileID;
@@ -162,7 +169,7 @@ Page({
       let p3 = new Promise((resolve,rejcet)=>{
         // 上传-手持身份证
         wx.cloud.uploadFile({
-          cloudPath: 'riderInfo/IdAndPerson/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'riderInfo/' + params.phoneNumber + '/IdAndPerson/' + new Date().getTime() + '.png',
           filePath: this.data.IdAndPerson[0].url,
           success: res => {
             tmpRiderSignUpImages.IdAndPerson = res.fileID;

@@ -1,1 +1,10 @@
 /* miniprogram/pages/userPages/collection/collection.wxss */
+.bottom-loading {
+  height: 100rpx;
+	width: 720rpx;
+	text-align: center;
+}
+
+.scroll {
+	height: 100vh;
+}

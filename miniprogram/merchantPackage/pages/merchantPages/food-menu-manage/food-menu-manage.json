@@ -9,7 +9,9 @@
     "van-card": "../../../../miniprogram_npm/@vant/weapp/dist/card/index",
     "van-empty": "../../../../miniprogram_npm/@vant/weapp/dist/empty/index",
     "van-sticky": "../../../../miniprogram_npm/@vant/weapp/dist/sticky/index",
-    "van-dialog": "../../../../miniprogram_npm/@vant/weapp/dist/dialog/index"
+    "van-dialog": "../../../../miniprogram_npm/@vant/weapp/dist/dialog/index",
+    "van-field": "../../../../miniprogram_npm/@vant/weapp/dist/field/index",
+    "van-uploader": "../../../../miniprogram_npm/@vant/weapp/dist/uploader/index"
   },
   "navigationBarTitleText": "商品管理",
   "disableScroll": false

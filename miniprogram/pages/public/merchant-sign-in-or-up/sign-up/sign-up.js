@@ -48,6 +48,13 @@ Page({
       deletable: false,
     }, ],
   },
+  imageOversize() {
+    wx.showToast({
+      title: '图片大小不能超过500kb',
+      icon: 'none',
+      duration: 2000
+    })
+  },
   // 上传and删除身份证正面
   chooseIdFront(event) {
     const {
@@ -251,7 +258,7 @@ Page({
       // 上传-身份证正面
       let p1 = new Promise((resolve, reject) => {
         wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/IdFront/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'merchantInfo/' + params.phoneNumber + '/IdFront/'+ new Date().getTime() + '.png',
           filePath: this.data.IdFront[0].url,
           success: res => {
             tmpMerchantSignUpImages.IdFront = res.fileID;
@@ -266,7 +273,7 @@ Page({
       let p2 = new Promise((resolve, reject) => {
         // 上传-身份证反面
         wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/IdReverse/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'merchantInfo/' + params.phoneNumber + '/IdReverse/'+ new Date().getTime() + '.png',
           filePath: this.data.IdReverse[0].url,
           success: res => {
             tmpMerchantSignUpImages.IdReverse = res.fileID;
@@ -281,7 +288,7 @@ Page({
       let p3 = new Promise((resolve, reject) => {
         // 上传-手持身份证
         wx.cloud.uploadFile({
-          cloudPath: 'riderInfo/IdAndPerson/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'merchantInfo/' + params.phoneNumber + '/IdAndPerson/'+ new Date().getTime() + '.png',
           filePath: this.data.IdAndPerson[0].url,
           success: res => {
             tmpMerchantSignUpImages.IdAndPerson = res.fileID;
@@ -296,7 +303,7 @@ Page({
       let p4 = new Promise((resolve, reject) => {
         // 上传-营业执照
         wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/businessLicense/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'merchantInfo/' + params.phoneNumber + '/businessLicense/'+ new Date().getTime() + '.png',
           filePath: this.data.businessLicense[0].url,
           success: res => {
             tmpMerchantSignUpImages.businessLicense = res.fileID;
@@ -311,7 +318,7 @@ Page({
       let p5 = new Promise((resolve, reject) => {
         // 上传-食品许可：
         wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/foodLicense/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'merchantInfo/' + params.phoneNumber + '/foodLicense/'+ new Date().getTime() + '.png',
           filePath: this.data.foodLicense[0].url,
           success: res => {
             tmpMerchantSignUpImages.foodLicense = res.fileID;
@@ -326,7 +333,7 @@ Page({
       let p6 = new Promise((resolve, reject) => {
         // 上传-商家门面：
         wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/merchantDoor/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'merchantInfo/' + params.phoneNumber + '/merchantDoor/'+ new Date().getTime() + '.png',
           filePath: this.data.merchantDoor[0].url,
           success: res => {
             tmpMerchantSignUpImages.merchantDoor = res.fileID;
@@ -341,7 +348,7 @@ Page({
       let p7 = new Promise((resolve, reject) => {
         // 上传-店内环境：
         wx.cloud.uploadFile({
-          cloudPath: 'merchantInfo/merchantEnvironment/' + params.userName + "/" + new Date().getTime() + '.png',
+          cloudPath: 'merchantInfo/' + params.phoneNumber + '/merchantEnvironment/'+ new Date().getTime() + '.png',
           filePath: this.data.merchantEnvironment[0].url,
           success: res => {
             tmpMerchantSignUpImages.merchantEnvironment = res.fileID;

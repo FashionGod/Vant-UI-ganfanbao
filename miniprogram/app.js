@@ -1,6 +1,7 @@
 //app.js
 App({
   data: {
+    userInfo: {}
   },
   onLaunch: function () {
     if (!wx.cloud) {
@@ -19,6 +20,9 @@ App({
     this.globalData = {
       theme: {
         navigationBarColor: '#ffca02'
+      },
+      userInfo: {
+        
       }
     }
   }

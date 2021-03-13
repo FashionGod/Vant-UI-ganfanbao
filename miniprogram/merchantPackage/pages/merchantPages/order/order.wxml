@@ -1,123 +1,114 @@
 <block wx:if="{{!showMePageFlag}}">
-  <van-tabs sticky swipeable color="#ffb300" title-active-color="#ffb300"  animated>
-  <van-tab title="新订单">
-    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
-   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
-  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <!--触底的loading  -->
-      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
-      </view>
-    </scroll-view>
-  </van-tab>
-  <van-tab title="配送中">
-    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
-   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
-  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <!--触底的loading  -->
-      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
-      </view>
-    </scroll-view>
-  </van-tab>
-  <van-tab title="退款">
-    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
-   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
-  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <!--触底的loading  -->
-      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
-      </view>
-    </scroll-view>
-  </van-tab>
-  <van-tab title="已完成">
-    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
-   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
-  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <!--触底的loading  -->
-      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
-      </view>
-    </scroll-view>
-  </van-tab>
-  <van-tab title="已退款">
-    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"   
-   enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
-  bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <merchant-order-card></merchant-order-card>
-      <!--触底的loading  -->
-      <view class="bottom-loading"><van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
-      </view>
-    </scroll-view>
-  </van-tab>
-</van-tabs>
+  <van-tabs sticky swipeable color="#ffb300" title-active-color="#ffb300" animated>
+    <van-tab title="新订单">
+      <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view"
+        refresher-enabled="{{true}}" enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+        bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <!--触底的loading  -->
+        <view class="bottom-loading">
+          <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="配送中">
+      <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view"
+        refresher-enabled="{{true}}" enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+        bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <!--触底的loading  -->
+        <view class="bottom-loading">
+          <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="退款">
+      <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view"
+        refresher-enabled="{{true}}" enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+        bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <!--触底的loading  -->
+        <view class="bottom-loading">
+          <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="已完成">
+      <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view"
+        refresher-enabled="{{true}}" enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+        bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <!--触底的loading  -->
+        <view class="bottom-loading">
+          <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="已退款">
+      <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view"
+        refresher-enabled="{{true}}" enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}"
+        bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <merchant-order-card></merchant-order-card>
+        <!--触底的loading  -->
+        <view class="bottom-loading">
+          <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+        </view>
+      </scroll-view>
+    </van-tab>
+  </van-tabs>
 </block>
 <block wx:if="{{showMePageFlag}}">
-    <view class="page-container">
-  <view class="profile-picture">
-    <block wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-        <button class="disapear" animation="{{animation_class}}" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-          <image mode="aspectFit" class="userinfo-avatar" src="../../../../assets/homeImages/login.png"></image>
-        </button>
-        <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">未登录</text>
-    </block>
-    <block wx:else > 
-        <navigator url="../userPages/userInfomation/userInfomation" hover-class="none">
-          <image class="disapear" animation="{{animation_class}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
-        </navigator>
-        <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="page-container">
+    <view class="profile-picture">
+      <view class="disapear" animation="{{animation_class}}">
+        <image mode="aspectFit" class="userinfo-avatar" src="../../../../assets/homeImages/ganfanbao.png"></image>
+      </view>
+      <text class="disapear" animation="{{animation_class}}" class="userinfo-nickname">干饭饱</text>
+    </view>
+    <view class="function-container">
+      <van-cell-group border="{{false}}">
+        <van-cell title="商户中心" center link-type="navigateTo" url="../merchant-info-manage/merchant-info-manage"
+          icon="shop-o" is-link />
+        <van-cell title="商品管理" center link-type="navigateTo" url="../food-menu-manage/food-menu-manage" icon="orders-o"
+          is-link />
+        <van-cell title="评论回复" center link-type="navigateTo" url="../evaluation-reply/evaluation-reply" icon="chat-o"
+          is-link />
+        <van-cell title="反馈建议" center link-type="navigateTo" url="../../../../pages/public/feedback/feedback"
+          icon="records" is-link />
+        <van-cell border="{{false}}" title="联系我们" center bind:click="contactOfficial" icon="phone-o" is-link />
+      </van-cell-group>
+    </view>
+    <view class="copyright">
+      @FashionGod
+    </view>
   </view>
-  <view class="function-container">
-    <van-cell-group border="{{false}}">
-      <van-cell title="商户中心" center link-type="navigateTo" url="../merchant-info-manage/merchant-info-manage" icon="shop-o"
-        is-link />
-      <van-cell title="商品管理" center link-type="navigateTo" url="../food-menu-manage/food-menu-manage" icon="orders-o"
-        is-link />
-      <van-cell title="评论回复" center link-type="navigateTo" url="../evaluation-reply/evaluation-reply" icon="chat-o"
-        is-link />
-          <van-cell title="反馈建议" center link-type="navigateTo" url="../../../../pages/public/feedback/feedback" icon="records"
-        is-link />
-      <van-cell border="{{false}}" title="联系我们" center bind:click="contactOfficial" icon="phone-o"
-        is-link />
-    </van-cell-group>
-  </view>
-  <view class="copyright">
-    @FashionGod
-  </view>
-</view>
 </block>
-<van-tabbar
-  active="{{ tabbarActive }}"
-  active-color="#ffca02"
-  inactive-color="#000"
-  bind:change="onChange"
->
+<van-tabbar active="{{ tabbarActive }}" active-color="#ffca02" inactive-color="#000" bind:change="onChange">
   <van-tabbar-item icon="home-o">首页</van-tabbar-item>
   <van-tabbar-item icon="manager-o">我的</van-tabbar-item>
 </van-tabbar>

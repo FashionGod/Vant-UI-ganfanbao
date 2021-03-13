@@ -1,4 +1,5 @@
 // miniprogram/pages/merchantPages/sign-in/sign-in.js
+const app = getApp()
 Page({
 
   /**
@@ -79,9 +80,11 @@ Page({
         password: formValue.password,
       },
       success: res => {
-        console.log(res)
         let {mess} = res.result
         if (mess.code == 1) {
+          app.globalData.userInfo = {
+            id: mess.data.data._id
+          }
           wx.reLaunch({
             url: '../../../../merchantPackage/pages/merchantPages/order/order',
           })

@@ -46,25 +46,23 @@
     <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
       bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
   </van-dropdown-menu>
-  <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll"
-    refresher-enabled="{{dropDownForbidenScroll}}" enable-back-to-top="{{true}}" style="height:75vh;"
+  <scroll-view scroll-y="{{true}}" class="scroll-list"
+    refresher-enabled="{{dropDownForbidenScroll}}" enable-back-to-top="{{true}}"
     refresher-triggered="{{pullDownloading}}" bindrefresherrefresh="pullDownFresh"
-    bindscrolltolower="scrollTouchedBottom">
+    bindscrolltolower="scrollTouchedBottom" style="white-space: nowrap;">
     <view class="merchant-list">
       <!-- 商家列表 -->
       <block wx:if="{{merchantList.length > 0}}">
-        <view wx:for="{{merchantList}}" wx:key="_id">
-          <merchant-card bindtap="navigateToDetail" data-item="{{item}}"
+          <merchant-card wx:for="{{merchantList}}" wx:key="_id" bindtap="navigateToDetail" data-item="{{item}}"
             merchantImg="{{item.merchantSignUpInfo.merchantSignUpImages.merchantDoor}}"></merchant-card>
-        </view>
+    <!--触底的loading  -->
+    <view class="bottom-loading">
+      <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+    </view>
       </block>
       <block wx:else>
         <van-empty class="custom-image" description="暂无商家" />
       </block>
-    </view>
-    <!--触底的loading  -->
-    <view class="bottom-loading">
-      <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
     </view>
   </scroll-view>
 </scroll-view>
