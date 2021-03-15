@@ -10,6 +10,7 @@ Page({
     foodLicense: [],
     merchantDoor: [],
     merchantEnvironment: [],
+    merchantLogo: [],
     merchantSignUpImages: [],
     samePhoneNumber: '',
     IdFrontInstance: [{
@@ -45,6 +46,11 @@ Page({
     merchantEnvironmentInstance: [{
       url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/merchant_environment.png',
       name: '商家环境照片',
+      deletable: false,
+    }, ],
+    merchantLogoInstance: [{
+      url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/merchant_logo.png',
+      name: '商家logo',
       deletable: false,
     }, ],
   },
@@ -181,6 +187,24 @@ Page({
       merchantEnvironment: []
     })
   },
+  // 上传and删除店铺logo：
+  chooseMerchantLogo(event) {
+    const {
+      file
+    } = event.detail;
+    this.setData({
+      merchantLogo: [{
+        url: file.url,
+        name: '商家店铺logo',
+        deletable: true,
+      }]
+    })
+  },
+  deleteMerchantLogo() {
+    this.setData({
+      merchantLogo: []
+    })
+  },
   // 表单提交
   async formSubmit(e) {
     // 参数校验
@@ -232,9 +256,17 @@ Page({
           showCancel: false,
         })
         return;
-      } else if (this.data.merchantEnvironment.length === 0) {
+      }
+       else if (this.data.merchantEnvironment.length === 0) {
         wx.showModal({
           content: '环境照片未上传，请先上传再提交',
+          showCancel: false,
+        })
+        return;
+      }
+       else if (this.data.merchantLogo.length === 0) {
+        wx.showModal({
+          content: '店铺logo未上传，请先上传再提交',
           showCancel: false,
         })
         return;
@@ -351,7 +383,7 @@ Page({
           cloudPath: 'merchantInfo/' + params.phoneNumber + '/merchantEnvironment/'+ new Date().getTime() + '.png',
           filePath: this.data.merchantEnvironment[0].url,
           success: res => {
-            tmpMerchantSignUpImages.merchantEnvironment = res.fileID;
+            tmpMerchantSignUpImages.merchantEnvironment = [res.fileID];
             resolve()
           },
           fail: err => {
@@ -360,7 +392,22 @@ Page({
           }
         })
       })
-      Promise.all([p1, p2, p3, p4, p5, p6, p7]).then(()=>{
+      let p8 = new Promise((resolve, reject) => {
+        // 上传-店铺logo：
+        wx.cloud.uploadFile({
+          cloudPath: 'merchantInfo/' + params.phoneNumber + '/merchantLogo/'+ new Date().getTime() + '.png',
+          filePath: this.data.merchantLogo[0].url,
+          success: res => {
+            tmpMerchantSignUpImages.merchantLogo = res.fileID;
+            resolve()
+          },
+          fail: err => {
+            uploadSuccessFlag = false;
+            rejcet()
+          }
+        })
+      })
+      Promise.all([p1, p2, p3, p4, p5, p6, p7, p8]).then(()=>{
         this.setData({
           merchantSignUpImages: tmpMerchantSignUpImages
         })

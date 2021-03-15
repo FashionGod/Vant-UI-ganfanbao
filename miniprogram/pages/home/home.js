@@ -124,9 +124,9 @@ Page({
     console.log('淦，你碰到俺底部啦！');
   },
   navigateToDetail(e) {
-    console.log(e)
+    const {item} = e.currentTarget.dataset
     wx.navigateTo({
-      url: '../userPages/merchant-delicious-detail/merchant-delicious-detail',
+      url: '../userPages/merchant-delicious-detail/merchant-delicious-detail?item='+JSON.stringify(item),
     })
   },
   // 云函数 查询商家列表

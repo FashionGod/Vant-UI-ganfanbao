@@ -1,5 +1,6 @@
 // miniprogram/pages/userPages/merchant-delicious-detail/merchant-delicious-detail.js
 import tool from "../../public/tools/tool.js";
+let merchantInfo = {}
 Page({
 
   /**
@@ -33,136 +34,106 @@ Page({
     merchantList: [
       {
         title: '满减专区',
-        merchantDetailList: [
+        foodList: [
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '满减第一个商品',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
         ]
       },
       {
         title: '折扣专区',
-        merchantDetailList: [
+        foodList: [
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '折扣第一个商品',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
         ]
       },
       {
         title: '新品专区',
-        merchantDetailList: [
+        foodList: [
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '新品第一个商品',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
           {
-            num: 2,
-            tag: '标签',
             price: 10.00,
             desc: '描述信息',
             title: '商品标题',
-            thumb: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+            url: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
           },
         ]
       },
@@ -222,11 +193,23 @@ onPageScroll: tool.debounce(function(res) {
  /**
   * 生命周期函数--监听页面加载
   */
- onLoad: function () {
-  this.data.merchantList.forEach((item, i)=>{
-    this.data.arr[i + 1] = 120*item.merchantDetailList.length + this.data.arr[i];
+ onLoad: function (options) {
+  this.merchantInfo = JSON.parse(options.item)
+  console.log(this.merchantInfo)
+  let tmpList = this.merchantInfo.merchantMenuList ? this.merchantInfo.merchantMenuList.map((obj)=>{
+    let tmpObj = {
+      title: obj.title
+    }
+    return tmpObj
+  }) : []
+  this.setData({
+    merchantList: this.merchantInfo.merchantMenuList ? this.merchantInfo.merchantMenuList : [],
+    categoryList: tmpList,
+    merchantInfo: this.merchantInfo
   })
-  console.log(this.data.arr);
+  this.data.merchantList.forEach((item, i)=>{
+    this.data.arr[i + 1] = 120*item.foodList.length + this.data.arr[i];
+  })
   // 加入锚点标记id
   var tmpCategoryList = this.data.categoryList
   var tmpMerchantList = this.data.merchantList
@@ -247,8 +230,8 @@ onPageScroll: tool.debounce(function(res) {
  // --------------------------------------------- 商家 -------------------------------------------------
  previewImg(e) {
   wx.previewImage({
-    current: this.data.swiperImgList[e.currentTarget.dataset.i], // 当前显示图片的http链接
-    urls: this.data.swiperImgList // 需要预览的图片http链接列表
+    current: this.merchantInfo.merchantSignUpInfo.merchantSignUpImages.merchantEnvironment[e.currentTarget.dataset.i], // 当前显示图片的http链接
+    urls: this.merchantInfo.merchantSignUpInfo.merchantSignUpImages.merchantEnvironment // 需要预览的图片http链接列表
   })
 },
   // 联系商家

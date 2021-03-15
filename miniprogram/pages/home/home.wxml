@@ -9,7 +9,7 @@
 </block>
 <!-- 搜索框外的条件渲染 -->
 <scroll-view wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced="{{true}}"
-  bounces="{{false}}" showScrollbar="{{false}}" fast-deceleration="{{true}}">
+  bounces="{{false}}" showScrollbar="{{false}}">
   <swiper autoplay="true" interval="3500" duration="500" circular="true">
     <block wx:for="{{swiperImgList}}" wx:key="*this">
       <swiper-item bindtap="previewImg" data-i="{{index}}">
@@ -41,8 +41,8 @@
     </van-grid>
   </view>
   <van-dropdown-menu active-color="#faad14">
-    <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change"
-      bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
+    <!-- <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change"
+      bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" /> -->
     <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
       bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
   </van-dropdown-menu>
@@ -54,7 +54,7 @@
       <!-- 商家列表 -->
       <block wx:if="{{merchantList.length > 0}}">
           <merchant-card wx:for="{{merchantList}}" wx:key="_id" bindtap="navigateToDetail" data-item="{{item}}"
-            merchantImg="{{item.merchantSignUpInfo.merchantSignUpImages.merchantDoor}}"></merchant-card>
+            merchantImg="{{item.merchantSignUpInfo.merchantSignUpImages.merchantLogo}}"></merchant-card>
     <!--触底的loading  -->
     <view class="bottom-loading">
       <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>

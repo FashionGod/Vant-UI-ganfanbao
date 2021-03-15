@@ -10,6 +10,7 @@ const _ = db.command
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const mess = {}
+  event.merchantSignUpInfo.merchantSignUpImages.merchantEnviroment.push(event.merchantSignUpInfo.merchantSignUpImages.merchantDoor).reverse()
   try {
         await db.collection('merchantSignUpInfoCollection').add({
         // data 字段表示需新增的 JSON 数据
@@ -19,11 +20,15 @@ exports.main = async (event, context) => {
             name: event.merchantSignUpInfo.name,
             userName: event.merchantSignUpInfo.userName,
             IDNumber: event.merchantSignUpInfo.IDNumber,
-            password: event.merchantSignUpInfo.password,
             phoneNumber: event.merchantSignUpInfo.phoneNumber,
-            merchantSignUpImages: event.merchantSignUpInfo.merchantSignUpImages,
-            checked: false
-          }
+            merchantLogo: event.merchantSignUpInfo.merchantSignUpImages.merchantLogo,
+          },
+          merchantSignUpImages: event.merchantSignUpInfo.merchantSignUpImages,
+          businessLicense: event.merchantSignUpInfo.merchantSignUpImages.businessLicense,
+          foodLicense: event.merchantSignUpInfo.merchantSignUpImages.foodLicense,
+          merchantEnviroment: event.merchantSignUpInfo.merchantSignUpImages.merchantEnviroment,
+          password: event.merchantSignUpInfo.password,
+          checked: false,
         },
       })
       mess.code = 1

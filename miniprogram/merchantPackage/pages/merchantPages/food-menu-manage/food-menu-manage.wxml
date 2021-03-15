@@ -4,7 +4,7 @@
     <block wx:if="{{item.foodList.length > 0}}">
       <van-swipe-cell wx:for="{{item.foodList}}" wx:key="title" border="{{false}}" bind:click="deleteFood" data-title="{{item.title}}" right-width="{{ 65 }}">
         <van-cell-group>
-          <van-card bindtap="showEditFoodDialog" data-fooditem="{{item}}" price="{{item.price}}" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.thumb}}" />
+          <van-card bindtap="showEditFoodDialog" data-fooditem="{{item}}" price="{{item.price}}" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.url}}" />
         </van-cell-group>
         <van-button slot="right" block="true" square type="danger" custom-class="delete-button">删除</van-button>
       </van-swipe-cell>
@@ -42,13 +42,12 @@
     placeholder="请输入商品名"
   />
   <van-field
-    clearable
     label="描述信息"
     type="textarea"
     autosize="true"
     maxlength="50"
     model:value="{{foodDesc}}"
-    placeholder="请输入商品描述"
+    placeholder="请输入商品描述限50字"
   />
   <van-field
     clearable

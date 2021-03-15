@@ -23,6 +23,9 @@ App({
       },
       userInfo: {
         
+      },
+      merchantInfo: {
+        
       }
     }
   }
