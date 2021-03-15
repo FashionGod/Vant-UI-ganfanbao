@@ -17,13 +17,12 @@ exports.main = async (event, context) => {
           _id: event.riderSignUpInfo.phoneNumber, // 手机号为唯一Id
           riderSignUpInfo: {
             name: event.riderSignUpInfo.name,
-            userName: event.riderSignUpInfo.userName,
             IDNumber: event.riderSignUpInfo.IDNumber,
-            password: event.riderSignUpInfo.password,
             phoneNumber: event.riderSignUpInfo.phoneNumber,
             riderSignUpImages: event.riderSignUpInfo.riderSignUpImages,
-            checked: false
-          }
+          },
+          checked: false,
+          password: event.riderSignUpInfo.password,
         },
       })
       mess.code = 1

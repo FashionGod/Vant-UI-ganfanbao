@@ -9,7 +9,7 @@
       <van-field required name="password" clearable placeholder="请设置登录密码" maxlength="16" label="登录密码" left-icon="closed-eye" />
       <van-field required name="name" clearable placeholder="请输入真实姓名" maxlength="8" label="姓名" left-icon="contact" />
       <van-field required name="IDNumber" type="idcard" clearable placeholder="请输入身份证号" maxlength="18" label="身份证号" left-icon="idcard" />
-      <van-field required name="merchantName" clearable placeholder="请输入店铺名称" maxlength="10" label="店铺名称" left-icon="shop-o" />
+      <van-field required name="shopName" clearable placeholder="请输入店铺名称" maxlength="10" label="店铺名称" left-icon="shop-o" />
       <van-field required clearable readonly label="身份认证" left-icon="photo-o" border="{{ false }}" 
     placeholder="图片大小不能超过500kb" placeholder-style="color: #ffa54f;"/>
     </van-cell-group>
@@ -60,7 +60,7 @@
         <van-uploader file-list="{{ merchantEnvironment }}" preview-size="188rpx" max-count="1"  sizeType="{{['compressed']}}" deletable="{{ true }}" bind:after-read="chooseMerchantEnvironment" max-size="512000" bind:oversize="imageOversize" bind:delete="deleteMerchantEnvironment" />
       </view>
       <view class="instance-and-image">
-        <text user-select="true">店内环境：</text>
+        <text user-select="true">商户LOGO：</text>
         <van-uploader file-list="{{ merchantLogoInstance }}" preview-size="188rpx" image-fit="scaleToFill" max-count="1"  sizeType="{{['compressed']}}"/>
         <van-uploader file-list="{{ merchantLogo }}" preview-size="188rpx" max-count="1"  sizeType="{{['compressed']}}" deletable="{{ true }}" bind:after-read="chooseMerchantLogo" max-size="512000" bind:oversize="imageOversize" bind:delete="deleteMerchantLogo" />
       </view>

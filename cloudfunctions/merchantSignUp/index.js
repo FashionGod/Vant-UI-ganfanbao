@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
           _id: event.merchantSignUpInfo.phoneNumber, // 手机号为唯一Id
           merchantSignUpInfo: {
             name: event.merchantSignUpInfo.name,
-            userName: event.merchantSignUpInfo.userName,
+            shopName: event.merchantSignUpInfo.shopName,
             IDNumber: event.merchantSignUpInfo.IDNumber,
             phoneNumber: event.merchantSignUpInfo.phoneNumber,
             merchantLogo: event.merchantSignUpInfo.merchantSignUpImages.merchantLogo,
