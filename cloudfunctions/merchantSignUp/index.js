@@ -10,7 +10,7 @@ const _ = db.command
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const mess = {}
-  let envList = event.merchantSignUpInfo.merchantSignUpImages.merchantEnviroment ? event.merchantSignUpInfo.merchantSignUpImages.merchantEnviroment : []
+  let envList = event.merchantSignUpInfo.merchantSignUpImages.merchantEnvironment ? event.merchantSignUpInfo.merchantSignUpImages.merchantEnvironment : []
   envList.push(event.merchantSignUpInfo.merchantSignUpImages.merchantDoor)
   envList.reverse()
   try {
@@ -28,7 +28,7 @@ exports.main = async (event, context) => {
           merchantSignUpImages: event.merchantSignUpInfo.merchantSignUpImages,
           businessLicense: event.merchantSignUpInfo.merchantSignUpImages.businessLicense,
           foodLicense: event.merchantSignUpInfo.merchantSignUpImages.foodLicense,
-          merchantEnviroment: envList,
+          merchantEnvironment: envList,
           password: event.merchantSignUpInfo.password,
           checked: false,
         },

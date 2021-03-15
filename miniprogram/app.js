@@ -21,7 +21,7 @@ App({
       theme: {
         navigationBarColor: '#ffca02'
       },
-      userInfo: {
+      loginInfo: { // 商家骑手和用户共用的
         
       },
       merchantInfo: {

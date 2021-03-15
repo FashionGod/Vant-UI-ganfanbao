@@ -1,6 +1,6 @@
 <view class="merchan-header">
   <view class="card-left">
-    <image class="merchant-image" src="{{merchantInfo.merchantSignUpInfo.merchantSignUpImages.merchantLogo}}"></image>
+    <image class="merchant-image" src="{{merchantInfo.merchantSignUpInfo.merchantLogo}}"></image>
   </view>
   <view class="card-middle">
     <view class="merchant-title">
@@ -36,7 +36,7 @@
       <scroll-view class="sidebar-scroll" scroll-with-animation="true" scroll-y="true"
         scroll-into-view='{{indexMaodian}}'>
         <van-sidebar active-key="{{ activeKey }}">
-          <block wx:for="{{categoryList}}">
+          <block wx:for="{{categoryList}}" wx:key="title">
             <van-sidebar-item bindtap="toDetail" data-id="{{item.dataId}}" id="{{item.maodian}}" title="{{item.title}}"
               badge="{{item.badge == 0 ? null : item.badge}}">
             </van-sidebar-item>
@@ -46,7 +46,7 @@
       </scroll-view>
       <scroll-view bindscroll="onPageScroll" class="content-scroll" scroll-y="true" scroll-with-animation="true"
         scroll-into-view='{{storeDetail}}'>
-        <block wx:for="{{merchantList}}" wx:for-item="i">
+        <block wx:for="{{merchantMenuList}}" wx:key="title" wx:for-item="i">
           <view id="{{i.id}}">
             <van-divider
               custom-style="background-color: #fafafa; color:#696767; margin:0;height:40px;font-size: 30rpx;font-weight: 400;"
@@ -74,7 +74,7 @@
   </van-tab>
   <van-tab title="商家">
     <swiper class="swiper-images" autoplay="true" interval="3500" duration="500" indicator-dots="true" circular="true">
-      <block wx:for="{{merchantInfo.merchantSignUpInfo.merchantSignUpImages.merchantEnvironment}}" wx:key="*this">
+      <block wx:for="{{merchantInfo.merchantEnvironment}}" wx:key="*this">
         <swiper-item bindtap="previewImg" data-i="{{index}}">
           <image style="width:750rpx;" src="{{item}}" mode="scaleToFill"></image>
         </swiper-item>

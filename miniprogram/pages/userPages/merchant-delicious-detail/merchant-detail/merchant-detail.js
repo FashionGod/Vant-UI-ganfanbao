@@ -1,4 +1,4 @@
-
+const app = getApp()
 Page({
   data: {
     status: 3,
@@ -29,7 +29,12 @@ Page({
       },
     ],
     // 商家资质信息轮播图
-    swiperImgList: ['https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1901359579,1861271908&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1840683049,2335736361&fm=26&gp=0.jpg' ,'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2905099515,729646340&fm=26&gp=0.jpg'],
+    swiperImgList: [],
+  },
+  onLoad: function() {
+    this.setData({
+      swiperImgList: app.globalData.merchantInfo.license
+    })
   },
   // 查看大图
   previewImg(e) {

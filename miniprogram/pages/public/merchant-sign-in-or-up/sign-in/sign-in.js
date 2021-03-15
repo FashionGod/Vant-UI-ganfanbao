@@ -14,7 +14,7 @@ Page({
   // 密码的显隐
   onClickIcon() {
     this.setData({
-      password_state_icon: this.data.password_state_icon=='closed-eye'? 'eye':'closed-eye',
+      password_state_icon: this.data.password_state_icon === 'closed-eye'? 'eye':'closed-eye',
       password_state_type: this.data.password_state_type ? false:true,
     })
   },
@@ -30,7 +30,7 @@ Page({
   },
   // 手机号判空
   checkphoneNumberEmpty(e) {
-    if (e.detail.value.trim() == '') {
+    if (e.detail.value.trim() === '') {
       this.setData({
         phoneNumberEmptyFlag: true
       })
@@ -43,7 +43,7 @@ Page({
   },
   // 密码判空
   checkPasswordEmpty(e) {
-    if (e.detail.value.trim() == '') {
+    if (e.detail.value.trim() === '') {
       this.setData({
         passwordEmptyFlag: true
       })
@@ -59,7 +59,7 @@ Page({
     let formValue = e.detail.value
     // 判空
     for(let item in formValue) {
-      if (formValue[item].trim() == '') {
+      if (formValue[item].trim() === '') {
         wx.showModal({
           title: '',
           content: '手机号或密码不能为空',
@@ -81,22 +81,22 @@ Page({
       },
       success: res => {
         let {mess} = res.result
-        if (mess.code == 1) {
-          app.globalData.userInfo = {
+        if (mess.code === 1) {
+          app.globalData.loginInfo = {
             id: mess.data.data._id
           }
           wx.reLaunch({
             url: '../../../../merchantPackage/pages/merchantPages/order/order',
           })
         }
-        else if (mess.code == 2) {
+        else if (mess.code === 2) {
           wx.showModal({
             title: '',
             content: '密码错误',
             showCancel: false,
           })
         }
-        else if (mess.code == 3) {
+        else if (mess.code === 3) {
           wx.showModal({
             title: '',
             content: '手机号不存在',
@@ -106,7 +106,6 @@ Page({
         wx.hideLoading({})
       },
       fail: res => {
-        console.log(res)
         wx.hideLoading({})
       },
     })

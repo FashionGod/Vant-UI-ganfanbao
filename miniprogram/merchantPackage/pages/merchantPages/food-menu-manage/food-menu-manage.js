@@ -21,7 +21,8 @@ Page({
     wx.cloud.callFunction({
       name: 'getMerchantMenuList',
       data: {
-        id: app.globalData.userInfo.id
+        id: app.globalData.loginInfo.id,
+        role: 1,
       },
       success: res=>{
         const {mess} = res.result
@@ -362,7 +363,7 @@ Page({
           let p2 = new Promise((resolve, reject) => {
             if (obj.url.substring(0, 5) !== 'cloud') {
               wx.cloud.uploadFile({
-                cloudPath: 'merchantInfo/' + app.globalData.userInfo.id + '/menuImages/'+ item.title +'/'+ obj.title + '.png',
+                cloudPath: 'merchantInfo/' + app.globalData.loginInfo.id + '/menuImages/'+ item.title +'/'+ obj.title + '.png',
                 filePath: obj.url,
                 success: res => {
                   obj.url = res.fileID;
@@ -392,7 +393,7 @@ Page({
       name: 'merchantMenuUpload',
       data: {
         menuList: collapseList,
-        id: app.globalData.userInfo.id
+        id: app.globalData.loginInfo.id
       },
       success: ()=>{
         wx.hideLoading({})

@@ -1,4 +1,4 @@
-// miniprogram/pages/myPages/index/index.js
+let app = getApp()
 Page({
 
   /**
@@ -125,8 +125,9 @@ Page({
   },
   navigateToDetail(e) {
     const {item} = e.currentTarget.dataset
+    app.globalData.merchantInfo.merchantSignUpInfo = item.merchantSignUpInfo
     wx.navigateTo({
-      url: '../userPages/merchant-delicious-detail/merchant-delicious-detail?item='+JSON.stringify(item),
+      url: '../userPages/merchant-delicious-detail/merchant-delicious-detail',
     })
   },
   // 云函数 查询商家列表
