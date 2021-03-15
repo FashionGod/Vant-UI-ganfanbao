@@ -16,7 +16,7 @@ exports.main = async (event, context) => {
     if (event.role == 1) {
       mess.data = await db.collection('merchantSignUpInfoCollection').doc(event.phoneNumber).get()
       if (mess.data.data != null) {
-        if (mess.data.data.merchantSignUpInfo.password == event.password) {
+        if (mess.data.data.password === event.password) {
           mess.code = 1
           mess.message = '密码正确'
         }
@@ -33,7 +33,7 @@ exports.main = async (event, context) => {
     else if (event.role == 2) {
       mess.data = await db.collection('riderSignUpInfoCollection').doc(event.phoneNumber).get()
       if (mess.data.data != null) {
-        if (mess.data.data.riderSignUpInfo.password == event.password) {
+        if (mess.data.data.password == event.password) {
           mess.code = 1
           mess.message = '密码正确'
         }

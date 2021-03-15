@@ -12,9 +12,10 @@ exports.main = async (event, context) => {
   const mess = {}
   try {
     mess.data = await db.collection('merchantSignUpInfoCollection').where({
-      merchantSignUpInfo: {
         checked: true
-      }
+    })
+    .field({
+      merchantSignUpInfo: true,
     }).get()
     mess.code = 1
     mess.message = '查询成功'
