@@ -54,7 +54,7 @@
       <!-- 商家列表 -->
       <block wx:if="{{merchantList.length > 0}}">
           <merchant-card wx:for="{{merchantList}}" wx:key="_id" bindtap="navigateToDetail" data-item="{{item}}"
-            merchantImg="{{item.merchantSignUpInfo.merchantSignUpImages.merchantLogo}}"></merchant-card>
+            merchantImg="{{item.merchantSignUpInfo.merchantLogo}}"></merchant-card>
     <!--触底的loading  -->
     <view class="bottom-loading">
       <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
