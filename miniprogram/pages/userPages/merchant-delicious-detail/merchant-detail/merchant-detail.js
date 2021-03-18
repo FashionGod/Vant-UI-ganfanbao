@@ -1,39 +1,23 @@
 const app = getApp()
 Page({
   data: {
-    status: 3,
-    steps: [
-      {
-        text: '已下单',
-        desc: '',
-        inactiveIcon: '',
-        activeIcon: 'success',
-      },
-      {
-        text: '商家备餐',
-        desc: '',
-        inactiveIcon: '',
-        activeIcon: 'underway',
-      },
-      {
-        text: '骑手送餐',
-        desc: '',
-        inactiveIcon: '',
-        activeIcon: 'underway',
-      },
-      {
-        text: '餐已送达',
-        desc: '',
-        inactiveIcon: '',
-        activeIcon: 'success',
-      },
-    ],
+    name: '',
+    companyName: '',
+    managementAddress: '',
+    managementArrange: '',
+    deadline: '',
     // 商家资质信息轮播图
     swiperImgList: [],
   },
   onLoad: function() {
+    console.log(app.globalData.merchantInfo)
     this.setData({
-      swiperImgList: app.globalData.merchantInfo.license
+      swiperImgList: app.globalData.merchantInfo.license,
+      name: app.globalData.merchantInfo.merchantSignUpInfo.name, 
+      companyName: app.globalData.merchantInfo.merchantSignUpInfo.companyName,
+      managementAddress: app.globalData.merchantInfo.merchantSignUpInfo.managementAddress,
+      managementArrange: app.globalData.merchantInfo.merchantSignUpInfo.managementArrange,
+      deadline: app.globalData.merchantInfo.merchantSignUpInfo.deadline,
     })
   },
   // 查看大图

@@ -51,7 +51,7 @@
             <van-divider
               custom-style="background-color: #fafafa; color:#696767; margin:0;height:40px;font-size: 30rpx;font-weight: 400;"
               contentPosition="center">{{i.title}}</van-divider>
-            <block wx:for="{{i.foodList}}" wx:for-item="j">
+            <block wx:for="{{i.foodList}}" wx:key="title" wx:for-item="j">
               <van-card custom-class="merchant-card" price="{{j.price}}"
                 desc="{{j.desc}}" title="{{j.title}}" thumb="{{j.url}}">
                 <view slot="footer">
