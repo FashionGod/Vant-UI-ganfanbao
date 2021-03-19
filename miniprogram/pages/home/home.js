@@ -125,7 +125,8 @@ Page({
   },
   navigateToDetail(e) {
     const {item} = e.currentTarget.dataset
-    app.globalData.merchantInfo.merchantSignUpInfo = item.merchantSignUpInfo
+    console.log(item)
+    app.globalData.merchantInfo = item
     wx.navigateTo({
       url: '../userPages/merchant-delicious-detail/merchant-delicious-detail',
     })
@@ -135,7 +136,9 @@ Page({
     wx.cloud.callFunction({
       name: 'getMerchantList',
       success: res=>{
-        console.log(res)
+        app.globalData.merchantInfo = res.result.mess.data.data
+        app.globalData.loginInfo.openid = res.result.openid
+        console.log(app.globalData)
         if (res.result.mess.code == 1) {
           this.setData({
             merchantList: res.result.mess.data.data

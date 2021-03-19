@@ -40,26 +40,21 @@ Page({
       this.setData({
         dropDownForbidenScroll: false,
       })
-    console.log('禁用scroll');
   },
   dropDownMenuClose() {
       this.setData({
         dropDownForbidenScroll: true,
       })
-    console.log('启用scroll');
   },
   onSwitch1Change({ detail }) {
-    console.log('1');
     this.setData({ switch1: detail });
   },
 
   onSwitch2Change({ detail }) {
-    console.log('2');
     this.setData({ switch2: detail });
   },
   // 监控自定义scroll-view下拉刷新
   pullDownFresh() {
-    console.log('下拉刷新');
     setTimeout(() => {
       // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
 
@@ -67,7 +62,6 @@ Page({
       this.setData({
         pullDownloading: false,
       })
-      console.log('刷新成功');
     }, 1000)
   },
   scrollTouchedBottom() {
@@ -81,14 +75,12 @@ Page({
         scrollTouchedBottomLoading: false,
       })
     }, 1000);
-    console.log('淦，你碰到俺底部啦！');
   },
   // 云函数 查询商家列表
   getMerchantList() {
     wx.cloud.callFunction({
       name: 'getMerchantList',
       success: res=>{
-        console.log(res)
         if (res.result.mess.code == 1) {
           this.setData({
             merchantList: res.result.mess.data.data
@@ -102,7 +94,6 @@ Page({
         }
       },
       fail: res=> {
-        console.log(res)
       }
     })
   },

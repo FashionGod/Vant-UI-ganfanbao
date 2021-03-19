@@ -10,7 +10,6 @@ Page({
     swiperImgList: [],
   },
   onLoad: function() {
-    console.log(app.globalData.merchantInfo)
     this.setData({
       swiperImgList: app.globalData.merchantInfo.license,
       name: app.globalData.merchantInfo.merchantSignUpInfo.name, 

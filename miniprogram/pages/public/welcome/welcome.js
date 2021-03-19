@@ -33,5 +33,7 @@ Page({
       title: '干饭饱',
       path: 'pages/public/welcome/welcome'
     }
+  },
+  onLoad: function() {
   }
 })

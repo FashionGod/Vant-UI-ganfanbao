@@ -1,10 +1,10 @@
 <view class="merchan-header">
   <view class="card-left">
-    <image class="merchant-image" src="{{merchantInfo.merchantSignUpInfo.merchantLogo}}"></image>
+    <image class="merchant-image" src="{{merchantInfo.cardInfo.merchantLogo}}"></image>
   </view>
   <view class="card-middle">
     <view class="merchant-title">
-      <text>天津包子铺</text>
+      <text>{{merchantInfo.cardInfo.shopName}}</text>
     </view>
     <view class="star">
       <van-rate value="{{ 3 }}" size="{{ 15 }}" readonly color="#fece00" void-color="#979494" bind:change="_onChange" />

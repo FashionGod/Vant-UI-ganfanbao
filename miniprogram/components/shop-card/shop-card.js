@@ -4,9 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    merchantImg:{
-      type: String,
-      value: ''
+    merchantItem:{
+      type: Object,
+      value: {}
     }
   },
 

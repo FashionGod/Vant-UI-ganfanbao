@@ -1,10 +1,10 @@
 <view class="card-container">
   <view class="card-left">
-      <image class="merchant-image" src="{{merchantImg}}"></image>
+      <image class="merchant-image" src="{{merchantItem.cardInfo.merchantLogo}}"></image>
   </view>
   <view class="card-middle">
     <view class="merchant-title">
-      <text>天津包子铺</text>
+      <text>{{merchantItem.cardInfo.shopName}}</text>
     </view>
     <view class="star">
       <van-rate

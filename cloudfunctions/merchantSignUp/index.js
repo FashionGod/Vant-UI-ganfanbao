@@ -20,14 +20,16 @@ exports.main = async (event, context) => {
           _id: event.merchantSignUpInfo.phoneNumber, // 手机号为唯一Id
           merchantSignUpInfo: {
             name: event.merchantSignUpInfo.name,
-            shopName: event.merchantSignUpInfo.shopName,
             IDNumber: event.merchantSignUpInfo.IDNumber,
             phoneNumber: event.merchantSignUpInfo.phoneNumber,
-            merchantLogo: event.merchantSignUpInfo.merchantSignUpImages.merchantLogo,
-            companyName: event.merchantSignUpInfo.companyName,
             managementAddress: event.merchantSignUpInfo.managementAddress,
             managementArrange: event.merchantSignUpInfo.managementArrange,
             deadline: event.merchantSignUpInfo.deadline,
+            companyName: event.merchantSignUpInfo.companyName,
+          },
+          cardInfo: {
+            shopName: event.merchantSignUpInfo.shopName,
+            merchantLogo: event.merchantSignUpInfo.merchantSignUpImages.merchantLogo,
           },
           merchantSignUpImages: event.merchantSignUpInfo.merchantSignUpImages,
           businessLicense: event.merchantSignUpInfo.merchantSignUpImages.businessLicense,

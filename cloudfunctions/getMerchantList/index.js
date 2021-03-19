@@ -15,7 +15,8 @@ exports.main = async (event, context) => {
         checked: true
     })
     .field({
-      merchantSignUpInfo: true,
+      cardInfo: true,
+      _id: true,
     }).get()
     mess.code = 1
     mess.message = '查询成功'

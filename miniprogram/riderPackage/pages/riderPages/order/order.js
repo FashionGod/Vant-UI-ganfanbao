@@ -71,17 +71,14 @@ Page({
   shippingAddress() {
     wx.chooseAddress({
       success: (res) => {
-        console.log(res)
       },
       fail:(res) => {
-        console.log(res)
       }
     })
   },
 
   // 监控自定义scroll-view下拉刷新
   pullDownFresh() {
-    console.log('下拉刷新');
     setTimeout(() => {
       // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
 
@@ -89,7 +86,6 @@ Page({
       this.setData({
         pullDownloading: false,
       })
-      console.log('刷新成功');
     }, 1000)
   },
   scrollTouchedBottom() {
@@ -103,7 +99,6 @@ Page({
         scrollTouchedBottomLoading: false,
       })
     }, 1000);
-    console.log('淦，你碰到俺底部啦！');
   },
   // 跳转至详情页
   navigateToOrderDetail() {
