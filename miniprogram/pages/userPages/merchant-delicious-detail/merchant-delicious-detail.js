@@ -107,6 +107,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
     this.getMenuList()
     this.getCollectStatus()
   },
@@ -178,8 +182,9 @@ Page({
             duration: 2000
           })
         }
-        wx.hideLoading({})
-      }
+        setTimeout(() => {
+          wx.hideLoading({})
+        }, 1000)      }
     })
   },
   getCollectStatus() {
@@ -201,9 +206,14 @@ Page({
             collectionStar: 'star-o'
           })
         }
+        setTimeout(() => {
+          wx.hideLoading({})
+        }, 1000)
       },
       fail: err=>{
-
+        setTimeout(() => {
+          wx.hideLoading({})
+        }, 1000)
       }
     })
   }
