@@ -1,0 +1,8 @@
+<van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
+  background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:change="onChange" bind:focus="onFocus">
+  <view wx:if="{{!showSearchPanelFlag}}" slot="action" bind:tap="onSearch">搜索</view>
+  <view wx:else slot="action" bind:tap="onCancel">取消</view>
+</van-search>
+<block class="search">
+  <van-empty image="search" description="无内容" />
+</block>

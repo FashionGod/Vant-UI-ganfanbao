@@ -22,7 +22,6 @@ Page({
     showEnd: false,
     // 搜索框
     value: '',
-    showSearchPanelFlag: false,
     // 轮播图
     swiperImgList: ['https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1901359579,1861271908&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1840683049,2335736361&fm=26&gp=0.jpg' ,'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2905099515,729646340&fm=26&gp=0.jpg'],
     //商家列表筛选头部
@@ -46,28 +45,10 @@ Page({
   },
   // 搜索框
   onFocus() {
-    this.setData({
-      showSearchPanelFlag: true
+    wx.navigateTo({
+      url: '../../pages/userPages/search-page/search-page',
     })
   },
-  onCancel() {
-    this.setData({
-      showSearchPanelFlag: false
-    })
-  },
-  onChange(e) {
-    this.setData({
-      value: e.detail,
-    });
-    console.log(e);  
-  },
-  onSearch() {
-    wx.showToast({
-      title: '搜索' + this.data.value,
-      icon: 'none'
-    })
-  },
-
   // 轮播图
   previewImg(e) {
     wx.previewImage({
@@ -111,7 +92,9 @@ Page({
   pullDownFresh() {
     setTimeout(() => {
       // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
-      this.getMerchantList()
+      this.loadMore({
+        init: true
+      })
       // 数据请求成功后，关闭刷新
       this.setData({
         pullDownloading: false,
@@ -159,14 +142,15 @@ Page({
             this.data.start = 0
             this.data.more = true
             this.data.merchantIds = this.shuffle(res.result.data)
+            return res
           })
     }
     else {
       p = new Promise(resolve => {
-        resolve()
+        resolve({})
       })
     }
-    if (!this.data.more) {
+    if (!this.data.more && !init) {
       return
     }
     this.setData({
@@ -189,7 +173,6 @@ Page({
             more: res.data.data.length == 5 ? true : false,
             scrollTouchedBottomLoading: false
           })
-          console.log(this.data.more)
         }
         else {
           wx.showToast({
@@ -200,6 +183,7 @@ Page({
             loading: false
           })
         }
+        return res
       })
       .catch(err => {
         wx.showToast({

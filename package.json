@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@cloudbase/manager-node": "^3.9.0",
     "miniprogram-sm-crypto": "^0.2.1"
   }
 }

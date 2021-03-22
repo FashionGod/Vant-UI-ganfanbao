@@ -1,5 +1,6 @@
 // miniprogram/merchantPackage/pages/merchantPages/food-menu-manage/food-menu-manage.js
 const app = getApp()
+let deleteFileList = []
 let isEdit = false
 Page({
   data: {
@@ -124,7 +125,11 @@ Page({
           success(res) {
             if (res.confirm) {
               let tmpList = [...that.data.collapseList]
-              tmpList.splice(delIndex, 1)
+              let delCate = tmpList.splice(delIndex, 1)
+              console.log(delCate[0].foodList)
+              delCate[0].foodList.forEach((item) => {
+                deleteFileList.push(item.url)
+              })
               that.setData({
                 collapseList: tmpList,
                 activeName: ''
@@ -305,7 +310,8 @@ Page({
             let foodListIndex = this.data.collapseList.findIndex(item => item.name === this.data.activeName)
             let tmpFoodList = this.data.collapseList[foodListIndex].foodList
             let foodIndex = tmpFoodList.findIndex(item => item.title === title)
-            tmpFoodList.splice(foodIndex, 1)
+            let delItem = tmpFoodList.splice(foodIndex, 1)
+            deleteFileList.push(delItem[0].url) // 删除时把删除的fileID存在删除任务数组里
             tmpCollapseList[foodListIndex].foodList = tmpFoodList
             this.setData({
               collapseList: tmpCollapseList
@@ -356,6 +362,7 @@ Page({
       title: '上传中',
       mask: true
     })
+    
     let p1 = new Promise(async (resolve, reject) => {
       for(let item of collapseList) {
         console.log(item)
@@ -388,6 +395,13 @@ Page({
       }
     resolve()
   })
+  // 批量删除云文件，一次最大删50条
+  let batchTimes = Math.ceil(deleteFileList.length / 50)
+  for (let i = 0;i < batchTimes; i++) {
+    wx.cloud.deleteFile({
+      fileList: deleteFileList.slice(50*i, 50*i + 49)
+    })
+  }
   p1.then(()=>{
     wx.cloud.callFunction({
       name: 'merchantMenuUpload',

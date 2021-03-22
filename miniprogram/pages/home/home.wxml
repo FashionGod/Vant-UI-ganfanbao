@@ -1,14 +1,8 @@
 <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
-  background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:change="onChange" bind:focus="onFocus">
-  <view wx:if="{{!showSearchPanelFlag}}" slot="action" bind:tap="onSearch">搜索</view>
-  <view wx:else slot="action" bind:tap="onCancel">取消</view>
+  background="linear-gradient(#fece00,#ffcd01)" bind:tap="onFocus">
+  <view slot="action"></view>
 </van-search>
-<!-- 搜索框的条件渲染 -->
-<block class="search" wx:if="{{showSearchPanelFlag}}">
-  <van-empty image="search" description="无内容" />
-</block>
-<!-- 搜索框外的条件渲染 -->
-<scroll-view wx:else class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced="{{true}}"
+<scroll-view class="page-scroll-view" scroll-y="{{dropDownForbidenScroll}}" enhanced="{{true}}"
   bounces="{{false}}" showScrollbar="{{false}}">
   <swiper autoplay="true" interval="3500" duration="500" circular="true">
     <block wx:for="{{swiperImgList}}" wx:key="*this">
