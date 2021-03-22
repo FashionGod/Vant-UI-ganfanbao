@@ -58,6 +58,7 @@
     <!--触底的loading  -->
     <view class="bottom-loading">
       <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      <van-divider hairline contentPosition="center" wx:if="{{showEnd}}" >人家也是有底线的啦</van-divider>
     </view>
       </block>
       <block wx:else>

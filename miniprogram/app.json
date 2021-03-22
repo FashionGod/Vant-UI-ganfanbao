@@ -38,7 +38,7 @@
       "pages": [
         "pages/riderPages/order/order",
         "pages/riderPages/order-detail/order-detail",
-        "pages/riderPages/rider-infomation/rider-infomation"
+        "pages/riderPages/rider-information/rider-information"
       ]
     }
   ],
