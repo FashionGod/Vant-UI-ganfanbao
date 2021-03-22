@@ -11,6 +11,8 @@
   "van-cell-group": "../../../miniprogram_npm/@vant/weapp/dist/cell-group/index",
   "van-divider": "../../../miniprogram_npm/@vant/weapp/dist/divider/index",
   "van-button": "../../../miniprogram_npm/@vant/weapp/dist/button/index",
-  "van-card": "../../../miniprogram_npm/@vant/weapp/dist/card/index"
+  "van-card": "../../../miniprogram_npm/@vant/weapp/dist/card/index",
+  "van-stepper": "../../../miniprogram_npm/@vant/weapp/dist/stepper/index",
+  "van-popup": "../../../miniprogram_npm/@vant/weapp/dist/popup/index"
   }
 }

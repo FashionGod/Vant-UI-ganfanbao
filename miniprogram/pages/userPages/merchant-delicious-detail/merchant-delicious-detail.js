@@ -20,6 +20,10 @@ Page({
     categoryList: [],
     merchantMenuList: [],
     arr: [0],
+    // 购物车弹出层
+    showPopup: false,
+    // 提交栏
+    totalPrice: 0,
     // -------------------------------------- 评价 -----------------------------------------------
     // -------------------------------------- 商家 -----------------------------------------------
     merchantInfo: {},
@@ -157,7 +161,7 @@ Page({
             return tmpObj
           }) : []
           merchantMenuList.forEach((item, i) => {
-            this.data.arr[i + 1] = 120 * item.foodList.length + this.data.arr[i];
+            this.data.arr[i + 1] = 150 * item.foodList.length + this.data.arr[i];
           })
           // 加入锚点标记id
           var tmpMerchantMenuList = merchantMenuList
@@ -216,5 +220,17 @@ Page({
         }, 1000)
       }
     })
-  }
+  },
+  // 单个食品数量变化
+  onFoodCountChange(event) {
+    console.log(event.detail);
+  },
+  // 底部购物车弹出层
+  showPopup() {
+    this.setData({ showPopup: true });
+  },
+
+  onClose() {
+    this.setData({ showPopup: false });
+  },
 })
