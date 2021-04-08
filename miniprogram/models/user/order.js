@@ -4,7 +4,7 @@ class OrderModel {
     return wx.cloud.callFunction({
       name: 'createOrder',
       data: {
-        merchantIds: merchantIds
+        orderInfo: data
       }
     })
     .then(res => {
