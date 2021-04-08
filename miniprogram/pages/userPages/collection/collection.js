@@ -7,6 +7,11 @@ Page({
   data: {
     // 子组件需要的值
     merchantImg1: "../../assets/homeImages/merchant_photo1.png",
+    merchantItem: {
+      cardInfo: {
+        merchantLogo: "cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/merchantInfo/2/merchantLogo/1616170087140.png",
+        shopName: "黑心包子铺"}
+    },
     merchantImg2: "../../assets/homeImages/merchant_photo2.png",
     // 下拉刷新
     pullDownloading: false,

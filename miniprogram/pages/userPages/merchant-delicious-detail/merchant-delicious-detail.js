@@ -1,6 +1,10 @@
 // miniprogram/pages/userPages/merchant-delicious-detail/merchant-delicious-detail.js
 import tool from "../../public/tools/tool.js";
+import {ShopDetailModel} from "../../../models/merchant/merchant-shop-detail.js";
+const shopDetailModel = new ShopDetailModel()
 let app = getApp()
+let allFoodList = [] // 初始化单纯的食品列表
+let foodPickList = [] // 查看详情的列表
 Page({
 
   /**
@@ -19,6 +23,7 @@ Page({
     // 类目列表
     categoryList: [],
     merchantMenuList: [],
+    foodPickList: [],
     arr: [0],
     // 购物车弹出层
     showPopup: false,
@@ -34,40 +39,37 @@ Page({
       title: '加载中',
       mask: true,
     })
-    wx.cloud.callFunction({
-      name: 'collectOrCancel',
-      data: {
-        operation: this.data.collectionStar == 'star-o' ? 1 : 0, // 1是收藏 0是取消收藏
-        merchantId: app.globalData.merchantInfo._id
-      },
-      success: res => {
-        let {
-          mess
-        } = res.result
-        if (mess.code !== 0) {
-          this.setData({
-            collectionStar: this.data.collectionStar == 'star-o' ? 'star' : 'star-o'
-          })
-          wx.hideLoading({})
-          wx.showToast({
-            title: mess.message,
-            icon: 'success'
-          })
-        } else {
-          wx.hideLoading({})
-          wx.showToast({
-            title: '失败',
-            icon: 'error'
-          })
-        }
-      },
-      fail: fail => {
+    shopDetailModel.getCollectStatus({
+      operation: this.data.collectionStar == 'star-o' ? 1 : 0, // 1是收藏 0是取消收藏
+      merchantId: app.globalData.merchantInfo._id
+    })
+    .then(res => {
+      let {
+        mess
+      } = res.result
+      if (mess.code !== 0) {
+        this.setData({
+          collectionStar: this.data.collectionStar == 'star-o' ? 'star' : 'star-o'
+        })
+        wx.hideLoading({})
+        wx.showToast({
+          title: mess.message,
+          icon: 'success'
+        })
+      } else {
         wx.hideLoading({})
         wx.showToast({
           title: '失败',
           icon: 'error'
         })
       }
+    })
+    .catch(err => {
+      wx.hideLoading({})
+      wx.showToast({
+        title: '失败',
+        icon: 'error'
+      })
     })
   },
   // -------------------------------------------- 点菜 --------------------------------------------
@@ -84,7 +86,6 @@ Page({
   },
   onPageScroll: tool.debounce(function (res) {
     // 通过滑动的距离判断页面滑动那个区域让后让顶部的标签栏切换到对应位置
-    console.log(res)
     var height = Number(res[0].detail.scrollTop)
     this.judgeScrollWhere(height)
   }, 50),
@@ -115,8 +116,147 @@ Page({
       title: '加载中',
       mask: true,
     })
-    this.getMenuList()
-    this.getCollectStatus()
+    shopDetailModel.getMenuList({
+      id: app.globalData.merchantInfo._id,
+      role: 0 // 用户
+    }).then(res => {
+      const {mess} = res.result
+      app.globalData.merchantInfo = {...app.globalData.merchantInfo, ...mess.data.data}
+      // 证书的图片两个字符串处理为数组
+      let license = []
+      license.push(app.globalData.merchantInfo.businessLicense, app.globalData.merchantInfo.foodLicense)
+      app.globalData.merchantInfo.license = license
+      if (mess.code === 1) {
+        const merchantMenuList = mess.data.data.merchantMenuList ? mess.data.data.merchantMenuList : []
+        let tmpCategoryList = merchantMenuList ? merchantMenuList.map((obj) => {
+          let tmpObj = {
+            title: obj.title
+          }
+          return tmpObj
+        }) : []
+        // 遍历初始化 查看详情所需的数组
+        allFoodList = []
+        merchantMenuList.map(i => {
+          i.foodList.map(j => {
+            allFoodList.push({...j})
+          })
+        })
+        allFoodList.forEach(i => {
+          i.count = 0
+          return i
+        })
+        console.log(allFoodList)
+        // 加入锚点标记id
+        merchantMenuList.forEach((item, i) => {
+          this.data.arr[i + 1] = 150 * item.foodList.length + this.data.arr[i];
+        })
+        var tmpMerchantMenuList = merchantMenuList
+        tmpCategoryList.forEach((item, i) => {
+          item.dataId = i + 1;
+          item.maodian = 'b' + (i + 1);
+        })
+        tmpMerchantMenuList.forEach((item, i) => {
+          item.id = 'a' + (i + 1);
+        })
+        this.setData({
+          // 列表数据
+          merchantMenuList: merchantMenuList ? merchantMenuList : [],
+          merchantInfo: app.globalData.merchantInfo,
+          // 锚点相关
+          categoryList: tmpCategoryList,
+        });
+      } else {
+        wx.showToast({
+          title: `${mess.message}`,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      setTimeout(() => {
+        wx.hideLoading({})
+      }, 1000)
+    })
+    shopDetailModel.getCollectStatus({
+      id: app.globalData.merchantInfo._id,
+      operation: 2, // 获取收藏状态
+    })
+    .then(res => {
+      let {mess} = res.result
+      if (mess.code === 3) {
+        this.setData({
+          collectionStar: 'star'
+        })
+      }
+      else if (mess.code === 4) {
+        this.setData({
+          collectionStar: 'star-o'
+        })
+      }
+      setTimeout(() => {
+        wx.hideLoading({})
+      }, 1000)
+    })
+  },
+  // 单个食品数量变化
+  onFoodCountChange(event) {
+    const {dataset} = event.currentTarget
+    allFoodList.forEach(obj => {
+      if(obj.title == dataset.item.title) {
+        obj.count = event.detail
+      }
+    })
+    this.countTotalPrice()
+  },
+  countTotalPrice() { // 处理查看详情数组并计算总价
+    let tmpTotalPrice = 0
+    foodPickList = allFoodList.filter(obj => obj.count > 0)
+    for (let i = 0; i < allFoodList.length; i++) { //计算总价
+      tmpTotalPrice += (allFoodList[i].count * allFoodList[i].price)
+    }
+    this.setData({
+      totalPrice: tmpTotalPrice*100, // 总价单位为分
+      foodPickList: foodPickList,
+    })
+  },
+  // 底部购物车弹出层
+  showPopup() {
+    if(foodPickList.length === 0) {
+      wx.showToast({
+        title: '您还没有选择任何商品哦亲',
+        icon: 'none'
+      })
+    }
+    else {
+      this.setData({ showPopup: true });
+    }
+  },
+  onClose() {
+    this.setData({ showPopup: false });
+  },
+  onSubmit() {
+    if(foodPickList.length === 0) {
+      wx.showToast({
+        title: '您还没有选择任何商品哦亲',
+        icon: 'none'
+      })
+    }
+    else {
+      let that = this
+      wx.navigateTo({
+        url: './order-confirm/order-confirm',
+        events: {
+          foodPickListEvent: function(data) {
+            console.log(data)
+          }
+        },
+        success: function(res) {
+          res.eventChannel.emit('foodPickListEvent', {
+            foodPickList: foodPickList,
+            totalPrice: that.data.totalPrice
+          })
+        }
+      })
+    }
   },
   // --------------------------------------------- 评价 -------------------------------------------------
 
@@ -134,103 +274,5 @@ Page({
       success: (res) => {},
       fail: (res) => {},
     })
-  },
-  // 获取商家菜单、获取商家详细信息等
-  getMenuList() {
-    wx.cloud.callFunction({
-      name: 'getMerchantMenuList',
-      data: {
-        id: app.globalData.merchantInfo._id,
-        role: 0,
-      },
-      success: res => {
-        const {
-          mess
-        } = res.result
-        app.globalData.merchantInfo = {...app.globalData.merchantInfo, ...mess.data.data}
-        // 证书的图片两个字符串处理为数组
-        let license = []
-        license.push(app.globalData.merchantInfo.businessLicense, app.globalData.merchantInfo.foodLicense)
-        app.globalData.merchantInfo.license = license
-        if (mess.code === 1) {
-          const merchantMenuList = mess.data.data.merchantMenuList ? mess.data.data.merchantMenuList : []
-          let tmpCategoryList = merchantMenuList ? merchantMenuList.map((obj) => {
-            let tmpObj = {
-              title: obj.title
-            }
-            return tmpObj
-          }) : []
-          merchantMenuList.forEach((item, i) => {
-            this.data.arr[i + 1] = 150 * item.foodList.length + this.data.arr[i];
-          })
-          // 加入锚点标记id
-          var tmpMerchantMenuList = merchantMenuList
-          tmpCategoryList.forEach((item, i) => {
-            item.dataId = i + 1;
-            item.maodian = 'b' + (i + 1);
-          })
-          tmpMerchantMenuList.forEach((item, i) => {
-            item.id = 'a' + (i + 1);
-          })
-          this.setData({
-            // 列表数据
-            merchantMenuList: merchantMenuList ? merchantMenuList : [],
-            merchantInfo: app.globalData.merchantInfo,
-            // 锚点相关
-            categoryList: tmpCategoryList,
-          });
-        } else {
-          wx.showToast({
-            title: `${mess.message}`,
-            icon: 'none',
-            duration: 2000
-          })
-        }
-        setTimeout(() => {
-          wx.hideLoading({})
-        }, 1000)      }
-    })
-  },
-  getCollectStatus() {
-    wx.cloud.callFunction({
-      name: 'collectOrCancel',
-      data: {
-        merchantId: app.globalData.merchantInfo._id,
-        operation: 2,
-      },
-      success: res=>{
-        let {mess} = res.result
-        if (mess.code === 3) {
-          this.setData({
-            collectionStar: 'star'
-          })
-        }
-        else if (mess.code === 4) {
-          this.setData({
-            collectionStar: 'star-o'
-          })
-        }
-        setTimeout(() => {
-          wx.hideLoading({})
-        }, 1000)
-      },
-      fail: err=>{
-        setTimeout(() => {
-          wx.hideLoading({})
-        }, 1000)
-      }
-    })
-  },
-  // 单个食品数量变化
-  onFoodCountChange(event) {
-    console.log(event.detail);
-  },
-  // 底部购物车弹出层
-  showPopup() {
-    this.setData({ showPopup: true });
-  },
-
-  onClose() {
-    this.setData({ showPopup: false });
-  },
+  }
 })

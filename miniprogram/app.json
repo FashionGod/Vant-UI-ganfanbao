@@ -17,7 +17,8 @@
     "pages/userPages/merchant-list/merchant-list",
     "pages/userPages/order-detail/order-detail",
     "pages/public/unchecked/unchecked",
-    "pages/userPages/search-page/search-page"
+    "pages/userPages/search-page/search-page",
+    "pages/userPages/merchant-delicious-detail/order-confirm/order-confirm"
   ],
   "subpackages": [
     {

@@ -23,6 +23,18 @@
           "pathName": "merchantPackage/pages/merchantPages/food-menu-manage/food-menu-manage",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/userPages/merchant-delicious-detail/order-confirm/order-confirm",
+          "pathName": "pages/userPages/merchant-delicious-detail/order-confirm/order-confirm",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/home/home",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
         }
       ]
     }

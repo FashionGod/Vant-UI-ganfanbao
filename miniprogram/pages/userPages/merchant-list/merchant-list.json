@@ -4,8 +4,8 @@
     "van-dropdown-item": "../../../miniprogram_npm/@vant/weapp/dist/dropdown-item/index",
     "merchant-card": "../../../components/shop-card/shop-card",
     "van-loading": "../../../miniprogram_npm/@vant/weapp/dist/loading/index",
-    "van-divider": "../../../miniprogram_npm/@vant/weapp/dist/divider/index"
-
+    "van-divider": "../../../miniprogram_npm/@vant/weapp/dist/divider/index",
+    "van-empty": "../../../miniprogram_npm/@vant/weapp/dist/empty/index"
   },
   "disableScroll": true
 }

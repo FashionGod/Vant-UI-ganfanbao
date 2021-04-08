@@ -114,6 +114,30 @@
 .step-input-class {
   color: #323233 !important;
 }
+
+.pop-up-container {
+  height: 350rpx;
+  color: #6d6b6b;
+}
+
+.pop-up {
+  height: fit-content;
+}
+
+.picked-item {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.picked-item view {
+  margin: 15rpx auto;
+  flex: 1;
+  display: inline-block;
+  height: 35rpx;
+  line-height: 35rpx;
+  text-align: center;
+}
 /* --------------------------------------------- 评价 ------------------------------------------------- */
 
 

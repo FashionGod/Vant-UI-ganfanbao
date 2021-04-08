@@ -1,0 +1,81 @@
+<scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view">
+  <van-tabs sticky swipeable type="card" color="#ffb300" title-active-color="#fff">
+    <van-tab title="外卖">
+      <view class="function-container">
+        <van-cell-group border="{{false}}">
+          <view class="title">选择地址</view>
+          <van-cell border="{{false}}" size="large" title="选择地址" center bind:click="contactMerchant" icon="logistics"
+            is-link />
+        </van-cell-group>
+      </view>
+      <view class="function-container">
+        <view class="title">
+          <text>商品清单</text>
+        </view>
+        <view wx:for="{{foodPickList}}" wx:key="title">
+          <van-card custom-class="goods-card" num="{{item.count}}" price="{{item.price}}" desc="{{item.desc}}"
+            title="{{item.title}}" thumb="{{item.url}}" />
+        </view>
+        <van-cell-group border="{{false}}">
+          <van-field readonly input-align="right" label="配送费" value="{{freight}}元" border="{{ false }}" />
+        </van-cell-group>
+        <view class="total-price">
+          <text>合计￥{{(totalPrice/100) + freight}}</text>
+        </view>
+      </view>
+      <form catchsubmit="submitFormByRider">
+        <view class="function-container page-bottom-dom">
+          <van-cell-group border="{{false}}">
+            <view class="title">配送要求</view>
+            <van-field name="deliveryTime" input-align="right" label="配送时间" placeholder="尽快送达" border="{{ true }}" />
+            <van-field name="tableware" input-align="right" label="餐具" placeholder="需要一次性筷子/勺子" border="{{ true }}" />
+            <van-field name="remarks" type="textarea" autosize input-align="right" label="订单备注" placeholder="请输入备注"
+            border="{{ false }}" />
+          </van-cell-group>
+        </view>
+        <button form-type="submit" style="display:block;height: 100%; width: 100%;">
+          <van-submit-bar custom-class="submit-bar" button-class="submit-order"
+            price="{{ totalPrice + freight*100 }}" button-text="去支付" bind:submit="pickByRider">
+          </van-submit-bar>
+        </button>
+      </form>
+    </van-tab>
+    <van-tab title="自取">
+      <view class="function-container">
+        <van-cell-group border="{{false}}">
+          <view class="title">商家地址</view>
+          <van-cell size="large" title="支付成功后请自行前往商家处凭单号领取" center />
+          <van-cell border="{{false}}" size="large" title="食堂二楼" center bind:click="contactMerchant" icon="shop-o" />
+        </van-cell-group>
+      </view>
+      <view class="function-container">
+        <view class="title">
+          <text>商品清单</text>
+        </view>
+        <view wx:for="{{foodPickList}}" wx:key="title">
+          <van-card custom-class="goods-card" num="{{item.count}}" price="{{item.price}}" desc="{{item.desc}}"
+            title="{{item.title}}" thumb="{{item.url}}" />
+        </view>
+        <van-cell-group border="{{false}}">
+        </van-cell-group>
+        <view class="total-price">
+          <text>合计￥{{totalPrice/100}}</text>
+        </view>
+      </view>
+      <form catchsubmit="submitFormBySelf">
+        <view class="function-container page-bottom-dom">
+          <van-cell-group border="{{false}}">
+            <view class="title">就餐备注</view>
+            <van-field name="remarks" type="textarea" autosize input-align="right" label="备注" placeholder="请输入备注"
+            border="{{ false }}" />
+          </van-cell-group>
+        </view>
+        <button form-type="submit" style="display:block;height: 100%; width: 100%;">
+          <van-submit-bar custom-class="submit-bar" button-class="submit-order" price="{{ totalPrice }}"
+            button-text="去支付" bind:submit="pickBySelf">
+          </van-submit-bar>
+        </button>
+      </form>
+    </van-tab>
+  </van-tabs>
+</scroll-view>

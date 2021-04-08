@@ -12,6 +12,7 @@
   border-radius: 20rpx;
   background-color: #fff;
 }
+
 .title {
   margin-left: 35rpx;
   height: 50rpx;

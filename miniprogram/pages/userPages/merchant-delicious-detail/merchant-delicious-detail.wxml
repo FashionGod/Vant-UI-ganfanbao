@@ -51,16 +51,13 @@
             <van-divider
               custom-style="background-color: #fafafa; color:#696767; margin:0;height:40px;font-size: 30rpx;font-weight: 400;"
               contentPosition="center">{{i.title}}</van-divider>
-            <block wx:for="{{i.foodList}}" wx:key="title" wx:for-item="j">
-              <van-card custom-class="merchant-card" price="{{j.price}}"
-                desc="{{j.desc}}" title="{{j.title}}" thumb="{{j.url}}">
+            <block wx:for="{{i.foodList}}" wx:key="title" wx:for-item="j" wx:for-index="idx">
+              <van-card custom-class="merchant-card" price="{{j.price}}" desc="{{j.desc}}" title="{{j.title}}"
+                thumb="{{j.url}}">
                 <view style="height: 35rpx;" slot="footer">
-                  <van-stepper value="{{ 0 }}" disable-input="true" min="0"
-                  long-press="false"
-                  input-class="step-input-class"
-                  input-width="40px"
-                  button-size="32px"
-                   bind:change="onFoodCountChange" />
+                  <van-stepper value="{{ 0 }}" disable-input="true" min="0" long-press="{{false}}"
+                    input-class="step-input-class" input-width="40px" button-size="32px" bind:change="onFoodCountChange"
+                    data-item="{{j}}" data-index="{{idx}}" />
                 </view>
               </van-card>
             </block>
@@ -69,10 +66,6 @@
         <view class="merchant-detail-blank"></view>
       </scroll-view>
     </view>
-    <van-submit-bar custom-class="submit-bar" style="display: {{showSubmit? 'block': 'none'}} !important;" button-class="submit-order"
-      price="{{ totalPrice }}" button-text="提交订单" bind:submit="onSubmit">
-      <view bindtap="showPopup">查看详情</view>
-    </van-submit-bar>
   </van-tab>
   <van-tab title="评价">
   </van-tab>
@@ -84,24 +77,37 @@
         </swiper-item>
       </block>
     </swiper>
-        <van-cell-group>
-          <van-cell title="商家地址" label="描述信息" center link-type="navigateTo" url="" icon="location-o"
-            is-link />
-            <van-cell title="联系商家" label="15541155111" center bind:click="contactOfficial" icon="phone-o" is-link />
-          <van-cell title="查看食品安全档案" center link-type="navigateTo" url="./merchant-detail/merchant-detail"
-            icon="bulb-o" is-link />
-          <van-cell title="投诉反馈" center link-type="navigateTo" url="../../public/feedback/feedback" icon="records"
-            is-link />
-        </van-cell-group>
+    <van-cell-group>
+      <van-cell title="商家地址" label="描述信息" center link-type="navigateTo" url="" icon="location-o" is-link />
+      <van-cell title="联系商家" label="15541155111" center bind:click="contactOfficial" icon="phone-o" is-link />
+      <van-cell title="查看食品安全档案" center link-type="navigateTo" url="./merchant-detail/merchant-detail" icon="bulb-o"
+        is-link />
+      <van-cell title="投诉反馈" center link-type="navigateTo" url="../../public/feedback/feedback" icon="records"
+        is-link />
+    </van-cell-group>
   </van-tab>
+    <van-submit-bar custom-class="submit-bar" style="display: {{showSubmit? 'block': 'none'}} !important;"
+      button-class="submit-order" price="{{ totalPrice }}" button-text="提交订单" bind:submit="onSubmit">
+      <view bindtap="showPopup">查看详情</view>
+    </van-submit-bar>
+    <!-- 购物车弹出层 -->
+    <van-popup show="{{ showPopup }}" round closeable z-index="{{50}}" position="bottom" custom-class="pop-up"
+      bind:close="onClose">
+      <view class="pop-up-container" wx:if="{{foodPickList.length < 6}}">
+        <view style="height: 35rpx;"></view>
+        <view class="picked-item" wx:for="{{foodPickList}}" wx:key="title">
+          <view>{{item.title}}</view>
+          <view>X{{item.count}}</view>
+        </view>
+        <view style="height: 100rpx;"></view>
+      </view>
+      <scroll-view class="pop-up-container" scroll-y="true" wx:else>
+        <view style="height: 35rpx;"></view>
+        <view class="picked-item" wx:for="{{foodPickList}}" wx:key="title">
+          <view>{{item.title}}</view>
+          <view>X{{item.count}}</view>
+        </view>
+        <view style="height: 100rpx;"></view>
+      </scroll-view>
+    </van-popup>
 </van-tabs>
- <!-- 购物车弹出层 -->
-<van-popup
-  show="{{ showPopup }}"
-  round
-  position="bottom"
-  custom-style="height: fit-content;"
-  bind:close="onClose"
->
-
-</van-popup>

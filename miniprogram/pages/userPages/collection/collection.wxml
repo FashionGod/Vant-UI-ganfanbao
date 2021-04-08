@@ -4,19 +4,18 @@
       bindscrolltolower="scrollTouchedBottom">
       <view class="merchant-list">
         <!-- 商家列表 -->
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg1}}"></merchant-card>
-        <merchant-card merchantImg="{{merchantImg2}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
+        <merchant-card merchantItem="{{merchantItem}}"></merchant-card>
       </view>
       <!--触底的loading  -->
       <view class="bottom-loading">
