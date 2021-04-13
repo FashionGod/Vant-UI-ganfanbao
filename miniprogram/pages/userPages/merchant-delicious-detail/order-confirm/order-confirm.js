@@ -1,8 +1,8 @@
 // miniprogram/pages/userPages/merchant-delicious-detail/order-confirm/order-confirm.js
 import {
-  OrderModel
+  UserOrderModel
 } from '../../../../models/user/order'
-const orderModel = new OrderModel()
+const orderModel = new UserOrderModel()
 let app = getApp()
 let foodPickList = []
 let totalPrice = 0
@@ -18,36 +18,69 @@ Page({
     foodPickList: [],
     totalPrice: 0,
     freight: 0,
+    addressInfo: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('foodPickListEvent', function(data) {
+      console.log(data)
       foodPickList = data.foodPickList
       totalPrice = data.totalPrice
+      that.setData({
+        foodPickList: data.foodPickList,
+        totalPrice: data.totalPrice,
+      })
     })
-    this.setData({
-      foodPickList: foodPickList,
-      totalPrice: totalPrice,
+  },
+  pickAddress() {
+    wx.chooseAddress({
+      success: (res) => {
+        console.log(res)
+        let tmpAddressInfo = {
+          detailInfo: res.detailInfo,
+          userName: res.userName,
+          telNumber: res.telNumber,
+        }
+        this.setData({
+          addressInfo: tmpAddressInfo
+        })
+      },
+      fail:(res) => {
+      }
     })
   },
   pickByRider() {
+    if (this.data.addressInfo === null) {
+      wx.showToast({
+        title: '收货地址不能为空哦',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     let params = {}
     params.foodPickList = foodPickList
     params.freight = freight
     params.riderPhone = ''// 增加骑手手机号字段
     params.merchantId = app.globalData.merchantInfo._id
     params.merchantLogo = app.globalData.merchantInfo.cardInfo.merchantLogo
-    params.payTime = Date.now()
+    params.orderId = Date.now()
+    params.payTime = new Date(Date.now()).toLocaleString('zh', {year: 'numeric', month: 'numeric',  day: 'numeric',  hour: 'numeric',  minute: 'numeric'})
     params.merchantTitle = app.globalData.merchantInfo.cardInfo.shopName
     params.merchantPhone = app.globalData.merchantInfo.merchantSignUpInfo.phoneNumber
     params.deliveryWay = 0 // 0为外卖 1为自取
     params.userId = app.globalData.loginInfo.openid
     params.totalPrice = totalPrice/100 + freight // 单位还原回元
+    params.addressInfo = this.data.addressInfo // 收货信息
     setTimeout(()=>{ // 为了保证button提交完表单数据
+      for (let i in ByRider) { // 补充备注参数
+        params[i] = ByRider[i]
+      }
       wx.showModal({
         content: '待支付',
         confirmColor: '#7ccd7d',
@@ -87,13 +120,17 @@ Page({
     params.foodPickList = foodPickList
     params.merchantId = app.globalData.merchantInfo._id
     params.merchantLogo = app.globalData.merchantInfo.cardInfo.merchantLogo
-    params.payTime = Date.now()
+    params.orderId = Date.now()
+    params.payTime = new Date(Date.now()).toLocaleString('zh', {year: 'numeric', month: 'numeric',  day: 'numeric',  hour: 'numeric',  minute: 'numeric'})
     params.merchantTitle = app.globalData.merchantInfo.cardInfo.shopName
     params.merchantPhone = app.globalData.merchantInfo.merchantSignUpInfo.phoneNumber
     params.deliveryWay = 1 // 0为外卖 1为自取
     params.userId = app.globalData.loginInfo.openid
     params.totalPrice = totalPrice/100 // 单位还原为元
     setTimeout(()=>{ // 为了保证button提交完表单数据
+      for (let i in BySelf) { // 补充备注参数
+        params[i] = BySelf[i]
+      }
       wx.showModal({
         content: '待支付',
         confirmColor: '#7ccd7d',

@@ -1,27 +1,27 @@
 <view class="card-container">
   <view class="card-left">
-      <image class="merchant-image" src="{{merchantImg}}"></image>
+      <image class="merchant-image" src="{{orderItem.orderInfo.merchantLogo}}"></image>
   </view>
   <view class="card-middle">
     <view class="merchant-title">
-      <text>天津包子铺</text>
+      <text>{{orderItem.orderInfo.merchantTitle}}</text>
     </view>
     <view class="time">
-      <text>下单时间： 2020-02-25 14:23</text>
+      <text>下单时间：{{orderItem.orderInfo.payTime}}</text>
     </view>  
     <view class="desc">
-      <text>订单备注：多放糖谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢谢</text>
+      <text>订单备注：{{orderItem.orderInfo.remarks?orderItem.orderInfo.remarks:'无'}}</text>
     </view>
   </view>
   <view class="card-right">
     <view class="order-status">
-      <text>已送达</text>
+      <text>{{statusText[orderItem.orderInfo.orderStatus]}}</text>
     </view>
     <view class="price-info">
-      <text class="price">36.5元</text>
+      <text class="price">{{orderItem.orderInfo.totalPrice}}元</text>
     </view>
     <view class="count">
-      <text>共计3件</text>
+      <text>共计{{orderItem.orderInfo.foodPickList.length}}款</text>
     </view>
   </view>
   <view class="views" catchtap="navigateToViews">查看评价</view>

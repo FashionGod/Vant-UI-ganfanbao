@@ -4,14 +4,17 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    orderItem:{
+      type: Object,
+      value: {}
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    activeNames: ['1'],
+    activeNames: ['1'],// 控制面板收缩
   },
 
   /**
@@ -23,5 +26,8 @@ Component({
         activeNames: event.detail,
       });
     },
+    finished() {
+      this.triggerEvent("finishedPrepare", {})
+    }
   }
 })

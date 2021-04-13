@@ -128,7 +128,7 @@
 
 .call-rider-icon {
   position: absolute;
-  top: 500rpx;
+  top: 430rpx;
   right: 45rpx;
 }
 
@@ -141,4 +141,19 @@
   font-size: 35rpx;
   font-weight: 600;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.picked-item {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.picked-item view {
+  margin: 15rpx auto;
+  flex: 1;
+  display: inline-block;
+  height: 35rpx;
+  line-height: 35rpx;
+  text-align: left;
 }

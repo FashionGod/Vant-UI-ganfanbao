@@ -1,4 +1,4 @@
-class UserOrderModel {
+class MerchantOrderModel {
   // 云函数 查询商家列表
   createOrder(data) {
     return wx.cloud.callFunction({
@@ -15,11 +15,13 @@ class UserOrderModel {
     })
   }
   // 查询订单id列表
-  getOrderIdList() {
+  getOrderIdList(loginInfo) {
     return wx.cloud.callFunction({
       name: 'getOrderIdList',
       data: {
-        role: 0, // 0用户 1商家 2骑手
+        role: 1, // 0用户 1商家 2骑手
+        merchantId: loginInfo.id,
+        status: loginInfo.status, // 0新订单 1备餐完成 2骑手接单 3骑手送达
       }
     })
     .then(res => {
@@ -44,9 +46,25 @@ class UserOrderModel {
       console.error(err)
     })
   }
+  // 更改订单状态
+  updateOrderStatus(orderId) {
+    return wx.cloud.callFunction({
+      name: 'updateOrderStatus',
+      data: {
+        role: 1, // 1为商家 2为骑手
+        orderId: orderId
+      }
+    })
+    .then(res => {
+      return res
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  }
 
 }
 
 export {
-  UserOrderModel
+  MerchantOrderModel
 }

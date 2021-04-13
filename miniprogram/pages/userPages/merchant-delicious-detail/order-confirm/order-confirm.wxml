@@ -4,8 +4,9 @@
       <view class="function-container">
         <van-cell-group border="{{false}}">
           <view class="title">选择地址</view>
-          <van-cell border="{{false}}" size="large" title="选择地址" center bind:click="contactMerchant" icon="logistics"
+          <van-cell wx:if="{{addressInfo == null}}" border="{{false}}" size="large" title="选择地址" center bind:click="pickAddress" icon="logistics"
             is-link />
+          <van-cell wx:else size="large" title="{{addressInfo.detailInfo}}" bindtap="pickAddress" center is-link />
         </van-cell-group>
       </view>
       <view class="function-container">
@@ -28,7 +29,7 @@
           <van-cell-group border="{{false}}">
             <view class="title">配送要求</view>
             <van-field name="deliveryTime" input-align="right" label="配送时间" placeholder="尽快送达" border="{{ true }}" />
-            <van-field name="tableware" input-align="right" label="餐具" placeholder="需要一次性筷子/勺子" border="{{ true }}" />
+            <van-field name="tableware" input-align="right" label="餐具" placeholder="需要一次性餐具" border="{{ true }}" />
             <van-field name="remarks" type="textarea" autosize input-align="right" label="订单备注" placeholder="请输入备注"
             border="{{ false }}" />
           </van-cell-group>
@@ -56,8 +57,6 @@
           <van-card custom-class="goods-card" num="{{item.count}}" price="{{item.price}}" desc="{{item.desc}}"
             title="{{item.title}}" thumb="{{item.url}}" />
         </view>
-        <van-cell-group border="{{false}}">
-        </van-cell-group>
         <view class="total-price">
           <text>合计￥{{totalPrice/100}}</text>
         </view>

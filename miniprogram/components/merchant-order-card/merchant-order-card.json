@@ -4,6 +4,7 @@
     "van-divider": "../../miniprogram_npm/@vant/weapp/dist/divider/index",
     "van-icon": "../../miniprogram_npm/@vant/weapp/dist/icon/index",
     "van-collapse": "../../miniprogram_npm/@vant/weapp/dist/collapse/index",
-    "van-collapse-item": "../../miniprogram_npm/@vant/weapp/dist/collapse-item/index"
+    "van-collapse-item": "../../miniprogram_npm/@vant/weapp/dist/collapse-item/index",
+    "van-count-down": "../../miniprogram_npm/@vant/weapp/dist/count-down/index"
   }
 }

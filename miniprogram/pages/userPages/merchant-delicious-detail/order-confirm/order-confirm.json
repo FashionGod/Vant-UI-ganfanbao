@@ -7,7 +7,9 @@
     "van-card": "../../../../miniprogram_npm/@vant/weapp/dist/card/index",
     "van-field": "../../../../miniprogram_npm/@vant/weapp/dist/field/index",
     "van-submit-bar": "../../../../miniprogram_npm/@vant/weapp/dist/submit-bar/index",
-    "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index"
+    "van-cell-group": "../../../../miniprogram_npm/@vant/weapp/dist/cell-group/index",
+    "van-picker": "../../../../miniprogram_npm/@vant/weapp/dist/picker/index",
+    "van-popup": "../../../../miniprogram_npm/@vant/weapp/dist/popup/index"
   },
   "disableScroll": true,
   "component": true,

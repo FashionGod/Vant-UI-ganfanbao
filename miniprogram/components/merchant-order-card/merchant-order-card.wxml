@@ -1,60 +1,65 @@
 <view class="card-container">
   <view class="card-top">
+    <!-- 以前是订单个数，现改为是外卖还是堂食 -->
     <view class="order-number">
-      #39
+      #{{orderItem.orderInfo.deliveryWay == 0?'外':'店'}}
     </view>
+    <!-- 以前是建议送达时间。现在改为订单编号 -->
     <view class="suggest-arrive-time">
-      建议18：30送达
+      订单号：{{orderItem._id}}
     </view>
   </view>
   <view class="card-center">
-    <view class="center-list-item">
+    <view wx:if="{{orderItem.orderInfo.deliveryWay == 0}}" class="center-list-item">
       <view class="dark-text">
-        张建成
+        {{orderItem.orderInfo.addressInfo.userName}}
       </view>
-      <view class="yellow-text">
-        手机号
-      </view>
+      <!-- <view class="yellow-text">
+        地址
+      </view> -->
       <view class="grey-text">
-        朝阳区望京东路4号恒电AC通道 | 1.5km
+        {{orderItem.orderInfo.addressInfo.detailInfo}}
       </view>
     </view>
-    <van-divider custom-class="divider" />
+    <van-divider custom-class="divider" wx:if="{{orderItem.orderInfo.deliveryWay == 0}}"/>
     <view class="center-list-item prepared-flex">
       <view class="left-content">
         <view class="dark-text">
-          正在配餐 00:00:09
+          配餐情况 
+          <!-- <view style="display: inline-block;"><van-count-down style="font-size: 12px;" time="{{ 30 * 60 * 60 * 1000 }}" /></view> -->
         </view>
         <view class="grey-text">
           建议30分钟内出餐，请据实上报
         </view>
       </view>
       <view class="right-content">
-        <button class="complete-button">出餐完成</button>
+        <button class="complete-button" bindtap="finished" disabled="{{orderItem.orderInfo.orderStatus == 0?flase:true}}">{{orderItem.orderInfo.orderStatus == 0?'出餐完成':'已出餐'}}</button>
       </view>
     </view>
     <van-divider custom-class="divider" />
-    <view class="center-list-item">
+    <view wx:if="{{orderItem.orderInfo.deliveryWay == 0}}" class="center-list-item">
       <view class="dark-text">
-        王书林
+        {{orderItem.orderInfo.riderName?orderItem.orderInfo.riderName:'暂无骑手接单'}}
       </view>
-      <view class="grey-text">骑手已接单</view>
+      <view class="grey-text">{{orderItem.orderInfo.riderName?'骑手已接单':'等待接单'}}</view>
       <view class="rider-icon"></view>
     </view>
-    <van-divider custom-class="divider" />
+    <van-divider custom-class="divider" wx:if="{{orderItem.orderInfo.deliveryWay == 0}}"/>
     <view class="order-detail">
       <van-collapse custom-class="collapse-class" border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
         <van-collapse-item border="{{false}}" title="商品" name="1">
-          <view slot="value" style="font-weight: 500;">共计￥15</view>
-          淤泥波波奶茶
+          <view slot="value" style="font-weight: 500;">共计￥{{orderItem.orderInfo.totalPrice}}</view>
+          <view wx:for="{{orderItem.orderInfo.foodPickList}}" wx:key="title">
+            <view>{{item.title}} ￥{{item.price}} x{{item.count}} </view>
+          </view>
         </van-collapse-item>
       </van-collapse>
     </view>
   </view>
-  <view class="call-user-icon">
+  <view class="call-user-icon"  wx:if="{{orderItem.orderInfo.deliveryWay == 0}}">
     <van-icon size="22px" name="phone" />
   </view>
-  <view class="call-rider-icon">
+  <view class="call-rider-icon" wx:if="{{orderItem.orderInfo.deliveryWay == 0 && orderItem.orderInfo.riderName}}">
     <van-icon size="22px" name="phone" />
   </view>
 </view>

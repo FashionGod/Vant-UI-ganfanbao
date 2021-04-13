@@ -1,6 +1,8 @@
 // miniprogram/pages/userPages/merchant-delicious-detail/merchant-delicious-detail.js
 import tool from "../../public/tools/tool.js";
-import {ShopDetailModel} from "../../../models/merchant/merchant-shop-detail.js";
+import {
+  ShopDetailModel
+} from "../../../models/merchant/merchant-shop-detail.js";
 const shopDetailModel = new ShopDetailModel()
 let app = getApp()
 let allFoodList = [] // 初始化单纯的食品列表
@@ -40,37 +42,37 @@ Page({
       mask: true,
     })
     shopDetailModel.getCollectStatus({
-      operation: this.data.collectionStar == 'star-o' ? 1 : 0, // 1是收藏 0是取消收藏
-      merchantId: app.globalData.merchantInfo._id
-    })
-    .then(res => {
-      let {
-        mess
-      } = res.result
-      if (mess.code !== 0) {
-        this.setData({
-          collectionStar: this.data.collectionStar == 'star-o' ? 'star' : 'star-o'
-        })
-        wx.hideLoading({})
-        wx.showToast({
-          title: mess.message,
-          icon: 'success'
-        })
-      } else {
+        operation: this.data.collectionStar == 'star-o' ? 1 : 0, // 1是收藏 0是取消收藏
+        merchantId: app.globalData.merchantInfo._id
+      })
+      .then(res => {
+        let {
+          mess
+        } = res.result
+        if (mess.code !== 0) {
+          this.setData({
+            collectionStar: this.data.collectionStar == 'star-o' ? 'star' : 'star-o'
+          })
+          wx.hideLoading({})
+          wx.showToast({
+            title: mess.message,
+            icon: 'success'
+          })
+        } else {
+          wx.hideLoading({})
+          wx.showToast({
+            title: '失败',
+            icon: 'error'
+          })
+        }
+      })
+      .catch(err => {
         wx.hideLoading({})
         wx.showToast({
           title: '失败',
           icon: 'error'
         })
-      }
-    })
-    .catch(err => {
-      wx.hideLoading({})
-      wx.showToast({
-        title: '失败',
-        icon: 'error'
       })
-    })
   },
   // -------------------------------------------- 点菜 --------------------------------------------
   // 滑动右边判断是哪个sidebar
@@ -120,8 +122,13 @@ Page({
       id: app.globalData.merchantInfo._id,
       role: 0 // 用户
     }).then(res => {
-      const {mess} = res.result
-      app.globalData.merchantInfo = {...app.globalData.merchantInfo, ...mess.data.data}
+      const {
+        mess
+      } = res.result
+      app.globalData.merchantInfo = {
+        ...app.globalData.merchantInfo,
+        ...mess.data.data
+      }
       // 证书的图片两个字符串处理为数组
       let license = []
       license.push(app.globalData.merchantInfo.businessLicense, app.globalData.merchantInfo.foodLicense)
@@ -138,7 +145,9 @@ Page({
         allFoodList = []
         merchantMenuList.map(i => {
           i.foodList.map(j => {
-            allFoodList.push({...j})
+            allFoodList.push({
+              ...j
+            })
           })
         })
         allFoodList.forEach(i => {
@@ -177,31 +186,34 @@ Page({
       }, 1000)
     })
     shopDetailModel.getCollectStatus({
-      id: app.globalData.merchantInfo._id,
-      operation: 2, // 获取收藏状态
-    })
-    .then(res => {
-      let {mess} = res.result
-      if (mess.code === 3) {
-        this.setData({
-          collectionStar: 'star'
-        })
-      }
-      else if (mess.code === 4) {
-        this.setData({
-          collectionStar: 'star-o'
-        })
-      }
-      setTimeout(() => {
-        wx.hideLoading({})
-      }, 1000)
-    })
+        id: app.globalData.merchantInfo._id,
+        operation: 2, // 获取收藏状态
+      })
+      .then(res => {
+        let {
+          mess
+        } = res.result
+        if (mess.code === 3) {
+          this.setData({
+            collectionStar: 'star'
+          })
+        } else if (mess.code === 4) {
+          this.setData({
+            collectionStar: 'star-o'
+          })
+        }
+        setTimeout(() => {
+          wx.hideLoading({})
+        }, 1000)
+      })
   },
   // 单个食品数量变化
   onFoodCountChange(event) {
-    const {dataset} = event.currentTarget
+    const {
+      dataset
+    } = event.currentTarget
     allFoodList.forEach(obj => {
-      if(obj.title == dataset.item.title) {
+      if (obj.title == dataset.item.title) {
         obj.count = event.detail
       }
     })
@@ -214,49 +226,48 @@ Page({
       tmpTotalPrice += (allFoodList[i].count * allFoodList[i].price)
     }
     this.setData({
-      totalPrice: tmpTotalPrice*100, // 总价单位为分
+      totalPrice: tmpTotalPrice * 100, // 总价单位为分
       foodPickList: foodPickList,
     })
   },
   // 底部购物车弹出层
   showPopup() {
-    if(foodPickList.length === 0) {
+    if (foodPickList.length === 0) {
       wx.showToast({
         title: '您还没有选择任何商品哦亲',
         icon: 'none'
       })
-    }
-    else {
-      this.setData({ showPopup: true });
+    } else {
+      this.setData({
+        showPopup: true
+      });
     }
   },
   onClose() {
-    this.setData({ showPopup: false });
+    this.setData({
+      showPopup: false
+    });
   },
   onSubmit() {
-    if(foodPickList.length === 0) {
-      wx.showToast({
-        title: '您还没有选择任何商品哦亲',
-        icon: 'none'
-      })
-    }
-    else {
-      let that = this
-      wx.navigateTo({
-        url: './order-confirm/order-confirm',
-        events: {
-          foodPickListEvent: function(data) {
-            console.log(data)
+    setTimeout(() => { // 防止出现空订单
+      if (foodPickList.length === 0) {
+        wx.showToast({
+          title: '您还没有选择任何商品哦亲',
+          icon: 'none'
+        })
+      } else {
+        let that = this
+        wx.navigateTo({
+          url: './order-confirm/order-confirm',
+          success: function (res) {
+            res.eventChannel.emit('foodPickListEvent', {
+              foodPickList: foodPickList,
+              totalPrice: that.data.totalPrice
+            })
           }
-        },
-        success: function(res) {
-          res.eventChannel.emit('foodPickListEvent', {
-            foodPickList: foodPickList,
-            totalPrice: that.data.totalPrice
-          })
-        }
-      })
-    }
+        })
+      }
+    }, 50)
   },
   // --------------------------------------------- 评价 -------------------------------------------------
 

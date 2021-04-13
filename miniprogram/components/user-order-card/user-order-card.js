@@ -4,9 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    merchantImg:{
-      type: String,
-      value: ''
+    orderItem:{
+      type: Object,
+      value: {}
     }
   },
 
@@ -15,6 +15,13 @@ Component({
    */
   data: {
     value: 3,
+    payTime: '',
+    statusText: [
+      '已下单',
+      '备餐完成',
+      '骑手送餐',
+      '餐已送达'
+    ],
   },
 
   /**

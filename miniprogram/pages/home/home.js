@@ -40,6 +40,7 @@ Page({
     value2: 0,
     // 商家列表
     merchantList: [],
+    // 分页加载参数
     start: 0,
     more: true,
   },
@@ -137,8 +138,13 @@ Page({
     }
     let p
     if (init) {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
       p = homeModel.getMerchantIdList()
           .then(res => {
+            wx.hideLoading({})
             this.data.start = 0
             this.data.more = true
             this.data.merchantIds = this.shuffle(res.result.data)

@@ -1,33 +1,40 @@
 <view class="page-container">
-  <view class="status-container">
-    <van-steps steps="{{ steps }}" active="{{ status }}" />
+  <view wx:if="{{ orderItem.orderInfo.deliveryWay == 1 }}" class="status-container">
+      <view class="title">订单状态</view>
+    <van-steps steps="{{ eatInSteps }}" active="{{ orderItem.orderInfo.orderStatus + 1 }}" />
+    <!-- 为了好看设置三个步骤条。所以加一 -->
+  </view>
+  <view wx:elif="{{ orderItem.orderInfo.deliveryWay == 0 }}" class="status-container">
+      <view class="title">订单状态</view>
+    <van-steps steps="{{ takeWaySteps }}" active="{{ orderItem.orderInfo.orderStatus }}" />
   </view>
   <view class="function-container">
     <van-cell-group border="{{false}}">
       <view class="title">联系方式</view>
       <van-cell size="large" title="联系商家" center bind:click="contactMerchant" icon="phone-o" is-link />
-      <van-cell size="large" title="联系骑手" center bind:click="contactRider" icon="phone-o" is-link />
+      <van-cell wx:if="{{ orderItem.orderInfo.deliveryWay == 0 }}" size="large" title="联系骑手" center bind:click="contactRider" icon="phone-o" is-link />
     </van-cell-group>
   </view>
   <view class="function-container">
     <view class="title">
-      <text>包子铺</text>
+      <text>{{orderItem.orderInfo.merchantTitle}}</text>
       <van-icon name="arrow" size="0.7em" />
     </view>
-    <view wx:for="{{[0,1,2]}}">
-      <van-card custom-class="goods-card" num="2" price="2.00" desc="好吃又好玩" title="平板巧克力" thumb="{{ 'https://img01.yzcdn.cn/vant/ipad.jpeg' }}" />
-    </view>
-    <van-cell-group border="{{false}}">
-      <van-field readonly input-align="right" label="包装费" value="{{ '2元' }}" border="{{ false }}" />
-    </van-cell-group>
-    <view class="total-price">
-      <text>共计￥37.7</text>
-    </view>
+    <view wx:for="{{orderItem.orderInfo.foodPickList}}" wx:key="title">
+          <van-card custom-class="goods-card" num="{{item.count}}" price="{{item.price}}" desc="{{item.desc}}"
+            title="{{item.title}}" thumb="{{item.url}}" />
+        </view>
+        <van-cell-group wx:if="{{orderItem.orderInfo.deliveryWay == 0}}" border="{{false}}">
+          <van-field readonly input-align="right" label="配送费" value="{{orderItem.orderInfo.freight}}元" border="{{ false }}" />
+        </van-cell-group>
+        <view class="total-price">
+          <text>合计￥{{orderItem.orderInfo.totalPrice + (orderItem.orderInfo.freight?orderItem.orderInfo.freight:0)}}</text>
+        </view>
   </view>
-  <view class="function-container">
+  <view wx:if="{{ orderItem.orderInfo.deliveryWay == 0 }}" class="function-container">
     <van-cell-group border="{{false}}">
       <view class="title">配送信息</view>
-      <van-field readonly input-align="right" label="名称" value="{{ '李阳' }}" border="{{ true }}" />
+      <van-field readonly input-align="right" label="骑手" value="{{ '李阳' }}" border="{{ true }}" />
       <van-field readonly input-align="right" label="名称" value="{{ '李阳' }}" border="{{ true }}" />
       <van-field readonly input-align="right" label="名称" value="{{ '李阳' }}" border="{{ true }}" />
     </van-cell-group>
@@ -35,10 +42,10 @@
   <view class="function-container">
     <van-cell-group border="{{false}}">
       <view class="title">订单信息</view>
-      <van-field readonly input-align="right" label="订单号" value="{{ '1234567891235946513' }}" border="{{ true }}" />
-      <van-field readonly input-align="right" label="下单时间" value="{{ '2021-01-12 11:32' }}" border="{{ true }}" />
+      <van-field readonly input-align="right" label="订单号" value="{{ orderItem._id }}" border="{{ true }}" />
+      <van-field readonly input-align="right" label="下单时间" value="{{ orderItem.orderInfo.payTime }}" border="{{ true }}" />
       <van-field readonly type="textarea" autosize input-align="right" label="订单备注"
-        value="{{ '李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳李阳' }}" border="{{ true }}" />
+        value="{{ orderItem.orderInfo.remarks?orderItem.orderInfo.remarks:'无' }}" border="{{ true }}" />
     </van-cell-group>
   </view>
 </view>
