@@ -39,7 +39,9 @@ exports.main = async(event, context) => {
             .then(res => {
               return db.collection('orderCollection').doc(event.orderId).update({
                 data: {
-                  evaluateStatus: 1
+                  orderInfo: {
+                    evaluateStatus: 1
+                  }
                 }
               })
             })

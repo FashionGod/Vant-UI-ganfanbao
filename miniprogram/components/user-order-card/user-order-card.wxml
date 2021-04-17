@@ -7,10 +7,10 @@
       <text>{{orderItem.orderInfo.merchantTitle}}</text>
     </view>
     <view class="time">
-      <text>下单时间：{{orderItem.orderInfo.payTime}}</text>
+      <text>下单时间:{{orderItem.orderInfo.payTime}}</text>
     </view>  
     <view class="desc">
-      <text>订单备注：{{orderItem.orderInfo.remarks?orderItem.orderInfo.remarks:'无'}}</text>
+      <text>订单备注:{{orderItem.orderInfo.remarks?orderItem.orderInfo.remarks:'无'}}</text>
     </view>
   </view>
   <view class="card-right">

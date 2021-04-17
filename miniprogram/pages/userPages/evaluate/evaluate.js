@@ -12,7 +12,8 @@ Page({
   data: {
     focus: false,
     starCount: 0,
-    textArea: ''
+    textArea: '',
+    readOnly: false
   },
   // 获取焦点
   bindButtonTap: function() {
@@ -71,6 +72,39 @@ Page({
    const eventChannel = this.getOpenerEventChannel()
    eventChannel.on('dataToEvaluate', function(data) {
       orderItem = data.orderItem
+   })
+   wx.showLoading({
+     title: '加载中',
+     mask: true
+   })
+   setTimeout(() => {
+     
+   }, 500);
+   evaluateModel.getEvaluate({orderId: orderItem._id})
+   .then(res => {
+     wx.hideLoading({})
+     if (res.result.code === 2) { // 有评价
+      this.setData({
+        starCount: res.result.data[0].starCount,
+        textArea: res.result.data[0].content,
+        readOnly: true
+      })
+     }
+     else if (res.result.code === 1) { // 未评价
+      wx.showToast({
+        title: '请给出诚恳评价哦亲',
+        icon: 'none'
+      })
+     }
+     else if (res.result.code === 0){ // 查询失败
+      wx.showToast({
+        title: '查询失败',
+        icon: 'none'
+      })
+      wx.navigateBack({
+        delta: 1,
+      })
+     }
    })
   }
 })

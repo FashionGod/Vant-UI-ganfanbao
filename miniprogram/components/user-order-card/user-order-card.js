@@ -44,6 +44,15 @@ Component({
         success:(res)=> {
           wx.navigateTo({
             url: '../../pages/userPages/evaluate/evaluate',
+            events: {
+              dataToEvaluate: function(data) {
+                console.log(data)
+              }
+            },
+            success: function(res) {
+              // 通过eventChannel向被打开页面传送数据
+              res.eventChannel.emit('dataToEvaluate', { orderItem: that.data.orderItem })
+              }
           })
         },
         fail:(res)=> {
@@ -62,10 +71,13 @@ Component({
                     key: 'userInfo',
                   })
                   app.globalData.canIUseGetUserProfile = true
+                  console.log('that.data.orderItem', that.data.orderItem)
                   wx.navigateTo({
                     url: '../../pages/userPages/evaluate/evaluate',
                     events: {
-      
+                      dataToEvaluate: function(data) {
+                        console.log(data)
+                      }
                     },
                     success: function(res) {
                       // 通过eventChannel向被打开页面传送数据
@@ -79,6 +91,12 @@ Component({
                     icon: 'none'
                   })
                 }
+              })
+            },
+            fail: err => {
+              wx.showToast({
+                title: '调用接口失败',
+                icon: 'none'
               })
             }
           })

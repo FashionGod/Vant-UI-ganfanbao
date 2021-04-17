@@ -1,9 +1,9 @@
 <view class="container">
   <view class="explain">评价</view>
-  <van-rate model:value="{{ starCount }}" size="{{ 35 }}" color="#ffd21e" void-color="#c2c2c1" void-icon="star"
+  <van-rate model:value="{{ starCount }}" readonly="{{readOnly}}" size="{{ 35 }}" color="#ffd21e" void-color="#c2c2c1" void-icon="star"
     bind:change="onChange" />
   <view class="description" bindtap="bindButtonTap">
-    <textarea focus="{{focus}}" auto-height="true" maxlength="200" model:value="{{ textArea }}" placeholder="请输入评价（最多200字）" />
+    <textarea focus="{{focus}}" disabled="{{readOnly}}" auto-height="true" maxlength="200" model:value="{{ textArea }}" placeholder="请输入评价（最多200字）" />
     </view>
-    <button class="feedback" bindtap="submitEvaluate">提交评价</button>
+    <button wx:if="{{!readOnly}}" class="feedback" bindtap="submitEvaluate">提交评价</button>
 </view>

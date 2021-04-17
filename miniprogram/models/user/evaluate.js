@@ -18,27 +18,18 @@ class EvaluateModel {
       console.error(err)
     })
   }
-  // 云函数 查询商家列表
-  getMerchantList(merchantIds) {
+  // 查看是否已经评论
+  getEvaluate(data) {
+    console.log(data)
     return wx.cloud.callFunction({
-      name: 'getMerchantList',
+      name: 'getEvaluate',
       data: {
-        merchantIds: merchantIds
+        orderId: data.orderId,
+        operateType: 0, // 0为查看是否有评价 1为查看评价列表
       }
     })
     .then(res => {
-      return res.result.mess
-    })
-    .catch(err => {
-      console.error(err)
-    })
-  }
-  // 查询商家Ids列表
-  getMerchantIdList() {
-    return wx.cloud.callFunction({
-      name: 'getMerchantIdList'
-    })
-    .then(res => {
+      console.log(res)
       return res
     })
     .catch(err => {
