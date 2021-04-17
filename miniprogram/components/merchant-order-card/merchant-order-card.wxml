@@ -46,7 +46,7 @@
     </view>
     <van-divider custom-class="divider" wx:if="{{orderItem.orderInfo.deliveryWay == 0}}"/>
     <view class="order-detail">
-      <van-collapse custom-class="collapse-class" border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse custom-class="collapse-class" border="{{false}}" value="{{ activeNames }}" catchtap="nothing" bind:change="onChange">
         <van-collapse-item border="{{false}}" title="商品" name="1">
           <view slot="value" style="font-weight: 500;">共计￥{{orderItem.orderInfo.totalPrice}}</view>
           <view wx:for="{{orderItem.orderInfo.foodPickList}}" wx:key="title">
@@ -56,10 +56,10 @@
       </van-collapse>
     </view>
   </view>
-  <view class="call-user-icon"  wx:if="{{orderItem.orderInfo.deliveryWay == 0}}">
+  <view catchtap="contactUser" class="call-user-icon"  wx:if="{{orderItem.orderInfo.deliveryWay == 0}}">
     <van-icon size="22px" name="phone" />
   </view>
-  <view class="call-rider-icon" wx:if="{{orderItem.orderInfo.deliveryWay == 0 && orderItem.orderInfo.riderName}}">
+  <view catchtap="contactRider" class="call-rider-icon" wx:if="{{orderItem.orderInfo.deliveryWay == 0 && orderItem.orderInfo.riderName}}">
     <van-icon size="22px" name="phone" />
   </view>
 </view>

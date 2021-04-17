@@ -1,0 +1,47 @@
+/* miniprogram/pages/public/feedback/feedback.wxss */
+page {
+  height: 100%;
+  width: 100%;
+}
+.container {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.explain {
+  margin-top: 100rpx;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.6rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(131, 127, 123);
+}
+.description {
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+  padding: 35rpx;
+  width: 500rpx;
+  height: 380rpx;
+  background-color: #fff;
+  text-indent:1.8rem;
+  line-height: 26px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.description textarea {
+  width: 490rpx;
+}
+
+.feedback {
+  display: inline-block;
+  color: rgb(73, 71, 70);
+  width: 250rpx;
+  border: solid 1px;
+  font-size: 0.9rem;
+}

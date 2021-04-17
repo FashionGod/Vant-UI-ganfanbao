@@ -281,7 +281,7 @@ Page({
   // 联系商家
   contactOfficial() {
     wx.makePhoneCall({
-      phoneNumber: '15541155173',
+      phoneNumber: this.data.merchantInfo.merchantSignUpInfo.phoneNumber,
       success: (res) => {},
       fail: (res) => {},
     })

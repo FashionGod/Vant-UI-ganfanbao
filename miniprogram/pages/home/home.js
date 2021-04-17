@@ -144,7 +144,6 @@ Page({
       })
       p = homeModel.getMerchantIdList()
           .then(res => {
-            wx.hideLoading({})
             this.data.start = 0
             this.data.more = true
             this.data.merchantIds = this.shuffle(res.result.data)
@@ -165,9 +164,8 @@ Page({
     return p.then(res => {
       return homeModel.getMerchantList(this.getMerchantIds(this.data.start))
       .then(res => {
-        console.log(res)
+        wx.hideLoading({}) // 关闭getIdlist的showLoading
         app.globalData.loginInfo.openid = res.openid
-        console.log(app.globalData)
         if (res.code == 1) {
           let merchantList = this.data.merchantList.concat(res.data.data)
           if (init) {
@@ -186,18 +184,19 @@ Page({
             icon: 'none'
           })
           this.setData({
-            loading: false
+            scrollTouchedBottomLoading: false
           })
         }
         return res
       })
       .catch(err => {
+        console.log(err)
         wx.showToast({
           title: '加载失败',
           icon: 'none'
         })
         this.setData({
-          loading: false
+          scrollTouchedBottomLoading: false
         })
       })
     })

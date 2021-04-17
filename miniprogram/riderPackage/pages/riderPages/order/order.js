@@ -1,4 +1,9 @@
 // miniprogram/pages/riderPages/order/order.js
+import {
+  RiderOrderModel
+}
+from "../../../../models/rider/order"
+const orderModel = new RiderOrderModel()
 const app = getApp()
 Page({
 
@@ -6,82 +11,120 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // tabs data
+    tabsActive: 0,
     // 条件渲染我的页面
     showMePageFlag: false,
     // 显示触底刷新
     scrollTouchedBottomLoading: false,
     // 下拉刷新
     pullDownloading: false,
+    // 订单列表
+    orderList: [],
     // tabbars data
     tabbarActive: 0,
-    // 我的页面
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 动画animation
     animation_class: null
   },
 
   onLoad() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo(e) {
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+    this.loadMore({
+      init: true
     })
+    console.log(app.globalData)
   },
   // 联系我们
   contactOfficial() {
     wx.makePhoneCall({
       phoneNumber: '15541155173',
-      success:(res)=> {
-      },
-      fail:(res)=> {
-      },
-    })
-  },
-  // 收获地址
-  shippingAddress() {
-    wx.chooseAddress({
-      success: (res) => {
-      },
-      fail:(res) => {
-      }
+      success: (res) => {},
+      fail: (res) => {},
     })
   },
 
-  // 监控自定义scroll-view下拉刷新
+  // 获取分页加载的ids
+  getOrderIds(start) {
+    return this.data.orderIds.slice(start, start + 5)
+  },
+  // 分页加载
+  loadMore({
+    init
+  }) {
+    if (this.data.scrollTouchedBottomLoading) {
+      return
+    }
+    let p
+    if (init) {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      p = orderModel.getOrderIdList({
+          id: app.globalData.loginInfo.id,
+          status: this.data.tabsActive
+        })
+        .then(res => {
+          this.data.start = 0
+          this.data.more = true
+          this.data.orderIds = res.result.data
+          return res
+        })
+    } else {
+      p = new Promise(resolve => {
+        resolve({})
+      })
+    }
+    if (!this.data.more && !init) {
+      return
+    }
+    this.setData({
+      scrollTouchedBottomLoading: true
+    })
+    return p.then(res => {
+      return orderModel.getOrderList(this.getOrderIds(this.data.start))
+        .then(res => {
+          wx.hideLoading({}) // 关闭getIdlist的showLoading
+          if (res.code == 1) {
+            console.log(res)
+            let orderList = this.data.orderList.concat(res.data.data)
+            if (init) {
+              orderList = res.data.data
+            }
+            this.setData({
+              orderList: orderList.reverse(), // 保证最上面看到的是最新的
+              start: orderList.length,
+              more: res.data.data.length == 5 ? true : false,
+              scrollTouchedBottomLoading: false
+            })
+          } else {
+            wx.showToast({
+              title: '订单列表获取失败',
+              icon: 'none'
+            })
+            this.setData({
+              loading: false
+            })
+          }
+          return res
+        })
+        .catch(err => {
+          console.log(err)
+          wx.showToast({
+            title: '加载失败',
+            icon: 'none'
+          })
+          this.setData({
+            scrollTouchedBottomLoading: false
+          })
+        })
+    })
+  }, // 监控自定义scroll-view下拉刷新
   pullDownFresh() {
     setTimeout(() => {
       // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
-
+      this.loadMore({
+        init: true
+      })
       // 数据请求成功后，关闭刷新
       this.setData({
         pullDownloading: false,
@@ -89,24 +132,86 @@ Page({
     }, 1000)
   },
   scrollTouchedBottom() {
-    // 显示loading开始请求
-    this.setData({
-      scrollTouchedBottomLoading: true,
-    })
-    // 数据请求成功后，关闭刷新
-    setTimeout(() => {
+    if (!this.data.more) {
       this.setData({
-        scrollTouchedBottomLoading: false,
+        showEnd: true
       })
-    }, 1000);
+      setTimeout(() => {
+        this.setData({
+          showEnd: false
+        })
+      }, 1000)
+      this.loadMore({
+        init: false
+      })
+    }
   },
-  // 跳转至详情页
-  navigateToOrderDetail() {
+  // 子组件的事件（抢单）
+  grabOrder(e) {
+    let that = this
+    const {
+      dataset
+    } = e.currentTarget
+    wx.showModal({
+      cancelText: '取消',
+      confirmText: '确定',
+      content: '您确定吗？',
+      showCancel: true,
+      title: '提示',
+      success: (res) => {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '加载中',
+          })
+          orderModel.updateOrderStatus({
+            orderId: dataset.item._id,
+            loginInfo: app.globalData.loginInfo,
+            status: this.data.tabsActive
+          }).then(res => {
+            wx.hideLoading({})
+            if (res.result.code === 0) {
+              wx.showToast({
+                title: '云函数调用失败',
+                icon: 'none'
+              })
+            } else if (res.result.code === 1) {
+              that.loadMore({
+                init: true
+              })
+            }
+          })
+        } else if (res.cancel) {}
+      }
+    })
+  },
+  tabsChange(e) {
+    this.setData({
+      tabsActive: e.detail.index
+    })
+    this.loadMore({
+      init: true
+    })
+  },
+  // 进入订单详情页面
+  navigateToOrderDetail(e) {
+    console.log(e)
+    const {dataset} = e.currentTarget
+    let {item} = dataset
     wx.navigateTo({
       url: '../order-detail/order-detail',
+      events: {
+        orderDetailEvent: function(data) {
+          console.log(data)
+        }
+      },
+      success: function(res) {
+        res.eventChannel.emit('orderDetailEvent', {
+          orderItem: item,
+        })
+      }
     })
   },
-  onShow:function() {
+  onShow: function () {
     wx.hideHomeButton();
   },
   // tabbars function
@@ -122,7 +227,7 @@ Page({
         showMePageFlag: false
       });
     }
-    
+
   },
   onReady: function () {
     var animation = wx.createAnimation({

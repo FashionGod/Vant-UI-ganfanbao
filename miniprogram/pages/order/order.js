@@ -114,7 +114,6 @@ Page({
         })
         p = orderModel.getOrderIdList()
             .then(res => {
-              wx.hideLoading({})
               this.data.start = 0
               this.data.more = true
               this.data.orderIds = res.result.data
@@ -135,6 +134,7 @@ Page({
       return p.then(res => {
         return orderModel.getOrderList(this.getOrderIds(this.data.start))
         .then(res => {
+          wx.hideLoading({}) // 关闭getIdlist的showLoading
           if (res.code == 1) {
             console.log(res)
             let orderList = this.data.orderList.concat(res.data.data)
@@ -154,7 +154,7 @@ Page({
               icon: 'none'
             })
             this.setData({
-              loading: false
+              scrollTouchedBottomLoading: false
             })
           }
           return res
@@ -165,7 +165,7 @@ Page({
             icon: 'none'
           })
           this.setData({
-            loading: false
+            scrollTouchedBottomLoading: false
           })
         })
       })

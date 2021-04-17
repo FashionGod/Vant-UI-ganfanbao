@@ -68,6 +68,65 @@
     </view>
   </van-tab>
   <van-tab title="评价">
+    <view class="container">
+      <view wx:if="{{commentList.length>0}}" class="comment">
+        <view class="titleBar">
+          <view>评论列表</view>
+        </view>
+        <view id="{{'c'+item._id}}" wx:for="{{commentList}}" wx:key="{{index}}" class="item">
+          <view class="titleWrap">
+            <image class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
+            <view class="authorWrap">
+              <view class="author">{{item.userInfo.nickName}}</view>
+              <view class="time">{{item.formatTime}}</view>
+            </view>
+            <view class="iconWrap">
+              <!-- <view wx:if="{{item.canDelete||isAdmin}}" bindtap="onDeleteComment" data-id="{{item._id}}" data-index="{{index}}" class="iconItem">
+              <image class="icon" src="/images/icons/delete@red.png"></image>
+            </view> -->
+              <!-- <view data-replyId="{{item._id}}" data-replyName="{{item.userInfo.nickName}}" bindtap="onReplySb" class="iconItem">
+              <image class="icon" src="/images/icons/comments@gray.png"></image>
+            </view> -->
+
+              <view bindtap="onLikeComment" data-id="{{item._id}}" data-index="{{index}}" class="iconItem">
+                <image class="icon" src="{{item.liked?likeIcon:disLikeIcon}}"></image>
+                <view class="count">{{item.likeCount}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="text">
+            {{item.content}}
+          </view>
+          <view class="reply">
+            <block wx:for="{{item.replyList}}" wx:key="{{index}}" wx:for-index="replyIndex">
+              <view class="item">
+                <view class="titleWrap">
+                  <image class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
+                  <view class="authorWrap">
+                    <view class="author">{{item.userInfo.nickName}}</view>
+                    <view class="time">{{item.formatTime}}</view>
+                  </view>
+                  <view class="iconWrap">
+                    <view wx:if="{{item.canDelete||isAdmin}}" bindtap="onDeleteComment" data-id="{{item._id}}"
+                      data-index="{{index}}" data-replyindex="{{replyIndex}}" class="iconItem">
+                      <image class="icon" src="/images/icons/delete@red.png"></image>
+                    </view>
+                    <!-- <view bindtap="onLikeComment" data-id="{{item._id}}" data-index="{{index}}" data-replyindex="{{replyIndex}}" class="iconItem">
+                    <image class="icon" src="{{item.liked?likeIcon:disLikeIcon}}"></image>
+                    <view class="count">{{item.likeCount}}</view>
+                  </view> -->
+                  </view>
+                </view>
+                <view class="text">
+                  {{item.content}}
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+        <loading-cmp wx:if="{{loading}}" class="loading" />
+      </view>
+    </view>
   </van-tab>
   <van-tab title="商家">
     <swiper class="swiper-images" autoplay="true" interval="3500" duration="500" indicator-dots="true" circular="true">
@@ -78,36 +137,37 @@
       </block>
     </swiper>
     <van-cell-group>
-      <van-cell title="商家地址" label="描述信息" center link-type="navigateTo" url="" icon="location-o" is-link />
-      <van-cell title="联系商家" label="15541155111" center bind:click="contactOfficial" icon="phone-o" is-link />
+      <van-cell title="商家地址" label="{{merchantInfo.merchantSignUpInfo.managementAddress}}" center icon="location-o" />
+      <van-cell title="联系商家" label="{{merchantInfo.merchantSignUpInfo.phoneNumber}}" center bind:click="contactOfficial"
+        icon="phone-o" is-link />
       <van-cell title="查看食品安全档案" center link-type="navigateTo" url="./merchant-detail/merchant-detail" icon="bulb-o"
         is-link />
       <van-cell title="投诉反馈" center link-type="navigateTo" url="../../public/feedback/feedback" icon="records"
         is-link />
     </van-cell-group>
   </van-tab>
-    <van-submit-bar custom-class="submit-bar" style="display: {{showSubmit? 'block': 'none'}} !important;"
-      button-class="submit-order" price="{{ totalPrice }}" button-text="提交订单" bind:submit="onSubmit">
-      <view bindtap="showPopup">查看详情</view>
-    </van-submit-bar>
-    <!-- 购物车弹出层 -->
-    <van-popup show="{{ showPopup }}" round closeable z-index="{{50}}" position="bottom" custom-class="pop-up"
-      bind:close="onClose">
-      <view class="pop-up-container" wx:if="{{foodPickList.length < 6}}">
-        <view style="height: 35rpx;"></view>
-        <view class="picked-item" wx:for="{{foodPickList}}" wx:key="title">
-          <view>{{item.title}}</view>
-          <view>X{{item.count}}</view>
-        </view>
-        <view style="height: 100rpx;"></view>
+  <van-submit-bar custom-class="submit-bar" style="display: {{showSubmit? 'block': 'none'}} !important;"
+    button-class="submit-order" price="{{ totalPrice }}" button-text="提交订单" bind:submit="onSubmit">
+    <view bindtap="showPopup">查看详情</view>
+  </van-submit-bar>
+  <!-- 购物车弹出层 -->
+  <van-popup show="{{ showPopup }}" round closeable z-index="{{50}}" position="bottom" custom-class="pop-up"
+    bind:close="onClose">
+    <view class="pop-up-container" wx:if="{{foodPickList.length < 6}}">
+      <view style="height: 35rpx;"></view>
+      <view class="picked-item" wx:for="{{foodPickList}}" wx:key="title">
+        <view>{{item.title}}</view>
+        <view>X{{item.count}}</view>
       </view>
-      <scroll-view class="pop-up-container" scroll-y="true" wx:else>
-        <view style="height: 35rpx;"></view>
-        <view class="picked-item" wx:for="{{foodPickList}}" wx:key="title">
-          <view>{{item.title}}</view>
-          <view>X{{item.count}}</view>
-        </view>
-        <view style="height: 100rpx;"></view>
-      </scroll-view>
-    </van-popup>
+      <view style="height: 100rpx;"></view>
+    </view>
+    <scroll-view class="pop-up-container" scroll-y="true" wx:else>
+      <view style="height: 35rpx;"></view>
+      <view class="picked-item" wx:for="{{foodPickList}}" wx:key="title">
+        <view>{{item.title}}</view>
+        <view>X{{item.count}}</view>
+      </view>
+      <view style="height: 100rpx;"></view>
+    </scroll-view>
+  </van-popup>
 </van-tabs>

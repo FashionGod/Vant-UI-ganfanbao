@@ -8,11 +8,11 @@
       <view class="title">订单状态</view>
     <van-steps steps="{{ takeWaySteps }}" active="{{ orderItem.orderInfo.orderStatus }}" />
   </view>
-  <view class="function-container">
+  <view wx:if="{{ orderItem.orderInfo.deliveryWay == 0 }}" class="function-container">
     <van-cell-group border="{{false}}">
       <view class="title">联系方式</view>
-      <van-cell size="large" title="联系商家" center bind:click="contactMerchant" icon="phone-o" is-link />
-      <van-cell wx:if="{{ orderItem.orderInfo.deliveryWay == 0 }}" size="large" title="联系骑手" center bind:click="contactRider" icon="phone-o" is-link />
+      <van-cell size="large" title="联系用户" center bind:click="contactUser" icon="phone-o" is-link />
+      <van-cell wx:if="{{orderItem.orderInfo.riderName != ''}}" size="large" title="联系骑手" center bind:click="contactRider" icon="phone-o" is-link />
     </van-cell-group>
   </view>
   <view class="function-container">

@@ -1,4 +1,5 @@
 // miniprogram/pages/riderPages/sign-in/sign-in.js
+const app = getApp()
 Page({
 
   /**
@@ -81,6 +82,11 @@ Page({
       success: res => {
         console.log(res)
         let {mess} = res.result
+        app.globalData.loginInfo = {
+          id: mess.data.data._id,
+          riderName: mess.data.data.riderSignUpInfo.name,
+          riderPhone: mess.data.data.riderSignUpInfo.phoneNumber
+        }
         if (mess.code == 1) {
           wx.reLaunch({
             url: '../../../../riderPackage/pages/riderPages/order/order',

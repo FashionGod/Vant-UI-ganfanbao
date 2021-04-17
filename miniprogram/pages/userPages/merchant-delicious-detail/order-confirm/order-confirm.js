@@ -54,7 +54,7 @@ Page({
       }
     })
   },
-  pickByRider() {
+  pickByRider() { // 外卖
     if (this.data.addressInfo === null) {
       wx.showToast({
         title: '收货地址不能为空哦',
@@ -67,12 +67,14 @@ Page({
     params.foodPickList = foodPickList
     params.freight = freight
     params.riderPhone = ''// 增加骑手手机号字段
+    params.riderName = ''// 增加骑手姓名字段
     params.merchantId = app.globalData.merchantInfo._id
     params.merchantLogo = app.globalData.merchantInfo.cardInfo.merchantLogo
     params.orderId = Date.now()
     params.payTime = new Date(Date.now()).toLocaleString('zh', {year: 'numeric', month: 'numeric',  day: 'numeric',  hour: 'numeric',  minute: 'numeric'})
     params.merchantTitle = app.globalData.merchantInfo.cardInfo.shopName
     params.merchantPhone = app.globalData.merchantInfo.merchantSignUpInfo.phoneNumber
+    params.merchantAddress = app.globalData.merchantInfo.merchantSignUpInfo.merchantAddress
     params.deliveryWay = 0 // 0为外卖 1为自取
     params.userId = app.globalData.loginInfo.openid
     params.totalPrice = totalPrice/100 + freight // 单位还原回元
@@ -115,7 +117,7 @@ Page({
       })
     }, 50)
   },
-  pickBySelf() {
+  pickBySelf() { // 堂食
     let params = {}
     params.foodPickList = foodPickList
     params.merchantId = app.globalData.merchantInfo._id
@@ -124,6 +126,7 @@ Page({
     params.payTime = new Date(Date.now()).toLocaleString('zh', {year: 'numeric', month: 'numeric',  day: 'numeric',  hour: 'numeric',  minute: 'numeric'})
     params.merchantTitle = app.globalData.merchantInfo.cardInfo.shopName
     params.merchantPhone = app.globalData.merchantInfo.merchantSignUpInfo.phoneNumber
+    params.merchantAddress = app.globalData.merchantInfo.merchantSignUpInfo.merchantAddress
     params.deliveryWay = 1 // 0为外卖 1为自取
     params.userId = app.globalData.loginInfo.openid
     params.totalPrice = totalPrice/100 // 单位还原为元

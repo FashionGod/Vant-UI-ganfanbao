@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    orderItem:{
+    orderItem: {
       type: Object,
       value: {}
     }
@@ -14,7 +14,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    activeNames: ['1'],// 控制面板收缩
+    activeNames: ['1'], // 控制面板收缩
   },
 
   /**
@@ -28,6 +28,22 @@ Component({
     },
     finished() {
       this.triggerEvent("finishedPrepare", {})
-    }
+    },
+    // 联系用户
+    contactUser() {
+      wx.makePhoneCall({
+        phoneNumber: this.data.orderItem.orderInfo.addressInfo.telNumber,
+        success: (res) => {},
+        fail: (res) => {},
+      })
+    },
+    // 联系骑手
+    contactRider() {
+      wx.makePhoneCall({
+        phoneNumber: this.data.orderItem.orderInfo.riderPhone,
+        success: (res) => {},
+        fail: (res) => {},
+      })
+    },
   }
 })

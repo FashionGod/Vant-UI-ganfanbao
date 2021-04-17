@@ -7,7 +7,7 @@
         bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
         <block wx:if="{{orderList.length > 0}}">
           <block wx:for="{{orderList}}" wx:key="_id">
-            <merchant-order-card bind:finishedPrepare="finishedPrepare" orderItem="{{item}}" data-item="{{item}}">
+            <merchant-order-card bind:finishedPrepare="finishedPrepare" catchtap="navigateToOrderDetail" orderItem="{{item}}" data-item="{{item}}">
             </merchant-order-card>
           </block>
           <!--触底的loading  -->
@@ -27,7 +27,7 @@
         bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
         <block wx:if="{{orderList.length > 0}}">
           <block wx:for="{{orderList}}" wx:key="_id">
-            <merchant-order-card bind:finishedPrepare="finishedPrepare" orderItem="{{item}}" data-item="{{item}}">
+            <merchant-order-card bind:finishedPrepare="finishedPrepare" catchtap="navigateToOrderDetail" orderItem="{{item}}" data-item="{{item}}">
             </merchant-order-card>
           </block>
           <!--触底的loading  -->
@@ -47,7 +47,7 @@
         bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
         <block wx:if="{{orderList.length > 0}}">
           <block wx:for="{{orderList}}" wx:key="_id">
-            <merchant-order-card bind:finishedPrepare="finishedPrepare" orderItem="{{item}}" data-item="{{item}}">
+            <merchant-order-card bind:finishedPrepare="finishedPrepare" catchtap="navigateToOrderDetail" orderItem="{{item}}" data-item="{{item}}">
             </merchant-order-card>
           </block>
           <!--触底的loading  -->
@@ -67,7 +67,7 @@
         bindrefresherrefresh="pullDownFresh" bindscrolltolower="scrollTouchedBottom">
         <block wx:if="{{orderList.length > 0}}">
           <block wx:for="{{orderList}}" wx:key="_id">
-            <merchant-order-card bind:finishedPrepare="finishedPrepare" orderItem="{{item}}" data-item="{{item}}">
+            <merchant-order-card bind:finishedPrepare="finishedPrepare" catchtap="navigateToOrderDetail" orderItem="{{item}}" data-item="{{item}}">
             </merchant-order-card>
           </block>
           <!--触底的loading  -->

@@ -18,7 +18,8 @@
     "pages/userPages/order-detail/order-detail",
     "pages/public/unchecked/unchecked",
     "pages/userPages/search-page/search-page",
-    "pages/userPages/merchant-delicious-detail/order-confirm/order-confirm"
+    "pages/userPages/merchant-delicious-detail/order-confirm/order-confirm",
+    "pages/userPages/evaluate/evaluate"
   ],
   "subpackages": [
     {
@@ -31,7 +32,8 @@
         "pages/merchantPages/evaluation-reply/evaluation-reply",
         "pages/merchantPages/merchant-info-manage/shop-manage/shop-manage",
         "pages/merchantPages/merchant-info-manage/notice-manage/notice-manage",
-        "pages/merchantPages/merchant-info-manage/environment-picture/environment-picture"
+        "pages/merchantPages/merchant-info-manage/environment-picture/environment-picture",
+        "pages/merchantPages/order-detail/order-detail"
       ]
     },
     {
