@@ -74,7 +74,7 @@ Page({
     params.payTime = new Date(Date.now()).toLocaleString('zh', {year: 'numeric', month: 'numeric',  day: 'numeric',  hour: 'numeric',  minute: 'numeric'})
     params.merchantTitle = app.globalData.merchantInfo.cardInfo.shopName
     params.merchantPhone = app.globalData.merchantInfo.merchantSignUpInfo.phoneNumber
-    params.merchantAddress = app.globalData.merchantInfo.merchantSignUpInfo.merchantAddress
+    params.merchantAddress = app.globalData.merchantInfo.merchantSignUpInfo.managementAddress
     params.deliveryWay = 0 // 0为外卖 1为自取
     params.userId = app.globalData.loginInfo.openid
     params.totalPrice = totalPrice/100 + freight // 单位还原回元

@@ -54,7 +54,7 @@ Page({
   // 联系商家
   contactMerchant() {
     wx.makePhoneCall({
-      phoneNumber: '15541155173',
+      phoneNumber: orderItem.orderInfo.merchantPhone,
       success:(res)=> {
       },
       fail:(res)=> {
@@ -64,7 +64,7 @@ Page({
   // 联系骑手
   contactRider() {
     wx.makePhoneCall({
-      phoneNumber: '15541155173',
+      phoneNumber: orderItem.orderInfo.riderPhone,
       success:(res)=> {
       },
       fail:(res)=> {

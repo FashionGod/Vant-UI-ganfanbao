@@ -18,11 +18,6 @@ Page({
     scrollTouchedBottomLoading: false,
     showEnd: false,
     //商家列表筛选头部
-    option1: [
-      { text: '全部商品', value: 0 },
-      { text: '新款商品', value: 1 },
-      { text: '活动商品', value: 2 },
-    ],
     option2: [
       { text: '综合排序', value: 0 },
       { text: '离我最近', value: 1 },
@@ -116,11 +111,17 @@ Page({
     }
     let p
     if (init) {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
       p = homeModel.getMerchantIdList()
           .then(res => {
-            this.data.start = 0
-            this.data.more = true
-            this.data.merchantIds = this.shuffle(res.result.data)
+            this.setData({
+              start: 0,
+              more: true,
+              merchantIds: this.shuffle(res.result.data)
+            })
           })
     }
     else {
@@ -137,9 +138,8 @@ Page({
     return p.then(res => {
       return homeModel.getMerchantList(this.getMerchantIds(this.data.start))
       .then(res => {
-        console.log(res)
+        wx.hideLoading({}) // 关闭getIdlist的showLoading
         app.globalData.loginInfo.openid = res.openid
-        console.log(app.globalData)
         if (res.code == 1) {
           let merchantList = this.data.merchantList.concat(res.data.data)
           if (init) {

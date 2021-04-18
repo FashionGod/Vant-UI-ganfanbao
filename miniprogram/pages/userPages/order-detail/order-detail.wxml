@@ -12,7 +12,7 @@
     <van-cell-group border="{{false}}">
       <view class="title">联系方式</view>
       <van-cell size="large" title="联系商家" center bind:click="contactMerchant" icon="phone-o" is-link />
-      <van-cell wx:if="{{ orderItem.orderInfo.deliveryWay == 0 }}" size="large" title="联系骑手" center bind:click="contactRider" icon="phone-o" is-link />
+      <van-cell wx:if="{{ orderItem.orderInfo.deliveryWay == 0 && orderItem.orderInfo.riderPhone != '' }}" size="large" title="联系骑手" center bind:click="contactRider" icon="phone-o" is-link />
     </van-cell-group>
   </view>
   <view class="function-container">

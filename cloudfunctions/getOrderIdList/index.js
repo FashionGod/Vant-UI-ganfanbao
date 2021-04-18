@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
   if (event.role == 0) { // 如果是用户
     const countResult = await db.collection('orderCollection').where({
       orderInfo: {
-        userId: wxContext.OPENID
+        userId: event.userInfo.openId
       }
     }).count()
     const total = countResult.total
@@ -23,7 +23,7 @@ exports.main = async (event, context) => {
     for (let i = 0; i < batchTimes; i++) {
       const promise = db.collection('orderCollection').where({
           orderInfo: {
-            userId: wxContext.OPENID
+            userId: event.userInfo.openId
           }
         })
         .skip(i * MAX_LIMIT).limit(MAX_LIMIT).field({

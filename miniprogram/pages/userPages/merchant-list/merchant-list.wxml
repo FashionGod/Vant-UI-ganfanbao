@@ -1,7 +1,5 @@
 <!--miniprogram/pages/userPages/merchant-list/merchant-list.wxml-->
 <van-dropdown-menu active-color="#faad14">
-  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="onSwitch1Change"
-    bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
   <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="onSwitch2Change"
     bind:open="dropDownMenuOpen" bind:close="dropDownMenuClose" />
 </van-dropdown-menu>

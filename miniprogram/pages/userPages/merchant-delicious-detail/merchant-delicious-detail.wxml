@@ -69,11 +69,11 @@
   </van-tab>
   <van-tab title="评价">
     <view class="container">
-      <view wx:if="{{commentList.length>0}}" class="comment">
+      <view wx:if="{{evaluateList.length>0}}" class="comment">
         <view class="titleBar">
-          <view>评论列表</view>
+          <view>评价列表</view>
         </view>
-        <view id="{{'c'+item._id}}" wx:for="{{commentList}}" wx:key="{{index}}" class="item">
+        <view id="{{'c'+item._id}}" wx:for="{{evaluateList}}" wx:key="{{index}}" class="item">
           <view class="titleWrap">
             <image class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
             <view class="authorWrap">

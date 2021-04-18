@@ -1,9 +1,13 @@
 // miniprogram/pages/userPages/merchant-delicious-detail/merchant-delicious-detail.js
 import tool from "../../public/tools/tool.js";
 import {
+  EvaluateModel
+} from "../../../models/user/evaluate";
+import {
   ShopDetailModel
 } from "../../../models/merchant/merchant-shop-detail.js";
 const shopDetailModel = new ShopDetailModel()
+const evaluateModel = new EvaluateModel()
 let app = getApp()
 let allFoodList = [] // 初始化单纯的食品列表
 let foodPickList = [] // 查看详情的列表
@@ -32,6 +36,10 @@ Page({
     // 提交栏
     totalPrice: 0,
     // -------------------------------------- 评价 -----------------------------------------------
+    evaluateList: [],
+    start: 0,
+    more: true,
+    loading: false,
     // -------------------------------------- 商家 -----------------------------------------------
     merchantInfo: {},
   },
@@ -114,6 +122,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loadMore({init: true})
     wx.showLoading({
       title: '加载中',
       mask: true,
@@ -270,7 +279,56 @@ Page({
     }, 50)
   },
   // --------------------------------------------- 评价 -------------------------------------------------
+  loadMore: function ({
+    init = false
+  }) {
+    if (this.data.loading) {
+      return
+    }
+    if (init) {
+      this.setData({
+        start: 0,
+        more: true
+      })
+    }
+    if (!this.data.more) {
+      return
+    }
+    this.setData({
+      loading: true
+    })
+    console.log(this.data.start)
+    return evaluateModel.getEvaluate({
+        merchantId: app.globalData.merchantInfo._id,
+        start: this.data.start,
+        operateType: 1
+      })
+      .then(res => {
+        console.log(res)
+        let evaluateList = this.data.evaluateList.concat(res.result.data)
+        if (init) {
+          evaluateList = res.result.data
+        }
+        console.log(evaluateList)
+        this.setData({
+          evaluateList: evaluateList,
+          start: evaluateList.length,
+          more: res.result.data.length == 20 ? true : false,
+          loading: false
+        })
+      })
+      .catch(err => {
+        wx.showToast({
+          title: '加载失败',
+          icon: 'none'
+        })
+        console.log(err)
+        this.setData({
+          loading: false
+        })
 
+      })
+  },
   // --------------------------------------------- 商家 -------------------------------------------------
   previewImg(e) {
     wx.previewImage({

@@ -20,6 +20,7 @@ class UserOrderModel {
       name: 'getOrderIdList',
       data: {
         role: 0, // 0用户 1商家 2骑手
+        // openid: app.globalData.loginInfo.openid
       }
     })
     .then(res => {

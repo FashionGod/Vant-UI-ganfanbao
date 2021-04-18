@@ -144,9 +144,11 @@ Page({
       })
       p = homeModel.getMerchantIdList()
           .then(res => {
-            this.data.start = 0
-            this.data.more = true
-            this.data.merchantIds = this.shuffle(res.result.data)
+            this.setData({
+              start: 0,
+              more: true,
+              merchantIds: this.shuffle(res.result.data)
+            })
             return res
           })
     }

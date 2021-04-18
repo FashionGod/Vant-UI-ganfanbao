@@ -114,9 +114,11 @@ Page({
         })
         p = orderModel.getOrderIdList()
             .then(res => {
-              this.data.start = 0
-              this.data.more = true
-              this.data.orderIds = res.result.data
+              this.setData({
+                start: 0,
+                more: true,
+                orderIds: res.result.data
+              })
               return res
             })
       }
@@ -185,6 +187,75 @@ Page({
         success: function(res) {
           res.eventChannel.emit('orderDetailEvent', {
             orderItem: item,
+          })
+        }
+      })
+    },
+    // 跳转到评价页面
+    navigateToView(e) {
+      const {dataset} = e.currentTarget
+      let {item} = dataset
+      let that = this
+      wx.getStorage({
+        key: 'userInfo',
+        success:(res)=> {
+          wx.navigateTo({
+            url: '../../pages/userPages/evaluate/evaluate',
+            events: {
+              dataToEvaluate: function(data) {
+                console.log(data)
+              }
+            },
+            success: function(res) {
+              // 通过eventChannel向被打开页面传送数据
+              res.eventChannel.emit('dataToEvaluate', { orderItem: item })
+              }
+          })
+        },
+        fail:(res)=> {
+          wx.getUserProfile({
+            desc: '评价功能的信息展示', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+            success: (res) => {
+              wx.showLoading({
+                title: '加载中',
+              })
+              userModel.updateUserInfo(res.userInfo)
+              .then(res => {
+                wx.hideLoading({})
+                if (res.success) {
+                  wx.setStorage({
+                    data: res.data,
+                    key: 'userInfo',
+                  })
+                  app.globalData.canIUseGetUserProfile = true
+                  console.log('that.data.orderItem', that.data.orderItem)
+                  wx.navigateTo({
+                    url: '../../pages/userPages/evaluate/evaluate',
+                    events: {
+                      dataToEvaluate: function(data) {
+                        console.log(data)
+                      }
+                    },
+                    success: function(res) {
+                      // 通过eventChannel向被打开页面传送数据
+                      res.eventChannel.emit('dataToEvaluate', { orderItem: that.data.orderItem })
+                      }
+                  })
+                }
+                else {
+                  wx.showToast({
+                    title: '用户信息获取失败',
+                    icon: 'none'
+                  })
+                }
+              })
+            },
+            fail: err => {
+              wx.showToast({
+                title: '调用接口失败',
+                icon: 'none'
+              })
+            }
           })
         }
       })

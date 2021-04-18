@@ -24,8 +24,10 @@ class EvaluateModel {
     return wx.cloud.callFunction({
       name: 'getEvaluate',
       data: {
-        orderId: data.orderId,
-        operateType: 0, // 0为查看是否有评价 1为查看评价列表
+        orderId: data.orderId?data.orderId:null,
+        merchantId: data.start != null?data.merchantId:null,
+        start: data.start != null?data.start:null,
+        operateType: data.operateType, // 0为查看是否有评价 1为查看评价列表
       }
     })
     .then(res => {
