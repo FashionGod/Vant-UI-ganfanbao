@@ -148,11 +148,11 @@
 
 .container .comment {
   flex-shrink: 0;
-  margin-top: 50rpx;
+  margin-top: 2rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
+  background: #fafafa;
   width: 100%;
   padding-bottom: 200rpx;
 }
@@ -162,7 +162,7 @@
   flex-shrink: 0;
   display: flex;
   margin-left: 30rpx;
-  background: #f2f2f2;
+  background: #fafafa;
   padding: 0 30rpx;
   font-size: 30rpx;
   line-height: 48rpx;

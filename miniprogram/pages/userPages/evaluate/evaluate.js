@@ -57,6 +57,9 @@ Page({
               wx.showToast({
                 title: '评价成功',
               })
+              this.setData({
+                readOnly: true
+              })
             }
             else {
               wx.showToast({

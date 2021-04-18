@@ -33,7 +33,7 @@
         </view>
       </view>
       <view class="right-content">
-        <button class="complete-button" bindtap="finished" disabled="{{orderItem.orderInfo.orderStatus == 0?flase:true}}">{{orderItem.orderInfo.orderStatus == 0?'出餐完成':'已出餐'}}</button>
+        <button class="complete-button" catchtap="finished" disabled="{{orderItem.orderInfo.orderStatus == 0?flase:true}}">{{orderItem.orderInfo.orderStatus == 0?'出餐完成':'已出餐'}}</button>
       </view>
     </view>
     <van-divider custom-class="divider" />

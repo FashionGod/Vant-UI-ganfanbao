@@ -13,6 +13,8 @@
   "van-button": "../../../miniprogram_npm/@vant/weapp/dist/button/index",
   "van-card": "../../../miniprogram_npm/@vant/weapp/dist/card/index",
   "van-stepper": "../../../miniprogram_npm/@vant/weapp/dist/stepper/index",
+  "van-empty": "../../../miniprogram_npm/@vant/weapp/dist/empty/index",
+  "van-loading": "../../../miniprogram_npm/@vant/weapp/dist/loading/index",
   "van-popup": "../../../miniprogram_npm/@vant/weapp/dist/popup/index"
   }
 }

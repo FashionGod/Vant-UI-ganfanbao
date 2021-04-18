@@ -68,19 +68,21 @@
     </view>
   </van-tab>
   <van-tab title="评价">
+    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" style="height: 90vh;"
+      enable-back-to-top="{{true}}" bindscrolltolower="scrollTouchedBottom">
     <view class="container">
       <view wx:if="{{evaluateList.length>0}}" class="comment">
         <view class="titleBar">
           <view>评价列表</view>
         </view>
-        <view id="{{'c'+item._id}}" wx:for="{{evaluateList}}" wx:key="{{index}}" class="item">
+        <view wx:for="{{evaluateList}}" wx:key="orderId" class="item" data-item="{{item}}">
           <view class="titleWrap">
             <image class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
             <view class="authorWrap">
               <view class="author">{{item.userInfo.nickName}}</view>
               <view class="time">{{item.formatTime}}</view>
             </view>
-            <view class="iconWrap">
+            <!-- <view class="iconWrap"> -->
               <!-- <view wx:if="{{item.canDelete||isAdmin}}" bindtap="onDeleteComment" data-id="{{item._id}}" data-index="{{index}}" class="iconItem">
               <image class="icon" src="/images/icons/delete@red.png"></image>
             </view> -->
@@ -88,16 +90,16 @@
               <image class="icon" src="/images/icons/comments@gray.png"></image>
             </view> -->
 
-              <view bindtap="onLikeComment" data-id="{{item._id}}" data-index="{{index}}" class="iconItem">
+              <!-- <view bindtap="onLikeComment" data-id="{{item._id}}" data-index="{{index}}" class="iconItem">
                 <image class="icon" src="{{item.liked?likeIcon:disLikeIcon}}"></image>
                 <view class="count">{{item.likeCount}}</view>
-              </view>
-            </view>
+              </view> -->
+            <!-- </view> -->
           </view>
           <view class="text">
             {{item.content}}
           </view>
-          <view class="reply">
+          <!-- <view class="reply">
             <block wx:for="{{item.replyList}}" wx:key="{{index}}" wx:for-index="replyIndex">
               <view class="item">
                 <view class="titleWrap">
@@ -111,10 +113,10 @@
                       data-index="{{index}}" data-replyindex="{{replyIndex}}" class="iconItem">
                       <image class="icon" src="/images/icons/delete@red.png"></image>
                     </view>
-                    <!-- <view bindtap="onLikeComment" data-id="{{item._id}}" data-index="{{index}}" data-replyindex="{{replyIndex}}" class="iconItem">
+                    <view bindtap="onLikeComment" data-id="{{item._id}}" data-index="{{index}}" data-replyindex="{{replyIndex}}" class="iconItem">
                     <image class="icon" src="{{item.liked?likeIcon:disLikeIcon}}"></image>
                     <view class="count">{{item.likeCount}}</view>
-                  </view> -->
+                  </view>
                   </view>
                 </view>
                 <view class="text">
@@ -122,11 +124,19 @@
                 </view>
               </view>
             </block>
-          </view>
+          </view> -->
         </view>
-        <loading-cmp wx:if="{{loading}}" class="loading" />
-      </view>
+         <!--触底的loading  -->
+    <view class="bottom-loading">
+      <van-loading wx:if="{{loading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      <van-divider hairline contentPosition="center" wx:if="{{showEnd}}" >人家也是有底线的啦</van-divider>
     </view>
+      </view>
+      <block wx:else>
+        <van-empty class="custom-image" description="暂无评价" />
+      </block>
+    </view>
+    </scroll-view>
   </van-tab>
   <van-tab title="商家">
     <swiper class="swiper-images" autoplay="true" interval="3500" duration="500" indicator-dots="true" circular="true">

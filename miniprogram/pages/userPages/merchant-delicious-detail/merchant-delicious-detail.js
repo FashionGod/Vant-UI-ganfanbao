@@ -37,9 +37,11 @@ Page({
     totalPrice: 0,
     // -------------------------------------- 评价 -----------------------------------------------
     evaluateList: [],
+    //分页数据
     start: 0,
     more: true,
     loading: false,
+    showEnd: false,
     // -------------------------------------- 商家 -----------------------------------------------
     merchantInfo: {},
   },
@@ -305,9 +307,10 @@ Page({
       })
       .then(res => {
         console.log(res)
-        let evaluateList = this.data.evaluateList.concat(res.result.data)
+        let evaluateList = this.data.evaluateList.concat(res.result.data[0].data)
+        console.log(evaluateList)
         if (init) {
-          evaluateList = res.result.data
+          evaluateList = res.result.data[0].data
         }
         console.log(evaluateList)
         this.setData({
@@ -328,6 +331,21 @@ Page({
         })
 
       })
+  },
+  scrollTouchedBottom() {
+    if (!this.data.more) {
+      this.setData({
+        showEnd: true
+      })
+      setTimeout(() => {
+        this.setData({
+          showEnd: false
+        })
+      }, 1000)
+      this.loadMore({
+        init: false
+      })
+    }
   },
   // --------------------------------------------- 商家 -------------------------------------------------
   previewImg(e) {
