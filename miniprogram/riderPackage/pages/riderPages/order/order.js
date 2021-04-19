@@ -141,10 +141,10 @@ Page({
           showEnd: false
         })
       }, 1000)
-      this.loadMore({
-        init: false
-      })
     }
+    this.loadMore({
+      init: false
+    })
   },
   // 子组件的事件（抢单）
   grabOrder(e) {
@@ -162,6 +162,7 @@ Page({
         if (res.confirm) {
           wx.showLoading({
             title: '加载中',
+            mask: true
           })
           orderModel.updateOrderStatus({
             orderId: dataset.item._id,

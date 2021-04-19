@@ -14,13 +14,29 @@ class UserOrderModel {
       console.error(err)
     })
   }
-  // 查询订单id列表
+  // 查询全部订单id列表
   getOrderIdList() {
     return wx.cloud.callFunction({
       name: 'getOrderIdList',
       data: {
         role: 0, // 0用户 1商家 2骑手
-        // openid: app.globalData.loginInfo.openid
+        operateType: 0, // 0查询所有的 1查询未评价的
+      }
+    })
+    .then(res => {
+      return res
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  }
+  // 查询未评价订单id列表
+  getUnEvaluatedOrderIdList() {
+    return wx.cloud.callFunction({
+      name: 'getOrderIdList',
+      data: {
+        role: 0, // 0用户 1商家 2骑手
+        operateType: 1, // 0查询所有的 1查询未评价的
       }
     })
     .then(res => {

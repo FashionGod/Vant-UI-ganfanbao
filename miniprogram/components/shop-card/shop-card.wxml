@@ -8,14 +8,14 @@
     </view>
     <view class="star">
       <van-rate
-        value="{{ value }}"
+        value="{{ merchantItem.starScore }}"
         size="{{ 15 }}"
         readonly
         color="#fece00"
         void-color="#979494"
         bind:change="_onChange"
       />
-      <text>月售641</text>
+      <text>月售{{merchantItem.salesMonthly}}</text>
     </view>  
     <view class="transfer-price">
       <text>起送价10￥ 免配送费</text>

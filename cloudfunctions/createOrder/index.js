@@ -20,7 +20,16 @@ exports.main = async (event, context) => {
         data: { // 外卖0 自取1
           _id: event.orderInfo.orderId, // 订单号为（时间戳）
           orderInfo: event.orderInfo,
+          createTime: db.serverDate()
         },
+      })
+      .then(res => {
+        return db.collection('merchantSignUpInfoCollection').doc(event.orderInfo.merchantId).update({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+            salesMonthly: _.inc(1)
+          },
+        })
       })
       mess.code = 1
       mess.message = '订单创建成功'

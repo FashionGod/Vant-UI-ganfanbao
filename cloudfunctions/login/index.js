@@ -34,8 +34,13 @@ exports.main = async (event, context) => {
       mess.data = await db.collection('riderSignUpInfoCollection').doc(event.phoneNumber).get()
       if (mess.data.data != null) {
         if (mess.data.data.password == event.password) {
-          mess.code = 1
-          mess.message = '密码正确'
+          if (mess.data.data.checked) {
+            mess.code = 1
+            mess.message = '密码正确'
+          } else {
+            mess.code = 4
+            mess.message = '审核暂未通过'
+          }
         }
         else {
           mess.code = 2

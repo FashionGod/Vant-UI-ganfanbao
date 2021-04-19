@@ -6,40 +6,77 @@ cloud.init({
 const db = cloud.database()
 const _ = db.command
 const MAX_LIMIT = 100
-const wxContext = cloud.getWXContext()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  const wxContext = cloud.getWXContext()
   if (event.role == 0) { // 如果是用户
-    const countResult = await db.collection('orderCollection').where({
-      orderInfo: {
-        userId: event.userInfo.openId
-      }
-    }).count()
-    const total = countResult.total
-    const batchTimes = Math.ceil(total / 100)
-    const tasks = []
-    let ids = []
-    for (let i = 0; i < batchTimes; i++) {
-      const promise = db.collection('orderCollection').where({
-          orderInfo: {
-            userId: event.userInfo.openId
-          }
-        })
-        .skip(i * MAX_LIMIT).limit(MAX_LIMIT).field({
-          _id: true
-        }).get().then(res => {
-          res.data.forEach(v => {
-            ids.push(v._id)
+    if (event.operateType == 0) { // 查询所有订单
+      const countResult = await db.collection('orderCollection').where({
+        orderInfo: {
+          userId: wxContext.OPENID
+        }
+      }).count()
+      const total = countResult.total
+      const batchTimes = Math.ceil(total / 100)
+      const tasks = []
+      let ids = []
+      for (let i = 0; i < batchTimes; i++) {
+        const promise = db.collection('orderCollection').where({
+            orderInfo: {
+              userId: wxContext.OPENID
+            }
           })
-        })
-      tasks.push(promise)
+          .skip(i * MAX_LIMIT).limit(MAX_LIMIT).field({
+            _id: true
+          }).get().then(res => {
+            res.data.forEach(v => {
+              ids.push(v._id)
+            })
+          })
+        tasks.push(promise)
+      }
+      return Promise.all(tasks).then(res => {
+        return handleSuccess(ids)
+      }).catch(err => {
+        return handleErr(err)
+      })
     }
-    return Promise.all(tasks).then(res => {
-      return handleSuccess(ids)
-    }).catch(err => {
-      return handleErr(err)
-    })
+    else if (event.operateType == 1) { // 查询所有未评价的
+      const countResult = await db.collection('orderCollection').where({
+        orderInfo: {
+          userId: wxContext.OPENID,
+          evaluateStatus: 0,
+          orderStatus: 3,
+        }
+      }).count()
+      const total = countResult.total
+      const batchTimes = Math.ceil(total / 100)
+      const tasks = []
+      let ids = []
+      for (let i = 0; i < batchTimes; i++) {
+        const promise = db.collection('orderCollection').where({
+            orderInfo: {
+              userId: wxContext.OPENID,
+              evaluateStatus: 0,
+              orderStatus: 3,
+            }
+          })
+          .skip(i * MAX_LIMIT).limit(MAX_LIMIT).field({
+            _id: true
+          }).get().then(res => {
+            res.data.forEach(v => {
+              ids.push(v._id)
+            })
+          })
+        tasks.push(promise)
+      }
+      return Promise.all(tasks).then(res => {
+        return handleSuccess(ids)
+      }).catch(err => {
+        return handleErr(err)
+      })
+    }
   } else if (event.role == 1) { // 如果是商家
     const countResult = await db.collection('orderCollection').where({
       orderInfo: {
@@ -213,7 +250,6 @@ function handleSuccess(data = {}) {
     code: 1,
     message: '查询成功',
     data: data,
-    openid: wxContext.OPENID,
   }
 }
 

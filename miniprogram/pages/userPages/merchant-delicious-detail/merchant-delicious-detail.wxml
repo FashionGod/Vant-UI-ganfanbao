@@ -82,19 +82,11 @@
               <view class="author">{{item.userInfo.nickName}}</view>
               <view class="time">{{item.formatTime}}</view>
             </view>
-            <!-- <view class="iconWrap"> -->
-              <!-- <view wx:if="{{item.canDelete||isAdmin}}" bindtap="onDeleteComment" data-id="{{item._id}}" data-index="{{index}}" class="iconItem">
-              <image class="icon" src="/images/icons/delete@red.png"></image>
+            <!-- <view class="iconWrap">
+              <view wx:if="{{item.canDelete}}" bindtap="onDeleteEvaluate" data-id="{{item._id}}" data-orderId="{{item.orderId}}" class="iconItem">
+              <image class="icon" src="../../../assets/publicImages/delete@red.png"></image>
+            </view>
             </view> -->
-              <!-- <view data-replyId="{{item._id}}" data-replyName="{{item.userInfo.nickName}}" bindtap="onReplySb" class="iconItem">
-              <image class="icon" src="/images/icons/comments@gray.png"></image>
-            </view> -->
-
-              <!-- <view bindtap="onLikeComment" data-id="{{item._id}}" data-index="{{index}}" class="iconItem">
-                <image class="icon" src="{{item.liked?likeIcon:disLikeIcon}}"></image>
-                <view class="count">{{item.likeCount}}</view>
-              </view> -->
-            <!-- </view> -->
           </view>
           <view class="text">
             {{item.content}}
@@ -142,7 +134,7 @@
     <swiper class="swiper-images" autoplay="true" interval="3500" duration="500" indicator-dots="true" circular="true">
       <block wx:for="{{merchantInfo.merchantEnvironment}}" wx:key="*this">
         <swiper-item bindtap="previewImg" data-i="{{index}}">
-          <image style="width:750rpx;" src="{{item}}" mode="scaleToFill"></image>
+          <image style="width:750rpx;" src="{{item}}" mode="center"></image>
         </swiper-item>
       </block>
     </swiper>

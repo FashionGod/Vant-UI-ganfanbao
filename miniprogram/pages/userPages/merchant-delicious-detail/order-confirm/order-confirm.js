@@ -92,6 +92,7 @@ Page({
           if (res.confirm) {
           wx.showLoading({
             title: '订单生成中',
+            mask: true
           })
           orderModel.createOrder(params)
           .then(res => {
@@ -143,6 +144,7 @@ Page({
           if (res.confirm) {
           wx.showLoading({
             title: '订单生成中',
+            mask: true
           })
           orderModel.createOrder(params)
           .then(res => {

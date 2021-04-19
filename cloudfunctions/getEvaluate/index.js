@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
       search = await db.collection('evaluateCollection').where({
         orderId: event.orderId,
       }).get()
-      if (search.data != null) {
+      if (search.data.length > 0) {
         mess.code = 2
         mess.message = '评价存在'
         mess.data = search.data
@@ -60,7 +60,6 @@ exports.main = async (event, context) => {
       .then(res => {
         data = data.concat(res)
         // 这里得到所有
-        console.log(data)
         return _handleComment(data, wxContext.OPENID)
       })
       .then(res => {
@@ -73,21 +72,15 @@ exports.main = async (event, context) => {
 }
 
 function _handleComment(odata, openId) {
-  console.log(odata)
-  let data = JSON.parse(JSON.stringify(odata))
+  let data = JSON.parse(JSON.stringify(odata)) // 深拷贝
   let ids = []
-  console.log(data)
   data[0].data.forEach(v => {
-    console.log(v)
     ids.push(v._openid)
   })
-  console.log(ids)
   return db.collection('userInfo').where({
       _id: _.in(ids)
     }).get()
     .then(res => {
-      console.log(res)
-      console.log(data)
       data[0].data.forEach(v => {
         res.data.forEach(v1 => {
           if (v1._id == v._openid) {

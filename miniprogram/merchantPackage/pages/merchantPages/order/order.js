@@ -150,10 +150,10 @@ Page({
           showEnd: false
         })
       }, 1000)
-      this.loadMore({
-        init: false
-      })
     }
+    this.loadMore({
+      init: false
+    })
   },
   // 子组件的事件（出餐完成）
   finishedPrepare(e) {
@@ -171,6 +171,7 @@ Page({
         if (res.confirm) {
           wx.showLoading({
             title: '加载中',
+            mask: true
           })
           orderModel.updateOrderStatus(dataset.item._id).then(res => {
             wx.hideLoading({})

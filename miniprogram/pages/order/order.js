@@ -9,49 +9,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 子组件需要的值
-    merchantImg1: "../../assets/homeImages/merchant_photo1.png",
-    merchantImg2: "../../assets/homeImages/merchant_photo2.png",
+    // tabs data
+    tabsActive: 0,
     // 订单列表
     orderList: [],
+    orderIds: [],
     // 下拉刷新
     pullDownloading: false,
     // 显示触底刷新
     scrollTouchedBottomLoading: false,
+    showEnd: false,
     // 分页参数
     start: 0,
     more: true,
+    // 订单列表2
+    orderList2: [],
+    orderIds2: [],
+    // 下拉刷新
+    pullDownloading2: false,
+    // 显示触底刷新
+    scrollTouchedBottomLoading2: false,
+    showEnd2: false,
+    // 分页参数
+    start2: 0,
+    more2: true,
   },
-
-    // 商家列表筛选头部
-    onConfirm() {
-      this.selectComponent('#item').toggle();
-    },
-    dropDownMenuOpen(e) {
-        this.setData({
-          dropDownForbidenScroll: false,
-        })
-        // 向父组件传值禁用外层scrool 防止出现UIbug
-        const dropDownForbidenScroll = this.data.dropDownForbidenScroll;
-        this.triggerEvent("handleScrollState",{dropDownForbidenScroll});
-    },
-    dropDownMenuClose() {
-        this.setData({
-          dropDownForbidenScroll: true,
-        })
-    // 向父组件传值禁用外层scrool 防止出现UIbug
-        const dropDownForbidenScroll = this.data.dropDownForbidenScroll;
-        this.triggerEvent("handleScrollState",{dropDownForbidenScroll});
-    },
-    onSwitch1Change({ detail }) {
-      console.log('1');
-      this.setData({ switch1: detail });
-    },
-  
-    onSwitch2Change({ detail }) {
-      console.log('2');
-      this.setData({ switch2: detail });
-    },
+  tabsChange(e) {
+    this.setData({
+      tabsActive: e.detail.index
+    })
+  },
+    // ————————————————————————————————————————————全部订单（START）———————————————————————————————————————
     // 监控自定义scroll-view下拉刷新
     pullDownFresh() {
       setTimeout(() => {
@@ -75,28 +63,15 @@ Page({
             showEnd: false
           })
         }, 1000)
-        this.loadMore({
-          init: false
-        })
       }
+      this.loadMore({
+        init: false
+      })
     },
-    // 删除单项订单
-    // delete(e) {
-    //   console.log(e)
-    //   wx.showModal({
-    //     content: '你确定要删除该项订单吗？',
-    //     confirmColor: '#ff0000',
-    //     success (res) {
-    //       if (res.confirm) {
-    //         console.log('用户点击确定')
-    //       } else if (res.cancel) {
-    //         console.log('用户点击取消')
-    //       }
-    //     }
-    //   })
-    // },
     // 获取分页加载的ids
     getOrderIds(start) {
+      console.log(this.data.orderIds)
+      console.log(this.data.orderIds.slice(start, start + 5))
       return this.data.orderIds.slice(start, start + 5)
     },
     // 分页加载
@@ -172,6 +147,114 @@ Page({
         })
       })
     },
+    // ————————————————————————————————————————————全部订单（END）————————————————————————————————————————
+
+    // ————————————————————————————————————————————未评价（START）———————————————————————————————————————
+    // 监控自定义scroll-view下拉刷新
+    pullDownFresh2() {
+      setTimeout(() => {
+        // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
+        this.loadMore2({
+          init: true
+        })
+        // 数据请求成功后，关闭刷新
+        this.setData({
+          pullDownloading2: false,
+        })
+      }, 1000)
+    },
+    scrollTouchedBottom2() {
+      if (!this.data.more) {
+        this.setData({
+          showEnd2: true
+        })
+        setTimeout(() => {
+          this.setData({
+            showEnd2: false
+          })
+        }, 1000)
+      }
+      this.loadMore2({
+        init: false
+      })
+    },
+    // 获取分页加载的ids
+    getOrderIds2(start) {
+      return this.data.orderIds2.slice(start, start + 5)
+    },
+    // 分页加载
+    loadMore2({
+      init
+    }) {
+      if (this.data.scrollTouchedBottomLoading2) {
+        return
+      }
+      let p
+      if (init) {
+        wx.showLoading({
+          title: '加载中',
+          mask: true
+        })
+        p = orderModel.getUnEvaluatedOrderIdList()
+            .then(res => {
+              this.setData({
+                start2: 0,
+                more2: true,
+                orderIds2: res.result.data
+              })
+              return res
+            })
+      }
+      else {
+        p = new Promise(resolve => {
+          resolve({})
+        })
+      }
+      if (!this.data.more2 && !init) {
+        return
+      }
+      this.setData({
+        scrollTouchedBottomLoading2: true
+      })
+      return p.then(res => {
+        return orderModel.getOrderList(this.getOrderIds2(this.data.start2))
+        .then(res => {
+          wx.hideLoading({}) // 关闭getIdlist的showLoading
+          if (res.code == 1) {
+            let orderList = this.data.orderList2.concat(res.data.data)
+            if (init) {
+              orderList = res.data.data
+            }
+            this.setData({
+              orderList2: orderList,
+              start2: orderList.length,
+              more2: res.data.data.length == 5 ? true : false,
+              scrollTouchedBottomLoading2: false
+            })
+          }
+          else {
+            wx.showToast({
+              title: '订单列表获取失败',
+              icon: 'none'
+            })
+            this.setData({
+              scrollTouchedBottomLoading2: false
+            })
+          }
+          return res
+        })
+        .catch(err => {
+          wx.showToast({
+            title: '加载失败',
+            icon: 'none'
+          })
+          this.setData({
+            scrollTouchedBottomLoading2: false
+          })
+        })
+      })
+    },
+    // ————————————————————————————————————————————未评价（END）————————————————————————————————————————
     // 进入订单详情页面
     navigateToOrderDetail(e) {
       console.log(e)
@@ -218,6 +301,7 @@ Page({
             success: (res) => {
               wx.showLoading({
                 title: '加载中',
+                mask: true
               })
               userModel.updateUserInfo(res.userInfo)
               .then(res => {
@@ -261,6 +345,30 @@ Page({
       })
     },
     onLoad() {
-      this.loadMore({init: true})
-    }
+      this.loadMore2({init: true})
+    },
+    onShow() {
+      if (this.data.tabsActive == 0) {
+        this.loadMore({init: true})
+      }
+      else if (this.data.tabsActive == 1) {
+        this.loadMore2({init: true})
+      }
+    },
+    
+    // 删除单项订单
+    // delete(e) {
+    //   console.log(e)
+    //   wx.showModal({
+    //     content: '你确定要删除该项订单吗？',
+    //     confirmColor: '#ff0000',
+    //     success (res) {
+    //       if (res.confirm) {
+    //         console.log('用户点击确定')
+    //       } else if (res.cancel) {
+    //         console.log('用户点击取消')
+    //       }
+    //     }
+    //   })
+    // },
 })

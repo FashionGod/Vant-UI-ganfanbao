@@ -6,7 +6,7 @@ class EvaluateModel {
       data: {
         orderId: data.orderId,
         merchantId: data.merchantId,
-        starCount: data.starCount,
+        starScore: data.starCount,
         content: data.content,
         operateType: 1, // 0为查询 1为新增 2为删除
       }
@@ -28,6 +28,24 @@ class EvaluateModel {
         merchantId: data.start != null?data.merchantId:null,
         start: data.start != null?data.start:null,
         operateType: data.operateType, // 0为查看是否有评价 1为查看评价列表
+      }
+    })
+    .then(res => {
+      console.log(res)
+      return res
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  }
+  // 删除评价
+  deleteEvaluate(data) {
+    return wx.cloud.callFunction({
+      name: 'addOrDelEvaluate',
+      data: {
+        evaluateId: data.evaluateId,
+        orderId: data.orderId,
+        operateType: 0, // 0删除评价 1新增评价
       }
     })
     .then(res => {

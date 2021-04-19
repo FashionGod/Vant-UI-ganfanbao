@@ -1,4 +1,6 @@
-
+page{
+	background-color: rgb(241, 237, 237);
+}
 .scroll-view {
   height: 100vh;
 }

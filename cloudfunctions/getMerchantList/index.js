@@ -11,15 +11,15 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const mess = {}
   try {
-    mess.data = await db.collection('merchantSignUpInfoCollection').where({
-        checked: true
-    })
+    mess.data = await db.collection('merchantSignUpInfoCollection')
     .where({
       _id: _.in(event.merchantIds)
     })
     .field({
       cardInfo: true,
       _id: true,
+      salesMonthly: true,
+      starScore: true
     }).get()
     mess.code = 1
     mess.message = '查询成功'

@@ -10,9 +10,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 子组件需要的值
-    merchantImg1: "../../assets/homeImages/merchant_photo1.png",
-    merchantImg2: "../../assets/homeImages/merchant_photo2.png",
     // 展开筛选禁用scroll
     dropDownForbidenScroll: true,
     // 下拉刷新
@@ -25,21 +22,22 @@ Page({
     // 轮播图
     swiperImgList: ['https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1901359579,1861271908&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1840683049,2335736361&fm=26&gp=0.jpg' ,'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2905099515,729646340&fm=26&gp=0.jpg'],
     //商家列表筛选头部
-    option1: [
-      { text: '全部商品', value: 0 },
-      { text: '新款商品', value: 1 },
-      { text: '活动商品', value: 2 },
-    ],
+    // option1: [
+    //   { text: '全部商品', value: 0 },
+    //   { text: '新款商品', value: 1 },
+    //   { text: '活动商品', value: 2 },
+    // ],
     option2: [
-      { text: '综合排序', value: 0 },
-      { text: '离我最近', value: 1 },
+      { text: '乱序盲选', value: 0 },
+      { text: '评分最高', value: 1 },
       { text: '销量最高', value: 2 },
-      { text: '评分最高', value: 3 },
+      { text: '综合排序', value: 3 },
     ],
     value1: 0,
     value2: 0,
     // 商家列表
     merchantList: [],
+    merchantIds: [],
     // 分页加载参数
     start: 0,
     more: true,
@@ -80,21 +78,29 @@ Page({
       })
     console.log('启用scroll');
   },
-  onSwitch1Change({ detail }) {
-    console.log('1');
-    this.setData({ switch1: detail });
-  },
+  // onSwitch1Change({ detail }) {
+  //   console.log('1');
+  //   this.setData({ value1: detail });
+  // },
 
   onSwitch2Change({ detail }) {
     console.log('2');
-    this.setData({ switch2: detail });
+    this.setData({
+      value2: detail,
+      more: true, // 防止一种排序下已经没有更多了，切换到另一种排序more为false会阻止查询
+    });
+    this.loadMore({
+      init: true,
+      sortType: this.data.value2
+    })
   },
   // 监控自定义scroll-view下拉刷新
   pullDownFresh() {
     setTimeout(() => {
       // 再此调取接口，如果接口回调速度太快，为了展示loading效果，可以使用setTimeout
       this.loadMore({
-        init: true
+        init: true,
+        sortType: this.data.value2
       })
       // 数据请求成功后，关闭刷新
       this.setData({
@@ -103,6 +109,7 @@ Page({
     }, 1000)
   },
   scrollTouchedBottom() {
+    console.log(this.data.more)
     if (!this.data.more) {
       this.setData({
         showEnd: true
@@ -112,14 +119,14 @@ Page({
           showEnd: false
         })
       }, 1000)
-      this.loadMore({
-        init: false
-      })
     }
+    this.loadMore({
+      init: false,
+      sortType: this.data.value2
+    })
   },
   navigateToDetail(e) {
     const {item} = e.currentTarget.dataset
-    console.log(item)
     app.globalData.merchantInfo = item
     wx.navigateTo({
       url: '../userPages/merchant-delicious-detail/merchant-delicious-detail',
@@ -131,7 +138,7 @@ Page({
   },
   // 分页加载
   loadMore({
-    init
+    init, sortType
   }) {
     if (this.data.scrollTouchedBottomLoading) {
       return
@@ -142,13 +149,36 @@ Page({
         title: '加载中',
         mask: true
       })
-      p = homeModel.getMerchantIdList()
+      p = homeModel.getMerchantIdList({sortType: sortType})
           .then(res => {
-            this.setData({
-              start: 0,
-              more: true,
-              merchantIds: this.shuffle(res.result.data)
-            })
+            if (sortType == 0){ // 0盲选乱序 1评分最高 2销量最高 3综合排序
+              this.setData({
+                start: 0,
+                more: true,
+                merchantIds: this.shuffle(res.result.data)
+              })
+            }
+            else if (sortType == 1) {
+              this.setData({
+                start: 0,
+                more: true,
+                merchantIds: res.result.data
+              })
+            }
+            else if (sortType == 2) {
+              this.setData({
+                start: 0,
+                more: true,
+                merchantIds: res.result.data
+              })
+            }
+            else if (sortType == 3) {
+              this.setData({
+                start: 0,
+                more: true,
+                merchantIds: res.result.data
+              })
+            }
             return res
           })
     }
@@ -157,7 +187,7 @@ Page({
         resolve({})
       })
     }
-    if (!this.data.more && !init) {
+    if (!this.data.more) {
       return
     }
     this.setData({
@@ -217,6 +247,9 @@ Page({
     return arr;
   },
   onLoad() {
-    this.loadMore({init: true})
+    this.loadMore({
+      init: true,
+      sortType: this.data.value2
+    })
   }
 })

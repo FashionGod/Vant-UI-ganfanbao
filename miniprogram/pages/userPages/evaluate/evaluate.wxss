@@ -25,7 +25,7 @@ page {
   margin-bottom: 60rpx;
   padding: 35rpx;
   width: 500rpx;
-  height: 380rpx;
+  height: 640rpx;
   background-color: #fff;
   text-indent:1.8rem;
   line-height: 26px;

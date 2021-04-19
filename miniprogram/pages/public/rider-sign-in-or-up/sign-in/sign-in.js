@@ -80,14 +80,13 @@ Page({
         password: formValue.password,
       },
       success: res => {
-        console.log(res)
         let {mess} = res.result
-        app.globalData.loginInfo = {
-          id: mess.data.data._id,
-          riderName: mess.data.data.riderSignUpInfo.name,
-          riderPhone: mess.data.data.riderSignUpInfo.phoneNumber
-        }
         if (mess.code == 1) {
+          app.globalData.loginInfo = {
+            id: mess.data.data._id,
+            riderName: mess.data.data.riderSignUpInfo.name,
+            riderPhone: mess.data.data.riderSignUpInfo.phoneNumber
+          }
           wx.reLaunch({
             url: '../../../../riderPackage/pages/riderPages/order/order',
           })
@@ -103,6 +102,13 @@ Page({
           wx.showModal({
             title: '',
             content: '手机号不存在',
+            showCancel: false,
+          })
+        }
+        else if (mess.code == 4) {
+          wx.showModal({
+            title: '',
+            content: '审核暂未通过',
             showCancel: false,
           })
         }

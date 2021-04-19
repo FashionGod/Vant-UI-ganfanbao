@@ -24,6 +24,18 @@ class ShopDetailModel {
       return res
     })
   }
+  collectOrCancel(data) {
+    return wx.cloud.callFunction({
+      name: 'collectOrCancel',
+      data: {
+        merchantId: data.id,
+        operation: data.operation,
+      },
+    })
+    .then(res => {
+      return res
+    })
+  }
 }
 
 export {

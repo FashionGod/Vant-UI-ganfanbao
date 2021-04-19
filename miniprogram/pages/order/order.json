@@ -7,5 +7,6 @@
     "van-tabs": "../../../../miniprogram_npm/@vant/weapp/dist/tabs/index",
     "van-empty": "../../../../miniprogram_npm/@vant/weapp/dist/empty/index",
     "van-divider": "../../../../miniprogram_npm/@vant/weapp/dist/divider/index"
-  }
+  },
+  "disableScroll": true
 }

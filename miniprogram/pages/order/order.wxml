@@ -1,39 +1,46 @@
-<!-- <van-tabs swipeable color="#ffb300" title-active-color="#ffb300" animated> -->
-  <!-- <van-tab title="全部"> -->
-    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"
-      enable-back-to-top="{{true}}" refresher-triggered="{{pullDownloading}}" bindrefresherrefresh="pullDownFresh"
-      bindscrolltolower="scrollTouchedBottom">
-        <!-- 订单列表 -->
-      <block wx:if="{{orderList.length > 0}}">
+<van-tabs active="{{tabsActive}}" swipeable color="#ffb300" title-active-color="#ffb300" animated bind:change="tabsChange">
+  <van-tab title="全部">
+    <scroll-view scroll-y="{{true}}" class="scroll-view"
+    refresher-enabled="{{true}}" enable-back-to-top="{{true}}"
+    refresher-triggered="{{pullDownloading}}" bindrefresherrefresh="pullDownFresh"
+    bindscrolltolower="scrollTouchedBottom" style="white-space: nowrap;">
+      <!-- 订单列表 -->
       <view class="merchant-list">
-        <view wx:for="{{orderList}}" wx:key="_id">
-          <user-order-card bindlongpress="delete" bindtap="navigateToOrderDetail" bind:navigateToView="navigateToView" data-item="{{item}}" orderItem="{{item}}"></user-order-card>
-        </view>
-      </view>
-      <!--触底的loading  -->
-      <view class="bottom-loading">
-        <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
-      <van-divider hairline contentPosition="center" wx:if="{{showEnd}}" >人家也是有底线的啦</van-divider>
-      </view>
-      </block>
-      <block wx:else>
-        <van-empty class="custom-image" description="暂无订单" />
-      </block>
-    </scroll-view>
-  <!-- </van-tab> -->
-  <!-- <van-tab title="未评价">
-    <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" class="scroll-view" refresher-enabled="{{true}}"
-      enable-back-to-top="{{true}}" refresher-triggered="{{true}}" bindrefresherrefresh="pullDownFresh"
-      bindscrolltolower="scrollTouchedBottom">
-      <view class="merchant-list"> -->
-        <!-- 商家列表 -->
-        <!-- <user-order-card merchantImg="{{merchantImg1}}"></user-order-card>
-        <user-order-card merchantImg="{{merchantImg2}}"></user-order-card> -->
-      <!-- </view> -->
-      <!--触底的loading  -->
-      <!-- <view class="bottom-loading">
-        <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+        <block wx:if="{{orderList.length > 0}}">
+          <user-order-card wx:for="{{orderList}}" wx:key="_id" bindlongpress="delete" bindtap="navigateToOrderDetail"
+            bind:navigateToView="navigateToView" data-item="{{item}}" orderItem="{{item}}"></user-order-card>
+          <!--触底的loading  -->
+          <view class="bottom-loading">
+            <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+            <van-divider hairline contentPosition="center" wx:if="{{showEnd}}">人家也是有底线的啦</van-divider>
+          </view>
+        </block>
+        <block wx:else>
+          <van-empty class="custom-image" description="暂无订单" />
+        </block>
       </view>
     </scroll-view>
   </van-tab>
-</van-tabs> -->
+  <van-tab title="未评价">
+    <scroll-view scroll-y="{{true}}" class="scroll-view"
+    refresher-enabled="{{true}}" enable-back-to-top="{{true}}"
+    refresher-triggered="{{pullDownloading2}}" bindrefresherrefresh="pullDownFresh2"
+    bindscrolltolower="scrollTouchedBottom2" style="white-space: nowrap;">
+      <!-- 订单列表 -->
+      <view class="merchant-list">
+        <block wx:if="{{orderList2.length > 0}}">
+          <user-order-card wx:for="{{orderList2}}" wx:key="_id" bindlongpress="delete" bindtap="navigateToOrderDetail"
+            bind:navigateToView="navigateToView" data-item="{{item}}" orderItem="{{item}}"></user-order-card>
+          <!--触底的loading  -->
+          <view class="bottom-loading">
+            <van-loading wx:if="{{scrollTouchedBottomLoading2}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+            <van-divider hairline contentPosition="center" wx:if="{{showEnd2}}">人家也是有底线的啦</van-divider>
+          </view>
+        </block>
+        <block wx:else>
+          <van-empty class="custom-image" description="暂无订单" />
+        </block>
+      </view>
+    </scroll-view>
+  </van-tab>
+</van-tabs>

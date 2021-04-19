@@ -51,9 +51,10 @@ Page({
       title: '加载中',
       mask: true,
     })
-    shopDetailModel.getCollectStatus({
+    console.log(app.globalData)
+    shopDetailModel.collectOrCancel({
         operation: this.data.collectionStar == 'star-o' ? 1 : 0, // 1是收藏 0是取消收藏
-        merchantId: app.globalData.merchantInfo._id
+        id: app.globalData.merchantInfo._id
       })
       .then(res => {
         let {
@@ -165,7 +166,6 @@ Page({
           i.count = 0
           return i
         })
-        console.log(allFoodList)
         // 加入锚点标记id
         merchantMenuList.forEach((item, i) => {
           this.data.arr[i + 1] = 150 * item.foodList.length + this.data.arr[i];
@@ -299,20 +299,16 @@ Page({
     this.setData({
       loading: true
     })
-    console.log(this.data.start)
     return evaluateModel.getEvaluate({
         merchantId: app.globalData.merchantInfo._id,
         start: this.data.start,
         operateType: 1
       })
       .then(res => {
-        console.log(res)
         let evaluateList = this.data.evaluateList.concat(res.result.data[0].data)
-        console.log(evaluateList)
         if (init) {
           evaluateList = res.result.data[0].data
         }
-        console.log(evaluateList)
         this.setData({
           evaluateList: evaluateList,
           start: evaluateList.length,
@@ -325,13 +321,13 @@ Page({
           title: '加载失败',
           icon: 'none'
         })
-        console.log(err)
         this.setData({
           loading: false
         })
 
       })
   },
+  // 触底加载
   scrollTouchedBottom() {
     if (!this.data.more) {
       this.setData({
@@ -342,10 +338,39 @@ Page({
           showEnd: false
         })
       }, 1000)
-      this.loadMore({
-        init: false
-      })
     }
+    this.loadMore({
+      init: false
+    })
+  },
+  // 删除自己的评价
+  onDeleteEvaluate(e) {
+    let that = this
+    const {dataset} = e.currentTarget
+    wx.showModal({
+      title: '提示',
+      content: '您确定要删除此评价吗？',
+      confirmText: '删除',
+      confirmColor: '#e04d3a',
+      success (res) {
+      if (res.confirm) {
+      wx.showLoading({
+        title: '删除中',
+        mask: true
+      })
+      evaluateModel.deleteEvaluate({evaluateId: dataset.id, orderId: dataset.orderid})
+      .then(res => {
+        wx.hideLoading({})
+        wx.showToast({
+          title: '删除成功',
+          icon: 'success'
+        })
+        that.loadMore({init: true})
+      })
+      } else if (res.cancel) {
+      }
+      }
+      })
   },
   // --------------------------------------------- 商家 -------------------------------------------------
   previewImg(e) {

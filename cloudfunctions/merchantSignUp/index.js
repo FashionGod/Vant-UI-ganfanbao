@@ -35,6 +35,8 @@ exports.main = async (event, context) => {
           businessLicense: event.merchantSignUpInfo.merchantSignUpImages.businessLicense,
           foodLicense: event.merchantSignUpInfo.merchantSignUpImages.foodLicense,
           merchantEnvironment: envList,
+          starScore: 0,
+          salesMonthly: 0, 
           password: event.merchantSignUpInfo.password,
           checked: false,
         },
