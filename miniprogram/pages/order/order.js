@@ -87,6 +87,10 @@ Page({
           title: '加载中',
           mask: true
         })
+        this.setData({
+          more: true,
+          start: 0
+        })
         p = orderModel.getOrderIdList()
             .then(res => {
               this.setData({
@@ -194,6 +198,10 @@ Page({
         wx.showLoading({
           title: '加载中',
           mask: true
+        })
+        this.setData({
+          more2: true,
+          start2: 0
         })
         p = orderModel.getUnEvaluatedOrderIdList()
             .then(res => {

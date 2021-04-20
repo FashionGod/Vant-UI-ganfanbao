@@ -11,8 +11,10 @@
         value="{{ merchantItem.starScore }}"
         size="{{ 15 }}"
         readonly
+        void-icon="star"
+        allow-half
         color="#fece00"
-        void-color="#979494"
+        void-color="#eee"
         bind:change="_onChange"
       />
       <text>月售{{merchantItem.salesMonthly}}</text>

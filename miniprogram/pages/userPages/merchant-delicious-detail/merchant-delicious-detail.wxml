@@ -7,7 +7,7 @@
       <text>{{merchantInfo.cardInfo.shopName}}</text>
     </view>
     <view class="star">
-      <van-rate value="{{ merchantInfo.starScore }}" size="{{ 15 }}" readonly color="#fece00" void-color="#979494" bind:change="_onChange" />
+      <van-rate value="{{ merchantInfo.starScore }}" size="{{ 15 }}" readonly color="#fece00" allow-half void-color="#eee" void-icon="star" bind:change="_onChange" />
       <text>月售{{merchantInfo.salesMonthly}}</text>
     </view>
     <view class="transfer-price">

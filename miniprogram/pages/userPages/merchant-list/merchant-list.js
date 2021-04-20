@@ -126,6 +126,10 @@ Page({
         title: '加载中',
         mask: true
       })
+      this.setData({
+        more: true,
+        start: 0
+      })
       p = homeModel.getMerchantIdList({sortType: sortType})
           .then(res => {
             if (sortType == 0){ // 0盲选乱序 1评分最高 2销量最高 3综合排序

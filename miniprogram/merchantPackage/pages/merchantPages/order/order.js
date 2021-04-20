@@ -69,14 +69,20 @@ Page({
         title: '加载中',
         mask: true
       })
+      this.setData({
+        more: true,
+        start: 0
+      })
       p = orderModel.getOrderIdList({
           id: app.globalData.loginInfo.id,
           status: this.data.tabsActive
         })
         .then(res => {
-          this.data.start = 0
-          this.data.more = true
-          this.data.orderIds = res.result.data
+          this.setData({
+            start: 0,
+            more: true,
+            orderIds = res.result.data
+          })
           return res
         })
     } else {
@@ -95,7 +101,6 @@ Page({
         .then(res => {
           wx.hideLoading({}) // 关闭getIdlist的showLoading
           if (res.code == 1) {
-            console.log(res)
             let orderList = this.data.orderList.concat(res.data.data)
             if (init) {
               orderList = res.data.data

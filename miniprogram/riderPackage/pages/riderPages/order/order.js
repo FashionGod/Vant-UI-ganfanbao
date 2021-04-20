@@ -59,6 +59,10 @@ Page({
         title: '加载中',
         mask: true
       })
+      this.setData({
+        more: true,
+        start: 0
+      })
       p = orderModel.getOrderIdList({
           id: app.globalData.loginInfo.id,
           status: this.data.tabsActive

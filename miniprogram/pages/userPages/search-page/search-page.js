@@ -72,6 +72,10 @@ Page({
         title: '加载中',
         mask: true
       })
+      this.setData({
+        more: true,
+        start: 0
+      })
       p = homeModel.searchMerchantIdByContent({searchContent: this.data.searchContent})
           .then(res => {
             this.setData({
