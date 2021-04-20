@@ -97,8 +97,8 @@
           icon="shop-o" is-link />
         <van-cell title="商品管理" center link-type="navigateTo" url="../food-menu-manage/food-menu-manage" icon="orders-o"
           is-link />
-        <van-cell title="评论回复" center link-type="navigateTo" url="../evaluation-reply/evaluation-reply" icon="chat-o"
-          is-link />
+        <!-- <van-cell title="评论回复" center link-type="navigateTo" url="../evaluation-reply/evaluation-reply" icon="chat-o"
+          is-link /> -->
         <van-cell title="反馈建议" center link-type="navigateTo" url="../../../../pages/public/feedback/feedback"
           icon="records" is-link />
         <van-cell border="{{false}}" title="联系我们" center bind:click="contactOfficial" icon="phone-o" is-link />

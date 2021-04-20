@@ -45,7 +45,7 @@
 }
 
 .card-right {
-  margin-left: 10rpx;
+  margin-left: 35rpx;
   flex: 1;
   font-weight: 300;
   color: #696767;

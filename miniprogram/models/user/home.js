@@ -20,7 +20,7 @@ class HomeModel {
     return wx.cloud.callFunction({
       name: 'getMerchantIdList',
       data: {
-        operateType: 0, // 0查询所有过审商家 1查询该用户已收藏的商家
+        operateType: 0, // 0查询所有过审商家 1查询该用户已收藏的商家 2根据输入条件查询
         sortType: data.sortType,
       }
     })
@@ -36,7 +36,23 @@ class HomeModel {
     return wx.cloud.callFunction({
       name: 'getMerchantIdList',
       data: {
-        operateType: 1, // 0查询所有过审商家 1查询该用户已收藏的商家
+        operateType: 1, // 0查询所有过审商家 1查询该用户已收藏的商家 2根据输入条件查询
+      }
+    })
+    .then(res => {
+      return res
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  }
+  // 根据输入条件查询商家ids列表
+  searchMerchantIdByContent(data) {
+    return wx.cloud.callFunction({
+      name: 'getMerchantIdList',
+      data: {
+        operateType: 2, // 0查询所有过审商家 1查询该用户已收藏的商家 2根据输入条件查询
+        searchContent: data.searchContent, 
       }
     })
     .then(res => {

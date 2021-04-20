@@ -1,6 +1,10 @@
 {
   "usingComponents": {
     "van-search": "../../../miniprogram_npm/@vant/weapp/dist/search/index",
-    "van-empty": "../../../miniprogram_npm/@vant/weapp/dist/empty/index"
-  }
+    "van-empty": "../../../miniprogram_npm/@vant/weapp/dist/empty/index",
+    "van-divider": "../../../miniprogram_npm/@vant/weapp/dist/divider/index",
+    "van-loading": "../../../miniprogram_npm/@vant/weapp/dist/loading/index",
+    "merchant-card": "../../../components/shop-card/shop-card"
+  },
+  "disableScroll": true
 }

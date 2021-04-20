@@ -176,6 +176,22 @@ Page({
                 icon: 'none'
               })
             } else if (res.result.code === 1) {
+              if (res.result.data === null) { // 如果已被抢 后端返回null
+                wx.showModal({
+                  confirmText: '确定',
+                  content: '该订单已被抢',
+                  showCancel: false,
+                  title: '提示',
+                })
+              }
+              else {
+                wx.showModal({
+                  confirmText: '确定',
+                  content: '抢单成功',
+                  showCancel: false,
+                  title: '提示',
+                })
+              }
               that.loadMore({
                 init: true
               })

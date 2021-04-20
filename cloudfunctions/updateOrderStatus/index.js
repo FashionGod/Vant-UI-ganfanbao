@@ -30,12 +30,23 @@ exports.main = async (event, context) => {
       try {
         const result = await db.collection('orderCollection').where({
           _id: event.orderId
-        }).update({
-          data: {
-            orderInfo: {
-              riderName: event.loginInfo.riderName,
-              riderPhone: event.loginInfo.riderPhone
-            }
+        })
+        .get()
+        .then(res => {
+          if (res.data[0].orderInfo.riderName == '') { // 判断订单是否已经被抢，防止覆盖
+            return db.collection('orderCollection').where({
+              _id: event.orderId
+            }).update({
+              data: {
+                orderInfo: {
+                  riderName: event.loginInfo.riderName,
+                  riderPhone: event.loginInfo.riderPhone
+                }
+              }
+            })
+          }
+          else {
+            return null // 订单已经被抢
           }
         })
         return handleSuccess(result)

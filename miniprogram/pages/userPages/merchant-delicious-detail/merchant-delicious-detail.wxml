@@ -7,22 +7,22 @@
       <text>{{merchantInfo.cardInfo.shopName}}</text>
     </view>
     <view class="star">
-      <van-rate value="{{ 3 }}" size="{{ 15 }}" readonly color="#fece00" void-color="#979494" bind:change="_onChange" />
-      <text>月售641</text>
+      <van-rate value="{{ merchantInfo.starScore }}" size="{{ 15 }}" readonly color="#fece00" void-color="#979494" bind:change="_onChange" />
+      <text>月售{{merchantInfo.salesMonthly}}</text>
     </view>
     <view class="transfer-price">
-      <text>起送价10￥ 免配送费</text>
+      <text>平均出餐时长</text>
     </view>
     <view class="full-reduce-preferential">
-      <text>满20免配送费</text>
+      <text>30分钟</text>
     </view>
   </view>
   <view class="card-right">
     <view class="distance">
-      <text>30分钟 4km</text>
     </view>
     <view class="transfer-role">
-      <text>平台配送</text>
+      <van-tag color="#e2c08d">外</van-tag>
+      <van-tag style="margin-left: 10rpx;" color="#1989fa">取</van-tag>
     </view>
   </view>
   <view class="collection-star" bindtap="collectionMerchant">
@@ -38,7 +38,7 @@
         <van-sidebar active-key="{{ activeKey }}">
           <block wx:for="{{categoryList}}" wx:key="title">
             <van-sidebar-item bindtap="toDetail" data-id="{{item.dataId}}" id="{{item.maodian}}" title="{{item.title}}"
-              badge="{{item.badge == 0 ? null : item.badge}}">
+              badge="{{item.count == 0 ? null : item.count}}">
             </van-sidebar-item>
           </block>
           <view class="sidebar-blank"></view>

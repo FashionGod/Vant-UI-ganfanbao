@@ -26,7 +26,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.navigateBack({
+      delta: 1,
+    })
+    wx.showToast({
+      title: '该功能暂未开放',
+      icon: 'none'
+    })
   },
 
   /**

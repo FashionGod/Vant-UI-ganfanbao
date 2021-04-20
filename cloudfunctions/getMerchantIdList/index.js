@@ -154,6 +154,42 @@ exports.main = async (event, context) => {
     }).catch(err => {
       return handleErr(err)
     })
+  } else if (event.operateType == 2) { // 根据输入字符查询商家
+    let re = db.RegExp({
+      regexp: '.*' + event.searchContent + '.*'
+    })
+    let countResult = await db.collection('merchantSignUpInfoCollection').where({
+      checked: true,
+      cardInfo: {
+        shopName: re
+      }
+    }).count()
+    let total = countResult.total
+    let batchTimes = Math.ceil(total / 100)
+    let tasks = []
+    let ids = []
+    for (let i = 0; i < batchTimes; i++) {
+      let promise = db.collection('merchantSignUpInfoCollection')
+        .where({
+          checked: true,
+          cardInfo: {
+            shopName: re
+          }
+        })
+        .skip(i * MAX_LIMIT).limit(MAX_LIMIT).field({
+          merchantId: true
+        }).get().then(res => {
+          res.data.forEach(v => {
+            ids.push(v._id)
+          })
+        })
+      tasks.push(promise)
+    }
+    return Promise.all(tasks).then(res => {
+      return handleSuccess(ids)
+    }).catch(err => {
+      return handleErr(err)
+    })
   }
 }
 

@@ -1,8 +1,25 @@
-<van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="20"
-  background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:change="onChange" bind:focus="onFocus">
+<van-search model:value="{{ searchContent }}" placeholder="请输入搜索关键词" use-action-slot shape="round" maxlength="10"
+  background="linear-gradient(#fece00,#ffcd01)" bind:search="onSearch" bind:focus="onFocus">
   <view wx:if="{{!showSearchPanelFlag}}" slot="action" bind:tap="onSearch">搜索</view>
   <view wx:else slot="action" bind:tap="onCancel">取消</view>
 </van-search>
-<block class="search">
-  <van-empty image="search" description="无内容" />
-</block>
+<view class="search">
+  <scroll-view scroll-y="{{true}}" class="scroll" enable-back-to-top="{{true}}"
+    bindscrolltolower="scrollTouchedBottom" style="white-space: nowrap;">
+    <view class="merchant-list">
+      <!-- 商家列表 -->
+      <block wx:if="{{merchantList.length > 0}}">
+          <merchant-card wx:for="{{merchantList}}" wx:key="_id" bindtap="navigateToDetail" data-item="{{item}}"
+            merchantItem="{{item}}"></merchant-card>
+    <!--触底的loading  -->
+    <view class="bottom-loading">
+      <van-loading wx:if="{{scrollTouchedBottomLoading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+      <van-divider hairline contentPosition="center" wx:if="{{showEnd}}" >人家也是有底线的啦</van-divider>
+    </view>
+      </block>
+      <block wx:else>
+        <van-empty image="search" class="custom-image" description="暂无商家" />
+      </block>
+    </view>
+  </scroll-view>
+</view>

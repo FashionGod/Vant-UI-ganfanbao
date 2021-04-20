@@ -17,19 +17,21 @@
       />
       <text>月售{{merchantItem.salesMonthly}}</text>
     </view>  
-    <view class="transfer-price">
-      <text>起送价10￥ 免配送费</text>
+    <!-- <view class="transfer-price">
+      <text>起送价10￥ 免配送费</text> // 暂时舍弃以后可用为修改
     </view>
     <view class="full-reduce-preferential">
       <text>满20免配送费</text>
+    </view> -->
+    <view class="transfer-price">
+      <text>平均出餐时长</text>
+    </view>
+    <view class="full-reduce-preferential">
+      <text>30分钟</text>
     </view>
   </view>
   <view class="card-right">
-    <view class="distance">
-      <text>30分钟 4km</text>
-    </view>
-    <view class="transfer-role">
-      <text>平台配送</text>
-    </view>
+      <van-tag color="#e2c08d">外卖</van-tag>
+      <van-tag style="margin-left: 10rpx;" color="#1989fa">自取</van-tag>
   </view>
 </view>

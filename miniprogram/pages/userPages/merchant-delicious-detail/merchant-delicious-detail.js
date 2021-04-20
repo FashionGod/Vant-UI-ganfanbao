@@ -155,10 +155,11 @@ Page({
         }) : []
         // 遍历初始化 查看详情所需的数组
         allFoodList = []
-        merchantMenuList.map(i => {
+        merchantMenuList.map((i, index) => {
           i.foodList.map(j => {
             allFoodList.push({
-              ...j
+              ...j,
+              categoryIndex: index
             })
           })
         })
@@ -174,6 +175,7 @@ Page({
         tmpCategoryList.forEach((item, i) => {
           item.dataId = i + 1;
           item.maodian = 'b' + (i + 1);
+          item.count = 0; // 用于分类小红点的统计
         })
         tmpMerchantMenuList.forEach((item, i) => {
           item.id = 'a' + (i + 1);
@@ -181,6 +183,7 @@ Page({
         this.setData({
           // 列表数据
           merchantMenuList: merchantMenuList ? merchantMenuList : [],
+          // 头部数据
           merchantInfo: app.globalData.merchantInfo,
           // 锚点相关
           categoryList: tmpCategoryList,
@@ -218,19 +221,24 @@ Page({
         }, 1000)
       })
   },
-  // 单个食品数量变化
+  // 食品数量变化
   onFoodCountChange(event) {
     const {
       dataset
     } = event.currentTarget
-    allFoodList.forEach(obj => {
+    let tmpCategoryList = this.data.categoryList
+    tmpCategoryList.forEach(obj => { // 分类小圆点清零
+      obj.count = 0
+    })
+    allFoodList.forEach(obj => { // 单个数量变化
       if (obj.title == dataset.item.title) {
         obj.count = event.detail
       }
+      tmpCategoryList[obj.categoryIndex].count += obj.count
     })
-    this.countTotalPrice()
+    this.countTotalPrice(tmpCategoryList)
   },
-  countTotalPrice() { // 处理查看详情数组并计算总价
+  countTotalPrice(tmpCategoryList) { // 处理查看详情数组并计算总价
     let tmpTotalPrice = 0
     foodPickList = allFoodList.filter(obj => obj.count > 0)
     for (let i = 0; i < allFoodList.length; i++) { //计算总价
@@ -239,6 +247,7 @@ Page({
     this.setData({
       totalPrice: tmpTotalPrice * 100, // 总价单位为分
       foodPickList: foodPickList,
+      categoryList: tmpCategoryList,
     })
   },
   // 底部购物车弹出层
