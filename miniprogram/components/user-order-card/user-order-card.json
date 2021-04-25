@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "van-tag": "../../miniprogram_npm/@vant/weapp/dist/tag/index"
+  }
 }

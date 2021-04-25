@@ -12,6 +12,10 @@
     <view class="desc">
       <text>订单备注:{{orderItem.orderInfo.remarks?orderItem.orderInfo.remarks:'无'}}</text>
     </view>
+    <view class="desc">
+      <van-tag wx:if="{{orderItem.orderInfo.deliveryWay == 0}}" size="medium" color="#e2c08d">外卖</van-tag>
+      <van-tag wx:else size="medium" color="#1989fa">自取</van-tag>
+    </view>
   </view>
   <view class="card-right">
     <view class="order-status">
