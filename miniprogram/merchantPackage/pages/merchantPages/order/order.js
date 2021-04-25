@@ -81,7 +81,7 @@ Page({
           this.setData({
             start: 0,
             more: true,
-            orderIds = res.result.data
+            orderIds: res.result.data
           })
           return res
         })

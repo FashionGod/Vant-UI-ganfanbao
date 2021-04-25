@@ -24,5 +24,6 @@
       <text>共计{{orderItem.orderInfo.foodPickList.length}}款</text>
     </view>
   </view>
-  <view wx:if="{{orderItem.orderInfo.orderStatus == 3}}" class="views" catchtap="navigateToViews">{{orderItem.orderInfo.evaluateStatus == 0?'立即评价':'查看评价'}}</view>
+  <view wx:if="{{orderItem.orderInfo.orderStatus == 3 && orderItem.orderInfo.deliveryWay == 0}}" class="views" catchtap="navigateToViews">{{orderItem.orderInfo.evaluateStatus == 0?'立即评价':'查看评价'}}</view>
+  <view wx:if="{{orderItem.orderInfo.orderStatus == 1 && orderItem.orderInfo.deliveryWay == 1}}" class="views" catchtap="navigateToViews">{{orderItem.orderInfo.evaluateStatus == 0?'立即评价':'查看评价'}}</view>
 </view>

@@ -191,7 +191,7 @@ Page({
               else {
                 wx.showModal({
                   confirmText: '确定',
-                  content: '抢单成功',
+                  content: '操作成功',
                   showCancel: false,
                   title: '提示',
                 })
