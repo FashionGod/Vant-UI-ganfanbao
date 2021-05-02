@@ -54,9 +54,10 @@
             <block wx:for="{{i.foodList}}" wx:key="title" wx:for-item="j" wx:for-index="idx">
               <van-card custom-class="merchant-card" price="{{j.price}}" desc="{{j.desc}}" title="{{j.title}}"
                 thumb="{{j.url}}">
-                <view style="height: 35rpx;" slot="footer">
+                <view style="position:relative;height: 35rpx;" slot="footer">
+                  <view class="show-img" bindtap="showImg" data-item="{{j}}"></view>
                   <van-stepper value="{{ 0 }}" disable-input="true" min="0" long-press="{{false}}"
-                    input-class="step-input-class" input-width="40px" button-size="32px" bind:change="onFoodCountChange"
+                    input-class="step-input-class" input-width="40px" button-size="32px" mut-catch:change="onFoodCountChange"
                     data-item="{{j}}" data-index="{{idx}}" />
                 </view>
               </van-card>

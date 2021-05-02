@@ -121,6 +121,12 @@ Page({
       storeDetail: 'a' + id
     })
   },
+  showImg(e) {
+    wx.previewImage({
+      current: e.currentTarget.dataset.item.url, // 当前显示图片的http链接
+      urls: [e.currentTarget.dataset.item.url] // 需要预览的图片http链接列表
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -223,9 +229,11 @@ Page({
   },
   // 食品数量变化
   onFoodCountChange(event) {
+    console.log(event)
     const {
       dataset
     } = event.currentTarget
+    console.log(dataset)
     let tmpCategoryList = this.data.categoryList
     tmpCategoryList.forEach(obj => { // 分类小圆点清零
       obj.count = 0

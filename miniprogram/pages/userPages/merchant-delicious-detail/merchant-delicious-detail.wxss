@@ -138,6 +138,15 @@
   line-height: 35rpx;
   text-align: center;
 }
+
+.show-img {
+  position: absolute;
+  display: block;
+  height: 88px;
+  width: 88px;
+  left: 0;
+  top: -88px;
+}
 /* --------------------------------------------- 评价 ------------------------------------------------- */
 
 .container {

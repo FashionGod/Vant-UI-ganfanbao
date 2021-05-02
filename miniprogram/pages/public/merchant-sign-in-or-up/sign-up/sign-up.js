@@ -15,17 +15,17 @@ Page({
     samePhoneNumber: '',
     IdFrontInstance: [{
       url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/front_side.png',
-      name: '商家法人身份证正面',
+      name: '商家法人手持身份证正面',
       deletable: false,
     }, ],
     IdReverseInstance: [{
       url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/reverse_side.png',
-      name: '商家法人身份证反面',
+      name: '商家法人手持身份证反面',
       deletable: false,
     }, ],
     IdAndPersonInstance: [{
-      url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/reverse_side_rider.png',
-      name: '骑手手持身份证',
+      url: 'cloud://ganfanbao-1goayejba4ec1d03.6761-ganfanbao-1goayejba4ec1d03-1304352490/IDinstance/IdCardFront.png',
+      name: '身份证正面',
       deletable: false,
     }, ],
     businessLicenseInstance: [{

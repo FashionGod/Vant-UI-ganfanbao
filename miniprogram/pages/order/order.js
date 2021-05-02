@@ -2,6 +2,10 @@
 import {
   UserOrderModel
 } from '../../models/user/order'
+import {
+  UserModel
+} from '../../models/user/user'
+const userModel = new UserModel()
 const orderModel = new UserOrderModel()
 Page({
 
@@ -340,11 +344,17 @@ Page({
                     icon: 'none'
                   })
                 }
+              }).catch(err => {
+                wx.hideLoading({})
+                wx.showToast({
+                  title: '用户信息上传失败',
+                  icon: 'none'
+                })
               })
             },
             fail: err => {
               wx.showToast({
-                title: '调用接口失败',
+                title: '信息获取失败',
                 icon: 'none'
               })
             }

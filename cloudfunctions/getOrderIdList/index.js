@@ -46,8 +46,7 @@ exports.main = async (event, context) => {
       const countResult = await db.collection('orderCollection').where({
         orderInfo: {
           userId: wxContext.OPENID,
-          evaluateStatus: 0,
-          orderStatus: 3,
+          evaluateStatus: 0
         }
       }).count()
       const total = countResult.total
@@ -58,8 +57,7 @@ exports.main = async (event, context) => {
         const promise = db.collection('orderCollection').where({
             orderInfo: {
               userId: wxContext.OPENID,
-              evaluateStatus: 0,
-              orderStatus: 3,
+              evaluateStatus: 0
             }
           })
           .skip(i * MAX_LIMIT).limit(MAX_LIMIT).field({

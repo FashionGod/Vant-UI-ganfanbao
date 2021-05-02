@@ -19,17 +19,17 @@
     </van-cell-group>
     <view class="uploader-container">
       <view class="instance-and-image">
-        <text user-select="true">身份证正面：</text>
+        <text user-select="true">手持身份证正面：</text>
         <van-uploader file-list="{{ IdFrontInstance }}" preview-size="188rpx" image-fit="scaleToFill" max-count="1"  sizeType="{{['compressed']}}"/>
         <van-uploader file-list="{{ IdFront }}" preview-size="188rpx" max-count="1"  sizeType="{{['compressed']}}" deletable="{{ true }}" bind:after-read="chooseIdFront" max-size="512000" bind:oversize="imageOversize" bind:delete="deleteIdFront" />
       </view>
       <view class="instance-and-image">
-        <text user-select="true">身份证反面：</text>
+        <text user-select="true">手持身份证反面：</text>
         <van-uploader file-list="{{ IdReverseInstance }}" preview-size="188rpx" image-fit="scaleToFill" max-count="1"  sizeType="{{['compressed']}}"/>
         <van-uploader file-list="{{ IdReverse }}" preview-size="188rpx" max-count="1"  sizeType="{{['compressed']}}" deletable="{{ true }}" bind:after-read="chooseIdReverse" max-size="512000" bind:oversize="imageOversize" bind:delete="deleteIdReverse" />
       </view>
       <view class="instance-and-image">
-        <text user-select="true">手持身份证正面：</text>
+        <text user-select="true">身份证正面：</text>
         <van-uploader file-list="{{ IdAndPersonInstance }}" preview-size="188rpx" image-fit="scaleToFill" max-count="1"  sizeType="{{['compressed']}}"/>
         <van-uploader file-list="{{ IdAndPerson }}" preview-size="188rpx" max-count="1"  sizeType="{{['compressed']}}" deletable="{{ true }}" bind:after-read="chooseIdAndPerson" max-size="512000" bind:oversize="imageOversize" bind:delete="deleteIdAndPerson" />
       </view>
