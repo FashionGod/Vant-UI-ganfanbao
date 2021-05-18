@@ -14,11 +14,13 @@ Page({
     addOrEditFoodDialog: false,
     addOrEditCategoryShow: false,
   },
-  onReady: function (options) {
+  onLoad: function (options) {
     wx.showLoading({
       title: '加载中',
       mask: true
     })
+  },
+  onReady: function (options) {
     wx.cloud.callFunction({
       name: 'getMerchantMenuList',
       data: {
@@ -33,7 +35,7 @@ Page({
           })
           wx.showModal({
             title: '提示',
-            content: '修改后一定要点保存！',
+            content: '修改后一定要点保存才生效！',
             confirmText: '好的',
             showCancel: false,
           })
@@ -350,14 +352,6 @@ Page({
   // 保存并上架商品
   uploadOnSale() {
     let {collapseList} = this.data
-    console.log(collapseList)
-    if (collapseList.length === 0) {
-      wx.showToast({
-        title: '请先添加一个分类',
-        icon: 'none'
-      })
-      return
-    }
     wx.showLoading({
       title: '上传中',
       mask: true

@@ -7,6 +7,7 @@ import {
 } from '../../models/user/user'
 const userModel = new UserModel()
 const orderModel = new UserOrderModel()
+const app = getApp()
 Page({
 
   /**
@@ -324,7 +325,7 @@ Page({
                     key: 'userInfo',
                   })
                   app.globalData.canIUseGetUserProfile = true
-                  console.log('that.data.orderItem', that.data.orderItem)
+                  console.log('item', item)
                   wx.navigateTo({
                     url: '../../pages/userPages/evaluate/evaluate',
                     events: {
@@ -334,7 +335,7 @@ Page({
                     },
                     success: function(res) {
                       // 通过eventChannel向被打开页面传送数据
-                      res.eventChannel.emit('dataToEvaluate', { orderItem: that.data.orderItem })
+                      res.eventChannel.emit('dataToEvaluate', { orderItem: item })
                       }
                   })
                 }
@@ -345,6 +346,7 @@ Page({
                   })
                 }
               }).catch(err => {
+                console.log(err)
                 wx.hideLoading({})
                 wx.showToast({
                   title: '用户信息上传失败',

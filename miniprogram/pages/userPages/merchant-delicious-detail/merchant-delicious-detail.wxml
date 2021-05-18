@@ -7,7 +7,8 @@
       <text>{{merchantInfo.cardInfo.shopName}}</text>
     </view>
     <view class="star">
-      <van-rate value="{{ merchantInfo.starScore }}" size="{{ 15 }}" readonly color="#fece00" allow-half void-color="#eee" void-icon="star" bind:change="_onChange" />
+      <van-rate value="{{ merchantInfo.starScore }}" size="{{ 15 }}" readonly color="#fece00" allow-half
+        void-color="#eee" void-icon="star" bind:change="_onChange" />
       <text>月售{{merchantInfo.salesMonthly}}</text>
     </view>
     <view class="transfer-price">
@@ -32,67 +33,74 @@
 </view>
 <van-tabs sticky color="#ffb300" bind:click="switTab" title-active-color="#ffb300" animated>
   <van-tab title="点菜">
-    <view class="scroll-view-container">
-      <scroll-view class="sidebar-scroll" scroll-with-animation="true" scroll-y="true"
-        scroll-into-view='{{indexMaodian}}'>
-        <van-sidebar active-key="{{ activeKey }}">
-          <block wx:for="{{categoryList}}" wx:key="title">
-            <van-sidebar-item bindtap="toDetail" data-id="{{item.dataId}}" id="{{item.maodian}}" title="{{item.title}}"
-              badge="{{item.count == 0 ? null : item.count}}">
-            </van-sidebar-item>
-          </block>
-          <view class="sidebar-blank"></view>
-        </van-sidebar>
-      </scroll-view>
-      <scroll-view bindscroll="onPageScroll" class="content-scroll" scroll-y="true" scroll-with-animation="true"
-        scroll-into-view='{{storeDetail}}'>
-        <block wx:for="{{merchantMenuList}}" wx:key="title" wx:for-item="i">
-          <view id="{{i.id}}">
-            <van-divider
-              custom-style="background-color: #fafafa; color:#696767; margin:0;height:40px;font-size: 30rpx;font-weight: 400;"
-              contentPosition="center">{{i.title}}</van-divider>
-            <block wx:for="{{i.foodList}}" wx:key="title" wx:for-item="j" wx:for-index="idx">
-              <van-card custom-class="merchant-card" price="{{j.price}}" desc="{{j.desc}}" title="{{j.title}}"
-                thumb="{{j.url}}">
-                <view style="position:relative;height: 35rpx;" slot="footer">
-                  <view class="show-img" bindtap="showImg" data-item="{{j}}"></view>
-                  <van-stepper value="{{ 0 }}" disable-input="true" min="0" long-press="{{false}}"
-                    input-class="step-input-class" input-width="40px" button-size="32px" mut-catch:change="onFoodCountChange"
-                    data-item="{{j}}" data-index="{{idx}}" />
-                </view>
-              </van-card>
+    <block wx:if="{{merchantMenuList.length > 0}}">
+      <view class="scroll-view-container">
+        <scroll-view class="sidebar-scroll" scroll-with-animation="true" scroll-y="true"
+          scroll-into-view='{{indexMaodian}}'>
+          <van-sidebar active-key="{{ activeKey }}">
+            <block wx:for="{{categoryList}}" wx:key="title">
+              <van-sidebar-item bindtap="toDetail" data-id="{{item.dataId}}" id="{{item.maodian}}"
+                title="{{item.title}}" badge="{{item.count == 0 ? null : item.count}}">
+              </van-sidebar-item>
             </block>
-          </view>
-        </block>
-        <view class="merchant-detail-blank"></view>
-      </scroll-view>
-    </view>
+            <view class="sidebar-blank"></view>
+          </van-sidebar>
+        </scroll-view>
+        <scroll-view bindscroll="onPageScroll" class="content-scroll" scroll-y="true" scroll-with-animation="true"
+          scroll-into-view='{{storeDetail}}'>
+          <block wx:for="{{merchantMenuList}}" wx:key="title" wx:for-item="i">
+            <view id="{{i.id}}">
+              <van-divider
+                custom-style="background-color: #fafafa; color:#696767; margin:0;height:40px;font-size: 30rpx;font-weight: 400;"
+                contentPosition="center">{{i.title}}</van-divider>
+              <block wx:for="{{i.foodList}}" wx:key="title" wx:for-item="j" wx:for-index="idx">
+                <van-card custom-class="merchant-card" price="{{j.price}}" desc="{{j.desc}}" title="{{j.title}}"
+                  thumb="{{j.url}}">
+                  <view style="position:relative;height: 35rpx;" slot="footer">
+                    <view class="show-img" bindtap="showImg" data-item="{{j}}"></view>
+                    <van-stepper value="{{ 0 }}" disable-input="true" min="0" long-press="{{false}}"
+                      input-class="step-input-class" input-width="40px" button-size="32px"
+                      mut-catch:change="onFoodCountChange" data-item="{{j}}" data-index="{{idx}}" />
+                  </view>
+                </van-card>
+              </block>
+            </view>
+          </block>
+          <view class="merchant-detail-blank"></view>
+        </scroll-view>
+      </view>
+    </block>
+    <block wx:else>
+      <van-empty class="custom-image" description="暂无商品" />
+    </block>
   </van-tab>
   <van-tab title="评价">
     <scroll-view enhanced showScrollbar="{{false}}" scroll-y="{{true}}" style="height: 90vh;"
       enable-back-to-top="{{true}}" bindscrolltolower="scrollTouchedBottom">
-    <view class="container">
-      <view wx:if="{{evaluateList.length>0}}" class="comment">
-        <view class="titleBar">
-          <view>评价列表</view>
-        </view>
-        <view wx:for="{{evaluateList}}" wx:key="orderId" class="item" data-item="{{item}}">
-          <view class="titleWrap">
-            <image class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
-            <view class="authorWrap">
-              <view class="author">{{item.userInfo.nickName}}</view>
-              <view class="time">{{item.formatTime}}</view>
-            </view>
-            <!-- <view class="iconWrap">
+      <view class="container">
+        <view wx:if="{{evaluateList.length>0}}" class="comment">
+          <view class="titleBar">
+            <view>评价列表</view>
+          </view>
+          <view wx:for="{{evaluateList}}" wx:key="orderId" class="item" data-item="{{item}}">
+            <view class="titleWrap">
+              <image class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
+              <view class="authorWrap">
+                <view class="author">{{item.userInfo.nickName}}</view>
+                <view class="time">{{item.formatTime}}</view>
+              </view>
+              <van-rate style="margin-left: 16px;" value="{{ item.starScore }}" size="{{ 16 }}" readonly
+                void-icon="star" allow-half color="#fece00" void-color="#eee" />
+              <!-- <view class="iconWrap">
               <view wx:if="{{item.canDelete}}" bindtap="onDeleteEvaluate" data-id="{{item._id}}" data-orderId="{{item.orderId}}" class="iconItem">
               <image class="icon" src="../../../assets/publicImages/delete@red.png"></image>
             </view>
             </view> -->
-          </view>
-          <view class="text">
-            {{item.content}}
-          </view>
-          <!-- <view class="reply">
+            </view>
+            <view class="text">
+              {{item.content}}
+            </view>
+            <!-- <view class="reply">
             <block wx:for="{{item.replyList}}" wx:key="{{index}}" wx:for-index="replyIndex">
               <view class="item">
                 <view class="titleWrap">
@@ -118,17 +126,17 @@
               </view>
             </block>
           </view> -->
+          </view>
+          <!--触底的loading  -->
+          <view class="bottom-loading">
+            <van-loading wx:if="{{loading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
+            <van-divider hairline contentPosition="center" wx:if="{{showEnd}}">人家也是有底线的啦</van-divider>
+          </view>
         </view>
-         <!--触底的loading  -->
-    <view class="bottom-loading">
-      <van-loading wx:if="{{loading}}" type="spinner" size="15px">正在加载呢，稍等会...</van-loading>
-      <van-divider hairline contentPosition="center" wx:if="{{showEnd}}" >人家也是有底线的啦</van-divider>
-    </view>
+        <block wx:else>
+          <van-empty class="custom-image" description="暂无评价" />
+        </block>
       </view>
-      <block wx:else>
-        <van-empty class="custom-image" description="暂无评价" />
-      </block>
-    </view>
     </scroll-view>
   </van-tab>
   <van-tab title="商家">

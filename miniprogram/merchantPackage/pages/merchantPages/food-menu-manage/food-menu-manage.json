@@ -14,5 +14,6 @@
     "van-uploader": "../../../../miniprogram_npm/@vant/weapp/dist/uploader/index"
   },
   "navigationBarTitleText": "商品管理",
-  "disableScroll": false
+  "disableScroll": false,
+  "backgroundColorBottom": "#f6f6f6"
 }

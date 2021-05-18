@@ -34,7 +34,7 @@
 } 
 
 .function-container {
-  margin: 20rpx auto;
+  margin: 30rpx auto;
   width: 550rpx;
   padding: 25rpx 0 25rpx 0;
   border-radius: 35rpx;

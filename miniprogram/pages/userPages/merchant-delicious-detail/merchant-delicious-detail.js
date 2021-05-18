@@ -227,6 +227,13 @@ Page({
         }, 1000)
       })
   },
+  // 生命周期 销毁
+  onUnload: function () {
+    foodPickList = []
+    this.setData({
+      foodPickList: []
+    })
+  },
   // 食品数量变化
   onFoodCountChange(event) {
     console.log(event)

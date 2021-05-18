@@ -11,6 +11,6 @@
     "van-empty": "../../../../miniprogram_npm/@vant/weapp/dist/empty/index",
     "van-divider": "../../../../miniprogram_npm/@vant/weapp/dist/divider/index"
   },
-  "disableScroll": false,
+  "disableScroll": true,
   "component": true
 }

@@ -85,7 +85,7 @@ Page({
           wx.hideLoading({})
           if (res.result.data.code === 2) { // 有评价
             that.setData({
-              starCount: res.result.data.data[0].starCount,
+              starCount: res.result.data.data[0].starScore,
               textArea: res.result.data.data[0].content,
               readOnly: true
             })

@@ -1,5 +1,5 @@
 class UserOrderModel {
-  // 云函数 查询商家列表
+  // 云函数 生成订单
   createOrder(data) {
     return wx.cloud.callFunction({
       name: 'createOrder',
