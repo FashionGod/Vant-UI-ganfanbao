@@ -20,7 +20,7 @@ Page({
     // 搜索框
     value: '',
     // 轮播图
-    swiperImgList: ['https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1901359579,1861271908&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1840683049,2335736361&fm=26&gp=0.jpg' ,'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2905099515,729646340&fm=26&gp=0.jpg'],
+    swiperImgList: ['https://img2.baidu.com/it/u=2284126798,72955360&fm=26&fmt=auto&gp=0.jpg', 'https://img2.baidu.com/it/u=1086693792,1561580078&fm=26&fmt=auto&gp=0.jpg' ,'https://img2.baidu.com/it/u=1844779269,3406037568&fm=26&fmt=auto&gp=0.jpg'],
     //商家列表筛选头部
     // option1: [
     //   { text: '全部商品', value: 0 },

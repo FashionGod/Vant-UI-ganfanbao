@@ -4,7 +4,7 @@
 }
 
 .bottom-loading {
-  height: 150rpx;
+  height: 250rpx;
 	width: 720rpx;
 	text-align: center;
 }

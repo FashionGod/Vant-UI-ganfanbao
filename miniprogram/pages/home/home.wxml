@@ -7,7 +7,7 @@
   <swiper autoplay="true" interval="3500" duration="500" circular="true">
     <block wx:for="{{swiperImgList}}" wx:key="*this">
       <swiper-item bindtap="previewImg" data-i="{{index}}">
-        <image style="width:750rpx;" src="{{item}}" mode="scaleToFill"></image>
+        <image style="width:750rpx;" src="{{item}}" mode="aspectFill"></image>
       </swiper-item>
     </block>
   </swiper>
